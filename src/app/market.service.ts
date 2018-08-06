@@ -51,10 +51,12 @@ export class MarketService {
 
     this.http.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5MYVi0zQYkhJA85HI-FVIKsT0tAM7wX3NRpy4oZgQCjkKFwvyTV355TnalGvF_DyGRHVMCltnJXcC/pub?output=csv',{ responseType: "text" }).subscribe(data => {
         const mData = csvJSON(data);
+        debugger;
         console.log('bidddd');
         console.log(mData);
         this.getBids(mData);
         this.baseBids = mData;
+        this.baseBids.sort((x1, x2) => x1.bidPricePercent - x2.bidPricePercent);
         this.calculateBids();
     });
     const csvJSON = function (csv) {
@@ -115,7 +117,7 @@ export class MarketService {
       resArray.push({ askPricePercent: element, askPriceMoney: mArray[element] });
     }
     console.log(resArray);
-    resArray.sort((x1, x2) => x1.askPricePercent - x2.askPricePercent);
+    resArray.sort((x1, x2) => x2.askPricePercent - x1.askPricePercent);
     return resArray;
   }
 
