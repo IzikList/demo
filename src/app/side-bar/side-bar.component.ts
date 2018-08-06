@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MENU_ITEM } from './side-bar-menu';
+import { MarketService } from '../market.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -9,9 +10,11 @@ import { MENU_ITEM } from './side-bar-menu';
 export class SideBarComponent implements OnInit {
 
   items = MENU_ITEM;
-  constructor() { }
+  account: any;
+  constructor(private ms: MarketService) { }
 
   ngOnInit() {
+    this.account = this.ms.getAccount();
   }
 
 }

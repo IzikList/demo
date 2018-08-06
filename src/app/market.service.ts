@@ -21,7 +21,7 @@ export class MarketService {
       }
     },
     account: {
-      available: 1000000
+      available: 2000000
     }
   };
   listeners = [];

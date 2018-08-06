@@ -7,12 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MarketOverviewComponent implements OnInit {
   marketData = [
-    {key: 'Avg', val: '18%'},
-    {key: 'Avg', val: '18%'},
-    {key: 'Avg', val: '18%'},
-    {key: 'Avg', val: '18%'},
-    {key: 'Avg', val: '18%'},
-    {key: 'Avg', val: '18%'}];
+    {key: 'AVG. LE', val: '6.8'},
+    {key: 'AVG. FACE VALUE', val: '$950K'},
+    {key: 'NUMBER OF POLICIES', val: '8462'},
+    {key: 'AVG. PREMIUS', val: '3.6%'}];
 
   constructor() { }
 

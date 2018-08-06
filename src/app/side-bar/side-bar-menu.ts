@@ -1,18 +1,18 @@
 export const MENU_ITEM: Object[] = [
     {
-        name: 'My Protfolyo',
-        icon: 'library_books'
+        name: 'Portfolio',
+        icon: 'description'
     },
     {
         name: 'Market',
-        icon: 'home'
+        icon: 'assessment'
     },
     {
         name: 'Order',
-        icon: 'home'
+        icon: 'assignment'
     },
     {
         name: 'My Account',
-        icon: 'home'
+        icon: 'account_box'
     }
 ];

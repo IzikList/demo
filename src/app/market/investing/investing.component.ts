@@ -79,10 +79,18 @@ export class InvestingComponent implements OnInit {
     console.log(policies);
 
     this.marketService.buy(policies);
-    const dialogRef = this.dialog.open(DialogComponent, {
+    if (! this.isAtMarket) {
+      const dialogRef = this.dialog.open(DialogComponent, {
+        width: '650px',
+        data: investObjCopy
+      });
+    } else {
+    const dialogRef = this.dialog.open(AttmarketDialogComponent, {
       width: '650px',
       data: investObjCopy
     });
+
+    }
     this.ammount = this.account.available;
     this.marketService.calculate(this.ammount, this.ammount / this.minPolicies, this.isAtMarket ? 0 : this.userBid);
   }
@@ -105,6 +113,22 @@ export class DialogComponent implements OnInit {
 
 }
 
+@Component({
+  selector: 'app-am-dialog',
+  templateUrl: 'att-market-dialog.html',
+})
+export class AttmarketDialogComponent implements OnInit {
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  ngOnInit() {
+    console.log(this.data);
+  }
+  onNoClick(): void {
+    // this.dialogRef.close();
+  }
+
+}
 export class A {
   arr: any;
 }

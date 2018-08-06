@@ -15,6 +15,7 @@ import { MarketOverviewComponent } from './market/market-overview/market-overvie
 import { CommandsComponent } from './market/commands/commands.component';
 import { ChartComponent } from './market/chart/chart.component';
 import { DialogComponent } from './market/investing/investing.component';
+import { AttmarketDialogComponent } from './market/investing/investing.component';
 
 import {
   MatAutocompleteModule,
@@ -66,9 +67,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MarketOverviewComponent,
     InvestingComponent,
     ChartComponent,
-    DialogComponent
+    DialogComponent,
+    AttmarketDialogComponent
   ],
-  entryComponents: [DialogComponent],
+  entryComponents: [DialogComponent, AttmarketDialogComponent],
   imports: [
     BrowserModule,
     MatSidenavModule,
@@ -112,7 +114,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatTreeModule,
     FormsModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

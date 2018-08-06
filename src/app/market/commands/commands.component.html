@@ -3,26 +3,22 @@
     <!--<nb-card-body>-->
       <div flex fxLayout="row" fxLayout.lt-sm="column" class="row" align="center" style="font-size: 1.2em">
         <div class="col-lg-6" layout="center" fxFlex="50">
-          <div>
+            <h3>
             Bid
-            <br />
-          </div>
-          <br />
+            </h3>
           <div >
             <div class="ul" *ngFor="let item of bids; let i = index">
-              {{item.bidPricePercent}}% ({{item.bidPriceMoney}}M)
+              {{item.bidPricePercent}}% (${{item.bidPriceMoney}})
             </div>
           </div>
         </div>
         <div class="col-lg-6" layout="center" fxFlex="50">
-          <div>
+          <h3>
             Ask
-            <br />
-          </div>
-          <br />
+          </h3>
           <div>
             <div class="ul" *ngFor="let item of asks; let i = index">
-              {{item.askPricePercent}}% ({{item.askPriceMoney}}M)
+              {{item.askPricePercent}}% (${{item.askPriceMoney}})
             </div>
           </div>
         </div>
