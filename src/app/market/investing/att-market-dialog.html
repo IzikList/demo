@@ -3,27 +3,32 @@
 </div>
 <div>
 <table style=" margin: auto;">
-
-    <tr >
-        <td style="width: 100px;">17.5%</td>
-        <td style="width: 100px;">1,000,000</td>
-        <td style="width: 100px;">200 Policies</td>
+    <tr  *ngFor="let item of data.data.mArray; let i = index" [hidden]="item.price === 0">
+        <td style="width: 100px; text-align: center">{{item.askPricePercent}}%</td>
+        <td style="width: 100px; text-align: center">{{item.numOfPolicies}} P</td>
+        <td style="width: 100px; text-align: center">${{item.price}}</td>
     </tr>
 </table>
 
-    <div style="width: 100%; text-align: center" ><h3>Available</h3></div>
+<div style="width: 100%;  text-align: center;" > 
+<button style="font-size: 25px; background-color: #fff;" (click)="close();">
+    Confirm
+</button>
+</div>
+
+    <!--<div style="width: 100%; text-align: center" ><h3>Available</h3></div>
 
     <table style=" margin: auto;">
 
         <tr *ngFor="let item of data.data.mArray; let i = index"  >
             <td style="width: 100px;     text-align: center;">{{item.askPricePercent}}</td>
-            <td style="width: 100px;     text-align: center;">{{item.price}}</td>
+            <td style="width: 100px;     text-align: center;">{{item.askPricePercent}}</td>
         </tr>
         <tr class="sum">
             <td style="width: 100px;     text-align: center;">{{item.askPricePercent}}</td>
             <td style="width: 100px;     text-align: center;">{{item.price}}</td>
         </tr>
 
-    </table>
+    </table>-->
 
 </div>

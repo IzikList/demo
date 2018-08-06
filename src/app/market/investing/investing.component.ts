@@ -119,13 +119,17 @@ export class DialogComponent implements OnInit {
 })
 export class AttmarketDialogComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialog) { }
 
   ngOnInit() {
     console.log(this.data);
   }
   onNoClick(): void {
     // this.dialogRef.close();
+  }
+
+  close() {
+    this.dialogRef.closeAll();
   }
 
 }
