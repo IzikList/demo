@@ -1,0 +1,31 @@
+    <mat-card>
+    <!--<nb-card-header>Pie</nb-card-header>-->
+    <!--<nb-card-body>-->
+      <div flex fxLayout="row" fxLayout.lt-sm="column" class="row" align="center" style="font-size: 1.2em">
+        <div class="col-lg-6" layout="center" fxFlex="50">
+          <div>
+            Bid
+            <br />
+          </div>
+          <br />
+          <div >
+            <div class="ul" *ngFor="let item of bids; let i = index">
+              {{item.bidPricePercent}}% ({{item.bidPriceMoney}}M)
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6" layout="center" fxFlex="50">
+          <div>
+            Ask
+            <br />
+          </div>
+          <br />
+          <div>
+            <div class="ul" *ngFor="let item of asks; let i = index">
+              {{item.askPricePercent}}% ({{item.askPriceMoney}}M)
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--</nb-card-body>-->
+  </mat-card>

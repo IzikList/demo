@@ -1,0 +1,30 @@
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}
+mat-sidenav {
+  width: 257px;
+  background: #0E7171
+}
+.logo{
+  width: 220px;
+  height: 123px
+}
+.mItem{
+  padding-left: 37px;
+  height: 50px;
+  font-family: OpenSans;
+  font-size: 19px;
+  font-weight: bold;
+  line-height: 0.58;
+  text-align: left;
+  color: #ffffff;
+}
+
+.mIcon{
+  margin-right: 20px;
+}

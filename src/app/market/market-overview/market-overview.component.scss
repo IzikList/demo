@@ -1,0 +1,23 @@
+.ovTableRow{
+    font-size: 1.2em;
+    line-height: 1.5em;
+    display: block;
+    margin-top: -1px;
+    border-bottom: solid 1px #0e717170;    
+}
+.ovTableRow td{
+    display: inline-block;
+}
+.mTable{
+    width: 100%;
+}
+.tdLeft{
+    width: 75%;
+}
+.tdRight{
+    width: 23%;
+    border-left: solid 1px #0e717170;
+}
+tbody :last-child {
+    border: none;
+}

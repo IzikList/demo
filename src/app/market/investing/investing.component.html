@@ -1,0 +1,41 @@
+<div align="center" >
+  <div class="row investHeader" align="center center" flex fxLayout="row">
+    <div class="invest-col" align="left">
+      <div class="investHeadser">Investment Amount</div>
+      <input [ngClass]="{'red-border-class': validateAvailable(value)}" type="number" id="ammount" [(ngModel)]="ammount" (input)="onInputChange()" />
+    </div>
+    <div class="invest-col investHeadser" align="left">
+      <div>Min Num of Policies</div>
+      <input type="number" id="mPolicies" [(ngModel)]="minPolicies" (input)="onInputChange()"/>
+    </div>
+    <div class="invest-col investHeadser" align="left">
+      <div>Diversification</div>
+      <input type="string" id="mPolicies"  ng-readonly="true" [(ngModel)]="diversification" />
+    </div>
+  </div>
+  <br />
+  <span class="invTitle">{{ isAtMarket == true ? 'ATT MARKET' : 'SET BID' }} </span> 
+  <!--<span style="width: 20px; display: inline-block"></span>-->
+  <button class="investState" type="button" (click)="changeInvestingType()"><img class="invBtnImg" src="assets/images/repicon.svg"/><span class="invBtnTxt">{{isAtMarket == true ? 'SET BID' : 'MARKET' }}</span></button>
+  <div style="margin-top: 20px;" [hidden]="isAtMarket"> 
+    <input type="text" [(ngModel)]="userBid" (input)="onInputChange()"/> <span> Your Bid</span>
+  </div>
+  <div style="margin-top: 20px;"></div>
+  <div style="height: 136px">
+    <div class="priceRow" *ngFor="let item of investObj.data.mArray; let i = index" [hidden]="item.price == '0'" >
+      <div class="divider" style="width: 300px; height: 1px; background-color: #0e7171; opacity: 0.27"></div>
+      <input type="checkbox" style="margin-right: 10px" [disabled]="isAtMarket !== true" checked="true"/>
+      <span class="investPricePercent">{{item.askPricePercent}}% </span>
+      <span class="investPrice">${{item.price}} </span>
+      <span class="investPoloicies">({{item.numOfPolicies}} Policies)</span>
+    </div>
+  </div>
+  <!--<div class="priceRow" *ngFor="let item of asks; let i = index">
+    <span style="font-size: 1.2em">{{item.price}}% </span><span>$400K </span> ({{item.amount}}Policies)
+  </div>-->
+  <div style="margin-top: 30px;">
+    <button class="invBtn" type="button" style="margin-left: px; margin-right: 10px" (click)="buy($event, item)" >
+        {{isAtMarket == true ? 'BUY NOW' : 'PLACE ORDER' }}
+    </button>
+  </div>
+</div>

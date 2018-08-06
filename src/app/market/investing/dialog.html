@@ -1,0 +1,24 @@
+<div style="width: 100%; text-align: center" >
+    <h1>YOUR BID</h1>
+</div>
+<div>
+<table style=" margin: auto;">
+
+    <tr >
+        <td style="width: 100px;">17.5%</td>
+        <td style="width: 100px;">1,000,000</td>
+        <td style="width: 100px;">200 Policies</td>
+    </tr>
+</table>
+
+    <div style="width: 100%; text-align: center" ><h3>Available</h3></div>
+
+    <table style=" margin: auto;">
+
+        <tr *ngFor="let item of data.data.mArray; let i = index"  >
+            <td style="width: 100px;     text-align: center;">{{item.askPricePercent}}</td>
+            <td style="width: 100px;     text-align: center;">{{item.price}}</td>
+        </tr>
+    </table>
+
+</div>

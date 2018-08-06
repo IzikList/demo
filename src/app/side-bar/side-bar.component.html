@@ -1,0 +1,18 @@
+<mat-sidenav-container class="example-container" >
+  <mat-sidenav mode="side" opened fxLayout="column" fxLayout.lt-sm="column">
+    <div fxFlex="50">
+      <img src="assets/images/listlogowhite.png" class="logo" />
+      <div  *ngFor="let item of items; let i = index" class="mItem" fxLayout="row" fxLayoutAlign="left center">
+        <mat-icon class="mIcon">{{item.icon}}</mat-icon>
+        <div>{{item.name}}</div>
+      </div>
+    </div>
+    <div  fxFlex="50" style="background: #E2E2E2;">
+      <div >aaa</div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-market></app-market>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

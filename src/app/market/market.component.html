@@ -1,0 +1,51 @@
+<div class="marketContainer" flex fxLayout="row" fxLayout.lt-sm="column">
+  <div fxFlex="50" fxLayoutAlign="center center" fxLayout="column" >
+      <mat-card  class="investingCard">
+        <app-investing></app-investing>
+      </mat-card>
+    <div>
+      <div style="margin-top: 10%">
+        <app-chart-market></app-chart-market>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="50"  fxLayoutAlign="center center" fxLayout="column">
+    <div class="cardTitle" >
+        Market Overview
+    </div>
+    <div style="width: 480px; margin-bottom: 5%">
+      <mat-card>
+        <app-market-overview></app-market-overview>
+      </mat-card>
+    </div>
+    <div class="cardTitle">
+        Market Overview
+    </div>
+    <div style="width: 480px; ">
+      <app-commands></app-commands>
+    </div>
+  </div>
+</div>
+
+<!--<mat-grid-list class="row" cols="2">
+  <mat-grid-tile class="col-sm-6">
+    <div layout="col">
+    <div >
+      <mat-card style="width: 490px;">
+        <app-investing></app-investing>
+      </mat-card>
+    </div>
+    <div>
+      <app-chart-market></app-chart-market>
+    </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile class="col-sm-6">
+    <mat-card style="width: 490px; ">
+      <app-market-overview></app-market-overview>
+    </mat-card>
+    <div style="width: 490px; ">
+      <app-commands></app-commands>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>-->
