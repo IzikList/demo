@@ -14,7 +14,10 @@ export class MarketService {
       bids: [],
       all: [],
       invsetment: {
-        data: {}
+        data: {
+          mArray: [{policiyIds: '' }],
+          sum: 0
+        }
       }
     },
     account: {
@@ -202,7 +205,7 @@ export class MarketService {
           console.log('amountPerPrice', amountPerPrice, 'copyArray.length', copyArray.length + 1);
           console.log(amountPerPrice / (copyArray.length + 1), p, data[key].price);
           if (amountPerPrice / copyArray.length <= p) {
-            thisPolicyGive = parseInt(amountPerPrice / (copyArray.length + 1));
+            thisPolicyGive = parseInt('' + amountPerPrice / (copyArray.length + 1));
             if (thisPolicyGive < 1) {
               thisPolicyGive = 1;
             }

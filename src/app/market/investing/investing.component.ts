@@ -19,7 +19,8 @@ export class InvestingComponent implements OnInit {
   ammount = 1000000;
   investObj: {
     data: {
-      mArray: [{policiyIds: '' }]
+      mArray: {policiyIds: string}[],
+      sum: number
     }
   };
   account: {
