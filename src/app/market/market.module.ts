@@ -8,6 +8,6 @@ import { MarketOverviewComponent } from './market-overview/market-overview.compo
   imports: [
     CommonModule
   ],
-  declarations: [ChartComponent, MarketOverviewComponent]
+  declarations: []
 })
 export class MarketModule { }

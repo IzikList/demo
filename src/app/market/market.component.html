@@ -1,30 +1,36 @@
-<div class="marketContainer" flex fxLayout="row" fxLayout.lt-sm="column">
-  <div fxFlex="50" fxLayoutAlign="center center" fxLayout="column" >
-      <mat-card  class="investingCard">
+<div class="marketContainer" flex fxLayout="column" fxLayout.lt-sm="column">
+  <div fxFlex="60" fxLayoutAlign="center center" fxLayout="row">
+    <div fxFlex="50" fxLayoutAlign="center center">
+      <mat-card class="investingCard">
         <app-investing></app-investing>
       </mat-card>
-    <div>
-      <div style="margin-top: 10%">
-        <app-chart-market></app-chart-market>
+    </div>
+    <div fxFlex="50" fxLayout="row" fxLayoutAlign="center center">
+      <div>
+        <div class="cardTitle">
+          Orders
+        </div>
+        <div style="width: 480px;">
+          <app-commands></app-commands>
+        </div>
       </div>
     </div>
   </div>
-  <div fxFlex="50"  fxLayoutAlign="center center" fxLayout="column">
-    <div class="cardTitle">
-        Orders
+  <div fxFlex="40" fxLayoutAlign="center center" fxLayout="row">
+    <div fxFlex="50" fxLayoutAlign="center center">
+      <app-chart-market></app-chart-market>
     </div>
-    <div style="width: 480px;  margin-bottom: 5% ">
-      <app-commands></app-commands>
+    <div fxFlex="50" fxLayoutAlign="center center" fxLayout="column">
+      <div class="cardTitle">
+        Market Overview
+      </div>
+      <div style="width: 480px;">
+        <mat-card>
+          <app-market-overview></app-market-overview>
+        </mat-card>
+      </div>
     </div>
 
-    <div class="cardTitle" >
-        Market Overview
-    </div>
-    <div style="width: 480px;">
-      <mat-card>
-        <app-market-overview></app-market-overview>
-      </mat-card>
-    </div>
   </div>
 </div>
 

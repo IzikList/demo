@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../src/environments/environment.prod';
+
 
 @Injectable({
   providedIn: 'root'
@@ -30,9 +32,11 @@ export class MarketService {
     return JSON.parse(JSON.stringify(obj));
   }
 
-
   constructor(private http: HttpClient) {
-    this.http.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vQxTCd5nAjdT0ytG49miRXcD4MZ9X04pYIZGPNvFWzEtyUoMaz69D4OTvgA_zSFf9RaHgNeLoMyXucQ/pub?output=csv', { responseType: "text" }).subscribe(data => {
+//    alert(environment.production);
+    const url1 = environment.url1;
+    const url2 = environment.url2;
+    this.http.get(url1, {responseType: 'text' }).subscribe(data => {
       console.log(csvJSON(data));
       const mData = csvJSON(data);
       this.baseData = mData;
@@ -42,16 +46,15 @@ export class MarketService {
         const el2 = this.deepCopy(element);
         console.log(el2);
         // this.data.data.asks.push(el2);
-        //this.data.data.bids.push(this.deepCopy(element));
+        // this.data.data.bids.push(this.deepCopy(element));
       }
       this.data.data.asks.push.apply(this.data.data.asks, s);
       this.data.data.all.push.apply(this.data.data.all, this.getAllAsks(mData));
       this.listeners.forEach((x1, x2, x3) => x1.callback());
     });
 
-    this.http.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5MYVi0zQYkhJA85HI-FVIKsT0tAM7wX3NRpy4oZgQCjkKFwvyTV355TnalGvF_DyGRHVMCltnJXcC/pub?output=csv',{ responseType: "text" }).subscribe(data => {
+    this.http.get(url2, { responseType: 'text' }).subscribe(data => {
         const mData = csvJSON(data);
-        debugger;
         console.log('bidddd');
         console.log(mData);
         this.getBids(mData);

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MarketService } from '../../market.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 
 @Component({
@@ -69,7 +68,7 @@ export class InvestingComponent implements OnInit {
   callback() {
     this.marketService.calculate(this.ammount, this.ammount / this.minPolicies, this.isAtMarket ? 0 : this.userBid);
   }
-  buy (a, b) {
+  buy () {
     const investObjCopy = JSON.parse(JSON.stringify(this.investObj));
     let policies = [];
     for (let i = 0; i < this.investObj.data.mArray.length; i++) {

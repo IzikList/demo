@@ -2,7 +2,7 @@
   <div class="row investHeader" align="center center" flex fxLayout="row">
     <div class="invest-col" align="left">
       <div class="investHeadser">Investment Amount</div>
-      <input [ngClass]="{'red-border-class': validateAvailable(value)}" type="number" id="ammount" [(ngModel)]="ammount" (input)="onInputChange()" />
+      <input [ngClass]="{'red-border-class': validateAvailable()}" type="number" id="ammount" [(ngModel)]="ammount" (input)="onInputChange()" />
     </div>
     <div class="invest-col investHeadser" align="left">
       <div>Min Num of Policies</div>
@@ -14,7 +14,7 @@
     </div>
   </div>
   <br />
-  <span class="invTitle">{{ isAtMarket == true ? 'ATT MARKET' : 'SET BID' }} </span> 
+  <span class="invTitle">{{ isAtMarket == true ? 'AT MARKET' : 'SET BID' }} </span> 
   <!--<span style="width: 20px; display: inline-block"></span>-->
   <button class="investState" type="button" (click)="changeInvestingType()"><img class="invBtnImg" src="assets/images/repicon.svg"/><span class="invBtnTxt">{{isAtMarket == true ? 'SET BID' : 'MARKET' }}</span></button>
   <div style="margin-top: 20px;" [hidden]="isAtMarket"> 
@@ -34,7 +34,7 @@
     <span style="font-size: 1.2em">{{item.price}}% </span><span>$400K </span> ({{item.amount}}Policies)
   </div>-->
   <div style="margin-top: 30px;">
-    <button class="invBtn" type="button" style="margin-left: px; margin-right: 10px" (click)="buy($event, item)" >
+    <button class="invBtn" type="button" style="margin-left: px; margin-right: 10px" (click)="buy()" >
         {{isAtMarket == true ? 'BUY NOW' : 'PLACE ORDER' }}
     </button>
   </div>
