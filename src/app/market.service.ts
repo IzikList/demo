@@ -215,7 +215,7 @@ export class MarketService {
               thisPolicyGive = 1;
             }
           } else {
-            thisPolicyGive = (amountPerPrice - p >= 0) ? p : amountPerPrice;
+            thisPolicyGive = (amountPerPrice - p >= 0) ? p : amountPerPrice <= maxInP ? amountPerPrice : maxInP;
           }
           amountPerPrice -= thisPolicyGive;
           amount -= thisPolicyGive;
