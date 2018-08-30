@@ -16,6 +16,8 @@ import { CommandsComponent } from './market/commands/commands.component';
 import { ChartComponent } from './market/chart/chart.component';
 import { DialogComponent } from './market/investing/investing.component';
 import { AttmarketDialogComponent } from './market/investing/investing.component';
+import { TextareaExpandedComponent } from './numinput/test';
+import { NgModelBaseComponent } from './numinput/NgModelBase';
 
 import {
   MatAutocompleteModule,
@@ -57,6 +59,7 @@ import {
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import { NuminputComponent } from './numinput/numinput.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +71,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     InvestingComponent,
     ChartComponent,
     DialogComponent,
-    AttmarketDialogComponent
+    AttmarketDialogComponent,
+    // NuminputComponent,
+    TextareaExpandedComponent,
+    NgModelBaseComponent
   ],
   entryComponents: [DialogComponent, AttmarketDialogComponent],
   imports: [
@@ -113,6 +119,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatTooltipModule,
     MatTreeModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FlexLayoutModule,
   ],

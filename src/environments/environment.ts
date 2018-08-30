@@ -7,7 +7,8 @@ export const environment = {
   url2: 'https://docs.google.com/spreadsheets/d/e/' +
   '2PACX-1vQrXmE_Wemth9nDWRQF0Zl_ZgvieOkuN2jWeGMl0S2ozNfKufg8ZyU2lAOyJG72A0rUH1IPCquoGMJv/pub?output=csv',
   url1: 'https://docs.google.com/spreadsheets/d/e/' +
-  '2PACX-1vREtZj25d_8DSrEm5AIknYrEOhYSl5ZOoPMwofPsSRTCGclSvjwnGeNgRLElr06N6-KpyhoM84xvW_N/pub?output=csv'
+  '2PACX-1vREtZj25d_8DSrEm5AIknYrEOhYSl5ZOoPMwofPsSRTCGclSvjwnGeNgRLElr06N6-KpyhoM84xvW_N/pub?output=csv',
+  serverUrl: 'http://localhost:5000/api/'
 };
 
 /*

@@ -10,6 +10,8 @@ export class MarketService {
   asks = [{ price: 998 }];
   baseData: any;
   baseBids: any;
+  calculateProgress: Boolean = false;
+  calculateTime = Date.now();
   data = {
     data: {
       asks: [],
@@ -20,7 +22,8 @@ export class MarketService {
           mArray: [{policiyIds: '' }],
           sum: 0
         }
-      }
+      },
+      diversification: {}
     },
     account: {
       available: 2000000
@@ -39,6 +42,7 @@ export class MarketService {
     this.http.get(url1, {responseType: 'text' }).subscribe(data => {
       console.log(csvJSON(data));
       const mData = csvJSON(data);
+      // this.uploadPolicies(mData);
       this.baseData = mData;
       const s = this.getAsks(mData);
       for (let i = 0; i < mData.length; i++) {
@@ -52,7 +56,7 @@ export class MarketService {
       this.data.data.all.push.apply(this.data.data.all, this.getAllAsks(mData));
       this.listeners.forEach((x1, x2, x3) => x1.callback());
     });
-
+    this.getDiversification();
     this.http.get(url2, { responseType: 'text' }).subscribe(data => {
         const mData = csvJSON(data);
         console.log('bidddd');
@@ -85,6 +89,27 @@ export class MarketService {
       result.pop(); // remove the last item because undefined values
       return result; // JavaScript object
     };
+
+  }
+
+  getDiversification() {
+    this.http.get('../assets/objects/diver.json', {responseType: 'text' }).subscribe(data => {
+      const arr = JSON.parse(data);
+      const v = {};
+      arr.map(function(elem) {
+        v[elem.policies] = elem.diversification;
+      });
+      this.data.data.diversification = v;
+    });
+  }
+
+  uploadPolicies(body) {
+      const url2 = environment.serverUrl + 'demo/insertMany';
+      console.log(environment.serverUrl);
+      console.log(body);
+      this.http.post(url2, body, { headers: {'Content-Type': 'application/json'} }).subscribe(data => {
+        alert(data);
+    });
 
   }
 
@@ -157,7 +182,14 @@ export class MarketService {
     this.data.data.bids.splice(0, this.data.data.bids.length);
     this.data.data.bids.push.apply(this.data.data.bids, arr);
   }
+
   calculate(amount, maxInP, askPerCent) {
+    console.log('leave ' + this.calculateProgress + ' ' + Date.now());
+    if (this.calculateProgress || Date.now() - this.calculateTime < 100) {
+      console.log('leave');
+      return false;
+    }
+    this.calculateProgress = true;
     const fAmount = amount;
     maxInP = parseInt(maxInP);
     const data = {
@@ -233,48 +265,9 @@ export class MarketService {
     }
     data.rest = amount;
     data.sum = fAmount - amount;
-
-    console.log('mpolicies');
-    console.log(data);
-    console.log('ccalculate ');
-    console.log(this.data.data.all);
-    // for (let i = 0; i < this.data.data.all.length; i++) {
-    //   console.log('amount ' + amount);
-    //   if (amount < 1) {
-    //     break;
-    //   }
-    //   const element = this.data.data.all[i];
-    //   console.log('askPerCent', element.askPricePercent, askPerCent);
-    //   if (element.askPricePercent < askPerCent) {
-    //     break;
-    //   }
-    //   if (!data[element.askPricePercent]) {
-    //     data[element.askPricePercent] = {
-    //       price: 0,
-    //       numOfPolicies: 0,
-    //       askPricePercent: element.askPricePercent
-    //     };
-    //     data.mArray.push(data[element.askPricePercent]);
-    //   }
-    //   data.numOfPolicies++;
-    //   let investMoney = 0;
-    //   if (element.askPriceMoney < maxInP) {
-    //     investMoney = parseInt(element.askPriceMoney);
-    //   } else {
-    //     investMoney = parseInt(maxInP);
-    //   }
-    //   if (investMoney > data.high) {
-    //     data.high = investMoney;
-    //   } else if (investMoney < data.low || data.low === 0) {
-    //     data.low = investMoney;
-    //   }
-    //   data[element.askPricePercent].price += investMoney;
-    //   data[element.askPricePercent].numOfPolicies++;
-    //   amount -= investMoney;
-    // console.log('calculate ' + investMoney);
-    // }
     this.data.data.invsetment.data = data;
-    console.log(data);
+    this.calculateProgress = false;
+    this.calculateTime = Date.now();
   }
   getInvest() {
     return this.data.data.invsetment;
@@ -287,15 +280,6 @@ export class MarketService {
   }
   buy(policies) {
     this.data.account.available -=  this.data.data.invsetment.data.sum;
-    // for (let i = 0; i < mData.length; i++) {
-    //   const element = mData[i];
-    //   const el2 = this.deepCopy(element);
-    //   console.log(el2);
-    //   // this.data.data.asks.push(el2);
-    //   this.data.data.bids.push(this.deepCopy(element));
-    // }
-    // this.data.data.all.push.apply(this.data.data.all, this.getAllAsks(mData));
-    // this.listeners.forEach((x1, x2, x3) => x1.callback());
     console.log(this.baseData);
     for (let j = 0; j < policies.length; j++) {
       const el = policies[j];
@@ -319,8 +303,11 @@ export class MarketService {
     const s2 = this.getAllAsks(this.baseData);
     this.data.data.all.splice(0, this.data.data.all.length);
     this.data.data.all.push.apply(this.data.data.all, s2);
+  }
 
-    console.log(this.baseData);
+  addBid (a, b) {
+    this.baseBids.push({bidPricePercent: b, bidPriceMoney: a });
+    this.calculateBids();
   }
   private getAmountForSection(amount, numOfPolicies, maxInP): number {
     const a = maxInP * numOfPolicies;
@@ -328,6 +315,13 @@ export class MarketService {
       return amount;
     }
     return a;
+  }
+
+  getDiver(numOfPolicies) {
+    if (numOfPolicies > 200) {
+      return 99;
+    }
+    return this.data.data.diversification['' + numOfPolicies];
   }
 }
 

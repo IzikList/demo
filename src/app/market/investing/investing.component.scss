@@ -3,7 +3,17 @@
     padding-left: 10px;
 }
 .invest-col input {
-    width: 90%
+    width: 90%;
+    height: 20px;
+    font-size: 15px;
+    margin-top: 5px;
+}
+.ddd{
+    width: 90%;
+    height: 20px;
+    font-size: 15px;
+    margin-top: 5px;
+
 }
 .priceRow {
     line-height: 2em
@@ -28,7 +38,7 @@
     width: 25%;
     font-size: 1.2em;
 }
-.red-border-class{
+.red-border-class input{
     color:  red;
 }
 .invTitle{
@@ -61,3 +71,7 @@
 td {
     width: 100px;
 }
+
+// label { position: absolute; background: white; left:0px; top: 0px; cursor: pointer; }
+// input { position: relative; width: 200px; }
+// input:focus + label { display: none; }

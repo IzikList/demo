@@ -2,15 +2,23 @@
   <div class="row investHeader" align="center center" flex fxLayout="row">
     <div class="invest-col" align="left">
       <div class="investHeadser">Investment Amount</div>
-      <input [ngClass]="{'red-border-class': validateAvailable()}" type="number" id="ammount" [(ngModel)]="ammount" (input)="onInputChange()" />
+      <div>
+        <!--<input [ngClass]="{'red-border-class': validateAvailable()}" type="number" id="ammount" [(ngModel)]="ammount" (input)="onInputChange()" pattern="[0-9]+([\.,][0-9]+)*"/>-->
+        <app-bank-account [(ngModel)]="ammount" id="ammount" (ngModelChange)="onInputChange()" [ngClass]="{'red-border-class': validateAvailable()}"></app-bank-account>
+
+        <!--<label for="ammount">{{ammount | number}}</label>-->
+      </div>
     </div>
     <div class="invest-col investHeadser" align="left">
       <div>Min Num of Policies</div>
-      <input type="number" id="mPolicies" [(ngModel)]="minPolicies" (input)="onInputChange()"/>
+      <!--[(ngModel)]="value"-->
+      <!--<app-numinput type="number" id="mPolicies" [(ngModel)]="minPolicies" (input)="onInputChange()"></app-numinput>-->
+      <!--<app-numinput  ></app-numinput>-->
+      <app-bank-account [(ngModel)]="minPolicies" (ngModelChange)="onInputChange()" keyPress="op" ></app-bank-account>
     </div>
     <div class="invest-col investHeadser" align="left">
       <div>Diversification</div>
-      <input type="string" id="mPolicies"  ng-readonly="true" [(ngModel)]="diversification" />
+      <input type="string" id="diver"  ng-readonly="true" [(ngModel)]="diversification" [disabled]="true"/>
     </div>
   </div>
   <br />
