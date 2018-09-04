@@ -5,7 +5,8 @@ import { MarketComponent } from './market/market.component';
 
 const routes: Routes = [
   { path: 'p', component: PortfolyoComponent },
-  { path: 'aws', component: MarketComponent }
+  { path: 'aws', component: MarketComponent },
+  { path : '' , redirectTo : '/aws' , pathMatch: 'full' }
 ];
 
 @NgModule({
