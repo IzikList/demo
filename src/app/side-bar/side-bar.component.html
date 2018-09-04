@@ -2,7 +2,7 @@
   <mat-sidenav mode="side" opened fxLayout="column" fxLayout.lt-sm="column">
     <div fxFlex="50">
       <img src="assets/images/listlogowhite.png" class="logo" />
-      <div  *ngFor="let item of items; let i = index" class="mItem" fxLayout="row" fxLayoutAlign="left center">
+      <div  *ngFor="let item of items; let i = index" class="mItem" fxLayout="row" fxLayoutAlign="left center" (click)="itemClick(item)">
         <mat-icon class="mIcon">{{item.icon}}</mat-icon>
         <div>{{item.name}}</div>
       </div>
@@ -36,7 +36,8 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-market></app-market>
+      <router-outlet></router-outlet>
+    <!--<app-market></app-market>-->
   </mat-sidenav-content>
 </mat-sidenav-container>
 

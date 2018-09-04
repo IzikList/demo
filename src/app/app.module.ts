@@ -59,6 +59,9 @@ import {
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './/app-routing.module';
+import { PortfolyoComponent } from './portfolyo/portfolyo.component';
+import { NumpcComponent } from './numpc/numpc.component';
 // import { NuminputComponent } from './numinput/numinput.component';
 
 @NgModule({
@@ -74,7 +77,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AttmarketDialogComponent,
     // NuminputComponent,
     TextareaExpandedComponent,
-    NgModelBaseComponent
+    NgModelBaseComponent,
+    PortfolyoComponent,
+    NumpcComponent
   ],
   entryComponents: [DialogComponent, AttmarketDialogComponent],
   imports: [
@@ -122,6 +127,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     HttpClientModule,
     FlexLayoutModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

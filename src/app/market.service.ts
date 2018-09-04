@@ -26,7 +26,9 @@ export class MarketService {
       diversification: {}
     },
     account: {
-      available: 2000000
+      available: 2000000,
+      policies: [],
+      assets: []
     }
   };
   listeners = [];
@@ -259,7 +261,7 @@ export class MarketService {
           }
           data[element.askPricePercent].price += thisPolicyGive;
           data[element.askPricePercent].numOfPolicies++;
-          data[key].policiyIds.push({ id: element.id, price: thisPolicyGive });
+          data[key].policiyIds.push({ id: element.id, price: thisPolicyGive, askPricePercent: element.askPricePercent });
         }
       }
     }
@@ -279,7 +281,9 @@ export class MarketService {
     return this.data.account;
   }
   buy(policies) {
-    this.data.account.available -=  this.data.data.invsetment.data.sum;
+    this.data.account.policies.push.apply(this.data.account.policies, policies);
+    this.calculateAssests();
+    this.data.account.available -= this.data.data.invsetment.data.sum;
     console.log(this.baseData);
     for (let j = 0; j < policies.length; j++) {
       const el = policies[j];
@@ -321,7 +325,37 @@ export class MarketService {
     if (numOfPolicies > 200) {
       return 99;
     }
-    return this.data.data.diversification['' + numOfPolicies];
+    return parseFloat(this.data.data.diversification['' + numOfPolicies]).toFixed(1);
+  }
+
+  calculateAssests() {
+    const obj = {};
+    this.data.account.policies.map(function (elem) {
+      if (! obj[elem.askPricePercent]) {
+        obj[elem.askPricePercent] = {
+          policies: [],
+          policiesNum: 0,
+          money: 0,
+          askPricePercent: elem.askPricePercent
+        };
+      }
+      obj[elem.askPricePercent].policies.push(elem);
+      obj[elem.askPricePercent].policiesNum ++;
+      obj[elem.askPricePercent].money += elem.price;
+    });
+    const arr = [];
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        const element = obj[key];
+        arr.push(element);
+      }
+    }
+    debugger;
+    this.data.account.assets = arr;
+  }
+  getAssets() {
+    debugger;
+    return this.data.account;
   }
 }
 

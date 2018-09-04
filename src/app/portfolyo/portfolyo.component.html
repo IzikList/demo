@@ -1,0 +1,37 @@
+<div class="marketContainer" flex fxLayout="column" fxLayout.lt-sm="column">
+  <div fxFlex="60" fxLayoutAlign="center center" fxLayout="row">
+    <div fxFlex="50" fxLayoutAlign="center center">
+      <mat-card class="investingCard">
+        <div class="ul" *ngFor="let item of account.assets; let i = index" style="line-height: 1.75em">
+          {{item.askPricePercent}}% (${{item.money}})
+        </div>
+      </mat-card>
+    </div>
+    <div fxFlex="50" fxLayout="row" fxLayoutAlign="center center">
+      <div>
+        <div class="cardTitle">
+          Orders
+        </div>
+        <div style="width: 480px;">
+          <app-commands></app-commands>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="40" fxLayoutAlign="center center" fxLayout="row">
+    <div fxFlex="50" fxLayoutAlign="center center">
+      <app-chart-market></app-chart-market>
+    </div>
+    <div fxFlex="50" fxLayoutAlign="center center" fxLayout="column">
+      <div class="cardTitle">
+        Market Overview
+      </div>
+      <div style="width: 480px;">
+        <mat-card>
+          <app-market-overview></app-market-overview>
+        </mat-card>
+      </div>
+    </div>
+
+  </div>
+</div>

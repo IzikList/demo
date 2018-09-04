@@ -25,8 +25,8 @@
   <span class="invTitle">{{ isAtMarket == true ? 'AT MARKET' : 'SET BID' }} </span> 
   <!--<span style="width: 20px; display: inline-block"></span>-->
   <button class="investState" type="button" (click)="changeInvestingType()"><img class="invBtnImg" src="assets/images/repicon.svg"/><span class="invBtnTxt">{{isAtMarket == true ? 'SET BID' : 'MARKET' }}</span></button>
-  <div style="margin-top: 20px;" [hidden]="isAtMarket"> 
-    <input type="text" [(ngModel)]="userBid" (input)="onInputChange()"/> <span> Your Bid</span>
+  <div style="margin-top: 20px;" [hidden]="isAtMarket" class="invest-col"> 
+    <app-numpc  [(ngModel)]="userBid" (input)="onInputChange()"> </app-numpc> <span> Your Bid</span>
   </div>
   <div style="margin-top: 20px;"></div>
   <div style="height: 136px">
