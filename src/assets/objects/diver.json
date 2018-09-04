@@ -1,802 +1,1402 @@
 [
   {
     "policies": 1,
-    "diversification": 0
+    "diversification": 1,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 2,
-    "diversification": 1
+    "diversification": 10,
+    "a": 20,
+    "b": "",
+    "c": 2
   },
   {
     "policies": 3,
-    "diversification": 1
+    "diversification": 19,
+    "a": 18,
+    "b": "",
+    "c": 3
   },
   {
     "policies": 4,
-    "diversification": 1
+    "diversification": 27,
+    "a": 15,
+    "b": "",
+    "c": 4
   },
   {
     "policies": 5,
-    "diversification": 1
+    "diversification": 34,
+    "a": 11,
+    "b": "",
+    "c": 5
   },
   {
     "policies": 6,
-    "diversification": 10
+    "diversification": 41,
+    "a": 6,
+    "b": "",
+    "c": 5
   },
   {
     "policies": 7,
-    "diversification": 10
+    "diversification": 46,
+    "a": 1,
+    "b": "",
+    "c": 5
   },
   {
     "policies": 8,
-    "diversification": 10
+    "diversification": 52,
+    "a": -4,
+    "b": "",
+    "c": 5
   },
   {
     "policies": 9,
-    "diversification": 10
+    "diversification": 57,
+    "a": -9,
+    "b": "",
+    "c": 5
   },
   {
     "policies": 10,
-    "diversification": 10
+    "diversification": 62,
+    "a": -14,
+    "b": "",
+    "c": 5
   },
   {
     "policies": 11,
-    "diversification": 20
+    "diversification": 65,
+    "a": -19,
+    "b": "",
+    "c": 5
   },
   {
     "policies": 12,
-    "diversification": 20
+    "diversification": 67,
+    "a": -24,
+    "b": "",
+    "c": 5
   },
   {
     "policies": 13,
-    "diversification": 22
+    "diversification": 68,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 14,
-    "diversification": 24
+    "diversification": 69,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 15,
-    "diversification": 26
+    "diversification": 70,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 16,
-    "diversification": 28
+    "diversification": 71,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 17,
-    "diversification": 30
+    "diversification": 72,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 18,
-    "diversification": 32
+    "diversification": 72,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 19,
-    "diversification": 34
+    "diversification": 73,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 20,
-    "diversification": 36
+    "diversification": 73,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 21,
-    "diversification": 39
+    "diversification": 74,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 22,
-    "diversification": 42
+    "diversification": 74,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 23,
-    "diversification": 45
+    "diversification": 75,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 24,
-    "diversification": 48
+    "diversification": 75,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 25,
-    "diversification": 52
+    "diversification": 76,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 26,
-    "diversification": 56
+    "diversification": 77,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 27,
-    "diversification": 60
+    "diversification": 78,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 28,
-    "diversification": 64
+    "diversification": 79,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 29,
-    "diversification": 68
+    "diversification": 79,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 30,
-    "diversification": 72
+    "diversification": 80,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 31,
-    "diversification": 76
+    "diversification": 80,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 32,
-    "diversification": 81
+    "diversification": 80,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 33,
-    "diversification": 82
+    "diversification": 81,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 34,
-    "diversification": 83
+    "diversification": 81,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 35,
-    "diversification": 84
+    "diversification": 81,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 36,
-    "diversification": 85
+    "diversification": 81,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 37,
-    "diversification": 86
+    "diversification": 82,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 38,
-    "diversification": 87
+    "diversification": 82,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 39,
-    "diversification": 88
+    "diversification": 82,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 40,
-    "diversification": 89
+    "diversification": 82,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 41,
-    "diversification": 90
+    "diversification": 82,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 42,
-    "diversification": 91
+    "diversification": 83,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 43,
-    "diversification": 91
+    "diversification": 83,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 44,
-    "diversification": 91
+    "diversification": 83,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 45,
-    "diversification": 91
+    "diversification": 83,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 46,
-    "diversification": 91
+    "diversification": 83,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 47,
-    "diversification": 91
+    "diversification": 83,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 48,
-    "diversification": 91
+    "diversification": 84,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 49,
-    "diversification": 91
+    "diversification": 84,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 50,
-    "diversification": 92
+    "diversification": 84,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 51,
-    "diversification": 92
+    "diversification": 84,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 52,
-    "diversification": 92
+    "diversification": 84,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 53,
-    "diversification": 92
+    "diversification": 84,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 54,
-    "diversification": 92
+    "diversification": 84,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 55,
-    "diversification": 92
+    "diversification": 85,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 56,
-    "diversification": 92
+    "diversification": 85,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 57,
-    "diversification": 92
+    "diversification": 85,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 58,
-    "diversification": 92.3
+    "diversification": 85,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 59,
-    "diversification": 92.39411765
+    "diversification": 85,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 60,
-    "diversification": 92.48823529
+    "diversification": 85,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 61,
-    "diversification": 92.58235294
+    "diversification": 85,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 62,
-    "diversification": 92.67647059
+    "diversification": 85,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 63,
-    "diversification": 92.77058824
+    "diversification": 86,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 64,
-    "diversification": 92.86470588
+    "diversification": 86,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 65,
-    "diversification": 92.95882353
+    "diversification": 86,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 66,
-    "diversification": 93.05294118
+    "diversification": 86,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 67,
-    "diversification": 93.14705882
+    "diversification": 86,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 68,
-    "diversification": 93.24117647
+    "diversification": 86,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 69,
-    "diversification": 93.33529412
+    "diversification": 86,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 70,
-    "diversification": 93.42941176
+    "diversification": 86,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 71,
-    "diversification": 93.52352941
+    "diversification": 86,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 72,
-    "diversification": 93.61764706
+    "diversification": 87,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 73,
-    "diversification": 93.71176471
+    "diversification": 87,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 74,
-    "diversification": 93.80588235
+    "diversification": 87,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 75,
-    "diversification": 93.9
+    "diversification": 87,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 76,
-    "diversification": 93.99411765
+    "diversification": 87,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 77,
-    "diversification": 94.08823529
+    "diversification": 87,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 78,
-    "diversification": 94.18235294
+    "diversification": 87,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 79,
-    "diversification": 94.27647059
+    "diversification": 87,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 80,
-    "diversification": 94.37058824
+    "diversification": 87,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 81,
-    "diversification": 94.46470588
+    "diversification": 87,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 82,
-    "diversification": 94.55882353
+    "diversification": 88,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 83,
-    "diversification": 94.65294118
+    "diversification": 88,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 84,
-    "diversification": 94.74705882
+    "diversification": 88,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 85,
-    "diversification": 94.84117647
+    "diversification": 88,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 86,
-    "diversification": 94.93529412
+    "diversification": 88,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 87,
-    "diversification": 95.02941176
+    "diversification": 88,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 88,
-    "diversification": 95.12352941
+    "diversification": 88,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 89,
-    "diversification": 95.21764706
+    "diversification": 88,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 90,
-    "diversification": 95.31176471
+    "diversification": 88,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 91,
-    "diversification": 95.40588235
+    "diversification": 88,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 92,
-    "diversification": 95.5
+    "diversification": 89,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 93,
-    "diversification": 95.5
+    "diversification": 89,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 94,
-    "diversification": 95.5
+    "diversification": 89,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 95,
-    "diversification": 95.5
+    "diversification": 89,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 96,
-    "diversification": 95.5
+    "diversification": 89,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 97,
-    "diversification": 95.5
+    "diversification": 89,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 98,
-    "diversification": 95.5
+    "diversification": 89,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 99,
-    "diversification": 95.5
+    "diversification": 89,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 100,
-    "diversification": 95.5
+    "diversification": 89,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 101,
-    "diversification": 95.5
+    "diversification": 89,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 102,
-    "diversification": 95.5
+    "diversification": 90,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 103,
-    "diversification": 95.5
+    "diversification": 90,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 104,
-    "diversification": 95.5
+    "diversification": 90,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 105,
-    "diversification": 95.5
+    "diversification": 90,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 106,
-    "diversification": 96
+    "diversification": 90,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 107,
-    "diversification": 96
+    "diversification": 90,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 108,
-    "diversification": 96
+    "diversification": 90,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 109,
-    "diversification": 96
+    "diversification": 90,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 110,
-    "diversification": 96
+    "diversification": 90,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 111,
-    "diversification": 96
+    "diversification": 90,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 112,
-    "diversification": 96
+    "diversification": 91,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 113,
-    "diversification": 96
+    "diversification": 91,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 114,
-    "diversification": 96
+    "diversification": 91,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 115,
-    "diversification": 96
+    "diversification": 91,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 116,
-    "diversification": 96
+    "diversification": 91,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 117,
-    "diversification": 96
+    "diversification": 91,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 118,
-    "diversification": 96
+    "diversification": 91,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 119,
-    "diversification": 96
+    "diversification": 91,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 120,
-    "diversification": 96.13888889
+    "diversification": 91,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 121,
-    "diversification": 96.16570881
+    "diversification": 91,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 122,
-    "diversification": 96.19252874
+    "diversification": 92,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 123,
-    "diversification": 96.21934866
+    "diversification": 92,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 124,
-    "diversification": 96.24616858
+    "diversification": 92,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 125,
-    "diversification": 96.27298851
+    "diversification": 92,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 126,
-    "diversification": 96.29980843
+    "diversification": 92,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 127,
-    "diversification": 96.32662835
+    "diversification": 92,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 128,
-    "diversification": 96.35344828
+    "diversification": 92,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 129,
-    "diversification": 96.3802682
+    "diversification": 92,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 130,
-    "diversification": 96.40708812
+    "diversification": 92,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 131,
-    "diversification": 96.43390805
+    "diversification": 92,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 132,
-    "diversification": 96.46072797
+    "diversification": 93,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 133,
-    "diversification": 96.48754789
+    "diversification": 93,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 134,
-    "diversification": 96.51436782
+    "diversification": 93,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 135,
-    "diversification": 96.54118774
+    "diversification": 93,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 136,
-    "diversification": 96.56800766
+    "diversification": 93,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 137,
-    "diversification": 96.59482759
+    "diversification": 93,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 138,
-    "diversification": 96.62164751
+    "diversification": 93,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 139,
-    "diversification": 96.64846743
+    "diversification": 93,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 140,
-    "diversification": 96.67528736
+    "diversification": 93,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 141,
-    "diversification": 96.70210728
+    "diversification": 93,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 142,
-    "diversification": 96.7289272
+    "diversification": 94,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 143,
-    "diversification": 96.75574713
+    "diversification": 94,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 144,
-    "diversification": 96.78256705
+    "diversification": 94,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 145,
-    "diversification": 96.80938697
+    "diversification": 94,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 146,
-    "diversification": 96.8362069
+    "diversification": 94,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 147,
-    "diversification": 96.86302682
+    "diversification": 94,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 148,
-    "diversification": 96.88984674
+    "diversification": 94,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 149,
-    "diversification": 96.91666667
+    "diversification": 94,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 150,
-    "diversification": 96.94348659
+    "diversification": 94,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 151,
-    "diversification": 96.97030651
+    "diversification": 94,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 152,
-    "diversification": 96.99712644
+    "diversification": 95,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 153,
-    "diversification": 97.02394636
+    "diversification": 95,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 154,
-    "diversification": 97.05076628
+    "diversification": 95,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 155,
-    "diversification": 97.07758621
+    "diversification": 95,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 156,
-    "diversification": 97.10440613
+    "diversification": 95,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 157,
-    "diversification": 97.13122605
+    "diversification": 95,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 158,
-    "diversification": 97.15804598
+    "diversification": 95,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 159,
-    "diversification": 97.1848659
+    "diversification": 95,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 160,
-    "diversification": 97.21168582
+    "diversification": 95,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 161,
-    "diversification": 97.23850575
+    "diversification": 95,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 162,
-    "diversification": 97.26532567
+    "diversification": 96,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 163,
-    "diversification": 97.29214559
+    "diversification": 96,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 164,
-    "diversification": 97.31896552
+    "diversification": 96,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 165,
-    "diversification": 97.34578544
+    "diversification": 96,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 166,
-    "diversification": 97.37260536
+    "diversification": 96,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 167,
-    "diversification": 97.39942529
+    "diversification": 96,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 168,
-    "diversification": 97.42624521
+    "diversification": 96,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 169,
-    "diversification": 97.45306513
+    "diversification": 96,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 170,
-    "diversification": 97.47988506
+    "diversification": 96,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 171,
-    "diversification": 97.50670498
+    "diversification": 97,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 172,
-    "diversification": 97.5335249
+    "diversification": 97,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 173,
-    "diversification": 97.56034483
+    "diversification": 97,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 174,
-    "diversification": 97.58716475
+    "diversification": 97,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 175,
-    "diversification": 97.61398467
+    "diversification": 97,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 176,
-    "diversification": 97.6408046
+    "diversification": 97,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 177,
-    "diversification": 97.66762452
+    "diversification": 97,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 178,
-    "diversification": 97.69444444
+    "diversification": 97,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 179,
-    "diversification": 97.72126437
+    "diversification": 97,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 180,
-    "diversification": 97.74808429
+    "diversification": 97,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 181,
-    "diversification": 97.77490421
+    "diversification": 98,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 182,
-    "diversification": 97.80172414
+    "diversification": 98,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 183,
-    "diversification": 97.82854406
+    "diversification": 98,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 184,
-    "diversification": 97.85536398
+    "diversification": 98,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 185,
-    "diversification": 97.88218391
+    "diversification": 98,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 186,
-    "diversification": 97.90900383
+    "diversification": 98,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 187,
-    "diversification": 97.93582375
+    "diversification": 98,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 188,
-    "diversification": 97.96264368
+    "diversification": 98,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 189,
-    "diversification": 97.9894636
+    "diversification": 98,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 190,
-    "diversification": 98.1
+    "diversification": 98,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 191,
-    "diversification": 98.2
+    "diversification": 99,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 192,
-    "diversification": 98.3
+    "diversification": 99,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 193,
-    "diversification": 98.4
+    "diversification": 99,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 194,
-    "diversification": 98.5
+    "diversification": 99,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 195,
-    "diversification": 98.6
+    "diversification": 99,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 196,
-    "diversification": 98.7
+    "diversification": 99,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 197,
-    "diversification": 98.8
+    "diversification": 99,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 198,
-    "diversification": 98.9
+    "diversification": 99,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 199,
-    "diversification": 99
+    "diversification": 99,
+    "a": "",
+    "b": "",
+    "c": ""
   },
   {
     "policies": 200,
-    "diversification": 99
+    "diversification": 99,
+    "a": "",
+    "b": "",
+    "c": ""
   }
 ]
