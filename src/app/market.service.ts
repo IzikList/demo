@@ -28,7 +28,8 @@ export class MarketService {
     account: {
       available: 2000000,
       policies: [],
-      assets: []
+      assets: [],
+      portfolioValue: 600000
     }
   };
   listeners = [];
@@ -284,6 +285,7 @@ export class MarketService {
     this.data.account.policies.push.apply(this.data.account.policies, policies);
     this.calculateAssests();
     this.data.account.available -= this.data.data.invsetment.data.sum;
+    this.data.account.portfolioValue += this.data.data.invsetment.data.sum;
     console.log(this.baseData);
     for (let j = 0; j < policies.length; j++) {
       const el = policies[j];
