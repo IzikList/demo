@@ -62,6 +62,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './/app-routing.module';
 import { PortfolyoComponent } from './portfolyo/portfolyo.component';
 import { NumpcComponent } from './numpc/numpc.component';
+import { SimulaorComponent } from './simulaor/simulaor.component';
+import { SeekbarComponent } from './seekbar/seekbar.component';
+import { SingleUnitPlatformComponent } from './single-unit-platform/single-unit-platform.component';
+import { SingleUnitExistingComponent } from './single-unit-existing/single-unit-existing.component';
+import { SimulatorScenariosComponent } from './simulator-scenarios/simulator-scenarios.component';
 // import { NuminputComponent } from './numinput/numinput.component';
 
 @NgModule({
@@ -79,7 +84,12 @@ import { NumpcComponent } from './numpc/numpc.component';
     TextareaExpandedComponent,
     NgModelBaseComponent,
     PortfolyoComponent,
-    NumpcComponent
+    NumpcComponent,
+    SimulaorComponent,
+    SeekbarComponent,
+    SingleUnitPlatformComponent,
+    SingleUnitExistingComponent,
+    SimulatorScenariosComponent
   ],
   entryComponents: [DialogComponent, AttmarketDialogComponent],
   imports: [

@@ -1,0 +1,57 @@
+<div>
+  <div style="width: 900px; display: flex;" >
+    <div class="hInput" >
+      <div class="header">Face Value</div>
+      <app-bank-account [(ngModel)]="amount" keyPress="op" (ngModelChange)="onInputChange()"></app-bank-account> $
+    </div>
+    <div class="hInput">
+      <div class="header">Annual Premiums</div>
+      <app-bank-account [(ngModel)]="premiums" keyPress="op" (ngModelChange)="onInputChange()"></app-bank-account> $
+    </div>
+
+    <div class="hInput">
+      <div class="header">Life Expectancy</div>
+      <app-bank-account [(ngModel)]="le" keyPress="op" (ngModelChange)="onInputChange()"></app-bank-account> Y
+    </div>
+    <div class="hInput">
+      <div class="header">IRR</div>
+      <app-bank-account [(ngModel)]="irr" keyPress="op" (ngModelChange)="onInputChange()"></app-bank-account>%
+    </div>
+  </div>
+
+  <div style="width: 900px; display: flex;">
+    <div class="hInput">
+      <div class="header">Discount</div>
+      <app-bank-account [(ngModel)]="discount" keyPress="op"></app-bank-account>
+    </div>
+    <div class="hInput">
+      <!--<div class="header">Annual Premiums</div>
+      <app-bank-account [(ngModel)]="premiums" keyPress="op"></app-bank-account>-->
+    </div>
+
+    <div class="hInput">
+      <!--<div class="header">Life Expectancy</div>
+      <app-bank-account [(ngModel)]="le" keyPress="op"></app-bank-account>-->
+    </div>
+    <div class="hInput" style="transform: translateX(50%)">
+      <div class="header">Total Premiums</div>
+      <app-bank-account [(ngModel)]="totalPremiums" keyPress="op"></app-bank-account>
+    </div>
+  </div>
+
+  <div style="width: 900px; display: flex;" >
+    <div class="hInput">
+      <div class="header">Present Value</div>
+      <app-bank-account [(ngModel)]="presentValueFace" keyPress="op"></app-bank-account>
+    </div>
+    <div class="hInput">
+      <div class="header">Present Value</div>
+      <app-bank-account [(ngModel)]="presentValueInvestor" keyPress="op"></app-bank-account>
+    </div>
+    <div class="hInput">
+      <div class="header">Check For Seller</div>
+      <app-bank-account [(ngModel)]="checkSeller" keyPress="op"></app-bank-account>
+    </div>
+  </div>
+
+</div>

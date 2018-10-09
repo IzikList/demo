@@ -1,0 +1,34 @@
+<div>
+  <div class="horizontal_container">
+    <div>
+      <div class="header">Face Amount</div>
+      <app-bank-account [(ngModel)]="amount" keyPress="op" (ngModelChange)="onInputChange()"></app-bank-account>$ 
+    </div>
+    <div>
+      <div class="header">Anual Premiums</div>
+      <app-bank-account [(ngModel)]="premiums" keyPress="op" (ngModelChange)="onInputChange()"></app-bank-account>$
+    </div>
+
+    <div>
+      <div class="header">Life Expectancy</div>
+      <app-bank-account [(ngModel)]="years" keyPress="op" (ngModelChange)="onInputChange()"></app-bank-account>Y
+    </div>
+  </div>
+  <div class="horizontal_container">
+    <div>
+      <div class="header">Ownership of Policy</div>
+      <app-bank-account [(ngModel)]="ownerShipOnPolicy" keyPress="op"></app-bank-account>%
+    </div>
+    <div>
+      <div class="header">Investment Amount</div>
+      <app-bank-account [(ngModel)]="investmentAmount" keyPress="op" (ngModelChange)="onInputChange()"></app-bank-account>$
+    </div>
+
+    <div>
+      <div class="header">Expected IRR</div>
+      <app-bank-account [(ngModel)]="irr" keyPress="op"  (ngModelChange)="onInputChange()"></app-bank-account>%
+    </div>
+  </div>
+  <div>MAX ROI ~ ${{maxReturnMoney}}</div>
+  <div style="width: 100%">ROI ~ ${{returnMoney}}</div>
+</div>

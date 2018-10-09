@@ -7,7 +7,7 @@ export const MENU_ITEM: Object[] = [
     {
         name: 'Market',
         icon: 'assessment',
-        url: 'p'
+        url: 'single_unit_simulator'
     },
     {
         name: 'Order',
