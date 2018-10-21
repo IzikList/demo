@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-single-unit-existing',
   templateUrl: './single-unit-existing.component.html',
-  styleUrls: ['./single-unit-existing.component.css']
+  styleUrls: ['./single-unit-existing.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SingleUnitExistingComponent implements OnInit {
 
@@ -16,16 +17,18 @@ export class SingleUnitExistingComponent implements OnInit {
   presentValueFace = 0;
   presentValueInvestor = 0;
   checkSeller = 0;
+  premiumDiscount  = 4;
   constructor() { }
 
   ngOnInit() {
+    this.onInputChange();
   }
 
   onInputChange() {
     this.totalPremiums = this.le * this.premiums;
     this.discount = this.irr;
     this.presentValueFace = parseInt('' + this.a(this.amount, this.irr / 100, this.le), 0);
-    this.presentValueInvestor = parseInt('' + this.b(this.premiums, 0.07, this.le), 0);
+    this.presentValueInvestor = parseInt('' + this.b(this.premiums, this.premiumDiscount / 100, this.le), 0);
     this.checkSeller = this.presentValueFace - this.presentValueInvestor;
   }
 

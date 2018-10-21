@@ -20,3 +20,26 @@
   background-color: #2196F3;
   padding: 10px;
 }
+
+.hInput {
+  width: 200px;
+  text-align: center;
+}
+
+.grayText {
+  color: gray;
+  text-align: center;
+  width: 200px;
+}
+
+.secondLineContent {
+  background-color: white;
+  line-height: 1.5em;
+}
+
+input {
+  	text-align: center; 
+    height: 20px;
+    font-size: 15px;
+    margin-top: 5px;
+}
