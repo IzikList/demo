@@ -17,4 +17,13 @@ export class MarketOverviewComponent implements OnInit {
   ngOnInit() {
   }
 
+  getVal(key) {
+    for (let i = 0; i < this.marketData.length; i++) {
+      const element = this.marketData[i];
+      if (element.key === key) {
+        return element.val;
+      }
+    }
+  }
+
 }

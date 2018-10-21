@@ -1,0 +1,94 @@
+table{
+    /*border-spacing: 0px;*/
+    border-collapse: collapse;
+    background-color: white;
+}
+.tableHeaderLeft{
+    background-color: #0E7171;
+    width: 16em;
+    text-align: center;
+    vertical-align: middle;
+    height: 3em;
+    color: white;
+}
+.tableHeader{
+    background-color: #0E7171;
+    text-align: center;
+    vertical-align: middle;
+    height: 3em;
+    color: white;
+}
+
+.tableHeader2 {
+    background-color: #0E7171;
+    text-align: center;
+    vertical-align: middle;
+    height: 3em;
+    color: white;
+}
+.tc0{
+    text-align: center;
+    border-right: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;  
+    vertical-align: middle;  
+    height: 3em;
+    color: #0E7171;
+}
+.tc1{
+    text-align: center;
+    border-right: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+    vertical-align: middle;
+    height: 3em;
+}
+th, td{
+    width: 8em;
+}
+
+.investingCard {
+    width: 490px;
+    padding: 0px;
+    padding-bottom: 20px;
+    margin-left: 20px;
+    margin-bottom: 25px;
+}
+
+::ng-deep .mat-tooltip {
+    /* your own custom styles here */ 
+    /* e.g. */
+    color: yellow;
+}
+.md-tooltip {
+    height: 35px !important;
+    background-color: red !important;
+    color: white !important;
+    border-radius: 5px;
+}
+.my-tooltip{
+     height: 35px !important;
+    background-color: red !important;
+    color: white !important;
+    border-radius: 5px;
+   
+}
+.investingCard{
+    margin-left: 0px;
+}
+
+.marketDataContainer{
+    display: flex;
+    margin: auto;
+    width: 90%;
+}
+.cellChoosen {
+    background-color: gray;
+}
+
+.mat-tooltip {
+    color: #fff !important;
+    border-radius: 2px !important;
+    margin: 14px !important;
+    max-width: 250px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}

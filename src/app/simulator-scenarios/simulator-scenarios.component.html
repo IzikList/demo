@@ -1,87 +1,72 @@
-<div> Amount:
-    <app-bank-account [(ngModel)]="amount" keyPress="op"></app-bank-account>
-    Percent:
-    <input type="number" [(ngModel)]="percent" keyPress="op" /> Years:
-    <app-bank-account [(ngModel)]="years" keyPress="op"></app-bank-account>
-    Premiums:
-    <app-bank-account [(ngModel)]="premiums" keyPress="op"></app-bank-account>
+<!--<div> Amount:
+  <app-bank-account [(ngModel)]="amount" keyPress="op"></app-bank-account>
+  Percent:
+  <input type="number" [(ngModel)]="percent" keyPress="op" /> Years:
+  <app-bank-account [(ngModel)]="years" keyPress="op"></app-bank-account>
+  Premiums:
+  <app-bank-account [(ngModel)]="premiums" keyPress="op"></app-bank-account>
 </div>
 <div>
-    <button (click)="calculate()">Calculate</button>
+  <button (click)="calculate()">Calculate</button>
 </div>
 
-  <input type="range" min="1" max="7" value="3" class="slider" id="myRange">
+<input type="range" min="1" max="7" value="3" class="slider" id="myRange">-->
 <!--<app-seekbar></app-seekbar>-->
 <!--<div style="height: 136px">
     <div class="priceRow" *ngFor="let item of arr; let i = index" [hidden]="item.price == '0'">
         <div class="divider" style="width: 300px; height: 1px; background-color: #0e7171; opacity: 0.27"></div>
         <!--<input type="checkbox" style="margin-right: 10px" [disabled]="isAtMarket !== true" checked="true"/>-->
-        <!--<span class="investPricePercent">{{item.askPricePercent}}% </span>
+<!--<span class="investPricePercent">{{item.askPricePercent}}% </span>
       <span class="investPrice">${{item.price}} </span>
       <span class="investPoloicies">({{item.numOfPolicies}} Policies)</span>-->
-        <!--row {{i}}-->
-    <!--</div>-->
+<!--row {{i}}-->
+<!--</div>-->
 <!--</div>-->
 
-Owner money: {{ownerMoney | number}}
+<!--Owner money: {{ownerMoney | number}}
 
 <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSourced">
 
-        <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-        <!-- Position Column -->
         <ng-container matColumnDef="position">
             <mat-header-cell *matHeaderCellDef> Years </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.years}} </mat-cell>
         </ng-container>
 
-        <!-- Name Column -->
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef> Return Money </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.returnMoney | number}} </mat-cell>
         </ng-container>
 
-        <!-- Weight Column -->
         <ng-container matColumnDef="weight">
             <mat-header-cell *matHeaderCellDef> Share price </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.sharePrice}} </mat-cell>
         </ng-container>
 
-        <!-- Weight Column -->
         <ng-container matColumnDef="returnPass">
             <mat-header-cell *matHeaderCellDef> Return Pass </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.returnIfPass | number}} </mat-cell>
         </ng-container>
 
-        <!-- Expanded Content Column - The detail row is made up of this one column -->
         <ng-container matColumnDef="expandedDetail">
             <mat-cell *matCellDef="let detail">
                 <table mat-table [dataSource]="detail.element.detailsDataSource" class="mat-elevation-z8">
 
-                    <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-                    <!-- Position Column -->
                     <ng-container matColumnDef="a">
                         <th mat-header-cell *matHeaderCellDef> Years </th>
                         <td mat-cell *matCellDef="let element"> {{element.thisYear}} </td>
                     </ng-container>
 
-                    <!-- Name Column -->
                     <ng-container matColumnDef="b">
                         <th mat-header-cell *matHeaderCellDef> Return Money If Sell </th>
                         <td mat-cell *matCellDef="let element"> {{element.returnIfsellThisYearMoney | number}} </td>
                     </ng-container>
 
-                    <!-- Weight Column -->
                     <ng-container matColumnDef="c">
                         <th mat-header-cell *matHeaderCellDef> Return If Pass </th>
                         <td mat-cell *matCellDef="let element"> {{element.returnIfPassMoney}} </td>
                     </ng-container>
 
-                    <!-- Symbol Column -->
                     <ng-container matColumnDef="d">
                         <th mat-header-cell *matHeaderCellDef> Return Pass </th>
                         <td mat-cell *matCellDef="let element"> {{element.returnIfPass | number}} </td>
@@ -102,9 +87,32 @@ Owner money: {{ownerMoney | number}}
             style="overflow: hidden">
         </mat-row>
     </mat-table>
+</div>-->
+<div style="margin-top: 20px;">
+    <div class="marketDataContainer">
+        <mat-card class="investingCard">
+            <!--<app-investing></app-investing>-->
+            <app-simulator-scenario-investing (showCallBackPopUp)="simulate($event)"></app-simulator-scenario-investing>
+        </mat-card>
+
+        <div style="width: 480px; margin-left: calc(100% - 960px); ">
+            <div style="color: #0E7171; font-size: 1.2em; margin-bottom: 10px;">Market Overview</div>
+            <mat-card>
+                <app-market-overview #marketData></app-market-overview>
+            </mat-card>
+        </div>
+    </div>
 </div>
 
-
-<!-- Copyright 2017 Google Inc. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license -->
+<div style="width: 90%; margin: auto" [hidden]="t.length === 0" >
+    <div style="line-height: 3em;">Projected IRR depending on market performance <img src="assets/images/details.png" mat-raised-button matTooltip="Info about the  action"
+             matTooltipClass="my-tooltip" [matTooltipClass]="{'background-color': red}" aria-label="Button that displays a tooltip when focused or hovered over"
+            class="logo" style="height: 10px; display: none" /></div>
+    <table style="margin-bottom: 20px">
+        <th [ngClass]="'tableHeaderLeft'">Market Price</th>
+        <th *ngFor="let head of choosenPercent; index as i" [ngClass]="head.highlight ? 'tableHeader2' : 'tableHeader' ">{{getPercent(head.num)}}%</th>
+        <tr *ngFor="let row of t; index as i2">
+            <td *ngFor="let item of row; index as i3" [ngClass]="{'tc0': i3 == 0, 'tc1' : i3 != 0, 'cellChoosen': chhosenIndex + 1 == i3}">{{item}}</td>
+        </tr>
+    </table>
+</div>

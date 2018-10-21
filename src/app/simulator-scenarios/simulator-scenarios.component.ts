@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { Item } from '../simulaor/item';
 import { PolicyLifeCycle, InvestCycle, InvestDetails, CalculateObject, SimulatorSevice } from '../simulaor/policyLifeCycle';
 import { DataSource } from '@angular/cdk/collections';
@@ -37,7 +37,8 @@ export class SimulatorScenariosComponent implements OnInit {
 
   expandedElement: any;
   policyLifeCycle: PolicyLifeCycle;
-
+  test = [{key: 'a', v: 'aaa'}, {key: 'b', v: 'bbb'}];
+  @ViewChild('marketData') child;
 
   item: Item;
   minPolicies: any;
@@ -47,6 +48,10 @@ export class SimulatorScenariosComponent implements OnInit {
   premiums =  36000;
   arr: InvestCycle[] = [];
   ownerMoney = 0;
+  t = [];
+  pcs = [0.06, 0.08, 0.10, 0.12, 0.15, 0.18, 0.21];
+  choosenPercent = [];
+  chhosenIndex = 0;
   constructor(private changeDetectorRefs: ChangeDetectorRef) {
     this.item = new Item();
   }
@@ -55,6 +60,9 @@ export class SimulatorScenariosComponent implements OnInit {
   ngOnInit() {
   }
 
+  p() {
+    console.log(JSON.stringify(this.test));
+  }
   calculateShares(years: number, sharesAtEnd: number) {
 
   }
@@ -131,59 +139,109 @@ export class SimulatorScenariosComponent implements OnInit {
 
   onInputChange() {
   }
+  simulate (e) {
+    this.percent = e / 100;
+    this.calculate();
+  }
 
   calculate() {
-    // const investorsMoney = this.getMoneyForAllInvestors(this.years, this.amount, this.percent, this.premiums);
-    // const sharesForInvestors = investorsMoney;
-    // this.policyLifeCycle = new PolicyLifeCycle();
-    // const shareForOwner = this.getSharesForOwner(this.years, this.amount, this.premiums, this.percent);
-    // this.arr.length = 0;
-    // this.arr = [];
-    // let otherInvestorShares = 0;
-    // let testNumber = 0;
-    // for (let years = this.years; years > 0; years -- ) {
-    //   const a = this.calculateForYear(this.amount, years,
-    //             shareForOwner, otherInvestorShares, 0, this.premiums, this.percent);
-    //   otherInvestorShares += a.numOfShares;
-    //   const v = {};
-    //   v['percent'] = this.percent;
-    //   v['sharePrice'] = a.sharePrice;
-    //   v['numOfShares'] = otherInvestorShares + shareForOwner;
-    //   this.policyLifeCycle.percentPerYear['' + years] = v;
-    //   this.arr.push(a);
-    //   testNumber ++;
-    // }
-    // let investorMoneyTemp = 0;
-    // for (let i = 0; i < this.arr.length; i++) {
-    //   const element = this.arr[i];
-    //   element.anotherInvestorsShares = investorMoneyTemp;
-    //   investorMoneyTemp += element.returnMoney;
-    //   element.returnIfPass = parseFloat((element.returnMoney * (this.amount / (investorMoneyTemp + shareForOwner))).toFixed(0));
-    // }
-    // // calculate for one investor
-    // let anotherInvestorsSharesTemp = 0;
-    // for (let x = 0; x < this.arr.length; x ++ ) {
-    //   const element = this.arr[x];
-    //   anotherInvestorsSharesTemp += element.returnMoney; // this is only if share price is dolar.
-    //                                                      // it's can be only if return percent not changed.
-    //   element.detailsDataSource = []; // [new InvestCycle(), new InvestCycle(), new InvestCycle()];
-    //   for (let x2 = element.years - 1; x2 > 0; x2--) {
-    //     const details = new InvestDetails();
-    //     details.years = element.years;
-    //     details.thisYear = x2;
-    //     details.returnIfsellThisYearMoney = element.numOfShares * this.policyLifeCycle.percentPerYear['' + x2]['sharePrice'];
-    //     details.returnIfPassMoney = (this.amount / this.policyLifeCycle.percentPerYear['' + x2]['numOfShares']) * element.numOfShares;
-    //     element.detailsDataSource.push(details);
-    //   }
-    // }
+    this.years = parseInt(parseFloat(this.child.getVal('AVG. LE')).toFixed(), 0);
     const service = new SimulatorSevice();
-    const b: CalculateObject = service.calculate2(this.amount, this.premiums, [this.percent, 0.21, 0.21]);
-    this.ownerMoney = 0;
+    const wc = 0.21;
+    const arrToTest = [];
+    for (let m = 0; m < this.years - 1; m++) {
+      arrToTest.push(wc);
+    }
+    arrToTest.push(this.percent);
+    const b: CalculateObject = service.calculate2(this.amount, this.premiums, arrToTest);
+    // const b: CalculateObject = service.calculate2(
+      // this.amount, this.premiums, [this.percent, this.percent, this.percent, this.percent, this.percent, this.percent, this.percent]);
+    this.ownerMoney = b.ownerMoney;
     staticArr.length = 0;
     this.arr = b.arr;
     staticArr.push.apply(staticArr, this.arr);
+
+    const tableObj = [];
+    const pcs = this.getChhosenPcs(this.percent);
+    console.log('pcs ' + JSON.stringify(pcs));
+    this.choosenPercent = [];
+    for (let x = 0; x < pcs.length; x++) {
+      const e = pcs[x];
+      if (e === this.percent) {
+        this.choosenPercent.push({num: e, highlight: true});
+        this.chhosenIndex = x;
+      } else {
+        this.choosenPercent.push({num: e, highlight: false});
+      }
+    }
+    for (let i = 0; i < pcs.length; i ++) {
+      const element = pcs[i];
+      const obj = [];
+      for (let i2 = this.years; i2 > 0; i2 --) {
+        const arr = [];
+
+        // make array premiums for invest
+        for (let i3 = this.years; i3 > 0; i3 --) {
+          if ( i3 <= i2 ) {
+            arr.push(this.percent);
+          } else {
+            arr.push(element);
+          }
+        }
+        if ( ! tableObj[i2] ) {
+            tableObj[i2] = [];
+        }
+        tableObj[i2][i] = parseFloat((service.calculate2(this.amount, this.premiums, arr).arr[0].irr).toFixed(2));
+        console.log('ttt', JSON.stringify(arr) , element, tableObj[i2][i]);
+        // obj[i2] = service.calculate2(this.amount, this.premiums, pcs).arr[0].;
+      }
+    }
+    tableObj.shift();
+    tableObj.pop();
+    console.log(tableObj);
+    this.t = [];
+    for (let index = 1; index <= tableObj.length; index++) {
+      const e = JSON.stringify(tableObj[index - 1]);
+      console.log(e);
+      const element = JSON.parse(e);
+      element.unshift('IRR Year ' + index + ' (%)');
+      this.t.push(element);
+    }
+
     this.dataSourced = new ExampleDataSource();
     this.changeDetectorRefs.detectChanges();
+  }
+
+  getChhosenPcs(pc): Array<number> {
+    const arr = JSON.parse(JSON.stringify(this.pcs));
+    if (pc < arr[0]) {
+      arr.shift();
+      arr.unshift(pc);
+      return arr;
+    } else if (pc > arr[arr.length - 1]) {
+      arr.pop();
+      arr.push(pc);
+      return arr;
+    }
+
+    for (let i = 0; i < arr.length - 1; i++) {
+      const element = arr[i];
+      if (pc > element && pc < arr[i + 1] ) {
+        const d1 = pc - element;
+        const d2 = arr[i + 1] - pc;
+        if (d1 > d2) {
+          arr[i + 1] = pc;
+        } else {
+          arr[i] = pc;
+        }
+        return arr;
+      }
+    }
+    return arr;
+  }
+
+  getPercent(a) {
+    return parseFloat((a * 100).toFixed(2));
   }
 }
 export class ExampleDataSource extends DataSource<any> {

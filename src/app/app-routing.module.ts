@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'simulator', component: SimulaorComponent },
   { path: 'single_unit_simulator', component: SingleUnitPlatformComponent },
   { path: 'single_unit_existing', component: SingleUnitExistingComponent },
-  { path: 'simulator2', component: SingleUnitExistingComponent },
+  { path: 'simulator2', component: SimulatorScenariosComponent },
   { path : '' , redirectTo : '/aws' , pathMatch: 'full' }
 ];
 

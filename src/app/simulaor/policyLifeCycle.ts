@@ -18,6 +18,8 @@ export class InvestCycle {
     anotherInvestorsShares: number;
     anotherInvestorsMoney: number;
     ownerShares: number;
+    returnIRR: number;
+    irr: number;
 }
 
 export class InvestDetails {
@@ -88,6 +90,7 @@ export class SimulatorSevice {
         invest.anotherInvestorsMoney = moneyOtherInvestor;
         invest.anotherInvestorsShares = sharesOtherInvestors;
         invest.ownerShares = sharesForOwner;
+        // invest.returnIRR = this.getIRRByReturn(years, invest.premium, invest.returnMoney);
 
         // calcualte how many shares for this invest if all rest premiums will sell this price
         let newMoneyToReturn = money;
@@ -176,6 +179,15 @@ export class SimulatorSevice {
             arr.push(a);
             testNumber++;
         }
+
+        // calculate returned money after al shares
+        const pricePerShare = amount / (otherInvestorShares + shareForOwner);
+        for (let year = years - 1; year >= 0; year--) {
+            const element = arr[year];
+            element.returnMoney = parseFloat((element.numOfShares * pricePerShare).toFixed(2));
+            element.irr = this.getIRRByReturn(element.years, element.premium, element.returnMoney);
+        }
+
         let investorMoneyTemp = 0;
         for (let i = 0; i < arr.length; i++) {
             const element = arr[i];
@@ -199,20 +211,34 @@ export class SimulatorSevice {
                 element.detailsDataSource.push(details);
             }
         }
-        const ownerMoney = shareForOwner;
+        const ownerMoney = parseFloat((shareForOwner * pricePerShare).toFixed(2));
         const returnObj = new CalculateObject();
         returnObj.amount = amount;
         returnObj.arr = arr;
         return {
             amount: amount,
             arr: arr,
-            policyLifeCycle: policyLifeCycle
+            policyLifeCycle: policyLifeCycle,
+            ownerMoney: ownerMoney
         };
     }
+
+  getIRRByReturn(years, investMoney, returnMoney) {
+    const returnPercent = ((returnMoney / investMoney) - 1) * 100;
+    console.log('years', years);
+    console.log('1 / n ', (1 / years));
+    console.log('pow (' + returnPercent + ' ^ 1/n)', Math.pow(returnPercent, (1 / years)));
+    console.log((1 + (returnPercent / 100)));
+    const pcPerYear = Math.pow((1 + (returnPercent / 100)), 1 / years) - 1;
+    console.log('pcPerYear ', pcPerYear);
+    return pcPerYear * 100;
+  }
+
 }
 
 export class CalculateObject {
     amount: number;
     arr: InvestCycle[];
     policyLifeCycle: PolicyLifeCycle;
+    ownerMoney: number;
 }

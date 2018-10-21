@@ -67,6 +67,7 @@ import { SeekbarComponent } from './seekbar/seekbar.component';
 import { SingleUnitPlatformComponent } from './single-unit-platform/single-unit-platform.component';
 import { SingleUnitExistingComponent } from './single-unit-existing/single-unit-existing.component';
 import { SimulatorScenariosComponent } from './simulator-scenarios/simulator-scenarios.component';
+import { SimulatorScenarioInvestingComponent } from './simulator-scenario-investing/simulator-scenario-investing.component';
 // import { NuminputComponent } from './numinput/numinput.component';
 
 @NgModule({
@@ -89,7 +90,8 @@ import { SimulatorScenariosComponent } from './simulator-scenarios/simulator-sce
     SeekbarComponent,
     SingleUnitPlatformComponent,
     SingleUnitExistingComponent,
-    SimulatorScenariosComponent
+    SimulatorScenariosComponent,
+    SimulatorScenarioInvestingComponent
   ],
   entryComponents: [DialogComponent, AttmarketDialogComponent],
   imports: [
