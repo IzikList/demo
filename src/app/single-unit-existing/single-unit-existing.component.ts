@@ -17,7 +17,7 @@ export class SingleUnitExistingComponent implements OnInit {
   presentValueFace = 0;
   presentValueInvestor = 0;
   checkSeller = 0;
-  premiumDiscount  = 4;
+  premiumDiscount  = 7;
   constructor() { }
 
   ngOnInit() {

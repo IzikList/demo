@@ -10,7 +10,7 @@ export class MarketOverviewComponent implements OnInit {
     {key: 'AVG. LE', val: '6.8'},
     {key: 'AVG. FACE VALUE', val: '$950K'},
     {key: 'NUMBER OF POLICIES', val: '8462'},
-    {key: 'AVG. PREMIUS', val: '3.6%'}];
+    {key: 'AVG. PREMIUS', val: '3.6', valNonModel: '%'}];
 
   constructor() { }
 

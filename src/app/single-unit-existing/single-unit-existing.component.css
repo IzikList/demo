@@ -38,6 +38,7 @@
 }
 
 input {
+    width: 170px;
   	text-align: center; 
     height: 20px;
     font-size: 15px;

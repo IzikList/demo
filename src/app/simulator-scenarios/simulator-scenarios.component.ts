@@ -146,6 +146,8 @@ export class SimulatorScenariosComponent implements OnInit {
 
   calculate() {
     this.years = parseInt(parseFloat(this.child.getVal('AVG. LE')).toFixed(), 0);
+    const premiums = parseInt('' + (this.amount  * (parseFloat(this.child.getVal('AVG. PREMIUS')) / 100) ), 0);
+    this.premiums = premiums;
     const service = new SimulatorSevice();
     const wc = 0.21;
     const arrToTest = [];
