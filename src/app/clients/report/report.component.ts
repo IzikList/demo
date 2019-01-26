@@ -114,6 +114,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
   constructor(public dialog: MatDialog) { }
 
   ngAfterViewInit() {
+    // alert('after view init');
   }
 
   ngOnInit() {
@@ -149,8 +150,10 @@ export class ReportComponent implements OnInit, AfterViewInit {
 
   }
   report() {
-    this.isHidden = false;
-    setTimeout(this.reportAsync);
+    // this.isHidden = false;
+    // setTimeout(() => {this.reportAsync(); }, 3000);
+    this.reportAsync();
+    document.getElementById('section-to-print').style.display = 'block';
   }
   reportAsync() {
     // get sum of people
