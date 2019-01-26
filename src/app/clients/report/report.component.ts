@@ -150,6 +150,9 @@ export class ReportComponent implements OnInit, AfterViewInit {
   }
   report() {
     this.isHidden = false;
+    setTimeout(this.reportAsync);
+  }
+  reportAsync() {
     // get sum of people
     // generate les if dos'nt exists
     if (this.les === undefined) {
