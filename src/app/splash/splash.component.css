@@ -1,0 +1,27 @@
+.left{
+    background-color: white;    
+    width: 50%;
+    height: 100%;
+}
+
+.right{
+    background-color: #3488A0;    
+    height: 100%;
+    width: 50%;
+}
+#container {
+    display: flex;
+    height: 100%;
+    font-family: 'Open Sans';
+}
+.sellerButton {
+    background-color: #3488A0;
+    border-radius: 25px;
+    padding: 10px; 
+    width: 100px;;
+    height: 50px; 
+    outline: none;
+}
+.contentLeft {
+    text-align: center;
+}

@@ -6,6 +6,9 @@ import { SimulaorComponent } from './simulaor/simulaor.component';
 import { SingleUnitPlatformComponent } from './single-unit-platform/single-unit-platform.component';
 import { SingleUnitExistingComponent } from './single-unit-existing/single-unit-existing.component';
 import { SimulatorScenariosComponent } from './simulator-scenarios/simulator-scenarios.component';
+import { SimulatorIvolvingLeComponent } from './simulator-ivolving-le/simulator-ivolving-le.component';
+import { ReportComponent } from './clients/report/report.component';
+import { SplashComponent } from './splash/splash.component';
 
 const routes: Routes = [
   { path: 'p', component: PortfolyoComponent },
@@ -14,7 +17,10 @@ const routes: Routes = [
   { path: 'single_unit_simulator', component: SingleUnitPlatformComponent },
   { path: 'single_unit_existing', component: SingleUnitExistingComponent },
   { path: 'simulator2', component: SimulatorScenariosComponent },
-  { path : '' , redirectTo : '/aws' , pathMatch: 'full' }
+  { path: 'simulator3', component: SimulatorIvolvingLeComponent },
+  { path: 'clients/report', component: ReportComponent },
+  { path: 'splash', component: SplashComponent },
+  { path : '' , redirectTo : '/aws' , pathMatch: 'full' },
 ];
 
 @NgModule({

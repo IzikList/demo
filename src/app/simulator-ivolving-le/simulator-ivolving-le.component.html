@@ -1,0 +1,19 @@
+<button (click)="calculate()">Click me</button>
+<div>
+    <div style="height: 10px; background-color: black; display: inline-block" [style.width.px]="cfInvest / 100000"></div>
+    {{cfInvest | number: '1.0-0'}}
+</div>
+<div class="priceRow" *ngFor="let item of objectKeys(cfYears); let i = index">
+    <!--<div> {{cfYears[item].returnMoney}} {{cfYears[item].returnMoneySum}}</div>-->
+    <div>
+        {{item}} Years
+    </div>
+    <div>
+        <div style="height: 10px; background-color: red; display: inline-block" [style.width.px]="cfYears[item].returnMoney / 100000"></div>
+        {{cfYears[item].returnMoney | number: '1.0-0'}}
+    </div>
+    <div>
+        <div style="height: 10px; background-color: blue; display: inline-block" [style.width.px]="cfYears[item].returnMoneySum / 100000"></div>
+        {{cfYears[item].returnMoneySum | number: '1.0-0'}}
+    </div>
+</div>

@@ -16,6 +16,8 @@ import { CommandsComponent } from './market/commands/commands.component';
 import { ChartComponent } from './market/chart/chart.component';
 import { DialogComponent } from './market/investing/investing.component';
 import { AttmarketDialogComponent } from './market/investing/investing.component';
+import { PremiumsDialogComponent } from './single-unit-existing/single-unit-existing.component';
+import { DialogLeComponent } from './single-unit-existing/single-unit-existing.component';
 import { TextareaExpandedComponent } from './numinput/test';
 import { NgModelBaseComponent } from './numinput/NgModelBase';
 
@@ -68,6 +70,16 @@ import { SingleUnitPlatformComponent } from './single-unit-platform/single-unit-
 import { SingleUnitExistingComponent } from './single-unit-existing/single-unit-existing.component';
 import { SimulatorScenariosComponent } from './simulator-scenarios/simulator-scenarios.component';
 import { SimulatorScenarioInvestingComponent } from './simulator-scenario-investing/simulator-scenario-investing.component';
+import { SingleUnit2Component } from './single-unit2/single-unit2.component';
+import { SimulatorIvolvingLeComponent } from './simulator-ivolving-le/simulator-ivolving-le.component';
+import { Base1Component } from './simulators/base1/base1.component';
+import { CashFlowComponent } from './simulators/cash-flow/cash-flow.component';
+import { PocSimulatorComponent } from './simulators/poc-simulator/poc-simulator.component';
+import { InvLeComponent } from './utils/inv-le/inv-le.component';
+import { ReportComponent } from './clients/report/report.component';
+import { ChartCanvasComponent } from './clients/report/chart-canvas/chart-canvas.component';
+import { SplashComponent } from './splash/splash.component';
+import { CustomInputComponent } from './custom-input/custom-input.component';
 // import { NuminputComponent } from './numinput/numinput.component';
 
 @NgModule({
@@ -81,6 +93,8 @@ import { SimulatorScenarioInvestingComponent } from './simulator-scenario-invest
     ChartComponent,
     DialogComponent,
     AttmarketDialogComponent,
+    PremiumsDialogComponent,
+    DialogLeComponent,
     // NuminputComponent,
     TextareaExpandedComponent,
     NgModelBaseComponent,
@@ -91,9 +105,19 @@ import { SimulatorScenarioInvestingComponent } from './simulator-scenario-invest
     SingleUnitPlatformComponent,
     SingleUnitExistingComponent,
     SimulatorScenariosComponent,
-    SimulatorScenarioInvestingComponent
+    SimulatorScenarioInvestingComponent,
+    SingleUnit2Component,
+    SimulatorIvolvingLeComponent,
+    Base1Component,
+    CashFlowComponent,
+    PocSimulatorComponent,
+    InvLeComponent,
+    ReportComponent,
+    ChartCanvasComponent,
+    SplashComponent,
+    CustomInputComponent
   ],
-  entryComponents: [DialogComponent, AttmarketDialogComponent],
+  entryComponents: [DialogComponent, AttmarketDialogComponent, PremiumsDialogComponent, DialogLeComponent],
   imports: [
     BrowserModule,
     MatSidenavModule,

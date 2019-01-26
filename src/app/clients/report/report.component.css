@@ -1,0 +1,134 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.mTable, .mTable th, .mTable td{
+    border: none;
+}
+
+.cell {
+    width: 18%;
+    text-align: center
+}
+
+.mHeader {
+    text-decoration: underline;
+    font-size: 5mm;
+    font-family: 'Open Sans';
+    font-weight: 600; /*semibold*/
+    margin-top: 6.4mm;
+}
+
+.secondary {
+    font-size: 3.6mm;
+    font-family: 'Open Sans';
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #section-to-print, #section-to-print * {
+    visibility: visible;
+  }
+  #section-to-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .container{
+      padding: 0px;
+  }
+}
+.line1 {
+}
+
+.line2{
+    margin-bottom: 5.3mm;
+}
+.line3 {
+    margin-bottom: 9.3mm;
+}
+.seperator1 {
+    width: 100%;
+    height: 1mm;
+    background-color: #7BCEDE;
+}
+#table1 {
+    margin-top: 10.3mm;
+}
+#table1 td, #table1 tr {
+    text-align: center;
+}
+#table1 .header{
+    font-size: 4mm;
+    font-family: 'Open Sans';
+}
+#table1 .col1 {
+    width: 60mm;
+    text-align: left;
+    font-size: 4mm;
+    font-family: 'Open Sans';
+}
+.seperator2{
+  border:none;
+  border-top: 4px dashed #3588A0;
+  background-color:#fff;
+  height:1px;
+  width:100%;
+  margin-bottom: 8mm;
+}
+
+
+#table2 .header1{
+    background-color: lightgray;
+    height: 14.25mm;
+    text-align: center
+}
+
+.cust-inp {
+    font-size: 20px;
+    font-family: 'Open Sans';
+}
+.mContainer {
+    padding: 20px;
+}
+.hInput {
+}
+.ic {
+    align-self: flex-end;
+    width: 3.91mm;
+    height: 3.91mm;
+}
+.tHeaderColor1{
+    color: #00AEEF
+}
+.tHeaderColor2{
+    color: #8DC63F
+}
+.tHeaderColor3{
+    color: #F15A29
+}
+
+.tableLines {
+    font-family: 'Open sans';
+    font-size: 3.2mm;
+    font-weight: 300;
+    font-style: italic;
+}
+
+#table2 {
+    font-family: 'Open sans';
+    font-size: 3.5mm;
+    margin-top: 5.4mm;
+}
+#tableDescription {
+    margin-top: 7mm;
+    margin-bottom: 15mm;
+}
+.textBellow {
+    margin-top: -3mm;
+    margin-bottom: 3mm;
+    font-size: 3.5mm;
+}

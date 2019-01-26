@@ -1,0 +1,11 @@
+.cust-inp {
+    border: none;
+    text-align: left;
+    padding: 0px;
+    outline: none;
+}
+.inpContainer {
+    border-bottom: solid 1px lightgray;
+    padding: 5px;
+    display: inline-block;
+}
