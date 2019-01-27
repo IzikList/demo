@@ -191,3 +191,15 @@ td {
     color: white;
     margin-bottom: 6mm;
 }
+
+#loadingContainer {
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+#loadingText {
+    font-family: 'Open Sans';
+    font-size: 5mm;
+    margin-top: 5mm;
+}

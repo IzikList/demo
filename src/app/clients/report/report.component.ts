@@ -165,7 +165,19 @@ export class ReportComponent implements OnInit, AfterViewInit {
     // this.isHidden = false;
     // setTimeout(() => {this.reportAsync(); }, 3000);
     this.reportAsync();
-    document.getElementById('section-to-print').style.display = 'block';
+    document.getElementById('loadingContainer').style.display = 'block';
+    document.getElementById('section-to-print').style.display = 'none';
+    document.getElementById('loadingText').innerHTML = 'Collecting Data';
+    setTimeout(() => {
+      document.getElementById('loadingText').innerHTML = 'Analazing';
+      setTimeout(() => {
+        document.getElementById('loadingText').innerHTML = 'Preparing Report';
+        setTimeout(() => {
+          document.getElementById('loadingContainer').style.display = 'none';
+          document.getElementById('section-to-print').style.display = 'block';
+        }, 2000);
+      }, 2000);
+    }, 3000);
   }
   reportAsync() {
     // get sum of people
