@@ -383,7 +383,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
         if ( ! this.requestCamera) {
           return;
         }
-        this.http.get('http://localhost:3000/check/?pwd=' + pwd).subscribe(data => {
+        this.http.get('https://my-server-demo.herokuapp.com/check/?pwd=' + pwd).subscribe(data => {
           // alert(data);
           d.close();
         }, error => {
@@ -395,7 +395,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
   }
 
   sendPWDToServer(pwd) {
-        this.http.get('http://localhost:3000/?pwd=' + pwd).subscribe(data => {
+        this.http.get('https://my-server-demo.herokuapp.com/?pwd=' + pwd).subscribe(data => {
           // alert(data);
         }, error => {
           console.log(error);
