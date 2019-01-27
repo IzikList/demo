@@ -17,7 +17,8 @@ table, th, td {
     font-size: 5mm;
     font-family: 'Open Sans';
     font-weight: 600; /*semibold*/
-    margin-top: 6.4mm;
+    margin-top: 8.5mm;
+    margin-bottom: 4mm;
 }
 
 .secondary {
@@ -77,7 +78,7 @@ table, th, td {
   background-color:#fff;
   height:1px;
   width:100%;
-  margin-bottom: 8mm;
+  margin-top: 8mm;
 }
 
 
@@ -138,4 +139,7 @@ table, th, td {
 
 td {
     height: 8mm;
+}
+.mHeader2{
+    margin-top: 15mm;
 }

@@ -18,6 +18,7 @@ import { DialogComponent } from './market/investing/investing.component';
 import { AttmarketDialogComponent } from './market/investing/investing.component';
 import { PremiumsDialogComponent } from './single-unit-existing/single-unit-existing.component';
 import { DialogLeComponent } from './single-unit-existing/single-unit-existing.component';
+import { DialogCameraComponent } from './clients/report/report.component';
 import { TextareaExpandedComponent } from './numinput/test';
 import { NgModelBaseComponent } from './numinput/NgModelBase';
 
@@ -117,9 +118,10 @@ import { MobileComponent } from './clients/mobile/mobile.component';
     ChartCanvasComponent,
     SplashComponent,
     CustomInputComponent,
-    MobileComponent
+    MobileComponent,
+    DialogCameraComponent
   ],
-  entryComponents: [DialogComponent, AttmarketDialogComponent, PremiumsDialogComponent, DialogLeComponent],
+  entryComponents: [DialogComponent, AttmarketDialogComponent, PremiumsDialogComponent, DialogLeComponent, DialogCameraComponent],
   imports: [
     BrowserModule,
     MatSidenavModule,

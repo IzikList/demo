@@ -1,5 +1,18 @@
 <p>
   mobile works!
 </p>
-<input type="file" accept="image/*" capture="environment">
-<button type="button" (click)="onUpload()">Upload File</button>
+<!--<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" (change)="onFileSelected($event)">
+<button type="button" (click)="onUpload()">Upload File</button>-->
+
+<!--fileInput.click()-->
+Enter Password here: <input type="text" [(ngModel)]="pwd"/>
+<button (click)="fileInput.click()">
+  <span>Select</span>
+  <input #fileInput type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput"(change)="onFileSelected($event)" style="display:none;" />
+</button>
+<div>
+  <img [src]="src" id="img1" />
+</div>
+<div>
+  <input type="button" (click)="uploadFile()" value="upload"/>
+</div>

@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Inject } from '@angular/core';
 import { CalculationService, IssueMapObj, PremiumsMap, Summary } from '../../calculation.service';
 import { DialogLeComponent } from '../../single-unit-existing/single-unit-existing.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ChartCanvasComponent } from './chart-canvas/chart-canvas.component';
 import * as Chart from '../../../../node_modules/chart.js';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-report',
@@ -84,6 +86,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
   barChartData2;
   chart3: Chart;
   barChartData3;
+  requestCamera = false;
   data = {
     lineA: {
       chartA: 1,
@@ -119,10 +122,10 @@ export class ReportComponent implements OnInit, AfterViewInit {
   canvas3: any;
   ctx3: any;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private http: HttpClient) { }
 
   ngAfterViewInit() {
-    // alert('after view init');
+    // // alert('after view init');
   }
 
   ngOnInit() {
@@ -167,7 +170,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
     // get sum of people
     // generate les if dos'nt exists
     if (this.les === undefined) {
-      alert('Set les please');
+      // alert('Set les please');
       return;
     }
     // generate premiums if dosn't exists
@@ -267,7 +270,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
     this.canvas3 = document.getElementById('myChart3');
     this.ctx3 = this.canvas3.getContext('2d');
     if (this.barChartData === undefined) {
-        this.barChartData = {
+      this.barChartData = {
         datasets: [{
           backgroundColor: '#00AEEf',
           borderColor: '#00AEEf',
@@ -358,5 +361,73 @@ export class ReportComponent implements OnInit, AfterViewInit {
 
   total(a) {
     return Math.floor(a);
+  }
+
+  openCameraDialog() {
+    const pwd  =   Math.floor(Math.random() * 1000000);
+    const dialogRef = this.dialog.open(DialogCameraComponent, { data: { pwd: pwd}});
+    this.requestCamera = true;
+    this.sendPWDToServer(pwd);
+    this.requestCameraFromServer(pwd, dialogRef);
+    dialogRef.afterClosed().subscribe(responce => {
+      console.log(responce);
+      // this.presentValueFace = this.present(arr, sumOfPeople, this.amount);
+      this.requestCamera = false;
+      // alert('close');
+    });
+  }
+
+  requestCameraFromServer(pwd, d: MatDialogRef<DialogCameraComponent>) {
+    if (this.requestCamera) {
+      setTimeout(() => {
+        if ( ! this.requestCamera) {
+          return;
+        }
+        this.http.get('http://localhost:3000/check/?pwd=' + pwd).subscribe(data => {
+          // alert(data);
+          d.close();
+        }, error => {
+          console.log(error);
+          this.requestCameraFromServer(pwd, d);
+        });
+      }, 1000 * 3);
+    }
+  }
+
+  sendPWDToServer(pwd) {
+        this.http.get('http://localhost:3000/?pwd=' + pwd).subscribe(data => {
+          // alert(data);
+        }, error => {
+          console.log(error);
+        });
+  }
+}
+
+
+@Component({
+  selector: 'app-camera-dialog',
+  templateUrl: 'camera-dialog.html',
+})
+export class DialogCameraComponent implements OnInit {
+
+  pwd;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DialogCameraComponent>) { }
+
+  ngOnInit() {
+    console.log(this.data);
+    this.pwd = this.data.pwd;
+  }
+  onNoClick(): void {
+    // this.dialogRef.close();
+  }
+
+  close() {
+    this.dialogRef.close();
+  }
+  addYear() {
+    // this.myObj.push({sumDies: ''});
+  }
+  done() {
+    this.dialogRef.close();
   }
 }

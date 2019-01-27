@@ -19,7 +19,7 @@
           <app-custom-input [(ngModel)]="le" keyPress="op" [textOnTop]="'Y'" (ngModelChange)="onLEChange()"></app-custom-input>
         </div>
         <img src="assets/images/takePhoto.svg" class="ic" (click)="openLeDialog()" />
-        <img src="assets/images/takePhoto.svg" class="ic" />
+        <img src="assets/images/takePhoto.svg" class="ic" (click)="openCameraDialog()"/>
 
         <div class="hInput">
           <div class="header">IRR</div>
@@ -35,8 +35,8 @@
   </mat-card>
   <!--*ngIf="!isHidden"-->
   <div class="page" style="width: 210mm; background-color: white; margin: auto; display: none" id="section-to-print">
-    <div class="container" style="margin-left: 7mm; margin-right: 7mm; ">
-      <img class="logo" src="assets/images/rep_logo.png" />
+    <div class="container" style="margin-left: 7mm; margin-right: 7mm; padding-top: 10mm;">
+      <img class="logo" src="assets/images/logo.svg" style="margin-bottom: 5mm; width: 30mm;" />
       <div class="line1" style="font-size: 6.7mm; color: #3588A0; font-family: 'Open Sans'">
         LIFE SETTLEMENTS REPORT
       </div>
@@ -174,6 +174,9 @@
         </div>
 
       </div>
+      <div class="mHeader mHeader2">
+        Corrent immediate Cash value Illustration
+      </div>
       <div>
         <canvas id="myChart"></canvas>
       </div>
@@ -214,6 +217,10 @@
           <td class="cell">{{item.current | number}}$</td>
         </tr>
       </table>
+            <div class="mHeader mHeader2">
+        Corrent immediate Cash value Illustration
+      </div>
+
       <div>
         <canvas id="myChart2"></canvas>
       </div>
@@ -253,10 +260,14 @@
           <td class="cell">{{item.current | number}}$</td>
         </tr>
       </table>
+            <div class="mHeader mHeader2">
+        Corrent immediate Cash value Illustration
+      </div>
+
       <div>
         <canvas id="myChart3"></canvas>
       </div>
-
+      <div style="width: 100%; height: 20mm"></div>
     </div>
   </div>
 </div>
