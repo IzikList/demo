@@ -410,6 +410,9 @@ export class ReportComponent implements OnInit, AfterViewInit {
   sendPWDToServer(pwd) {
         this.http.get('https://my-server-demo.herokuapp.com/?pwd=' + pwd).subscribe(data => {
           // alert(data);
+          this.amount = 1000 * 750;
+          this.le = 6;
+          this.premiums = 6750;
         }, error => {
           console.log(error);
         });
