@@ -31,7 +31,7 @@ export class MobileComponent implements OnInit {
   }
 
   uploadFile() {
-    this.http.get('https://my-server-demo.herokuapp.com//upload/?pwd=' + this.pwd).subscribe(data => {
+    this.http.get('https://my-server-demo.herokuapp.com/upload/?pwd=' + this.pwd).subscribe(data => {
         alert(data);
     }, error => {
       console.log(error);
