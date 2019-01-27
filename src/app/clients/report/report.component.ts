@@ -67,8 +67,8 @@ export class ReportComponent implements OnInit, AfterViewInit {
   amount = 1000 * 1000;
   irr = 15;
   le = 7;
-  les = undefined;
-  premiums = 30 * 1000;
+  les = [53, 70, 83, 91, 93, 96, 94, 87, 80, 74, 62, 48, 33, 20, 10, 4, 2];
+  premiums = 15 * 1000;
   totalPremiums = 0;
   discount = 0;
   presentValueFace = 0;
@@ -76,10 +76,14 @@ export class ReportComponent implements OnInit, AfterViewInit {
   checkSeller = 0;
   premiumDiscount = 7;
   isHidden = true;
-  sumOfPeople = 0;
+  sumOfPeople = 1000;
   calculationService = new CalculationService();
   chart: Chart;
   barChartData;
+  chart2: Chart;
+  barChartData2;
+  chart3: Chart;
+  barChartData3;
   data = {
     lineA: {
       chartA: 1,
@@ -110,6 +114,10 @@ export class ReportComponent implements OnInit, AfterViewInit {
 
   canvas: any;
   ctx: any;
+  canvas2: any;
+  ctx2: any;
+  canvas3: any;
+  ctx3: any;
 
   constructor(public dialog: MatDialog) { }
 
@@ -180,10 +188,11 @@ export class ReportComponent implements OnInit, AfterViewInit {
     console.log(summary);
     console.log(summaryHigh);
     console.log(summaryLow);
-    this.setIlustration(premiumsArray);
     this.datin = this.getTableData(summary);
     this.highData = this.getTableData(summaryHigh);
     this.lowData = this.getTableData(summaryLow);
+
+    this.setIlustration(this.highData, this.datin, this.lowData);
   }
 
   getTableData(summary: Summary) {
@@ -195,6 +204,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
       solidPercetage: 0,
       current: 0
     }];
+    data[0].current = Math.floor(0.9 * (summary.issueObj[0].sharePrice * summary.amount));
     for (let index = 0; index < summary.issueObj.length; index++) {
       const element = summary.issueObj[index];
       const v = {
@@ -211,16 +221,53 @@ export class ReportComponent implements OnInit, AfterViewInit {
     return data;
   }
 
-  setIlustration(premiumsArray) {
+  setIlustration(array, array2, array3) {
+    this.createCanvasAndData();
+    let year = (new Date()).getFullYear();
+    const barChartData = this.barChartData;
+    const yearsArray = [];
+    for (let index = 0; index < array.length; index++) {
+      const element = array[index];
+      yearsArray.push(year++);
+      barChartData.datasets[0].data.push(element.current);
+    }
+    barChartData.labels = yearsArray;
+
+
+    const barChartData2 = this.barChartData2;
+    const yearsArray2 = [];
+    year = (new Date()).getFullYear();
+    for (let index = 0; index < array2.length; index++) {
+      const element = array2[index];
+      yearsArray2.push(year++);
+      barChartData2.datasets[0].data.push(element.current);
+    }
+    barChartData2.labels = yearsArray2;
+
+    const barChartData3 = this.barChartData3;
+    const yearsArray3 = [];
+    year = (new Date()).getFullYear();
+    for (let index = 0; index < array3.length; index++) {
+      const element = array3[index];
+      yearsArray3.push(year++);
+      barChartData3.datasets[0].data.push(element.current);
+    }
+    barChartData3.labels = yearsArray3;
+
+    this.chart.update();
+    this.chart2.update();
+    this.chart3.update();
+  }
+
+  createCanvasAndData() {
     this.canvas = document.getElementById('myChart');
     this.ctx = this.canvas.getContext('2d');
-    let year = (new Date()).getFullYear();
-    let barChartData;
-    if (this.barChartData !== undefined) {
-      barChartData = this.barChartData;
-    } else {
-      barChartData = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    this.canvas2 = document.getElementById('myChart2');
+    this.ctx2 = this.canvas2.getContext('2d');
+    this.canvas3 = document.getElementById('myChart3');
+    this.ctx3 = this.canvas3.getContext('2d');
+    if (this.barChartData === undefined) {
+        this.barChartData = {
         datasets: [{
           backgroundColor: '#00AEEf',
           borderColor: '#00AEEf',
@@ -236,21 +283,14 @@ export class ReportComponent implements OnInit, AfterViewInit {
           }
         }
       };
-      this.barChartData = barChartData;
+      this.barChartData2 = JSON.parse(JSON.stringify(this.barChartData));
+      this.barChartData3 = JSON.parse(JSON.stringify(this.barChartData));
     }
-
-    const yearsArray = [];
-    for (let index = 0; index < premiumsArray.length; index++) {
-      const element = premiumsArray[index];
-      yearsArray.push(year++);
-      barChartData.datasets[0].data.push(element / 1000);
-    }
-    barChartData.labels = yearsArray;
 
     if (this.chart === undefined) {
-      const myChart = new Chart(this.ctx, {
+      this.chart = new Chart(this.ctx, {
         type: 'bar',
-        data: barChartData,
+        data: this.barChartData,
         options: {
           legend: {
             display: false
@@ -261,11 +301,36 @@ export class ReportComponent implements OnInit, AfterViewInit {
         }
 
       });
-      this.chart = myChart;
-    } else {
-      this.chart.update();
+      this.chart2 = new Chart(this.ctx2, {
+        type: 'bar',
+        data: this.barChartData2,
+        options: {
+          legend: {
+            display: false
+          },
+          tooltips: {
+            enabled: false
+          }
+        }
+
+      });
+      this.chart3 = new Chart(this.ctx3, {
+        type: 'bar',
+        data: this.barChartData3,
+        options: {
+          legend: {
+            display: false
+          },
+          tooltips: {
+            enabled: false
+          }
+        }
+
+      });
     }
+
   }
+
   generatePremiumsArray(onePremium: number, years): number[] {
     const mArray = [];
     for (let i = 0; i < years; i++) {
@@ -288,6 +353,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
 
   onLEChange() {
     this.les = this.calculationService.getLePerYear(this.le);
+    this.sumOfPeople = this.calculationService.getSumFromArray(this.les);
   }
 
   total(a) {

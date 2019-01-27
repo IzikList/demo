@@ -8,6 +8,7 @@ import { SingleUnitExistingComponent } from './single-unit-existing/single-unit-
 import { SimulatorScenariosComponent } from './simulator-scenarios/simulator-scenarios.component';
 import { SimulatorIvolvingLeComponent } from './simulator-ivolving-le/simulator-ivolving-le.component';
 import { ReportComponent } from './clients/report/report.component';
+import { MobileComponent } from './clients/mobile/mobile.component';
 import { SplashComponent } from './splash/splash.component';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'simulator2', component: SimulatorScenariosComponent },
   { path: 'simulator3', component: SimulatorIvolvingLeComponent },
   { path: 'clients/report', component: ReportComponent },
+  { path: 'clients/mobile', component: MobileComponent },
   { path: 'splash', component: SplashComponent },
   { path : '' , redirectTo : '/aws' , pathMatch: 'full' },
 ];

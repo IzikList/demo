@@ -132,3 +132,10 @@ table, th, td {
     margin-bottom: 3mm;
     font-size: 3.5mm;
 }
+.irrSpan {
+    font-weight: 700;
+}
+
+td {
+    height: 8mm;
+}

@@ -34,7 +34,7 @@
     </div>
   </mat-card>
   <!--*ngIf="!isHidden"-->
-  <div class="page"  style="width: 210mm; background-color: white; margin: auto; display: none" id="section-to-print">
+  <div class="page" style="width: 210mm; background-color: white; margin: auto; display: none" id="section-to-print">
     <div class="container" style="margin-left: 7mm; margin-right: 7mm; ">
       <img class="logo" src="assets/images/rep_logo.png" />
       <div class="line1" style="font-size: 6.7mm; color: #3588A0; font-family: 'Open Sans'">
@@ -75,11 +75,11 @@
           </td>
           <td>
             <app-chart-canvas #chart12 [toPc]="data.lineA.chartB" [color]="'#1B75BC'">50%</app-chart-canvas>
-            <div class="textBellow">{{total(amount * data.lineA.chartB) | number}}$</div>            
+            <div class="textBellow">{{total(amount * data.lineA.chartB) | number}}$</div>
           </td>
           <td>
             <app-chart-canvas #chart13 [toPc]="data.lineA.chartC" [color]="'#2E3192'"></app-chart-canvas>
-            <div class="textBellow">{{total(amount * data.lineA.chartC) | number}}$</div>            
+            <div class="textBellow">{{total(amount * data.lineA.chartC) | number}}$</div>
           </td>
         </tr>
         <tr style="background-color: #E6E7E8">
@@ -90,15 +90,15 @@
           <td>
             <app-chart-canvas #chart21 [toPc]="data.lineB.chartA"></app-chart-canvas>
             <div class="textBellow">{{total(amount * data.lineB.chartA) | number}}$</div>
-            
+
           </td>
           <td>
             <app-chart-canvas #chart22 [toPc]="data.lineB.chartB" [color]="'#1B75BC'"></app-chart-canvas>
-            <div class="textBellow">{{total(amount * data.lineB.chartB) | number}}$</div>            
+            <div class="textBellow">{{total(amount * data.lineB.chartB) | number}}$</div>
           </td>
           <td>
             <app-chart-canvas #chart23 [color]="'#2E3192'" [toPc]="data.lineB.chartC"></app-chart-canvas>
-            <div class="textBellow">{{total(amount * data.lineB.chartC) | number}}$</div>            
+            <div class="textBellow">{{total(amount * data.lineB.chartC) | number}}$</div>
           </td>
         </tr>
         <tr>
@@ -107,15 +107,15 @@
           </td>
           <td>
             <app-chart-canvas #chart31 [toPc]="data.lineC.chartA"></app-chart-canvas>
-            <div class="textBellow">{{total(amount * data.lineC.chartA) | number}}$</div>            
+            <div class="textBellow">{{total(amount * data.lineC.chartA) | number}}$</div>
           </td>
           <td>
             <app-chart-canvas #chart32 [color]="'#1B75BC'" [toPc]="data.lineC.chartB"></app-chart-canvas>
-            <div class="textBellow">{{total(amount * data.lineC.chartB) | number}}$</div>                        
+            <div class="textBellow">{{total(amount * data.lineC.chartB) | number}}$</div>
           </td>
           <td>
             <app-chart-canvas #chart33 [color]="'#2E3192'" [toPc]="data.lineC.chartC"></app-chart-canvas>
-            <div class="textBellow">{{total(amount * data.lineC.chartC) | number}}$</div>                        
+            <div class="textBellow">{{total(amount * data.lineC.chartC) | number}}$</div>
           </td>
         </tr>
 
@@ -124,11 +124,67 @@
       </div>
 
       <div class="mHeader">
+        High - Performing Market
+      </div>
+      <div class="secondary">
+        This forecast is referring to a future 'bull market' when efficiency and liquidity drive share valuation up, and expected
+        return, for new investors down, to a <span class="irrSpan">{{irr + 4}}%</span> IRR expectancy
+      </div>
+
+
+      <table id="table2">
+        <!--<colgroup span="2"></colgroup>
+    <colgroup span="2"></colgroup>-->
+        <tr>
+          <td class="header1">Timeline</td>
+          <td class="header1 tHeaderColor1" colspan="2" scope="colgroup">Coverage amount in force</td>
+          <td class="header1 tHeaderColor2" colspan="2" scope="colgroup">Coverage amount sold</td>
+          <td class="header1 tHeaderColor3">Current/immediate cash value</td>
+        </tr>
+        <tr>
+          <td></td>
+          <th scope="col">Cash</th>
+          <th scope="col">Percentage</th>
+          <th scope="col">Cash</th>
+          <th scope="col">Percentage</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let item of highData">
+          <th scope="row" class="timeLine">{{item.title}}</th>
+          <td class="cell">{{item.enforcedCash | number}}$</td>
+          <td class="cell">{{item.enforcedPercetage}}%</td>
+          <td class="cell">{{item.solidCash |number}}$</td>
+          <td class="cell">{{item.solidPercetage}}%</td>
+          <td class="cell">{{item.current | number}}$</td>
+        </tr>
+      </table>
+
+      <div id="tableDescription">
+        <div id="tableDescription_line1" class="tableLines">
+          <span class="tHeaderColor1">Amount in force</span> – This represents, the amount of Life Insurance coverage, remaining
+          by seller, if a unexpected death
+        </div>
+        <div id="tableDescription_line2" class="tableLines">
+          <span class="tHeaderColor2">Records Coverage amount sold</span> – This represents the amount of Life Insurance
+          interest, sold to investors, for covering
+        </div>
+        <div id="tableDescription_line3" class="tableLines">
+          <span class="tHeaderColor3">Premium cost. Current\ immediate Cash value</span> - This represents the immediate
+          cash value in a event of selling all interest in the policy.
+        </div>
+
+      </div>
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+
+
+      <div class="mHeader">
         Stable - Performing Market
       </div>
       <div class="secondary">
         This forecast is referring to a future 'bull market' when efficiency and liquidity drive share valuation up, and expected
-        return, for new investors down, to a {{irr}}% IRR expectancy
+        return, for new investors down, to a <span class="irrSpan">{{irr}}%</span> IRR expectancy
       </div>
 
 
@@ -158,13 +214,16 @@
           <td class="cell">{{item.current | number}}$</td>
         </tr>
       </table>
+      <div>
+        <canvas id="myChart2"></canvas>
+      </div>
 
       <div class="mHeader">
         Low - Performing Market
       </div>
       <div class="secondary">
         This forecast is referring to a future 'bull market' when efficiency and liquidity drive share valuation up, and expected
-        return, for new investors down, to a {{irr - 4}}% IRR expectancy
+        return, for new investors down, to a <span class="irrSpan">{{irr - 4}}%</span> IRR expectancy
       </div>
 
 
@@ -194,61 +253,10 @@
           <td class="cell">{{item.current | number}}$</td>
         </tr>
       </table>
-      <div class="mHeader">
-        High - Performing Market
-      </div>
-      <div class="secondary">
-        This forecast is referring to a future 'bull market' when efficiency and liquidity drive share valuation up, and expected
-        return, for new investors down, to a {{irr + 4}}% IRR expectancy
-      </div>
-
-
-      <table id="table2">
-        <!--<colgroup span="2"></colgroup>
-    <colgroup span="2"></colgroup>-->
-        <tr>
-          <td class="header1">Timeline</td>
-          <td class="header1 tHeaderColor1" colspan="2" scope="colgroup">Coverage amount enforced</td>
-          <td class="header1 tHeaderColor2" colspan="2" scope="colgroup">Coverage amount solid</td>
-          <td class="header1 tHeaderColor3">Current/immediate cash value</td>
-        </tr>
-        <tr>
-          <td></td>
-          <th scope="col">Cash</th>
-          <th scope="col">Percentage</th>
-          <th scope="col">Cash</th>
-          <th scope="col">Percentage</th>
-          <th></th>
-        </tr>
-        <tr *ngFor="let item of highData">
-          <th scope="row" class="timeLine">{{item.title}}</th>
-          <td class="cell">{{item.enforcedCash | number}}$</td>
-          <td class="cell">{{item.enforcedPercetage}}%</td>
-          <td class="cell">{{item.solidCash |number}}$</td>
-          <td class="cell">{{item.solidPercetage}}%</td>
-          <td class="cell">{{item.current | number}}$</td>
-        </tr>
-      </table>
-
-      <div id="tableDescription">
-        <div id="tableDescription_line1" class="tableLines">
-          <span class="tHeaderColor1">Amount enforced</span> – This represents, the amount of Life Insurance coverage, remaining
-          by seller, if a unexpected death
-        </div>
-        <div id="tableDescription_line2" class="tableLines">
-          <span class="tHeaderColor2">Records Coverage amount sold</span> – This represents the amount of Life Insurance
-          interest, sold to investors, for covering
-        </div>
-        <div id="tableDescription_line3" class="tableLines">
-          <span class="tHeaderColor3">Premium cost. Current\ immediate Cash value</span> - This represents the immediate cash value
-          in a event of selling all interest in the policy.
-        </div>
-
-      </div>
       <div>
-        <canvas id="myChart"></canvas>
-        .
+        <canvas id="myChart3"></canvas>
       </div>
+
     </div>
   </div>
 </div>
