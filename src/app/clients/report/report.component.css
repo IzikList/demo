@@ -62,7 +62,14 @@ table, th, td {
 #table1 td, #table1 tr {
     text-align: center;
 }
-#table1 .header{
+.header {
+    font-size: 3.5mm;
+    color: #999999;
+    margin-bottom: 1.5mm;
+    text-align: left;
+}
+
+#table1 .headert{
     font-size: 4mm;
     font-family: 'Open Sans';
 }
@@ -81,6 +88,32 @@ table, th, td {
   margin-top: 8mm;
 }
 
+.inpContainer {
+    padding-bottom: 0px;
+}
+.hInput1 input {
+    width: 25mm;
+}
+
+.hInput2 input {
+    width: 23mm;
+}
+.hInput3 input {
+    width: 19mm;
+}
+.hInput4 input {
+    width: 18mm;
+}
+
+.hInput2 {
+    margin-left: 10mm;
+}
+.hInput3 {
+    margin-left: 8mm;
+}
+.hInput4 {
+    margin-left: 12mm;
+}
 
 #table2 .header1{
     background-color: lightgray;
@@ -89,18 +122,20 @@ table, th, td {
 }
 
 .cust-inp {
-    font-size: 20px;
+    font-size: 3.5mm;
     font-family: 'Open Sans';
 }
 .mContainer {
     padding: 20px;
+    text-align: center;
 }
 .hInput {
 }
 .ic {
     align-self: flex-end;
-    width: 3.91mm;
-    height: 3.91mm;
+    width: 5mm;
+    height: 5mm;
+    margin-left: 1.5mm;
 }
 .tHeaderColor1{
     color: #00AEEF
@@ -142,4 +177,17 @@ td {
 }
 .mHeader2{
     margin-top: 15mm;
+}
+
+.inputReport {
+    width: 33mm;
+    height: 8mm;
+    background-color: #0e7171;
+    outline: none;
+    border-color: #0e7171;
+    border-radius: 4mm;
+    font-family: 'Open Sans';
+    font-size: 3mm;
+    color: white;
+    margin-bottom: 6mm;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Inject, ViewEncapsulation } from '@angular/core';
 import { CalculationService, IssueMapObj, PremiumsMap, Summary } from '../../calculation.service';
 import { DialogLeComponent } from '../../single-unit-existing/single-unit-existing.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -10,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
-  styleUrls: ['./report.component.css']
+  styleUrls: ['./report.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ReportComponent implements OnInit, AfterViewInit {
 
