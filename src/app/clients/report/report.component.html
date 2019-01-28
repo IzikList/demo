@@ -48,12 +48,14 @@
           monetization & valuation forecast
         </div>
         <div class="line3" style="font-size: 4mm; color: #3588A0; font-family: 'Open Sans'; font-weight: 600">
-          Face value: 1,000,000 <span style="padding-left:5em"></span> Certificate Date: 1\8\2019 <span style="padding-left:5em"></span>          Policy date issue: 2\02\2012
+          Face Value: {{amount | number}} <span style="padding-left:5em"></span> Certificate Date: 1\8\2019 <span style="padding-left:5em"></span>          Policy Date Issue: 2\02\2012
         </div>
         <div class="seperator1"></div>
         <div class="mHeader">
-          Forecast overview
+          Forecast Overview
         </div>
+        
+
         <table class="mTable" id="table1">
           <tr>
             <td class="col1 headert">
@@ -71,7 +73,7 @@
           </tr>
           <tr>
             <td class="col1">
-              High-performing Market
+              High Performing Market
             </td>
             <td>
               <app-chart-canvas #chart [toPc]="data.lineA.chartA"></app-chart-canvas>
@@ -88,7 +90,7 @@
           </tr>
           <tr style="background-color: #E6E7E8">
             <td class="col1">
-              Stable performing Market
+              Stable Performing Market
             </td>
 
             <td>
@@ -107,7 +109,7 @@
           </tr>
           <tr>
             <td class="col1">
-              Low-performing Market
+              Low Performing Market
             </td>
             <td>
               <app-chart-canvas #chart31 [toPc]="data.lineC.chartA"></app-chart-canvas>
@@ -128,12 +130,16 @@
         </div>
 
         <div class="mHeader">
-          High - Performing Market
+          High Performing Market
         </div>
         <div class="secondary">
-          This forecast is referring to a future 'bull market' when efficiency and liquidity drive share valuation up, and expected
-          return, for new investors down, to a <span class="irrSpan">{{irr + 4}}%</span> IRR expectancy
+          This forecast refers to a future 'bull market' where efficiency and liquidity bring 
+          high demand and expected returns for new investors down to a level of
+           <span class="irrSpan">{{irr + 4}}%</span> IRRs.
         </div>
+
+
+
 
 
         <table id="table2">
@@ -141,9 +147,9 @@
     <colgroup span="2"></colgroup>-->
           <tr>
             <td class="header1">Timeline</td>
-            <td class="header1 tHeaderColor1" colspan="2" scope="colgroup">Coverage amount in force</td>
-            <td class="header1 tHeaderColor2" colspan="2" scope="colgroup">Coverage amount sold</td>
-            <td class="header1 tHeaderColor3">Current/immediate cash value</td>
+            <td class="header1 tHeaderColor1" colspan="2" scope="colgroup">Coverage in force</td>
+            <td class="header1 tHeaderColor2" colspan="2" scope="colgroup">Coverage sold</td>
+            <td class="header1 tHeaderColor3">Current/immediate liquidation price</td>
           </tr>
           <tr>
             <td></td>
@@ -162,19 +168,18 @@
             <td class="cell">{{item.current | number}}$</td>
           </tr>
         </table>
-
         <div id="tableDescription">
           <div id="tableDescription_line1" class="tableLines">
-            <span class="tHeaderColor1">Amount in force</span> – This represents, the amount of Life Insurance coverage,
-            remaining by seller, if a unexpected death
+            <span class="tHeaderColor1">Coverage in force</span> – Represents the life insurance coverage remaining by the
+seller at sudden death.
           </div>
           <div id="tableDescription_line2" class="tableLines">
-            <span class="tHeaderColor2">Records Coverage amount sold</span> – This represents the amount of Life Insurance
-            interest, sold to investors, for covering
+            <span class="tHeaderColor2">Coverage sold</span> – Represents the portion of the policy sold to investors for
+covering premiums.
           </div>
           <div id="tableDescription_line3" class="tableLines">
-            <span class="tHeaderColor3">Premium cost. Current\ immediate Cash value</span> - This represents the immediate
-            cash value in a event of selling all interest in the policy.
+            <span class="tHeaderColor3">Current/immediate liquidation price</span> -  Represents the immediate income for
+the policy holder in an event of selling all interest in the policy.
           </div>
 
         </div>
@@ -187,11 +192,12 @@
 
 
         <div class="mHeader">
-          Stable - Performing Market
+          Stable Performing Market
         </div>
         <div class="secondary">
-          This forecast is referring to a future 'bull market' when efficiency and liquidity drive share valuation up, and expected
-          return, for new investors down, to a <span class="irrSpan">{{irr}}%</span> IRR expectancy
+          This forecast refers to a future 'bull market' where efficiency and liquidity bring 
+          high demand and expected returns for new investors down to a level of
+           <span class="irrSpan">{{irr}}%</span> IRRs.
         </div>
 
 
@@ -233,8 +239,9 @@
           Low - Performing Market
         </div>
         <div class="secondary">
-          This forecast is referring to a future 'bull market' when efficiency and liquidity drive share valuation up, and expected
-          return, for new investors down, to a <span class="irrSpan">{{irr - 4}}%</span> IRR expectancy
+          This forecast refers to a future 'bull market' where efficiency and liquidity bring 
+          high demand and expected returns for new investors down to a level of
+           <span class="irrSpan">{{irr - 4}}%</span> IRRs.
         </div>
 
 
