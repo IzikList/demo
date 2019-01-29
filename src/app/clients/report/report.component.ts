@@ -88,6 +88,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
   chart3: Chart;
   barChartData3;
   requestCamera = false;
+  mDate;
   data = {
     lineA: {
       chartA: 1,
@@ -175,9 +176,9 @@ export class ReportComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
           document.getElementById('loadingContainer').style.display = 'none';
           document.getElementById('section-to-print').style.display = 'block';
-        }, 2000);
-      }, 2000);
-    }, 3000);
+        }, 800);
+      }, 800);
+    }, 1000 * 1);
   }
   reportAsync() {
     // get sum of people
@@ -186,6 +187,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
       // alert('Set les please');
       return;
     }
+    this.mDate = Date.now();
     // generate premiums if dosn't exists
     const premiumsArray = this.generatePremiumsArray(this.premiums, this.les.length);
     const summary = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, this.irr / 100, this.amount);
@@ -313,6 +315,18 @@ export class ReportComponent implements OnInit, AfterViewInit {
           },
           tooltips: {
             enabled: false
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+               beginAtZero: true,
+               callback: function(value, index, values) {
+                 if (value) {
+                   return '$' + parseInt(value, 0).toLocaleString();
+                 }
+               }
+              }
+            }]
           }
         }
 
@@ -326,6 +340,18 @@ export class ReportComponent implements OnInit, AfterViewInit {
           },
           tooltips: {
             enabled: false
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                callback: function (value, index, values) {
+                  if (value) {
+                    return '$' + parseInt(value, 0).toLocaleString();
+                  }
+                }
+              }
+            }]
           }
         }
 
@@ -339,6 +365,17 @@ export class ReportComponent implements OnInit, AfterViewInit {
           },
           tooltips: {
             enabled: false
+          }, scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                callback: function (value, index, values) {
+                  if (value) {
+                    return '$' + parseInt(value, 0).toLocaleString();
+                  }
+                }
+              }
+            }]
           }
         }
 
@@ -377,15 +414,15 @@ export class ReportComponent implements OnInit, AfterViewInit {
   }
 
   openCameraDialog() {
-    const pwd  =   Math.floor(Math.random() * 1000000);
-    const dialogRef = this.dialog.open(DialogCameraComponent, { data: { pwd: pwd}});
+    const pwd = Math.floor(Math.random() * 1000000);
+    const dialogRef = this.dialog.open(DialogCameraComponent, { data: { pwd: pwd } });
     this.requestCamera = true;
-    this.sendPWDToServer(pwd);
     this.requestCameraFromServer(pwd, dialogRef);
     dialogRef.afterClosed().subscribe(responce => {
       console.log(responce);
       // this.presentValueFace = this.present(arr, sumOfPeople, this.amount);
       this.requestCamera = false;
+      this.sendPWDToServer(pwd);
       // alert('close');
     });
   }
@@ -393,7 +430,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
   requestCameraFromServer(pwd, d: MatDialogRef<DialogCameraComponent>) {
     if (this.requestCamera) {
       setTimeout(() => {
-        if ( ! this.requestCamera) {
+        if (!this.requestCamera) {
           return;
         }
         this.http.get('https://my-server-demo.herokuapp.com/check/?pwd=' + pwd).subscribe(data => {
@@ -408,14 +445,14 @@ export class ReportComponent implements OnInit, AfterViewInit {
   }
 
   sendPWDToServer(pwd) {
-        this.http.get('https://my-server-demo.herokuapp.com/?pwd=' + pwd).subscribe(data => {
-          // alert(data);
-          this.amount = 1000 * 750;
-          this.le = 6;
-          this.premiums = 6750;
-        }, error => {
-          console.log(error);
-        });
+    this.http.get('https://my-server-demo.herokuapp.com/?pwd=' + pwd).subscribe(data => {
+      // alert(data);
+      this.amount = 1000 * 750;
+      this.le = 6;
+      this.premiums = 6750;
+    }, error => {
+      console.log(error);
+    });
   }
 }
 

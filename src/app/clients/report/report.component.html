@@ -45,10 +45,11 @@
           LIFE SETTLEMENTS REPORT
         </div>
         <div class="line2" style="font-size: 5.64mm; color: #3588A0; font-family: 'Open Sans'; font-weight: 300">
-          monetization & valuation forecast
+          Monetization & Valuation Forecast
         </div>
         <div class="line3" style="font-size: 4mm; color: #3588A0; font-family: 'Open Sans'; font-weight: 600">
-          Face Value: {{amount | number}} <span style="padding-left:5em"></span> Certificate Date: 1\8\2019 <span style="padding-left:5em"></span>          Policy Date Issue: 2\02\2012
+          Face Value: {{amount | number}} <span style="padding-left:5em"></span> Certificate Date: {{mDate | date:'dd/MM/yy'}} <span style="padding-left:5em"></span>
+                    <!--Policy Date Issue: 2\02\2012-->
         </div>
         <div class="seperator1"></div>
         <div class="mHeader">
@@ -133,9 +134,9 @@
           High Performing Market
         </div>
         <div class="secondary">
-          This forecast refers to a future 'bull market' where efficiency and liquidity bring 
-          high demand and expected returns for new investors down to a level of
-           <span class="irrSpan">{{irr + 4}}%</span> IRRs.
+          This forecast refers to a future 'bull market' where efficiency and liquidity bring
+high demand and expected returns for new investors down to a level of <span class="irrSpan">{{irr - 4}}%</span>
+IRRs.
         </div>
 
 
@@ -147,9 +148,9 @@
     <colgroup span="2"></colgroup>-->
           <tr>
             <td class="header1">Timeline</td>
-            <td class="header1 tHeaderColor1" colspan="2" scope="colgroup">Coverage in force</td>
-            <td class="header1 tHeaderColor2" colspan="2" scope="colgroup">Coverage sold</td>
-            <td class="header1 tHeaderColor3">Current/immediate liquidation price</td>
+            <td class="header1 tHeaderColor1" colspan="2" scope="colgroup">Coverage In Force</td>
+            <td class="header1 tHeaderColor2" colspan="2" scope="colgroup">Coverage Sold</td>
+            <td class="header1 tHeaderColor3">Current/Immediate Liquidation Price</td>
           </tr>
           <tr>
             <td></td>
@@ -184,7 +185,7 @@ the policy holder in an event of selling all interest in the policy.
 
         </div>
         <div class="mHeader mHeader2">
-          Corrent immediate Cash value Illustration
+          Current/Immediate Liquidation Price
         </div>
         <div>
           <canvas id="myChart"></canvas>
@@ -195,9 +196,9 @@ the policy holder in an event of selling all interest in the policy.
           Stable Performing Market
         </div>
         <div class="secondary">
-          This forecast refers to a future 'bull market' where efficiency and liquidity bring 
-          high demand and expected returns for new investors down to a level of
-           <span class="irrSpan">{{irr}}%</span> IRRs.
+          This forecast refers to a future steady market where expected returns for
+investors stay at similar levels to the current bids, maintaining the <span class="irrSpan">{{irr}}%</span> IRR
+predictions.
         </div>
 
 
@@ -206,9 +207,9 @@ the policy holder in an event of selling all interest in the policy.
     <colgroup span="2"></colgroup>-->
           <tr>
             <td class="header1">Timeline</td>
-            <td class="header1 tHeaderColor1" colspan="2" scope="colgroup">Coverage amount enforced</td>
-            <td class="header1 tHeaderColor2" colspan="2" scope="colgroup">Coverage amount solid</td>
-            <td class="header1 tHeaderColor3">Current/immediate cash value</td>
+            <td class="header1 tHeaderColor1" colspan="2" scope="colgroup">Coverage In Force</td>
+            <td class="header1 tHeaderColor2" colspan="2" scope="colgroup">Coverage Sold</td>
+            <td class="header1 tHeaderColor3">Current/Immediate Liquidation Price</td>
           </tr>
           <tr>
             <td></td>
@@ -228,7 +229,7 @@ the policy holder in an event of selling all interest in the policy.
           </tr>
         </table>
         <div class="mHeader mHeader2">
-          Corrent immediate Cash value Illustration
+          Current/Immediate Liquidation Price
         </div>
 
         <div>
@@ -239,9 +240,8 @@ the policy holder in an event of selling all interest in the policy.
           Low - Performing Market
         </div>
         <div class="secondary">
-          This forecast refers to a future 'bull market' where efficiency and liquidity bring 
-          high demand and expected returns for new investors down to a level of
-           <span class="irrSpan">{{irr - 4}}%</span> IRRs.
+          This forecast refers to a future &#39;bear market&#39; where there is low demand and
+expected returns for new investors rise to a level of <span class="irrSpan">{{irr + 4}}%</span> IRRs.
         </div>
 
 
@@ -250,9 +250,9 @@ the policy holder in an event of selling all interest in the policy.
     <colgroup span="2"></colgroup>-->
           <tr>
             <td class="header1">Timeline</td>
-            <td class="header1 tHeaderColor1" colspan="2" scope="colgroup">Coverage amount enforced</td>
-            <td class="header1 tHeaderColor2" colspan="2" scope="colgroup">Coverage amount solid</td>
-            <td class="header1 tHeaderColor3">Current/immediate cash value</td>
+            <td class="header1 tHeaderColor1" colspan="2" scope="colgroup">Coverage In Force</td>
+            <td class="header1 tHeaderColor2" colspan="2" scope="colgroup">Coverage Sold</td>
+            <td class="header1 tHeaderColor3">Current/Immediate Liquidation Price</td>
           </tr>
           <tr>
             <td></td>
@@ -272,7 +272,7 @@ the policy holder in an event of selling all interest in the policy.
           </tr>
         </table>
         <div class="mHeader mHeader2">
-          Corrent immediate Cash value Illustration
+          Current/Immediate Liquidation Price
         </div>
 
         <div>
