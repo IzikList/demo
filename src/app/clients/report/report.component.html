@@ -17,7 +17,7 @@
             <div class="header hPremium">Annual Premiums</div>
             <app-custom-input [(ngModel)]="premiums" keyPress="op" [textOnTop]="'$'" (ngModelChange)="onPremiumsChange()"></app-custom-input>
           </div>
-          <img src="assets/images/document.svg" class="ic" />
+          <img src="assets/images/document.svg" class="ic" (click)="changePremiumArray()" />
           <img src="assets/images/takePhoto.svg" class="ic" />
 
           <div class="hInput hInput3">
@@ -33,7 +33,7 @@
           </div>
         </div>
         <div style="text-align: center; width: 100%">
-          <input type="button" value="Issue Reporter" class="inputReport" (click)="report()" />
+          <input type="button" value="Issue Report" class="inputReport" (click)="report()" />
         </div>
       </div>
     </mat-card>

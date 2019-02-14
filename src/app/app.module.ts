@@ -82,6 +82,7 @@ import { ChartCanvasComponent } from './clients/report/chart-canvas/chart-canvas
 import { SplashComponent } from './splash/splash.component';
 import { CustomInputComponent } from './custom-input/custom-input.component';
 import { MobileComponent } from './clients/mobile/mobile.component';
+import { HomepageComponent } from './homepage/homepage.component';
 // import { NuminputComponent } from './numinput/numinput.component';
 
 @NgModule({
@@ -119,7 +120,8 @@ import { MobileComponent } from './clients/mobile/mobile.component';
     SplashComponent,
     CustomInputComponent,
     MobileComponent,
-    DialogCameraComponent
+    DialogCameraComponent,
+    HomepageComponent
   ],
   entryComponents: [DialogComponent, AttmarketDialogComponent, PremiumsDialogComponent, DialogLeComponent, DialogCameraComponent],
   imports: [

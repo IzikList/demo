@@ -1,0 +1,36 @@
+.header:hover {
+    background-color: white;
+}
+.logoLeft {
+    position: absolute;
+}
+
+.header:hover .menu_bar {
+    color: green;
+}
+.menu_bar {
+    position: relative;
+    display: inline-block;
+    color: white;
+    background: none;
+    border: none;
+    outline: none;
+}
+.menu_bar:hover {
+    color: red;
+}
+
+.drp_dwn {
+    display: none;
+    position: absolute;
+    background-color: white;
+}
+.menu_bar:hover .drp_dwn {
+    display: block;
+}
+.menuCenter {
+    position: absolute;
+    width: 100%;
+    top: 1.5rem;
+    text-align: center;
+}

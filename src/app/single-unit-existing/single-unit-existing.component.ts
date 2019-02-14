@@ -109,21 +109,31 @@ presentPremiums(leArray, premiums, numOfPeople) {
 })
 export class PremiumsDialogComponent implements OnInit {
 
-  myObj = [{a: ''}];
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialog) { }
+  myObj = [{sumDies: ''}];
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DialogLeComponent>) { }
 
   ngOnInit() {
-    console.log(this.data);
+    const arr = this.data ? this.data.arr : [53, 70, 83, 91, 93, 96, 94, 87, 80, 74, 62, 48, 33, 20, 10, 4, 2];
+    this.myObj[0].sumDies = '' + arr[0];
+    for (let index = 1; index < arr.length; index++) {
+      const element = arr[index];
+      this.myObj.push({sumDies: '' + element});
+    }
   }
   onNoClick(): void {
     // this.dialogRef.close();
   }
 
+  done() {
+    this.dialogRef.close({arr: this.myObj});
+  }
+
   close() {
-    this.dialogRef.closeAll();
+    this.dialogRef.close();
   }
   addYear() {
-    this.myObj.push({a: ''});
+    const a = this.myObj[this.myObj.length - 1].sumDies;
+    this.myObj.push({sumDies: a});
   }
 }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Inject, ViewEncapsulation } from '@angular/core';
 import { CalculationService, IssueMapObj, PremiumsMap, Summary } from '../../calculation.service';
-import { DialogLeComponent } from '../../single-unit-existing/single-unit-existing.component';
+import { DialogLeComponent, PremiumsDialogComponent } from '../../single-unit-existing/single-unit-existing.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ChartCanvasComponent } from './chart-canvas/chart-canvas.component';
 import * as Chart from '../../../../node_modules/chart.js';
@@ -72,6 +72,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
   le = 7;
   les = [53, 70, 83, 91, 93, 96, 94, 87, 80, 74, 62, 48, 33, 20, 10, 4, 2];
   premiums = 15 * 1000;
+  premiumsArray = [];
   totalPremiums = 0;
   discount = 0;
   presentValueFace = 0;
@@ -124,7 +125,11 @@ export class ReportComponent implements OnInit, AfterViewInit {
   canvas3: any;
   ctx3: any;
 
-  constructor(public dialog: MatDialog, private http: HttpClient) { }
+  constructor(public dialog: MatDialog, private http: HttpClient) {
+        for (let i = 0; i < this.les.length; i++ ) {
+          this.premiumsArray.push(this.premiums);
+        }
+  }
 
   ngAfterViewInit() {
     // // alert('after view init');
@@ -165,7 +170,9 @@ export class ReportComponent implements OnInit, AfterViewInit {
   report() {
     // this.isHidden = false;
     // setTimeout(() => {this.reportAsync(); }, 3000);
-    this.reportAsync();
+    if (! this.reportAsync()) {
+      return;
+    }
     document.getElementById('loadingContainer').style.display = 'block';
     document.getElementById('section-to-print').style.display = 'none';
     document.getElementById('loadingText').innerHTML = 'Collecting Data';
@@ -180,6 +187,28 @@ export class ReportComponent implements OnInit, AfterViewInit {
       }, 800);
     }, 1000 * 1);
   }
+
+  changePremiumArray() {
+    const obj = {
+      width: '650px',
+      data: {
+        arr: this.premiumsArray
+      }
+    };
+
+    const dialogRef = this.dialog.open(PremiumsDialogComponent, obj);
+    dialogRef.afterClosed().subscribe(responce => {
+      console.log(responce);
+      const arr = [];
+      for (let index = 0; index < responce.arr.length; index++) {
+        const element = responce.arr[index];
+        arr.push(parseInt(element.sumDies, 0));
+      }
+      this.premiumsArray = arr;
+      // this.presentValueFace = this.present(arr, sumOfPeople, this.amount);
+    });
+  }
+
   reportAsync() {
     // get sum of people
     // generate les if dos'nt exists
@@ -189,14 +218,22 @@ export class ReportComponent implements OnInit, AfterViewInit {
     }
     this.mDate = Date.now();
     // generate premiums if dosn't exists
-    const premiumsArray = this.generatePremiumsArray(this.premiums, this.les.length);
-    const summary = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, this.irr / 100, this.amount);
+    const premiumsArray =  this.premiumsArray; // this.generatePremiumsArray(this.premiums, this.les.length);
+    let summary;
+    let summaryHigh;
+    let summaryLow;
+    try {
+      summary = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, this.irr / 100, this.amount);
+      summaryLow = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, (this.irr / 100) + 0.03, this.amount);
+      summaryHigh = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, (this.irr / 100) - 0.03, this.amount);
+    } catch (err) {
+      alert('This policy does not qualify');
+      return;
+    }
 
     this.data.lineB.chartA = 1;
     this.data.lineB.chartB = summary.issueObj[2].sellerShares / summary.issueObj[2].totalShares;
     this.data.lineB.chartC = summary.issueObj[6].sellerShares / summary.issueObj[6].totalShares;
-    const summaryLow = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, (this.irr / 100) + 0.03, this.amount);
-    const summaryHigh = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, (this.irr / 100) - 0.03, this.amount);
     this.data.lineA.chartA = 1;
     this.data.lineA.chartB = summaryHigh.issueObj[2].sellerShares / summaryHigh.issueObj[2].totalShares;
     this.data.lineA.chartC = summaryHigh.issueObj[6].sellerShares / summaryHigh.issueObj[6].totalShares;
@@ -211,6 +248,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
     this.lowData = this.getTableData(summaryLow);
 
     this.setIlustration(this.highData, this.datin, this.lowData);
+    return true;
   }
 
   getTableData(summary: Summary) {
@@ -222,7 +260,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
       solidPercetage: 0,
       current: 0
     }];
-    data[0].current = Math.floor(0.9 * (summary.issueObj[0].sharePrice * summary.amount));
+    data[0].current = Math.floor(1 * (summary.issueObj[0].sharePrice * summary.amount));
     for (let index = 0; index < summary.issueObj.length; index++) {
       const element = summary.issueObj[index];
       const v = {
@@ -464,7 +502,8 @@ export class ReportComponent implements OnInit, AfterViewInit {
 export class DialogCameraComponent implements OnInit {
 
   pwd;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DialogCameraComponent>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DialogCameraComponent>) {
+  }
 
   ngOnInit() {
     console.log(this.data);

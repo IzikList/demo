@@ -17,7 +17,7 @@ export class SideBarComponent implements OnInit {
       router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         console.log('event.url ' + event.url);
-        if (event['url'].includes('/clients/') || event['url'].includes('/splash')) {
+        if (event['url'].includes('/clients/') || event['url'].includes('/splash') || event['url'].includes('/home') ) {
           this.opened = false;
         } else {
           this.opened = true;

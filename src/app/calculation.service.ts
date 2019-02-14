@@ -54,6 +54,7 @@ export class CalculationService {
       }
       return returnArray;
     }
+
   // calculate(premiums, les, sumOfPeople, irr, amount): Summary {
   //   const mArray = this.getPremiumsMap(premiums, les, sumOfPeople, irr, amount);
   //   let allInvestorsMoney = 0;
@@ -106,14 +107,15 @@ export class CalculationService {
       totalShares: totalShares
     });
     const tempLes = JSON.parse(JSON.stringify(les));
+    const tempPrems = JSON.parse(JSON.stringify(premiums));
     summary.issueObj = this.getIssueMap(premiums, les, sumOfPeople, irr, amount, JSON.parse(JSON.stringify(mArray)), totalShares, amount);
     for (let k = 1; k < les.length; k++) {
-      const element = les[k];
       tempLes.shift();
+      tempPrems.shift();
       sumOfPeople = this.getSumFromArray(tempLes);
-      const pmaps = this.getPremiumsMap(premiums, tempLes, sumOfPeople, irr, amount);
+      const pmaps = this.getPremiumsMap(tempPrems, tempLes, sumOfPeople, irr, amount);
       summary.premiumsMap[k] = pmaps[0];
-      summary.issueObj[k] = this.getIssueMap(premiums, tempLes, sumOfPeople, irr, amount, pmaps,
+      summary.issueObj[k] = this.getIssueMap(tempPrems, tempLes, sumOfPeople, irr, amount, pmaps,
        summary.issueObj[k - 1].totalShares, amount)[0];
     }
     summary.allInvestorsMoney = allInvestorsMoney;
@@ -139,6 +141,9 @@ export class CalculationService {
     let cashForSeller = 0;
     let instantSaleOfSeller = 0;
     const investorsPcFromPolicyAtTheEnd = this.getInvestorPcAtTheEnd(pMap);
+    if (investorsPcFromPolicyAtTheEnd > 0.99) {
+      throw 100;
+    }
     const onTop = 1 / (1 - investorsPcFromPolicyAtTheEnd);
     const investorsSharesAtTheEnd = totalShares * onTop;
 
@@ -158,7 +163,7 @@ export class CalculationService {
       obj.sellerShares = amount;
       obj.sharesForInvestor = sharesForInvestor;
       obj.totalShares = totalShares;
-      obj.sharePrice = premiums[0] / sharesForInvestor;
+      obj.sharePrice = premiums[index] / sharesForInvestor;
       obj.cashForInvestors = cashForInvestors;
       obj.cashForSeller = cashForSeller;
       obj.pcForAllInvestors = totalPcForAllInvestors;
@@ -189,7 +194,7 @@ export class CalculationService {
         const weight = element / (sumOfPeople - dies);
         // console.log(weight, this.irrPc(irr, x), premiums[0] * weight * this.irrPc(irr, x) );
         const irrEnd = this.irrPc(irr, x);
-        const returnMoney = premiums[0] * weight * irrEnd;
+        const returnMoney = premiums[index] * weight * irrEnd;
         innerElement.arr.push(returnMoney);
         innerElement.returnMoney += returnMoney;
       }
