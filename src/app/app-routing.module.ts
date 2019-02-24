@@ -12,6 +12,7 @@ import { ReportComponent } from './clients/report/report.component';
 import { MobileComponent } from './clients/mobile/mobile.component';
 import { SplashComponent } from './splash/splash.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { MarketNewComponent } from './market-new/market-new.component';
 
 const routes: Routes = [
   { path: 'p', component: PortfolyoComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'clients/mobile', component: MobileComponent },
   { path: 'splash', component: SplashComponent },
   { path: 'home', component: HomepageComponent },
+  { path: 'home2', component: MarketNewComponent },
   { path : '' , redirectTo : '/aws' , pathMatch: 'full' },
 ];
 

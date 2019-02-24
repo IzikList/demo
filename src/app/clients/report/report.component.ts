@@ -430,6 +430,21 @@ export class ReportComponent implements OnInit, AfterViewInit {
     return mArray;
   }
 
+  generatePremiumsArrayByLE() {
+    if (! this.premiumsArray || this.premiumsArray.length === 0) {
+      this.premiumsArray = this.generatePremiumsArray(this.premiums, this.les.length);
+    } else if (this.premiumsArray.length === this.les.length) {
+      return;
+    } else if (this.premiumsArray.length > this.les.length) {
+      this.premiumsArray.splice(this.les.length, this.premiumsArray.length);
+    } else {
+      const val = this.premiumsArray[this.premiumsArray.length - 1];
+      for (let i = this.premiumsArray.length; i < this.les.length; i++) {
+        this.premiumsArray.push(val);
+      }
+    }
+  }
+
   onIRRChange() {
 
   }
@@ -439,11 +454,12 @@ export class ReportComponent implements OnInit, AfterViewInit {
   }
 
   onPremiumsChange() {
-
+    this.premiumsArray = this.generatePremiumsArray(this.premiums, this.les.length);
   }
 
   onLEChange() {
     this.les = this.calculationService.getLePerYear(this.le);
+    this.generatePremiumsArrayByLE();
     this.sumOfPeople = this.calculationService.getSumFromArray(this.les);
   }
 

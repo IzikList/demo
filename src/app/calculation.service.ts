@@ -52,6 +52,7 @@ export class CalculationService {
         const element = array[i];
         returnArray.push(Math.floor(element * 1000));
       }
+      returnArray[returnArray.length - 1] = 2;
       return returnArray;
     }
 

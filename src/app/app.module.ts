@@ -21,6 +21,8 @@ import { DialogLeComponent } from './single-unit-existing/single-unit-existing.c
 import { DialogCameraComponent } from './clients/report/report.component';
 import { TextareaExpandedComponent } from './numinput/test';
 import { NgModelBaseComponent } from './numinput/NgModelBase';
+import { SlideshowModule } from 'ng-simple-slideshow';
+
 
 import {
   MatAutocompleteModule,
@@ -57,7 +59,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
 } from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
@@ -83,6 +85,9 @@ import { SplashComponent } from './splash/splash.component';
 import { CustomInputComponent } from './custom-input/custom-input.component';
 import { MobileComponent } from './clients/mobile/mobile.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { MarketNewComponent } from './market-new/market-new.component';
+import { InvestComponent } from './market-new/invest/invest.component';
+import { BarComponent } from './homepage/bar/bar.component';
 // import { NuminputComponent } from './numinput/numinput.component';
 
 @NgModule({
@@ -121,7 +126,10 @@ import { HomepageComponent } from './homepage/homepage.component';
     CustomInputComponent,
     MobileComponent,
     DialogCameraComponent,
-    HomepageComponent
+    HomepageComponent,
+    MarketNewComponent,
+    InvestComponent,
+    BarComponent
   ],
   entryComponents: [DialogComponent, AttmarketDialogComponent, PremiumsDialogComponent, DialogLeComponent, DialogCameraComponent],
   imports: [
@@ -170,6 +178,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     HttpClientModule,
     FlexLayoutModule,
     AppRoutingModule,
+    SlideshowModule
   ],
   providers: [],
   bootstrap: [AppComponent],

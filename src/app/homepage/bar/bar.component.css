@@ -1,8 +1,17 @@
 .header:hover {
     background-color: white;
 }
+.header {
+    position: relative;
+    height: 100%;
+}
 .logoLeft {
     position: absolute;
+    width: 100%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    top: 50%;
+    margin-left: 5.7%;
 }
 
 .header:hover .menu_bar {
@@ -12,7 +21,7 @@
     position: relative;
     display: inline-block;
     color: white;
-    background-image: linear-gradient(#D5E7EB, white);;
+    background: none;
     border: none;
     outline: none;
     z-index: 1;
@@ -43,33 +52,25 @@
 
 
 .carousel{
-    overflow: hidden;
-    width: 63%;
-    height: 100%;
-    position: relative;}
+    overflow:hidden;
+    width:100%;
+}
 .slides{
     list-style:none;
+    position: relative;
     width: 100%; /* Number of panes * 100% */
+    overflow: hidden; /* Clear floats */
         /* Slide effect Animations*/
     padding: 0px;
     /*-moz-animation:carousel 30s infinite;
     -webkit-animation:carousel 30s infinite;
     animation:carousel 30s infinite;*/
-    margin-block-start: 0em;
 }
 .slides > li{
-    float: left;
-    width: 100%;
-    background-repeat: no-repeat;
-    height: 100%;
-    position: absolute;
-    -webkit-margin-before: 0em;
-    margin-block-start: 0em;
-    background:  no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    position:relative;
+    float:left;
+    width: 100%; /* 100 / number of panes */
+    position: fixed;
 }
 .carousel img{
     display:block;
@@ -80,6 +81,7 @@
     margin-bottom: 0;
     font-size:1em;
     padding:1.5em 0.5em 1.5em 0.5em;
+    position:absolute;
     right:0px;
     bottom:0px;
     left:0px;
@@ -119,21 +121,5 @@
     transition-property: transform;
 }
 
-.leftSide{
-    background-color:  #3288A0;
-    float: left;
-    width: 37%;
-    height: 100%
-}
 
-.middle {
-    display: grid;
-    min-height: 100vh;
-    align-items: center;
-}
 
-.inner {
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-}
