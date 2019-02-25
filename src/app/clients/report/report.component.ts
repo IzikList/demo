@@ -282,6 +282,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
     let year = (new Date()).getFullYear();
     const barChartData = this.barChartData;
     const yearsArray = [];
+    barChartData.datasets[0].data = [];
     for (let index = 0; index < array.length; index++) {
       const element = array[index];
       yearsArray.push(year++);
@@ -293,6 +294,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
     const barChartData2 = this.barChartData2;
     const yearsArray2 = [];
     year = (new Date()).getFullYear();
+    barChartData2.datasets[0].data = [];
     for (let index = 0; index < array2.length; index++) {
       const element = array2[index];
       yearsArray2.push(year++);
@@ -302,6 +304,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
 
     const barChartData3 = this.barChartData3;
     const yearsArray3 = [];
+    barChartData3.datasets[0].data = [];
     year = (new Date()).getFullYear();
     for (let index = 0; index < array3.length; index++) {
       const element = array3[index];

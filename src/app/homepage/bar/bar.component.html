@@ -1,44 +1,52 @@
-  <div class="header">
-    <div class="logoLeft">
-      <img src="/assets/images/logo.svg" style="height: 2rem;" />
-    </div>
-    <div class="menuCenter">
-      <div style="color: white">
-        <div class="menu_bar">
-          <span style="margin-right: 20px">INVEST</span><span style="border-left: 4px solid transparent; border-right: 4px solid transparent;  border-bottom: 6px solid black; "></span>
-          <div class="drp_dwn">
-            <div class="menuItem" routerLink="/aws">
-              Marketplace
-            </div>
-            <div class="menuItem" (click)="animateRight()">
-              Tools
-            </div>
-            <div class="menuItem">
-              Industry Map
-            </div>
-            <div class="menuItem">
-              How It Works
-            </div>
+<div class="header">
+  <div class="logoLeft">
+    <img src="/assets/images/logo_home.png" class="imageHover" style="/*height: 2rem;*/ width: 169px;" />
+    <img src="/assets/images/logo_home_white.png" class="imageReg" style="/*height: 2rem;*/ width: 169px;" />
+  </div>
+  <div class="menuCenter">
+    <div style="color: white; margin-top: 20px;">
+      <div class="menu_bar">
+        <span class="menuSpan">INVEST</span>
+        <div class="drp_dwn">
+          <div class="menuItem" routerLink="/aws">
+            Marketplace
+          </div>
+          <div class="menuItem" (click)="animateRight()">
+            Tools
+          </div>
+          <div class="menuItem">
+            Industry Map
+          </div>
+          <div class="menuItem">
+            How It Works
           </div>
         </div>
-        <div class="menu_bar">
-          <span style="margin-left: 20px;">POLICY OWNER</span><span style="border-left: 4px solid transparent; border-right: 4px solid transparent;  border-bottom: 6px solid black; "></span>
-          <div class="drp_dwn">
-            <div class="menuItem" routerLink="/aws">
-              My Policy
-            </div>
-            <div class="menuItem">
-              Policy Forecast
-            </div>
-            <div class="menuItem">
-              Customer Support
-            </div>
-            <div class="menuItem">
-              How It Works
-            </div>
+        <div style="margin-top: 10px;">
+          <span class="arrow"></span>
+        </div>
+      </div>
+      <div class="menu_bar">
+        <span class="menuSpan">POLICY OWNER</span>
+        <div class="drp_dwn">
+          <div class="menuItem" routerLink="/aws">
+            My Policy
+          </div>
+          <div class="menuItem">
+            Policy Forecast
+          </div>
+          <div class="menuItem">
+            Customer Support
+          </div>
+          <div class="menuItem">
+            How It Works
           </div>
         </div>
-        <div class="menu_bar">
+        <div style="margin-top: 10px;">
+          <span class="arrow"></span>
+        </div>
+
+      </div>
+      <!--<div class="menu_bar">
           <span style="margin-left: 20px;">CONTACT</span><span style="border-left: 4px solid transparent; border-right: 4px solid transparent;  border-bottom: 6px solid black; "></span>
           <div class="drp_dwn"></div>
         </div>
@@ -46,8 +54,18 @@
         <div class="menu_bar">
           <span style="margin-left: 20px;">SIGN IN</span><span style="border-left: 4px solid transparent; border-right: 4px solid transparent;  border-bottom: 6px solid black; "></span>
           <div class="drp_dwn"></div>
-        </div>
-      </div>
+        </div>-->
     </div>
-  </div>
 
+
+  </div>
+  <div class="menuRight">
+    <div class="contact">
+      CONTACT
+    </div>
+    <div class="button" style="color: white; margin-right: 30px;">
+      SIGN IN
+    </div>
+
+  </div>
+</div>

@@ -1,5 +1,29 @@
 .header:hover {
-    background-color: white;
+    background-image: linear-gradient(#D5E7EB, white);
+}
+.imageReg {
+    display: block;
+}
+
+.imageHover {
+    display: none;
+}
+.header:hover .imageReg {
+    display: none;
+}
+
+.header:hover .menu_bar {
+    color: black;
+}
+.header:hover .menu_bar:hover {
+    color: #5ACAEB;
+}
+
+.button {
+    background-color: #1D6075
+}
+.header:hover .imageHover {
+    display: block;
 }
 .header {
     position: relative;
@@ -7,16 +31,12 @@
 }
 .logoLeft {
     position: absolute;
-    width: 100%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     top: 50%;
     margin-left: 5.7%;
 }
 
-.header:hover .menu_bar {
-    color: green;
-}
 .menu_bar {
     position: relative;
     display: inline-block;
@@ -27,17 +47,29 @@
     z-index: 1;
 }
 .menu_bar:hover {
-    color: red;
+    color: #5ACAEB;
 }
-
+.menuSpan {
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
 .menuItem {
     outline: none;
+    font-weight: 300;
+    line-height: 30px;
 }
 
 .drp_dwn {
     display: none;
     position: absolute;
     background-color: white;
+    width: 100%;
+    padding-left: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 15px;
+    text-align: left;
+    color: #1D6075
 }
 .menu_bar:hover .drp_dwn {
     display: block;
@@ -45,11 +77,9 @@
 .menuCenter {
     position: absolute;
     width: 100%;
-    top: 1.5rem;
+    /*top: 1.5rem;*/
     text-align: center;
 }
-
-
 
 .carousel{
     overflow:hidden;
@@ -123,3 +153,35 @@
 
 
 
+.arrow{
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;  
+    border-top: 6px solid white;
+    margin-top: 10px;
+}
+.header:hover .arrow{
+    border-top: 6px solid black;
+}
+.header:hover  .menu_bar:hover .arrow {
+    border-top: 6px solid #5ACAEB;
+}
+.menuRight {
+    position: absolute;
+    width: 100%;
+    top: 1.5rem;
+    text-align: right;
+    color: white;
+    padding-right: 30px;
+}
+.menuRight div {
+    display: inline;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 15px;
+}
+
+.header:hover .menuRight{
+    color: black;
+}

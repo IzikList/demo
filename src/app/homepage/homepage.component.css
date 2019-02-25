@@ -1,46 +1,17 @@
-.header:hover {
-    background-color: white;
+
+.contentLeftSecondLine{
+    margin-top: 15px;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 22px;
 }
-.logoLeft {
-    position: absolute;
+.body {
+    height: 100%
 }
 
-.header:hover .menu_bar {
-    color: green;
+.bold {
+    font-weight: 500;
 }
-.menu_bar {
-    position: relative;
-    display: inline-block;
-    color: white;
-    background-image: linear-gradient(#D5E7EB, white);;
-    border: none;
-    outline: none;
-    z-index: 1;
-}
-.menu_bar:hover {
-    color: red;
-}
-
-.menuItem {
-    outline: none;
-}
-
-.drp_dwn {
-    display: none;
-    position: absolute;
-    background-color: white;
-}
-.menu_bar:hover .drp_dwn {
-    display: block;
-}
-.menuCenter {
-    position: absolute;
-    width: 100%;
-    top: 1.5rem;
-    text-align: center;
-}
-
-
 
 .carousel{
     overflow: hidden;
@@ -128,12 +99,11 @@
 
 .middle {
     display: grid;
-    min-height: 100vh;
+    height: 100%;
     align-items: center;
 }
 
 .inner {
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
+  margin-left: 20%;
+  width: 50%;
 }
