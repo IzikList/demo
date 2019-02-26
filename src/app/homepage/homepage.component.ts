@@ -48,7 +48,7 @@ export class HomepageComponent implements OnInit, AfterViewInit {
   }
 
   loop() {
-    this.timeOutObj = setTimeout(this.bindAnimateFunction, 1000 * 3);
+    this.timeOutObj = setTimeout(this.bindAnimateFunction, 1000 * 5);
   }
 
   transitionCompleted = function (c) {
