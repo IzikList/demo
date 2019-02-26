@@ -52,6 +52,7 @@
 .menuSpan {
     margin-left: 3vw;
     margin-right: 3vw;
+    font-weight: 500;
 }
 .menuItem {
     outline: none;
@@ -168,7 +169,7 @@
 .menuRight {
     position: absolute;
     width: 100%;
-    top: 1.5rem;
+    top: 1.3rem;
     text-align: right;
     color: white;
     padding-right: 30px;

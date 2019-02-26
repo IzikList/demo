@@ -13,6 +13,10 @@
     font-weight: 500;
 }
 
+:host /deep/  .bold{
+    font-weight: 500;
+}
+
 .carousel{
     overflow: hidden;
     width: 63%;
@@ -36,7 +40,7 @@
     position: absolute;
     -webkit-margin-before: 0em;
     margin-block-start: 0em;
-    background:  no-repeat center center fixed; 
+    background:  no-repeat; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

@@ -3,23 +3,28 @@
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: 'Heebo', sans-serif;"
-    >
+    font-family: 'Heebo', sans-serif;">
   <div class="header" style="position: absolute; width: 100%; z-index: 1; height: 60px; ">
     <app-bar></app-bar>
   </div>
   <div class="body">
-    <div class="leftSide">
+    <div class="leftSide" style="position: relative">
+      <img src="/assets/images/graph_bg.png" style="position: absolute; bottom: 0; width: 100%" />
       <div class="middle">
         <div class="inner" style="color: white">
-          <div style="font-size: 30px;">WE <span class="bold">CONNECT</span> THE <span class="bold"> DOTS…</span></div>
+          <div style="font-size: 33px;">WE <span class="bold">CONNECT</span> THE <span class="bold"> DOTS…</span></div>
           <div class="contentLeftSecondLine">LiST is a Marketplace for<br />LIFE SETTLEMENTS<br />where both sides win</div>
         </div>
       </div>
     </div>
     <div class="carousel" id="carousel">
       <ul class="slides" id="slides">
-        <li *ngFor="let image of imageUrlArray" class="animate" [style.backgroundImage]="'url('+ image +')'">
+        <li *ngFor="let image of imageUrlArray" class="animate" [style.backgroundImage]="'url('+ image.url +')'">
+          <div style="width: 100%; height: 100%; background-color: #3488a0; opacity: 0.48; position: absolute; ">
+          </div>
+          <div style="width: 50%; margin: auto; height: 100%; opacity: 1; display: grid; align-items: center; color: white; font-size: 30px; font-weight: 300">
+            <div [innerHTML]="image.text" style="z-index: 200; text-align: center"></div>
+          </div>
         </li>
       </ul>
     </div>

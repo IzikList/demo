@@ -15,7 +15,11 @@ export class HomepageComponent implements OnInit, AfterViewInit {
   //   { url: 'assets/kitties.jpg', backgroundSize: 'contain', backgroundPosition: 'center' }
   // ];
 
-  imageUrlArray = ['/assets/images/s.jpg', '/assets/images/s2.jpg', '/assets/images/happy.jpg'];
+  imageUrlArray = [
+    {url: '/assets/images/investing.png', text: 'Life insurance is valuable, we want you to <span class="bold">keep it!</span>'},
+    {url: '/assets/images/happy_9.jpg', text: 'Maximize the value of your asset, you <span class="bold">deserve it</span>'},
+    {url: '/assets/images/happy.jpg', text: 'Investing In <span class="bold">Life Settlements</span><br /><span class="bold">Made Simple</span>, Secure & Liquid'}
+    ];
   position = 0;
   amount;
   prev: HTMLElement;
