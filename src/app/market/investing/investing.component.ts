@@ -40,6 +40,7 @@ export class InvestingComponent implements OnInit {
     console.log('ngOnInit ' + JSON.stringify(this.data));
     setTimeout(() => {
       this.printData();
+      this.marketService.calculate(this.ammount, this.ammount / this.minPolicies, this.isAtMarket ? 0 : this.userBid);
     }, 3 * 1000);
   }
 
