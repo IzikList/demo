@@ -41,7 +41,7 @@ export class InvestingComponent implements OnInit {
     setTimeout(() => {
       this.printData();
       this.marketService.calculate(this.ammount, this.ammount / this.minPolicies, this.isAtMarket ? 0 : this.userBid);
-    }, 3 * 1000);
+    }, 2 * 1000);
   }
 
   printData() {

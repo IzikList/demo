@@ -88,6 +88,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { MarketNewComponent } from './market-new/market-new.component';
 import { InvestComponent } from './market-new/invest/invest.component';
 import { BarComponent } from './homepage/bar/bar.component';
+import { IndustryMapComponent } from './industry-map/industry-map.component';
 // import { NuminputComponent } from './numinput/numinput.component';
 
 @NgModule({
@@ -129,7 +130,8 @@ import { BarComponent } from './homepage/bar/bar.component';
     HomepageComponent,
     MarketNewComponent,
     InvestComponent,
-    BarComponent
+    BarComponent,
+    IndustryMapComponent
   ],
   entryComponents: [DialogComponent, AttmarketDialogComponent, PremiumsDialogComponent, DialogLeComponent, DialogCameraComponent],
   imports: [
