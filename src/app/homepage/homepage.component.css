@@ -1,4 +1,7 @@
 
+.contentFirstLine{
+    font-size: 40px;
+}
 .contentLeftSecondLine{
     margin-top: 15px;
     font-weight: 300;
@@ -110,4 +113,40 @@
 .inner {
   margin-left: 20%;
   width: 50%;
+}
+.showPhone {
+    display: none;
+}
+
+@media screen and (max-width: 845px) {
+    .contentFirstLine {
+        font-size: 25px;
+    }
+    .leftSide {
+        float: none;
+        width: 100%;
+        height: 360px;
+        position: relative;
+        background-image: url('/assets/images/graph_bg.png');
+        background-size: contain;
+        background-repeat: repeat-x;
+        background-position-y: bottom;
+        background-size: 300px;
+    }
+    .leftSide img{
+        display: none;
+    }
+    .inner {
+        margin: auto;
+        width: 40%;
+    }
+    .carousel{
+        width: 100%;
+        height: 460px;
+        position: relative;
+    }
+    .showPhone {
+        display: block;
+    }
+
 }

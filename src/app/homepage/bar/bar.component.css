@@ -1,4 +1,7 @@
 .header:hover {
+    background-image: -webkit-linear-gradient(#D5E7EB, white);
+    background-image: -moz-linear-gradient(#D5E7EB, white);
+    background-image: -o-linear-gradient(#D5E7EB, white);
     background-image: linear-gradient(#D5E7EB, white);
 }
 .imageReg {
@@ -28,6 +31,7 @@
 .header {
     position: relative;
     height: 100%;
+    font-size: initial;
 }
 .logoLeft {
     position: absolute;
@@ -176,14 +180,70 @@
     color: white;
 }
 .menuRight div {
-    display: inline;
     padding-right: 10px;
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-left: 15px;
 }
+.inline div {
+    display: inline;    
+}
 
 .header:hover .menuRight{
     color: black;
+}
+
+.showPhone {
+    display: none;
+}
+
+.phoneOpenMenu {
+    display: none;
+}
+@media screen and (max-width: 845px) {
+    .showPhone {
+        display: block;
+    }
+    .inline {
+        display: none;
+    }
+    .phoneOpenMenu.show{
+        display: block;
+        position: absolute;
+        margin-top: 60px;
+        background-color: white;
+        width: 100%;
+    }
+
+     .header.show  {
+        background-image: -webkit-linear-gradient(#D5E7EB, white);
+        background-image: -moz-linear-gradient(#D5E7EB, white);
+        background-image: -o-linear-gradient(#D5E7EB, white);
+        background-image: linear-gradient(#D5E7EB, white);
+    }
+    .header.show .imageReg {
+        display: none;
+    }
+
+    .header.show .imageHover {
+        display: block;
+    }
+    .menuCenter{
+        display: none;
+    }
+    .submenu1{
+        overflow: hidden;
+        max-height: 0;
+        transition: all 0.5s ease-out;
+    }
+    
+    .submenu1.opened {
+        max-height: 200px;
+        display: block;
+    }
+    @-moz-keyframes spin { 100% { -moz-transform: rotate(180deg); } }
+    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(180deg); } }
+    @keyframes spin { 100% { -webkit-transform: rotate(180deg); transform:rotate(180deg); } }
+
 }
