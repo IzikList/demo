@@ -177,7 +177,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
     document.getElementById('section-to-print').style.display = 'none';
     document.getElementById('loadingText').innerHTML = 'Collecting Data';
     setTimeout(() => {
-      document.getElementById('loadingText').innerHTML = 'Analazing';
+      document.getElementById('loadingText').innerHTML = 'Analyzing';
       setTimeout(() => {
         document.getElementById('loadingText').innerHTML = 'Preparing Report';
         setTimeout(() => {

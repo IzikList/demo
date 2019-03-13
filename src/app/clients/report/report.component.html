@@ -7,27 +7,27 @@
     <mat-card style="padding: 0px; margin-top: 13mm;">
       <div style="margin-bottom: 20px;" class="mContainer">
         <div style="display: inline-flex; margin-top: 8mm; margin-bottom: 8mm;">
-          <div class="hInput hInput1">
+          <div class="hInput1">
             <div class="header hInput1">Face Value</div>
             <app-custom-input [(ngModel)]="amount" keyPress="op" [textOnTop]="'$'" (ngModelChange)="onFaceChange()"></app-custom-input>
           </div>
           <img src="assets/images/document.svg" class="ic" />
           <img src="assets/images/takePhoto.svg" class="ic" />
-          <div class="hInput hInput2">
+          <div class="hInput2">
             <div class="header hPremium">Annual Premiums</div>
             <app-custom-input [(ngModel)]="premiums" keyPress="op" [textOnTop]="'$'" (ngModelChange)="onPremiumsChange()"></app-custom-input>
           </div>
           <img src="assets/images/document.svg" class="ic" (click)="changePremiumArray()" />
           <img src="assets/images/takePhoto.svg" class="ic" />
 
-          <div class="hInput hInput3">
+          <div class="hInput3">
             <div class="header">Life Expectancy</div>
             <app-custom-input [(ngModel)]="le" keyPress="op" [textOnTop]="'Y'" (ngModelChange)="onLEChange()"></app-custom-input>
           </div>
           <img src="assets/images/document.svg" class="ic" (click)="openLeDialog()" />
           <img src="assets/images/takePhoto.svg" class="ic" (click)="openCameraDialog()" />
 
-          <div class="hInput hInput4">
+          <div class="hInput4">
             <div class="header">IRR</div>
             <app-custom-input [(ngModel)]="irr" keyPress="op" [textOnTop]="'%'" (ngModelChange)="onIRRChange()"></app-custom-input>
           </div>
@@ -287,3 +287,4 @@ expected returns for new investors rise to a level of <span class="irrSpan">{{ir
     <div id="loadingText"></div>
   </div>
 </div>
+

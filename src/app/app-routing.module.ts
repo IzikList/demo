@@ -14,6 +14,7 @@ import { SplashComponent } from './splash/splash.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { MarketNewComponent } from './market-new/market-new.component';
 import { IndustryMapComponent } from './industry-map/industry-map.component';
+import { InteractiveMapComponent } from './interactive-map/interactive-map.component';
 
 const routes: Routes = [
   { path: 'p', component: PortfolyoComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'splash', component: SplashComponent },
   { path: 'home', component: HomepageComponent },
   { path: 'home/map', component: IndustryMapComponent },
+  { path: 'home/interactivemap', component: InteractiveMapComponent },
   { path: 'home2', component: MarketNewComponent },
   { path : '' , redirectTo : '/aws' , pathMatch: 'full' },
 ];
