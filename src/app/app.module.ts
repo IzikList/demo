@@ -91,6 +91,7 @@ import { BarComponent } from './homepage/bar/bar.component';
 import { IndustryMapComponent } from './industry-map/industry-map.component';
 import { DotsCaruselComponent } from './dots-carusel/dots-carusel.component';
 import { InteractiveMapComponent } from './interactive-map/interactive-map.component';
+import { MyPolicyComponent } from './my-policy/my-policy.component';
 // import { NuminputComponent } from './numinput/numinput.component';
 
 @NgModule({
@@ -135,7 +136,8 @@ import { InteractiveMapComponent } from './interactive-map/interactive-map.compo
     BarComponent,
     IndustryMapComponent,
     DotsCaruselComponent,
-    InteractiveMapComponent
+    InteractiveMapComponent,
+    MyPolicyComponent
   ],
   entryComponents: [DialogComponent, AttmarketDialogComponent, PremiumsDialogComponent, DialogLeComponent, DialogCameraComponent],
   imports: [
