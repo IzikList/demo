@@ -16,6 +16,26 @@ import { HttpClient } from '@angular/common/http';
 export class ReportComponent implements OnInit, AfterViewInit {
 
 
+  onBoardingFees: {
+    legal:        {val:  2000, name: 'Legal'},
+    provider:     {val:  3000, name: 'Provider'},
+    broker:       {val:  0,    name: 'Broker'},
+    pricing:      {val:  1000, name: 'Pricing'},
+    underwriting: {val: 1500,  name: 'Underwriting'},
+    other:        {val: 0,     name: 'Other'}
+  };
+
+  ongoingFees: {
+    legal:        {val:  250, name: 'Legal'},
+    provider:     {val:  0, name: 'Provider'},
+    broker:       {val:  0,    name: 'Broker'},
+    pricing:      {val:  250, name: 'Pricing'},
+    underwriting: {val: 250,  name: 'Underwriting'},
+    tracking:     {val: 250,  name: 'Tracking'},
+    other:        {val: 0,     name: 'Other'}
+  };
+
+
   datin = [{
     title: 'day 1',
     enforcedCash: 10000,
@@ -540,5 +560,8 @@ export class DialogCameraComponent implements OnInit {
   }
   done() {
     this.dialogRef.close();
+  }
+  goHome() {
+
   }
 }
