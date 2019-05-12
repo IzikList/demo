@@ -27,6 +27,7 @@ export class CustomInputComponent implements OnInit {
   private onChange: Function;
   private onTouched: Function;
 
+  isReadOnly = true;
   timeBetweenKeys = 500;
   formControl = new FormControl('');
   subscription: any;

@@ -16,6 +16,8 @@ import { MarketNewComponent } from './market-new/market-new.component';
 import { IndustryMapComponent } from './industry-map/industry-map.component';
 import { InteractiveMapComponent } from './interactive-map/interactive-map.component';
 import { MyPolicyComponent } from './my-policy/my-policy.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   { path: 'p', component: PortfolyoComponent },
@@ -34,6 +36,8 @@ const routes: Routes = [
   { path: 'home/interactivemap', component: InteractiveMapComponent },
   { path: 'home2', component: MarketNewComponent },
   { path: 'home/mypolicy', component: MyPolicyComponent },
+  { path: 'home/login', component: LoginPageComponent },
+  { path: 'home/registration', component: RegistrationComponent },
   { path : '' , redirectTo : '/aws' , pathMatch: 'full' },
 ];
 

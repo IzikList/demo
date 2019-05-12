@@ -1,7 +1,8 @@
 <div style="background-color: #EEEEEE; ">
   <div style="background-color: #E2E2E2; height: 15mm; box-shadow: 1mm 0.7mm 0.7mm #b1b1b1">
     <div style="position: absolute; text-align: center; left: 50%; transform: translate(-50%, 0%); line-height: 15mm;     font-family: 'Open Sans'; font-weight: 600; font-size: 6mm;">Policy Info</div>
-    <img src="assets/images/logo.svg" style="width: 30mm; height: 12mm; top: 50%; transform: translate(0%, -50%); position: relative; margin-left: 4mm;" routerLink="/home"/>
+    <img src="assets/images/logo.svg" style="width: 30mm; height: 12mm; top: 50%; transform: translate(0%, -50%); position: relative; margin-left: 4mm;"
+      routerLink="/home" />
   </div>
   <div style="width: 210mm; margin: auto">
     <mat-card style="padding: 0px; margin-top: 13mm;">
@@ -32,6 +33,21 @@
             <app-custom-input [(ngModel)]="irr" keyPress="op" [textOnTop]="'%'" (ngModelChange)="onIRRChange()"></app-custom-input>
           </div>
         </div>
+        <div style="display: inline-flex; margin-bottom: 8mm;">
+          <div class="hInput5" >
+            <div class="header">Ongoing Fees</div>
+            <app-custom-input [(ngModel)]="ongoingFeesSum" keyPress="op" [textOnTop]="'$'" (ngModelChange)="onIRRChange()"></app-custom-input>
+          </div>
+          <img src="assets/images/document.svg" class="ic" (click)="openOngoingDialog()" />
+          <div class="hInput5" style="margin-left: 10px;">
+            <div class="header">Onboarding Fees</div>
+            <app-custom-input [(ngModel)]="onBoardingFeesSum" keyPress="op" [textOnTop]="'$'" (ngModelChange)="onIRRChange()"></app-custom-input>
+          </div>
+          <img src="assets/images/document.svg" class="ic" (click)="openOnboardingDialog()" />
+
+        </div>
+
+
         <div style="text-align: center; width: 100%">
           <input type="button" value="Issue Report" class="inputReport" (click)="report()" />
         </div>
@@ -48,14 +64,15 @@
           Monetization & Valuation Forecast
         </div>
         <div class="line3" style="font-size: 4mm; color: #3588A0; font-family: 'Open Sans'; font-weight: 600">
-          Face Value: {{amount | number}} <span style="padding-left:5em"></span> Certificate Date: {{mDate | date:'dd/MM/yy'}} <span style="padding-left:5em"></span>
-                    <!--Policy Date Issue: 2\02\2012-->
+          Face Value: {{amount | number}} <span style="padding-left:5em"></span> Certificate Date: {{mDate | date:'dd/MM/yy'}}
+          <span style="padding-left:5em"></span>
+          <!--Policy Date Issue: 2\02\2012-->
         </div>
         <div class="seperator1"></div>
         <div class="mHeader">
           Forecast Overview
         </div>
-        
+
 
         <table class="mTable" id="table1">
           <tr>
@@ -134,9 +151,8 @@
           High Performing Market
         </div>
         <div class="secondary">
-          This forecast refers to a future 'bull market' where efficiency and liquidity bring
-high demand and expected returns for new investors down to a level of <span class="irrSpan">{{irr - 4}}%</span>
-IRRs.
+          This forecast refers to a future 'bull market' where efficiency and liquidity bring high demand and expected returns for
+          new investors down to a level of <span class="irrSpan">{{irr - 4}}%</span> IRRs.
         </div>
 
 
@@ -172,15 +188,15 @@ IRRs.
         <div id="tableDescription">
           <div id="tableDescription_line1" class="tableLines">
             <span class="tHeaderColor1">Coverage in force</span> – Represents the life insurance coverage remaining by the
-seller at sudden death.
+            seller at sudden death.
           </div>
           <div id="tableDescription_line2" class="tableLines">
             <span class="tHeaderColor2">Coverage sold</span> – Represents the portion of the policy sold to investors for
-covering premiums.
+            covering premiums.
           </div>
           <div id="tableDescription_line3" class="tableLines">
-            <span class="tHeaderColor3">Current/immediate liquidation price</span> -  Represents the immediate income for
-the policy holder in an event of selling all interest in the policy.
+            <span class="tHeaderColor3">Current/immediate liquidation price</span> - Represents the immediate income for
+            the policy holder in an event of selling all interest in the policy.
           </div>
 
         </div>
@@ -196,9 +212,8 @@ the policy holder in an event of selling all interest in the policy.
           Stable Performing Market
         </div>
         <div class="secondary">
-          This forecast refers to a future steady market where expected returns for
-investors stay at similar levels to the current bids, maintaining the <span class="irrSpan">{{irr}}%</span> IRR
-predictions.
+          This forecast refers to a future steady market where expected returns for investors stay at similar levels to the current
+          bids, maintaining the <span class="irrSpan">{{irr}}%</span> IRR predictions.
         </div>
 
 
@@ -240,8 +255,8 @@ predictions.
           Low - Performing Market
         </div>
         <div class="secondary">
-          This forecast refers to a future &#39;bear market&#39; where there is low demand and
-expected returns for new investors rise to a level of <span class="irrSpan">{{irr + 4}}%</span> IRRs.
+          This forecast refers to a future &#39;bear market&#39; where there is low demand and expected returns for new investors rise
+          to a level of <span class="irrSpan">{{irr + 4}}%</span> IRRs.
         </div>
 
 
@@ -287,4 +302,3 @@ expected returns for new investors rise to a level of <span class="irrSpan">{{ir
     <div id="loadingText"></div>
   </div>
 </div>
-

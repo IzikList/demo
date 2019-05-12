@@ -1,0 +1,84 @@
+.top > div {
+    display: inline-block;
+    width: 191px;
+    height: 93px;
+    padding-left: 17.5px;
+    padding-right: 17.5px;
+    font-size: 14px;
+}
+
+.top {
+    margin-left: 37px;
+}
+
+/*.regLeft, .regLeft div {
+    background-color: white;
+}*/
+
+.title {
+    height: 38px;
+    font-size: 38px;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.topColor {
+    background-color:  #2E7E98;
+    color: white;
+}
+
+.topHeader {
+    color: #2E7E97;
+    font-size: 18px;
+}
+
+#seperator {
+    width: 0.5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #2E7E97;
+    padding: 0px;
+}
+
+.topColor  .topHeader {
+    color: white;
+}
+
+.input1 {
+    height: 61px;
+}
+
+.input2 {
+    height: 37px;
+}
+
+.regInput {
+  position: relative;
+  width: 385px;
+  border-radius: 5px;
+  outline: none;
+  padding: 5px;
+  border: 1px solid lightblue;
+}
+
+.placeholder {
+  position: absolute;
+  left: 0px;
+  top: 2px;
+  width: 100%;
+  color: #2E344A;
+  font-size: 13px;
+  text-align: center;
+}
+
+.inputContainer {
+    position: relative;
+    width: 385px;
+}
+
+.regInput:focus ~ .placeholder,
+.regInput:valid ~ .placeholder {
+  display: none;
+}

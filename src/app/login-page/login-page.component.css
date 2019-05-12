@@ -1,0 +1,38 @@
+#container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#contentCenter {
+    width: 1020px;
+    height: 100%;
+    background-color: red;
+    position: absolute;
+    margin: auto;
+}
+#content {
+    width: 100%;
+    height: 522px;
+    background-color: green;
+    position: absolute;
+    top: 50%;
+    margin-top: -261px;;
+}
+
+.buttonJoin {
+    background-color: #2E7E98;
+    width: 247px;
+    height: 48px;
+    font-size: 22px;
+    font-weight: 800;
+    text-align: center;
+    color: white;
+}
+
+.rightSide {
+    display: inline-block;
+}
+
+.leftSide{
+    display: inline-block;
+}

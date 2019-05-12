@@ -19,6 +19,7 @@ import { AttmarketDialogComponent } from './market/investing/investing.component
 import { PremiumsDialogComponent } from './single-unit-existing/single-unit-existing.component';
 import { DialogLeComponent } from './single-unit-existing/single-unit-existing.component';
 import { DialogCameraComponent } from './clients/report/report.component';
+import { DialogOnboardingComponent } from './clients/report/report.component';
 import { TextareaExpandedComponent } from './numinput/test';
 import { NgModelBaseComponent } from './numinput/NgModelBase';
 import { SlideshowModule } from 'ng-simple-slideshow';
@@ -92,6 +93,8 @@ import { IndustryMapComponent } from './industry-map/industry-map.component';
 import { DotsCaruselComponent } from './dots-carusel/dots-carusel.component';
 import { InteractiveMapComponent } from './interactive-map/interactive-map.component';
 import { MyPolicyComponent } from './my-policy/my-policy.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegistrationComponent } from './registration/registration.component';
 // import { NuminputComponent } from './numinput/numinput.component';
 
 @NgModule({
@@ -107,6 +110,7 @@ import { MyPolicyComponent } from './my-policy/my-policy.component';
     AttmarketDialogComponent,
     PremiumsDialogComponent,
     DialogLeComponent,
+    // DialogOnboardingComponent,
     // NuminputComponent,
     TextareaExpandedComponent,
     NgModelBaseComponent,
@@ -130,6 +134,7 @@ import { MyPolicyComponent } from './my-policy/my-policy.component';
     CustomInputComponent,
     MobileComponent,
     DialogCameraComponent,
+    DialogOnboardingComponent,
     HomepageComponent,
     MarketNewComponent,
     InvestComponent,
@@ -137,9 +142,18 @@ import { MyPolicyComponent } from './my-policy/my-policy.component';
     IndustryMapComponent,
     DotsCaruselComponent,
     InteractiveMapComponent,
-    MyPolicyComponent
+    MyPolicyComponent,
+    LoginPageComponent,
+    RegistrationComponent
   ],
-  entryComponents: [DialogComponent, AttmarketDialogComponent, PremiumsDialogComponent, DialogLeComponent, DialogCameraComponent],
+  entryComponents: [
+    DialogComponent,
+    AttmarketDialogComponent,
+    PremiumsDialogComponent,
+    DialogLeComponent,
+    DialogCameraComponent,
+    DialogOnboardingComponent
+    ],
   imports: [
     BrowserModule,
     MatSidenavModule,
