@@ -523,7 +523,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
   }
 
   openOngoingDialog() {
-    const dialogRef = this.dialog.open(DialogOnboardingComponent, { data: this.ongoingFees });
+    const dialogRef = this.dialog.open(DialogOnboardingComponent, { data: {arr: this.ongoingFees, title: 'Annual Ongoing Fees' }});
     dialogRef.afterClosed().subscribe(responce => {
       console.log(responce);
       if (responce != null) {
@@ -535,7 +535,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
   }
 
   openOnboardingDialog() {
-    const dialogRef = this.dialog.open(DialogOnboardingComponent, { data: this.onBoardingFees });
+    const dialogRef = this.dialog.open(DialogOnboardingComponent, { data: {arr: this.onBoardingFees, title: 'Onboarding Fees'}});
     dialogRef.afterClosed().subscribe(responce => {
       console.log(responce);
       if (responce != null) {
@@ -616,10 +616,12 @@ export class DialogCameraComponent implements OnInit {
 export class DialogOngoingComponent implements OnInit {
 
   myObj = [{sumDies: ''}];
+  title = '';
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DialogLeComponent>) { }
 
   ngOnInit() {
     console.log(this.data);
+    this.title = this.data.title;
     const arr = this.data ? this.data.arr : [53, 70, 83, 91, 93, 96, 94, 87, 80, 74, 62, 48, 33, 20, 10, 4, 2];
     this.myObj[0].sumDies = '' + arr[0];
     for (let index = 1; index < arr.length; index++) {
@@ -650,11 +652,12 @@ export class DialogOngoingComponent implements OnInit {
 export class DialogOnboardingComponent implements OnInit {
   objectKeys = Object.keys;
   myObj = {};
+  title = '';
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DialogLeComponent>) { }
 
   ngOnInit() {
-    console.log(this.data);
-    this.myObj = this.data;
+    this.myObj = this.data.arr;
+    this.title = this.data.title;
   }
 
   onNoClick(): void {
