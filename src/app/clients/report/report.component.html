@@ -91,7 +91,7 @@
           </tr>
           <tr>
             <td class="col1">
-              High Performing Market
+              High Performing Market - {{irr - 4}}% IRR
             </td>
             <td>
               <app-chart-canvas #chart [toPc]="data.lineA.chartA"></app-chart-canvas>
@@ -108,7 +108,7 @@
           </tr>
           <tr style="background-color: #E6E7E8">
             <td class="col1">
-              Stable Performing Market
+              Stable Performing Market - {{irr}}% IRR
             </td>
 
             <td>
@@ -127,7 +127,7 @@
           </tr>
           <tr>
             <td class="col1">
-              Low Performing Market
+              Low Performing Market - {{irr + 4}}% IRR
             </td>
             <td>
               <app-chart-canvas #chart31 [toPc]="data.lineC.chartA"></app-chart-canvas>

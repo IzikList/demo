@@ -1,22 +1,22 @@
-<div style="height: 521px; background-color: white;">
+<div style="height: 521px; background-color: white; width: fit-content;">
   <div class="regLeft" style="background-color: white; width: 546px;">
     <div class="title">I AM</div>
     <div class="top">
-      <div class="topColor">
+      <div [ngClass]="[! investorView ? 'selectedSection' : 'unselectedSection' ]" (click)="investorView = false">
         <div class="topHeader">Policyholder</div>
         <p>looking to get rid of the monthly premiums</p>
       </div>
       <div id="seperator"></div>
-      <div>
+      <div [ngClass]="[investorView ? 'selectedSection' : 'unselectedSection' ]" (click)="investorView = true">
         <div class="topHeader">Investor</div>
         <p>looking to invest in a smart and Fair Way in the Life settlement Market</p>
       </div>
 
     </div>
 
-    <div style="margin-left: 37px;">
-      <div><span>Keep me posted</span> I would like to receive relevant offers</div>
-      <div><span>Let's talk</span> I am interested in scheduling a phone call to learn more</div>
+    <div style="margin-left: 37px; clear: both;">
+      <div><input type="checkbox"><span class="bold">Keep me posted</span> I would like to receive relevant offers</div>
+      <div><input type="checkbox"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</div>
 
     </div>
 
@@ -37,7 +37,11 @@
 
     </div>
   </div>
-  <div class="regRight" >
-    <img src="assets/images/reg_investor.png" style="height: 521px;"/>
+  <div style="float:right">
+    <div class="regRight_investor" *ngIf="investorView">
+    </div>
+    <div class="regRight_client" *ngIf="! investorView">
+    </div>
+
   </div>
 </div>

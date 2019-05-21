@@ -1,19 +1,53 @@
 .top > div {
-    display: inline-block;
     width: 191px;
     height: 93px;
     padding-left: 17.5px;
     padding-right: 17.5px;
     font-size: 14px;
+    float: left;
 }
 
 .top {
     margin-left: 37px;
 }
 
-/*.regLeft, .regLeft div {
+.bold {
+    font-weight: 800;
+}
+
+.selectedSection {
+    background-color:  #2E7E98;
+    color: white;
+}
+.unselectedSection {
     background-color: white;
-}*/
+    color: #2E7E98;
+}
+
+.regLeft {
+    background-color: red;
+    width: 546px;
+    height: 521px;
+    float: left;
+}
+
+.regRight_investor {
+    width: 474px;
+    height: 521px;
+    background-color: cyan;
+    float: right;
+    background-image: url('../../assets/images/reg_clients.png');
+    background-size: contain;
+}
+
+.regRight_client {
+    width: 474px;
+    height: 521px;
+    background-color: cyan;
+    float: right;
+    background-image: url('../../assets/images/reg_investor.png');
+    background-size: contain;
+}
 
 .title {
     height: 38px;
@@ -24,13 +58,8 @@
     text-align: center;
 }
 
-.topColor {
-    background-color:  #2E7E98;
-    color: white;
-}
 
 .topHeader {
-    color: #2E7E97;
     font-size: 18px;
 }
 
@@ -42,9 +71,6 @@
     padding: 0px;
 }
 
-.topColor  .topHeader {
-    color: white;
-}
 
 .input1 {
     height: 61px;
@@ -84,4 +110,18 @@
 .regInput:focus ~ .placeholder,
 .regInput:valid ~ .placeholder {
   display: none;
+}
+
+.left {
+    width: 546px;
+    height: 521px;
+    background-color: red;
+    display: inline-block;
+}
+
+.right {
+    width: 474px;
+    height: 521px;
+    background-color: cyan;
+    display: inline-block;
 }
