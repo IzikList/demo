@@ -92,7 +92,7 @@ export class ReportComponent implements OnInit, AfterViewInit {
   irr = 15;
   le = 7;
   les = [53, 70, 83, 91, 93, 96, 94, 87, 80, 74, 62, 48, 33, 20, 10, 4, 2];
-  premiums = 15 * 1000;
+  premiums = 30 * 1000;
   premiumsArray = [];
   totalPremiums = 0;
   discount = 0;

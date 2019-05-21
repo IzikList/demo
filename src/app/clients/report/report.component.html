@@ -36,12 +36,12 @@
         <div style="display: inline-flex; margin-bottom: 8mm;">
           <div class="hInput5" >
             <div class="header">Ongoing Fees</div>
-            <app-custom-input [(ngModel)]="ongoingFeesSum" keyPress="op" [textOnTop]="'$'" (ngModelChange)="onIRRChange()"></app-custom-input>
+            <app-custom-input [(ngModel)]="ongoingFeesSum" keyPress="op" [textOnTop]="'$'" (ngModelChange)="onIRRChange()" dis="true" ></app-custom-input>
           </div>
           <img src="assets/images/document.svg" class="ic" (click)="openOngoingDialog()" />
           <div class="hInput5" style="margin-left: 10px;">
             <div class="header">Onboarding Fees</div>
-            <app-custom-input [(ngModel)]="onBoardingFeesSum" keyPress="op" [textOnTop]="'$'" (ngModelChange)="onIRRChange()"></app-custom-input>
+            <app-custom-input [(ngModel)]="onBoardingFeesSum" keyPress="op" [textOnTop]="'$'" (ngModelChange)="onIRRChange()" dis="true"></app-custom-input>
           </div>
           <img src="assets/images/document.svg" class="ic" (click)="openOnboardingDialog()" />
 

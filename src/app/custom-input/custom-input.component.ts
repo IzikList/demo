@@ -23,11 +23,11 @@ export class CustomInputComponent implements OnInit {
 
   @Input() keyPress: Function;
   @Input() delayKeys: Number = 300;
+  @Input() dis: Boolean = null;
   @Input() textOnTop = '$';
   private onChange: Function;
   private onTouched: Function;
 
-  isReadOnly = true;
   timeBetweenKeys = 500;
   formControl = new FormControl('');
   subscription: any;

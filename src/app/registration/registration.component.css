@@ -55,12 +55,12 @@
 }
 
 .regInput {
-  position: relative;
-  width: 385px;
-  border-radius: 5px;
-  outline: none;
-  padding: 5px;
-  border: 1px solid lightblue;
+    position: relative;
+    width: 385px;
+    outline: none;
+    padding: 5px;
+    border: 1px solid #2E7E97;
+    margin-top: 10px;
 }
 
 .placeholder {
@@ -71,13 +71,16 @@
   color: #2E344A;
   font-size: 13px;
   text-align: center;
+  margin-top: 10px;
 }
 
 .inputContainer {
     position: relative;
     width: 385px;
 }
-
+.inputContainer input {
+    width: 100%;
+}
 .regInput:focus ~ .placeholder,
 .regInput:valid ~ .placeholder {
   display: none;
