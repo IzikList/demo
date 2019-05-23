@@ -1,46 +1,51 @@
-<div style="height: 521px; background-color: white; width: fit-content;">
+<div style="height: 521px; background-color: white; width: fit-content;     font-family: 'Assistant';">
   <div class="regLeft" style="background-color: white; width: 546px;">
     <div class="title">I AM</div>
     <div class="top">
       <div [ngClass]="[! investorView ? 'selectedSection' : 'unselectedSection' ]" (click)="investorView = false">
-        <div class="topHeader">Policyholder</div>
-        <p>looking to get rid of the monthly premiums</p>
+        <div class="topHeader">a Policyholder</div>
+        <div class="contentLeft">looking to get rid of the monthly premiums</div>
       </div>
       <div id="seperator"></div>
       <div [ngClass]="[investorView ? 'selectedSection' : 'unselectedSection' ]" (click)="investorView = true">
-        <div class="topHeader">Investor</div>
-        <p>looking to invest in a smart and Fair Way in the Life settlement Market</p>
+        <div class="topHeader">an Investor</div>
+        <div class="contentRight">looking to invest in a smart and Fair Way in the Life settlement Market</div>
       </div>
 
     </div>
-
-    <div style="margin-left: 37px; clear: both;">
-      <div><input type="checkbox"><span class="bold">Keep me posted</span> I would like to receive relevant offers</div>
-      <div><input type="checkbox"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</div>
+    <div style="margin-left: 37px; clear: both;     padding-top: 30px;">
+      <div><input type="checkbox" class="regLine1" [(ngModel)]="allowEmail"><span class="bold">Keep me posted</span> I would like to receive relevant offers</div>
+      <div style="margin-top: 17px;"><input type="checkbox" class="regLine1" [(ngModel)]="waitForCall"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</div>
 
     </div>
 
-    <div style="margin-left: 37px;">
+    <div style="margin-left: 37px; margin-top: 22px;">
       <div class="inputContainer">
-        <input required class="regInput input1" />
+        <input required class="regInput input1" [(ngModel)]="userText"/>
         <span class="placeholder">Have anything to add</span>
       </div>
       <div class="inputContainer">
-        <input class="mInput regInput" placeholder="Email:" />
+        <input class="mInput regInput" placeholder="Email:" [(ngModel)]="email"/>
       </div>
-      <div class="inputContainer">
-        <input class="regInput" placeholder="Name:" />
+      <div class="inputContainer" style="white-space: nowrap">
+        <input class="regInput" style="width: 48%" placeholder="Name:" [(ngModel)]="firstName"/>
+        <input class="regInput" style="width: 48%; margin-left: 1%;" placeholder="Phone Number:"  [(ngModel)]="phoneNumber"/>
       </div>
-      <div class="inputContainer">
-        <input class="regInput" placeholder="Phone Number:" />
-      </div>
+
+      <div class="inputContainer" style="background-color: #2E7E98; color: white; text-align: center; margin-top: 10px; padding: 6px;" (click)="register()">Send</div>
 
     </div>
   </div>
+
   <div style="float:right">
     <div class="regRight_investor" *ngIf="investorView">
     </div>
     <div class="regRight_client" *ngIf="! investorView">
+      <div class="investorContainer">
+        <div class="investorText">A PURE</div>
+        <div class="alpha">α</div>
+        <div class="investorText">INVESTMENT</div>
+      </div>
     </div>
 
   </div>

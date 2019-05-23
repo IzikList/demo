@@ -5,6 +5,7 @@
     padding-right: 17.5px;
     font-size: 14px;
     float: left;
+    text-align: center;
 }
 
 .top {
@@ -15,12 +16,20 @@
     font-weight: 800;
 }
 
+.investorText {
+    font-size: 59px;
+}
+
+.alpha {
+    font-size: 88px;
+}
+
 .selectedSection {
     background-color:  #2E7E98;
     color: white;
 }
 .unselectedSection {
-    background-color: white;
+    background-color: #EBEBEB;
     color: #2E7E98;
 }
 
@@ -47,6 +56,17 @@
     float: right;
     background-image: url('../../assets/images/reg_investor.png');
     background-size: contain;
+    position: relative;
+}
+
+.investorContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;    
 }
 
 .title {
@@ -61,6 +81,7 @@
 
 .topHeader {
     font-size: 18px;
+    margin-top: 7px;
 }
 
 #seperator {
@@ -71,6 +92,9 @@
     padding: 0px;
 }
 
+.regLine1{
+    margin-right: 8px; 
+}
 
 .input1 {
     height: 61px;
@@ -78,6 +102,15 @@
 
 .input2 {
     height: 37px;
+}
+
+.contentLeft{
+    padding: 10px;
+}
+
+.contentRight {
+    margin-top: 4px;
+    padding: 0px 10px 0px 10px;
 }
 
 .regInput {

@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { RegistrationComponent } from '../registration/registration.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-homepage',
@@ -34,7 +36,7 @@ export class HomepageComponent implements OnInit, AfterViewInit {
   bindAnimateFunction;
   animationState = false;
   timeOutObj;
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
     const a = 5;
@@ -139,6 +141,17 @@ export class HomepageComponent implements OnInit, AfterViewInit {
     }
   }
 
+  test() {
+        const dialogRef = this.dialog.open(RegistrationComponent, { });
+    dialogRef.afterClosed().subscribe(responce => {
+      console.log(responce);
+      if (responce != null) {
+        // this.ongoingFees = responce.arr;
+        // this.getOngoingFees();
+      }
+    });
+
+  }
 
 
   // test() {
