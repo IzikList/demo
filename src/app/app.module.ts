@@ -95,6 +95,7 @@ import { InteractiveMapComponent } from './interactive-map/interactive-map.compo
 import { MyPolicyComponent } from './my-policy/my-policy.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { PolicyForecastComponent } from './policy-forecast/policy-forecast.component';
 // import { NuminputComponent } from './numinput/numinput.component';
 
 @NgModule({
@@ -144,7 +145,8 @@ import { RegistrationComponent } from './registration/registration.component';
     InteractiveMapComponent,
     MyPolicyComponent,
     LoginPageComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    PolicyForecastComponent
   ],
   entryComponents: [
     DialogComponent,

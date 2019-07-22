@@ -201,6 +201,14 @@
 .phoneOpenMenu {
     display: none;
 }
+
+#hamburgerButton{
+    outline: none;
+}
+
+
+
+
 @media screen and (max-width: 845px) {
     .showPhone {
         display: block;

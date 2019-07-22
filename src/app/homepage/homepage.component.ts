@@ -9,22 +9,22 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class HomepageComponent implements OnInit, AfterViewInit {
 
-  //   imageUrlArray = [
-  //   { url: 'https://cdn.vox-cdn.com/uploads/chorus_image/image/56748793/dbohn_170625_1801_0018.0.0.jpg', caption: 'The first slide', href: '#config' },
-  //   { url: 'https://cdn.vox-cdn.com/uploads/chorus_asset/file/9278671/jbareham_170917_2000_0124.jpg', clickAction: () => alert('custom click function') },
-  //   { url: 'https://cdn.vox-cdn.com/uploads/chorus_image/image/56789263/akrales_170919_1976_0104.0.jpg', caption: 'Apple TV', href: 'https://www.apple.com/' },
-  //   'https://cdn.vox-cdn.com/uploads/chorus_image/image/56674755/mr_pb_is_the_best.0.jpg',
-  //   { url: 'assets/kitties.jpg', backgroundSize: 'contain', backgroundPosition: 'center' }
-  // ];
-
   imageUrlArray = [
-    {url: '/assets/images/happy.jpg', text: 'Maximize the value of your asset, you <span class="bold">deserve it</span>',
+    // {url: '/assets/images/happy.jpg', text: 'Maximize the value of your asset, you <span class="bold">deserve it</span>',
+    //  btnText: 'Learn More'},
+    // {url: '/assets/images/happy_9.jpg', text: 'Life insurance is valuable, we want you to <span class="bold">keep it!</span>',
+    //   btnText: 'Get Policy Forecast', goto: '/clients/report'},
+    // {url: '/assets/images/investing.png', text: 'Investing In <span class="bold">' +
+    //   'Life Settlements</span><br /><span class="bold">Made Simple</span>, Secure & Liquid',
+    //   btnText: 'Go To Market', goto: '/aws'}
+    {url: '/assets/images/senior1.jpg', text: 'Maximize the value of your asset, you <span class="bold">deserve it</span>',
      btnText: 'Learn More'},
-    {url: '/assets/images/happy_9.jpg', text: 'Life insurance is valuable, we want you to <span class="bold">keep it!</span>',
+    {url: '/assets/images/senior2.jpg', text: 'Life insurance is valuable, we want you to <span class="bold">keep it!</span>',
       btnText: 'Get Policy Forecast', goto: '/clients/report'},
-    {url: '/assets/images/investing.png', text: 'Investing In <span class="bold">' +
+    {url: '/assets/images/senior3.jpg', text: 'Investing In <span class="bold">' +
       'Life Settlements</span><br /><span class="bold">Made Simple</span>, Secure & Liquid',
       btnText: 'Go To Market', goto: '/aws'}
+
     ];
   position = 0;
   amount;

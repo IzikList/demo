@@ -8,9 +8,13 @@ var db = process.env.MONGO_URI || 'mongodb://List:ListDemo1@ds013004.mlab.com:13
 mongoose.connect(db);
 
 const app = express();
+app.use(function(req, res, next){console.log('req'); next();})
 app.use('/api', bodyParser.json({ limit: '5mb' }));
 
-// var mainRouter = require("./routes/mainRoutes");
+var providorRoute  = require('./server/routes/providorRoutes.js');
+app.use('/api', function(req, res){
+    console.log('sss');
+});
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/list'));
@@ -37,6 +41,7 @@ app.use('/api', function(req, res, next) { //__setxhr_
 });
 
 var userRoutes  = require('./server/routes/userRoutes.js');
+
 app.post('/api/register', function(req, res){
     var controloer = require('./server/controllers/registartionController.js');
     controloer.register(req, res);
