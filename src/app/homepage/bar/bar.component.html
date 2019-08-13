@@ -5,7 +5,7 @@
   </div>
   <div class="menuCenter">
     <div style="color: white; margin-top: 20px;">
-      <div class="menu_bar">
+      <div class="menu_bar menuInvest">
         <span class="menuSpan">INVEST</span>
         <div class="drp_dwn">
           <div class="menuItem" routerLink="/aws">
@@ -56,10 +56,10 @@
       </div>
       <div class="menuHamburger">
         <button class="hamburger hamburger--collapse" type="button" id="hamburgerButton" (click)="toggle()">
-  <span class="hamburger-box">
-    <span class="hamburger-inner"></span>
-  </span>
-</button>
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
 
       </div>
     </div>
@@ -106,7 +106,31 @@
     <div class="item">SIGN IN</div>
   </div>
 
-<div class="section collapsible" style="width: 100%; height: 300px; background-color: red; position: absolute;">
+  <div class="section collapsible collapsed" style="width: 100%; height: 300px; background-color: #fff; position: absolute; z-index: -1">
+    <div style="width: 37%; height: 100%; background-image: url('/assets/images/bar_left_background.png'); display: inline-block"></div>
+    <div style="display: inline-block; width: 63%; height: 100%; position: absolute; margin-top: 80px;">
+      <div style="float: left">
+        <ul>
+          <li *ngFor="let item of investorItems">
+            {{item.name}}
+          </li>
+        </ul>
+      </div>
+      <div style="float: left">
+        <ul>
+          <li *ngFor="let item of policyItems">
+            {{item.name}}
+          </li>
+        </ul>
+      </div>
 
-</div>
+      <div style="float: left">
+        <ul>
+          <li *ngFor="let item of generalItems">
+            {{item.name}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

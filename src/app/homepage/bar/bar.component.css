@@ -4,24 +4,6 @@
     background-image: -o-linear-gradient(#D5E7EB, white);
     background-image: linear-gradient(#D5E7EB, white);
 }
-.imageReg {
-    display: block;
-}
-
-.imageHover {
-    display: none;
-}
-.header:hover .imageReg {
-    display: none;
-}
-
-.header:hover .menu_bar {
-    color: black;
-}
-.header:hover .menu_bar:hover {
-    color: #5ACAEB;
-}
-
 .button {
     background-color: #1D6075
 }
@@ -39,53 +21,6 @@
     transform: translateY(-50%);
     top: 50%;
     margin-left: 5.7%;
-}
-
-.menu_bar {
-    position: relative;
-    display: inline-block;
-    color: white;
-    background: none;
-    border: none;
-    outline: none;
-    z-index: 1;
-    cursor: default;
-}
-.menu_bar:hover {
-    color: #5ACAEB;
-}
-.menuSpan {
-    margin-left: 3vw;
-    margin-right: 3vw;
-    font-weight: 500;
-}
-.menuItem {
-    outline: none;
-    font-weight: 300;
-    line-height: 30px;
-    cursor: pointer;
-}
-
-.drp_dwn {
-    display: none;
-    position: absolute;
-    background-color: white;
-    width: 100%;
-    padding-left: 40px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: 15px;
-    text-align: left;
-    color: #1D6075
-}
-.menu_bar:hover .drp_dwn {
-    display: block;
-}
-.menuCenter {
-    position: absolute;
-    width: 100%;
-    /*top: 1.5rem;*/
-    text-align: center;
 }
 
 .carousel{
@@ -165,12 +100,6 @@
     border-right: 4px solid transparent;  
     border-top: 6px solid white;
     margin-top: 10px;
-}
-.header:hover .arrow{
-    border-top: 6px solid black;
-}
-.header:hover  .menu_bar:hover .arrow {
-    border-top: 6px solid #5ACAEB;
 }
 .menuRight {
     position: absolute;

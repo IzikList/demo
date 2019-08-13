@@ -15,8 +15,8 @@
 
     </div>
     <div style="margin-left: 37px; clear: both;     padding-top: 30px;">
-      <div><label><input type="checkbox" class="regLine1" [(ngModel)]="allowEmail"><span class="bold">Keep me posted</span> I would like to receive relevant offers</label></div>
-      <div style="margin-top: 17px;"><label><input type="checkbox" class="regLine1" [(ngModel)]="waitForCall"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</label></div>
+      <div><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><span class="bold">Keep me posted</span> I would like to receive relevant offers</label></div>
+      <div style="margin-top: 17px;"><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</label></div>
 
     </div>
 

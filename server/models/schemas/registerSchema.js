@@ -20,6 +20,12 @@ var regModule = new Schema({
     userText: {
         type: String
     },
+    isInvestor: {
+        type: Boolean
+    },
+    isPolicyHolder: {
+        type: Boolean
+    },
     meta: {
         type: {}
     }

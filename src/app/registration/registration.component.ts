@@ -19,7 +19,7 @@ export class RegistrationComponent implements OnInit {
   waitForCall: Boolean;
 
   constructor(private http: HttpClient, @Inject(MAT_DIALOG_DATA) public data: any,
-   private dialogRef: MatDialogRef<RegistrationComponent>) { }
+    private dialogRef: MatDialogRef<RegistrationComponent>) { }
 
   ngOnInit() {
   }
@@ -27,8 +27,16 @@ export class RegistrationComponent implements OnInit {
   register() {
     console.log(this.firstName, this.email, this.phoneNumber, this.userText);
     this.http.post('/api/register', {
-      firstName: this.firstName, email: this.email, phoneNumber: this.phoneNumber, userText: this.userText,
-      meta: {allowEmail: this.allowEmail, waitForCall: this.waitForCall}
+      isInvestor: this.investorView,
+      isPolicyHolder: !this.investorView,
+      firstName: this.firstName,
+      email: this.email,
+      phoneNumber: this.phoneNumber,
+      userText: this.userText,
+      meta: {
+        allowEmail: this.allowEmail,
+        waitForCall: this.waitForCall
+      }
     }).subscribe(data => {
       this.dialogRef.close();
     }, error => {

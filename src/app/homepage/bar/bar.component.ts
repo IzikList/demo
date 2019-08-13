@@ -9,6 +9,29 @@ export class BarComponent implements OnInit {
 
   opened;
   collapsed = true;
+  investorItems = [
+    {name: 'My portfolio',  style: ''},
+    {name: 'Marketplace',   style: ''},
+    {name: 'Returns',       style: ''},
+    {name: 'How it works',  style: ''},
+    {name: 'Get started',   style: ''}
+  ];
+  policyItems = [
+    {name: 'My policy',  style: ''},
+    {name: 'Customer support',   style: ''},
+    {name: 'How it works',       style: ''},
+    {name: 'Get started',   style: ''}
+  ];
+
+  generalItems = [
+    {name: 'About',  style: ''},
+    {name: 'L.S market overview',   style: ''},
+    {name: 'FAQ',       style: ''},
+    {name: 'Code of ethics',  style: ''},
+    {name: 'Press',   style: ''},
+    {name: 'Contact us',   style: ''},
+    {name: 'Take a tour',   style: ''}
+  ];
   constructor() { }
 
   ngOnInit() {
@@ -29,8 +52,9 @@ export class BarComponent implements OnInit {
   toggle() {
     document.getElementById('hamburgerButton').classList.toggle('is-active');
     // Look ma, [very little] Javascript!
-    document.querySelector('.section.collapsible').classList.toggle('collapsed');  
+    document.querySelector('.section.collapsible').classList.toggle('collapsed');
+    document.getElementById('header').classList.toggle('header');
+    document.getElementById('header').classList.toggle('barOpened');
   }
-
 
 }

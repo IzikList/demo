@@ -8,18 +8,21 @@ var db = process.env.MONGO_URI || 'mongodb://List:ListDemo1@ds013004.mlab.com:13
 mongoose.connect(db);
 
 const app = express();
-app.use(function(req, res, next){console.log('req'); next();})
+app.use(function (req, res, next) {
+    console.log('req');
+    next();
+})
 app.use('/api', bodyParser.json({ limit: '5mb' }));
 
-var providorRoute  = require('./server/routes/providorRoutes.js');
-app.use('/api', function(req, res){
-    console.log('sss');
+var providorRoute = require('./server/routes/providorRoutes.js');
+app.use('/api', function (req, res, next) {
+    next();
 });
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/list'));
 
-app.use('/api', function(req, res, next) { //__setxhr_
+app.use('/api', function (req, res, next) { //__setxhr_
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'accept, Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, x-access-token, __setxhr_');
@@ -40,18 +43,23 @@ app.use('/api', function(req, res, next) { //__setxhr_
     }
 });
 
-var userRoutes  = require('./server/routes/userRoutes.js');
+var userRoutes = require('./server/routes/userRoutes.js');
 
-app.post('/api/register', function(req, res){
+app.post('/api/register', function (req, res) {
     var controloer = require('./server/controllers/registartionController.js');
     controloer.register(req, res);
 })
 
-app.get('/*', function(req,res) {
-    
-res.sendFile(path.join(__dirname+'/dist/list/index.html'));
+app.get('/*', function (req, res) {
+
+    res.sendFile(path.join(__dirname + '/dist/list/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
+
+// var v = require('./server/utils/email.js');
+// setTimeout(function() {
+//     v.sendMessage(v.data.auth);
+// }, 3000);
 
