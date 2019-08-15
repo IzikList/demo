@@ -41,26 +41,21 @@
 }
 
 .regRight_investor {
-    width: 474px;
     height: 521px;
-    background-color: cyan;
-    float: right;
     background-image: url('../../assets/images/reg_clients.png');
     background-size: contain;
+    pointer-events: none;
 }
 
 .regRight_client {
-    width: 474px;
     height: 521px;
-    background-color: cyan;
-    float: right;
+    background-size: cover;
     background-image: url('../../assets/images/reg_investor.png');
-    background-size: contain;
-    position: relative;
+    pointer-events: none;
 }
 
 .investorContainer {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
@@ -157,4 +152,20 @@
     height: 521px;
     background-color: cyan;
     display: inline-block;
+}
+
+.dialogContainer {
+    height: 521px; 
+    background-color: white; 
+    width: 80vw; 
+    font-family: 'Assistant';
+}
+
+@media screen and (max-width: 1050px){
+    .rightContainer {
+        display: none;
+    }
+    .dialogContainer {
+        width: fit-content;
+    }
 }

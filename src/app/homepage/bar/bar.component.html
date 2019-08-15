@@ -8,17 +8,8 @@
       <div class="menu_bar menuInvest">
         <span class="menuSpan">INVEST</span>
         <div class="drp_dwn">
-          <div class="menuItem" routerLink="/aws">
-            Marketplace
-          </div>
-          <div class="menuItem" routerLink="/single_unit_existing">
-            Tools
-          </div>
-          <div class="menuItem" routerLink="/home/map">
-            Industry Map
-          </div>
-          <div class="menuItem">
-            How It Works
+          <div *ngFor="let item of investorItems" class="menuItem" routerLink="/aws">
+            {{item.name}} <img src="/assets/images/lock.png" style="width: 10px"/>
           </div>
         </div>
         <div style="margin-top: 10px;">
@@ -28,17 +19,8 @@
       <div class="menu_bar">
         <span class="menuSpan">POLICY OWNER</span>
         <div class="drp_dwn">
-          <div class="menuItem" routerLink="/home/mypolicy">
-            My Policy
-          </div>
-          <div class="menuItem" routerLink="/clients/report">
-            Policy Forecast
-          </div>
-          <div class="menuItem">
-            Customer Support
-          </div>
-          <div class="menuItem">
-            How It Works
+          <div *ngFor="let item of policyItems" class="menuItem" routerLink="/aws">
+            {{item.name}} <img src="/assets/images/lock.png" style="width: 10px"/>
           </div>
         </div>
         <div style="margin-top: 10px;">
