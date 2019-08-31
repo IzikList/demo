@@ -22,7 +22,7 @@
         <li *ngFor="let image of imageUrlArray" class="animate" [style.backgroundImage]="'url('+ image.url +')'">
           <div style="width: 100%; height: 100%; background-color: #3488a0; opacity: 0.48; position: absolute; ">
           </div>
-          <div style="width: 50%; margin: auto; height: 100%; opacity: 1; display: grid; align-items: center; color: white; font-size: 30px; font-weight: 300">
+          <div class="caruselText" >
             <div style="z-index: 200; text-align: center">
               <div [innerHTML]="image.text"></div>
               <!--<div><button style="font-size: 20px; padding-left: 24px; padding-top: 8px; padding-right: 24px; padding-bottom: 8px;" [routerLink]="image.goto">{{image.btnText}}</button> </div>-->
@@ -30,16 +30,22 @@
           </div>
         </li>
       </ul>
-      <div style=" position: absolute;
-    bottom: 121px;
-    left: 50%;
-    transform: translate(-50%);
-    
-  
-    font-weight: 600;" (click)="test()"><img src="/assets/images/sign_in_button.png" style="width: 200px;"/></div>
+      <div class="signBtn" (click)="test()"><img src="/assets/images/sign_in_button.png" style="width: 200px;" /></div>
     </div>
+    <div class="downSide" style="position: relative">
+      <div class="middle">
+        <div class="inner" style="color: white">
+          <div class="contentFirstLine">WE <span class="bold">CONNECT</span> THE <span class="bold"> DOTS…</span></div>
+          <div class="contentLeftSecondLine">LiST is a Marketplace for<br />LIFE SETTLEMENTS<br />where both sides win</div>
+        </div>
+      </div>
+    </div>
+
 
   </div>
   <!--<input type="button" (click)="animateRight()" value="right" style="position: fixed; top: 100px;" />
   <input type="button" (click)="animateLeft()" value="left" style="position: fixed" />-->
+  <div style="position: absolute; width: 100%; text-align: center;">
+    <img src="/assets/images/coming_soon.png" />
+  </div>
 </div>

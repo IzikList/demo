@@ -1,4 +1,14 @@
 var nodemailer = require("nodemailer");
+const fs = require('fs');
+const filename = __dirname + '/htmltext.txt';
+let email1html = '';
+fs.readFile(filename, 'utf8', function(err, data) {
+    if (err) throw err;
+    console.log('OK: ' + filename);
+    console.log(data)
+    email1html = data;
+});
+
 
 function emailUtils() {
 
@@ -18,17 +28,18 @@ function emailUtils() {
 
 
     function makeEmail(from, to, subject, text, html) {
+        console.log(email1html);
         return {
             from,
             to,
             subject,
             text,
-            html
+            html: email1html
         }
     }
 
     function sendEmail1(to) {
-        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, 'Subject email type 1', 'Investor mail, allow email');
+        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, 'Subject email type 1', 'Investor mail, allow email', );
         send(mail);
     }
     function sendEmail2(to) {

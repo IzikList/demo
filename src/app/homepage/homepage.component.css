@@ -117,12 +117,37 @@
 .showPhone {
     display: none;
 }
+.downSide {
+    display: none;
+}
 
+.caruselText {
+    width: 50%;
+    margin: auto; 
+    height: 100%; 
+    opacity: 1; 
+    display: grid; 
+    align-items: center; 
+    color: white; 
+    font-size: 30px; 
+    font-weight: 300
+}
+
+.signBtn {
+    position: absolute; 
+    bottom: 121px; 
+    left: 50%;transform: translate(-50%); 
+    font-weight: 600;
+}
 @media screen and (max-width: 845px) {
     .contentFirstLine {
         font-size: 25px;
     }
+    .signBtn {
+        bottom: 80px;
+    }
     .leftSide {
+        display: none;
         float: none;
         width: 100%;
         height: 360px;
@@ -148,5 +173,11 @@
     .showPhone {
         display: block;
     }
-
+    .downSide {
+        display: block;
+        background-color: #3288A0;
+    }
+    .caruselText {
+        font-size: 20px;
+    }
 }

@@ -1,5 +1,5 @@
-<div class="dialogContainer" >
-  <div class="regLeft" style="background-color: white; width: 546px;">
+<div class="dialogContainer">
+  <!--<div class="regLeft" style="background-color: white; width: 546px;">
     <div class="title">I AM</div>
     <div class="top">
       <div [ngClass]="[! investorView ? 'selectedSection' : 'unselectedSection' ]" (click)="investorView = false">
@@ -48,5 +48,38 @@
       </div>
     </div>
 
+  </div>-->
+  <div>
+    <div>
+      <div>I AM</div>
+      <div style="width: 347px; height: 236px; background-color: #E98126; margin: auto"></div>
+      <div style="width: 347px; height: 236px; background-color: #34879F; margin: auto"></div>
+      <div style="margin-left: 50px; margin-right: 50px;">
+        <div><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><span class="bold">Keep me posted</span> I would like to receive relevant offers</label></div>
+        <div style="margin-top: 17px;"><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</label></div>
+      </div>
+      <div class="inputForm">
+        <div class="inputContainer" style="white-space: nowrap">
+          <input class="regInput" placeholder="Name:" [(ngModel)]="firstName" />
+        </div>
+
+        <div class="inputContainer">
+          <input class="mInput regInput" placeholder="Email:" [(ngModel)]="email" />
+        </div>
+        <div class="inputContainer" style="white-space: nowrap">
+          <input class="regInput" placeholder="Phone Number:" [(ngModel)]="phoneNumber" />
+        </div>
+        <div class="inputContainer">
+          <textarea required class="regInput input1" [(ngModel)]="userText"> </textarea>
+          <span class="placeholder">Have anything to add</span>
+        </div>
+
+        <div class="inputContainer" style="background-color: #2E7E98; color: white; text-align: center; margin-top: 10px; padding: 6px;"
+          (click)="register()">
+          Send
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

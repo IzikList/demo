@@ -166,6 +166,15 @@
         display: none;
     }
     .dialogContainer {
-        width: fit-content;
+        width: 486px;
     }
+    .inputContainer input {
+        width: 420px;
+        height: 93px;
+        font-size: 20px;
+    }
+    .inputForm {
+        margin-left: 26px;
+    }
+    
 }
