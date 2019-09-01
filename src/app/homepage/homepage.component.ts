@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { RegistrationComponent } from '../registration/registration.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-homepage',
@@ -36,7 +37,7 @@ export class HomepageComponent implements OnInit, AfterViewInit {
   bindAnimateFunction;
   animationState = false;
   timeOutObj;
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private overlay: Overlay) { }
 
   ngOnInit() {
     const a = 5;
@@ -142,7 +143,11 @@ export class HomepageComponent implements OnInit, AfterViewInit {
   }
 
   test() {
-        const dialogRef = this.dialog.open(RegistrationComponent, { });
+        const scrollStrategy = this.overlay.scrollStrategies.reposition();
+        const dialogRef = this.dialog.open(RegistrationComponent, {
+            autoFocus: false,
+            scrollStrategy
+         });
         const v = document.getElementsByClassName('cdk-overlay-pane')[0];
         v['style'].maxWidth = '';
         // alert(document.getElementById('cdk-overlay-0'));
