@@ -161,20 +161,35 @@
     font-family: 'Assistant';
 }
 
+textarea {
+    resize: none;
+}
 @media screen and (max-width: 1050px){
     .rightContainer {
         display: none;
     }
     .dialogContainer {
-        width: 486px;
+        /*width: 486px;*/
+        width: 302px;
+    }
+    .inputContainer {
+        width: 252px;
     }
     .inputContainer input {
-        width: 420px;
-        height: 93px;
-        font-size: 20px;
+        /*width: 420px;*/
+        width: 252px;;
+        /*height: 93px;*/
+        height: 56px;
+        /*font-size: 20px;*/
+        font-size: 13px;
     }
     .inputForm {
         margin-left: 26px;
     }
-    
+    .regInput {
+        width: 252px; 
+    }
+    .bold {
+        color: #E98126;
+    }
 }

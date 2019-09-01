@@ -143,13 +143,16 @@ export class HomepageComponent implements OnInit, AfterViewInit {
 
   test() {
         const dialogRef = this.dialog.open(RegistrationComponent, { });
-    dialogRef.afterClosed().subscribe(responce => {
-      console.log(responce);
-      if (responce != null) {
-        // this.ongoingFees = responce.arr;
-        // this.getOngoingFees();
-      }
-    });
+        const v = document.getElementsByClassName('cdk-overlay-pane')[0];
+        v['style'].maxWidth = '';
+        // alert(document.getElementById('cdk-overlay-0'));
+        dialogRef.afterClosed().subscribe(responce => {
+          console.log(responce);
+          if (responce != null) {
+            // this.ongoingFees = responce.arr;
+            // this.getOngoingFees();
+          }
+        });
 
   }
 
