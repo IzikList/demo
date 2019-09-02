@@ -166,12 +166,14 @@ textarea {
     resize: none;
 }
 @media screen and (max-width: 1050px){
+   
     .rightContainer {
         display: none;
     }
     .dialogContainer {
         /*width: 486px;*/
         width: 302px;
+        background-color: transparent;
     }
     .inputContainer {
         width: 252px;

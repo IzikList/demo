@@ -45,5 +45,8 @@ export class RegistrationComponent implements OnInit {
     });
 
   }
+  close() {
+    this.dialogRef.close();
+  }
 
 }

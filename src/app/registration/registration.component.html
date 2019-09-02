@@ -50,7 +50,7 @@
 
   </div>-->
   <div>
-    <div style="text-align: right;"><img style="width: 25px;" src="assets/images/close.svg" /></div>
+    <div style="text-align: right;"><img (click)="close()" style="width: 25px;" src="assets/images/close.svg" /></div>
     <div>
       <div style="width: 100%; text-align: center; font-size: 30px;">I AM</div>
       <div (click)="investorView = ! investorView; policyHolderView = false" style="width: 208px; height: 141px; background-color: #E98126; margin: auto; color: white; text-align: center; position: relative; margin-top: 10px;">
@@ -62,8 +62,8 @@
       </div>
       <div class="inputForm1" *ngIf="investorView">
         <div style="margin-left: 30px; margin-right: 30px; margin-top: 10px;">
-          <div><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><span class="bold">Keep me posted</span> I would like to receive relevant offers</label></div>
-          <div style="margin-top: 17px;"><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</label></div>
+          <div (click)="allowEmail = ! allowEmail" style="display: flex;"><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><div><span class="bold">Keep me posted</span> I would like to receive relevant offers</div></div>
+          <div style="margin-top: 17px; display: flex;"><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail"><div (click)="allowEmail = ! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</div></div>
         </div>
 
         <div class="inputForm">
@@ -106,8 +106,8 @@
       
       <div *ngIf="policyHolderView" class="inputForm2">
         <div style="margin-left: 30px; margin-right: 30px; margin-top: 10px;">
-          <div><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><span class="bold">Keep me posted</span> I would like to receive relevant offers</label></div>
-          <div style="margin-top: 17px;"><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</label></div>
+          <div (click)="allowEmail = ! allowEmail" style="display: flex;"><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><div><span class="bold">Keep me posted</span> I would like to receive relevant offers</div></div>
+          <div style="margin-top: 17px; display: flex;"><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail"><div (click)="allowEmail = ! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</div></div>
         </div>
 
         <div class="inputForm">

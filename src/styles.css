@@ -2,3 +2,8 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 /*@import 'assets/styles/hamburgers.css'*/
+  @media screen and (max-width: 1050px){
+    .mat-dialog-container {
+      background-color:rgba(255, 255, 255, 0.9);
+    }
+  }

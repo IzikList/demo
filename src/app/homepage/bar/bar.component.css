@@ -139,6 +139,10 @@
 
 
 @media screen and (max-width: 845px) {
+    .menuRight {
+        top: 0.7rem;
+    }
+
     .showPhone {
         display: block;
     }

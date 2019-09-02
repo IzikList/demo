@@ -141,7 +141,7 @@
 }
 @media screen and (max-width: 845px) {
     .contentFirstLine {
-        font-size: 25px;
+        font-size: 1.4rem;
         margin-top: 16px;
     }
     .signBtn {
@@ -164,7 +164,8 @@
     }
     .inner {
         margin: auto;
-        width: 75%;;
+        width: 75%;
+        text-align: center;
     }
     .carousel{
         width: 100%;
@@ -179,14 +180,17 @@
         background-color: #3288A0;
     }
     .caruselText {
-        font-size: 26px;
+        font-size: 1.4rem;
         width: 80%;
     }
     .contentLeftSecondLine{
         text-align: center;
         margin-top: 15px;
         font-weight: 300;
-        font-size: 22px;
+        font-size: 1.3rem;
         line-height: 30px;
+    }
+    .mat-dialog-container {
+      background-color:rgba(255, 255, 255, 0.9);
     }
 }

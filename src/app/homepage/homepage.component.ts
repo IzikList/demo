@@ -146,7 +146,8 @@ export class HomepageComponent implements OnInit, AfterViewInit {
         const scrollStrategy = this.overlay.scrollStrategies.reposition();
         const dialogRef = this.dialog.open(RegistrationComponent, {
             autoFocus: false,
-            scrollStrategy
+            scrollStrategy,
+            panelClass: 'panelClass'
          });
         const v = document.getElementsByClassName('cdk-overlay-pane')[0];
         v['style'].maxWidth = '';
@@ -160,6 +161,7 @@ export class HomepageComponent implements OnInit, AfterViewInit {
         });
 
   }
+
 
 
   // test() {
