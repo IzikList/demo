@@ -126,6 +126,7 @@
   font-size: 13px;
   text-align: center;
   margin-top: 10px;
+  pointer-events: none;
 }
 
 .inputContainer {
@@ -192,4 +193,10 @@ textarea {
     .bold {
         color: #E98126;
     }
+    .placeholder {
+        text-align: left;
+        left: 6px;
+        line-height: 61px;
+    }
+
 }

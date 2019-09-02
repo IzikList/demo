@@ -10,6 +10,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class RegistrationComponent implements OnInit {
 
   investorView = false;
+  policyHolderView = true;
   firstName: String;
   lastName: String;
   phoneNumber: String;

@@ -19,7 +19,7 @@
     </div>
     <div class="carousel" id="carousel">
       <ul class="slides" id="slides">
-        <li *ngFor="let image of imageUrlArray" class="animate" [style.backgroundImage]="'url('+ image.url +')'">
+        <li *ngFor="let image of imageUrlArray" class="animate" [style.backgroundImage]="'url('+ image.url +')'" style="background-position-x: center">
           <div style="width: 100%; height: 100%; background-color: #3488a0; opacity: 0.48; position: absolute; ">
           </div>
           <div class="caruselText" >
@@ -43,6 +43,25 @@
 
 
   </div>
+
+  <!--<div style="position: fixed">
+    <div class="dialog-container" style="box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+    display: block;
+    padding: 24px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    overflow: auto;
+    outline: 0;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    max-height: inherit;
+    background-color: white">
+
+    aaaa
+    </div>-->
+
+  <!--</div>-->
   <!--<input type="button" (click)="animateRight()" value="right" style="position: fixed; top: 100px;" />
   <input type="button" (click)="animateLeft()" value="left" style="position: fixed" />-->
   <!--<div style="position: absolute; width: 100%; text-align: center;">
