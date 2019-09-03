@@ -17,7 +17,7 @@ export class HomepageComponent implements OnInit, AfterViewInit {
       btnText: 'Get Policy Forecast', goto: '/clients/report'},
     {url: '/assets/images/img3.jpg', text: 'Investing In <span class="bold">' +
       'Life Settlements</span><br /><span class="bold">Made Simple</span>, <br />Secure & Liquid',
-      btnText: 'Go To Market', goto: '/aws'},
+      btnText: 'Go To Market', goto: '/aws'}
     ];
 
   position = 0;

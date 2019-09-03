@@ -139,6 +139,10 @@
 
 
 @media screen and (max-width: 845px) {
+    .header:hover {
+        background-color: transparent;
+    }
+
     .menuRight {
         top: 0.7rem;
     }
