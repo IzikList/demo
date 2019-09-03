@@ -1,6 +1,0 @@
-<table class='table borderless mTable'>
-  <tr *ngFor="let x of marketData; let i = index" class="ovTableRow">
-    <td  class="tdLeft">{{ x.key }}</td>
-    <td class="tdRight"> <span contentEditable="true" [textContent]="x.val" (input)="x.val=$event.target.textContent" >{{ x.val }}</span><span>{{x.valNonModel}}</span></td>
-  </tr>
-</table>

@@ -22,6 +22,7 @@ export class SideBarComponent implements OnInit {
         } else {
           this.opened = true;
         }
+        this.opened = false;
       }
     });
 

@@ -1,6 +1,0 @@
-<div>{{title}}</div>
-<div *ngFor="let r of objectKeys(myObj); let i = index">
-    <span style="width: 150px; display: inline-block">{{myObj[r].name}}:</span> <input type="number" [(ngModel)]="myObj[r].val">
-</div>
-<br />
-<input type="button" value="Done" (click)="done()"/>
