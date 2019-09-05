@@ -200,5 +200,16 @@ textarea {
         left: 6px;
         line-height: 61px;
     }
+    .open_raw {
+        margin-top: 10px; 
+        margin-right: auto; 
+        margin-left: auto; 
+        width: 33px; 
+        background-image: url('/assets/images/open_raw.png');
+        height: 19px;
+    }
+    .close_raw {
+        transform: rotate(180deg);
+    }
 
 }

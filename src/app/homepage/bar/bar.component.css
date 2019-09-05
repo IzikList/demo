@@ -143,6 +143,10 @@
         background-color: transparent;
     }
 
+    .header {
+        pointer-events:none;
+    }
+
     .menuRight {
         top: 0.7rem;
     }
