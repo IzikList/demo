@@ -37,7 +37,19 @@ var regController = function () {
                 emailUtils.sendEmail3(obj.email, obj.firstName);
             }
         }
+        sendRegistrationData(obj);
     }
+
+    function sendRegistrationData(obj){
+        let txt = "name: " + obj.firstName + "\n" + 
+                    "email: " + obj.email + "\n" +
+                    "is Investor: " + obj.isInvestor + "\n" +  
+                    "phone: " + obj.phoneNumber + "\n" + 
+                    "date: " + new Date().toISOString();
+        emailUtils.sendAlarmEmail(txt);
+
+    }
+
     return {
         register: register
     };

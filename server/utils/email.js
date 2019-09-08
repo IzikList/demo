@@ -57,6 +57,11 @@ function emailUtils() {
         }
     }
 
+    function sendAlarmEmail(txt) {
+        let mail = makeEmail('LiST <invoice@listsettlements.com>', 'yaakovb@listsettlements.com', 'Someone registered', txt);
+        send(mail);
+    }
+
     function sendEmail1(to, name) {
         let txt = emails.email1html.replace('Hi Yaakov,', 'Hi ' + name + ',');
         let mail = makeEmail('LiST <invoice@listsettlements.com>', to, name + ', Wolcome to LiST', '', txt);
@@ -95,6 +100,7 @@ function emailUtils() {
         });
     }
 
+
     var mail = {
         from: "LiST <invoice@listsettlements.com>",
         to: "y.modiiin@gmail.com",
@@ -124,7 +130,8 @@ function emailUtils() {
         sendEmail1,
         sendEmail2,
         sendEmail3,
-        sendEmail4
+        sendEmail4,
+        sendAlarmEmail
     }
 }
 
