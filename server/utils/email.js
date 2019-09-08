@@ -1,14 +1,33 @@
 var nodemailer = require("nodemailer");
 const fs = require('fs');
-const filename = __dirname + '/htmltext.txt';
-let email1html = '';
-fs.readFile(filename, 'utf8', function(err, data) {
-    if (err) throw err;
-    console.log('OK: ' + filename);
-    console.log(data)
-    email1html = data;
-});
+const emails = {
+    email1html: '',
+    email2html: '',
+    email3html: 'trtrtr',
+    email4html: '',
 
+}
+
+
+function readFiles() {
+    readFile(__dirname + '/mail_investor_1.txt', 'email1html');
+    readFile(__dirname + '/mail_investor_2.txt', 'email2html');
+    readFile(__dirname + '/mail_policy_1.txt', 'email3html');
+    readFile(__dirname + '/mail_policy_2.txt', 'email4html');
+}
+
+function readFile(fileName, varName) {
+    console.log('email3html  = ' + emails['email3html']);
+    fs.readFile(fileName, 'utf8', function (err, data) {
+        if (err) throw err;
+        console.log('OK: ' + fileName);
+        console.log(data)
+        emails[varName] = data;
+    });
+
+}
+
+readFiles();
 
 function emailUtils() {
 
@@ -28,30 +47,34 @@ function emailUtils() {
 
 
     function makeEmail(from, to, subject, text, html) {
-        console.log(email1html);
+        console.log(from, to, subject, text, html);
         return {
             from,
             to,
             subject,
             text,
-            html: email1html
+            html: html
         }
     }
 
-    function sendEmail1(to) {
-        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, 'Subject email type 1', 'Investor mail, allow email', );
+    function sendEmail1(to, name) {
+        let txt = emails.email1html.replace('Hi Yaakov,', 'Hi ' + name + ',');
+        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, name + ', Wolcome to LiST', '', txt);
         send(mail);
     }
-    function sendEmail2(to) {
-        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, 'Subject email type 2', 'Investor mail, waitForCall ');
+    function sendEmail2(to, name) {
+        let txt = emails.email2html.replace('Hi Yaakov,', 'Hi ' + name + ',');
+        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, name + ', Wolcome to LiST', '', txt);
         send(mail);
     }
-    function sendEmail3(to) {
-        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, 'Subject email type 3', 'Senior mail, allow email ');
+    function sendEmail3(to, name) {
+        let txt = emails.email3html.replace('Hi Yaakov,', 'Hi ' + name + ',');
+        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, name + ', Wolcome to LiST', '', txt);
         send(mail);
     }
-    function sendEmail4(to) {
-        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, 'Subject email type 4', 'Senior mail, waitForCall');
+    function sendEmail4(to, name) {
+        let txt = emails.email4html.replace('Hi Yaakov,', 'Hi ' + name + ',');
+        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, name + ', Wolcome to LiST', '', txt);
         send(mail);
     }
 

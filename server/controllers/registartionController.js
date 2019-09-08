@@ -16,6 +16,7 @@ var regController = function () {
             } else {
                 res.status(200).send({});
                 if(newObj.email){
+                    console.log('send registration email');
                     sendRegistrationEmail(newObj);
                 }
             }
@@ -24,18 +25,16 @@ var regController = function () {
 
     function sendRegistrationEmail(obj) {
         if(obj.isInvestor) {
-            if(obj.meta && obj.meta.allowEmail ){
-                emailUtils.sendEmail1(obj.email);
-            }
             if(obj.meta && obj.meta.waitForCall) {
-                emailUtils.sendEmail2(obj.email);
+                emailUtils.sendEmail2(obj.email, obj.firstName);
+            }else {
+                emailUtils.sendEmail1(obj.email, obj.firstName);
             }
         } else  {
-            if(obj.meta && obj.meta.allowEmail ){
-                emailUtils.sendEmail3(obj.email);
-            }
             if(obj.meta && obj.meta.waitForCall) {
-                emailUtils.sendEmail4(obj.email);
+                emailUtils.sendEmail4(obj.email, obj.firstName);
+            } else {
+                emailUtils.sendEmail3(obj.email, obj.firstName);
             }
         }
     }

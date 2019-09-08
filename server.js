@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-var db = process.env.MONGO_URI || 'mongodb://List:ListDemo1@ds013004.mlab.com:13004/heroku_fk56fnpl';
+var db = process.env.MONGO_URI || 'mongodb://list:list1234@ds157895.mlab.com:57895/heroku_hmjk5qdq';
 mongoose.connect(db);
 
 const app = express();
