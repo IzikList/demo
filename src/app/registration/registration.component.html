@@ -53,11 +53,11 @@
     <div style="text-align: right;"><img (click)="close()" style="width: 25px;" src="assets/images/close.svg" /></div>
     <div>
       <div style="width: 100%; text-align: center; font-size: 30px;">I AM</div>
-      <div *ngIf="! policyHolderView" (click)="investorView = ! investorView; policyHolderView = false" style="width: 208px; height: 151px; background-color: #E98126; border-color: #E17116; border-width: 2px; border-style: solid; margin: auto; color: white; text-align: center; position: relative; margin-top: 10px; box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5); background-size: contain; background-image: url('/assets/images/overlay.png')"> 
+      <div *ngIf="! policyHolderView" (click)="investorView = ! investorView; policyHolderView = false" style="width: 208px; height: 180px; background-color: #E98126; border-color: #E17116; border-width: 2px; border-style: solid; margin: auto; color: white; text-align: center; position: relative; margin-top: 10px; box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5); background-size: contain; background-image: url('/assets/images/overlay.png')"> 
         <div style="position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); width:  100%;">
           <div style="font-size: 25px;">An Investor</div>
           <br />
-          <div>Looking to invest in smart<br />and fair way in the Life<br />Settlements market</div>
+          <div style="line-height: 20px;">Looking to invest in the Life<br />Settlements Market in an efficient and transparent way</div>
           <div class="open_raw" [ngClass]="{'close_raw': investorView}"></div>
         </div>
       </div>
@@ -97,11 +97,11 @@
 
 
 
-      <div *ngIf="! investorView" (click)="policyHolderView = ! policyHolderView; investorView = false" style="width: 208px; height: 151px; background-color: #34879F; background-image: url('/assets/images/overlay.png'); margin: auto; color: white; text-align: center; position: relative; margin-top: 25px; border-width: 2px; border-style: solid; box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5); border-color: #24678F; background-size: contain;">
+      <div *ngIf="! investorView" (click)="policyHolderView = ! policyHolderView; investorView = false" style="width: 208px; height: 180px; background-color: #34879F; background-image: url('/assets/images/overlay.png'); margin: auto; color: white; text-align: center; position: relative; margin-top: 25px; border-width: 2px; border-style: solid; box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5); border-color: #24678F; background-size: contain;">
         <div style="position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); width:  100%;">
           <div style="font-size: 25px;">A Policyholder</div>
           <br />
-          <div>Looking to get rid of the<br />monthly premiums</div>
+          <div style="line-height: 20px;">Looking to eliminate<br />monthly premiums and maximize asset value</div>
           <div class="open_raw" [ngClass]="{'close_raw': policyHolderView}"></div>
         </div>
       </div>
