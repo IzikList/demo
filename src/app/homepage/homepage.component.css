@@ -157,6 +157,10 @@
 .img4{
     background-image: url('/assets/images/img4.jpg');
 }
+
+.comming_soon_mobile {
+    display: none;
+}
 @media screen and (max-width: 845px) {
     .contentFirstLine {
         font-size: 1.4rem;
@@ -227,5 +231,12 @@
 .img4{
     background-image: url('/assets/images/img4.jpg');
 }
+.comming_soon {
+    display: none;
+}
+.comming_soon_mobile {
+    display: block;
+}
+
 
 }
