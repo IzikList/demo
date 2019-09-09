@@ -1,142 +1,159 @@
 <div class="dialogContainer">
-  <!--<div class="regLeft" style="background-color: white; width: 546px;">
-    <div class="title">I AM</div>
-    <div class="top">
-      <div [ngClass]="[! investorView ? 'selectedSection' : 'unselectedSection' ]" (click)="investorView = false">
-        <div class="topHeader">a Policyholder</div>
-        <div class="contentLeft">looking to get rid of the monthly premiums</div>
+  <div class="resBig">
+    <div class="regLeft" style="background-color: white; width: 546px;">
+      <div class="title">I AM</div>
+      <div class="top">
+        <div [ngClass]="[! investorView ? 'selectedSection' : 'unselectedSection' ]" (click)="investorView = false">
+          <div class="topHeader">a Policyholder</div>
+          <div class="contentLeft">looking to get rid of the monthly premiums</div>
+        </div>
+        <div id="seperator"></div>
+        <div [ngClass]="[investorView ? 'selectedSection' : 'unselectedSection' ]" (click)="investorView = true">
+          <div class="topHeader">an Investor</div>
+          <div class="contentRight">looking to invest in a smart and Fair Way in the Life settlement Market</div>
+        </div>
+
       </div>
-      <div id="seperator"></div>
-      <div [ngClass]="[investorView ? 'selectedSection' : 'unselectedSection' ]" (click)="investorView = true">
-        <div class="topHeader">an Investor</div>
-        <div class="contentRight">looking to invest in a smart and Fair Way in the Life settlement Market</div>
+      <div style="margin-left: 37px; clear: both;     padding-top: 30px;">
+        <div><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><span class="bold">Keep me posted</span> I would like to receive relevant offers</label></div>
+        <div style="margin-top: 17px;"><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</label></div>
+
+      </div>
+
+      <div style="margin-left: 37px; margin-top: 22px;">
+        <div class="inputContainer">
+          <textarea required class="regInput input1" [(ngModel)]="userText"> </textarea>
+          <span class="placeholder">Have anything to add</span>
+        </div>
+        <div class="inputContainer">
+          <input class="mInput regInput" placeholder="Email:" [(ngModel)]="email" />
+        </div>
+        <div class="inputContainer" style="white-space: nowrap">
+          <input class="regInput" style="width: 48%" placeholder="Name:" [(ngModel)]="firstName" />
+          <input class="regInput" style="width: 48%; margin-left: 1%;" placeholder="Phone Number:" [(ngModel)]="phoneNumber" />
+        </div>
+
+        <div class="inputContainer" style="background-color: #2E7E98; color: white; text-align: center; margin-top: 10px; padding: 6px;"
+          (click)="register()">Send</div>
+
+      </div>
+    </div>
+
+    <div class="rightContainer" style="margin-right: 50px;">
+      <div class="regRight_investor" *ngIf="investorView">
+      </div>
+      <div class="regRight_client" *ngIf="! investorView">
+        <div class="investorContainer">
+          <div class="investorText">A PURE</div>
+          <div class="alpha">α</div>
+          <div class="investorText">INVESTMENT</div>
+        </div>
       </div>
 
     </div>
-    <div style="margin-left: 37px; clear: both;     padding-top: 30px;">
-      <div><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><span class="bold">Keep me posted</span> I would like to receive relevant offers</label></div>
-      <div style="margin-top: 17px;"><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</label></div>
 
-    </div>
-
-    <div style="margin-left: 37px; margin-top: 22px;">
-      <div class="inputContainer">
-        <textarea required class="regInput input1" [(ngModel)]="userText"> </textarea>
-        <span class="placeholder">Have anything to add</span>
-      </div>
-      <div class="inputContainer">
-        <input class="mInput regInput" placeholder="Email:" [(ngModel)]="email"/>
-      </div>
-      <div class="inputContainer" style="white-space: nowrap">
-        <input class="regInput" style="width: 48%" placeholder="Name:" [(ngModel)]="firstName"/>
-        <input class="regInput" style="width: 48%; margin-left: 1%;" placeholder="Phone Number:"  [(ngModel)]="phoneNumber"/>
-      </div>
-
-      <div class="inputContainer" style="background-color: #2E7E98; color: white; text-align: center; margin-top: 10px; padding: 6px;" (click)="register()">Send</div>
-
-    </div>
   </div>
-
-  <div class="rightContainer" style="margin-right: 50px;">
-    <div class="regRight_investor" *ngIf="investorView">
-    </div>
-    <div class="regRight_client" *ngIf="! investorView">
-      <div class="investorContainer">
-        <div class="investorText">A PURE</div>
-        <div class="alpha">α</div>
-        <div class="investorText">INVESTMENT</div>
-      </div>
-    </div>
-
-  </div>-->
-  <div>
-    <div style="text-align: right;"><img (click)="close()" style="width: 25px;" src="assets/images/close.svg" /></div>
+  <div class="resSmall">
     <div>
-      <div style="width: 100%; text-align: center; font-size: 30px;">I AM</div>
-      <div *ngIf="! policyHolderView" (click)="investorView = ! investorView; policyHolderView = false" style="width: 208px; height: 180px; background-color: #E98126; border-color: #E17116; border-width: 2px; border-style: solid; margin: auto; color: white; text-align: center; position: relative; margin-top: 10px; box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5); background-size: contain; background-image: url('/assets/images/overlay.png')"> 
-        <div style="position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); width:  100%;">
-          <div style="font-size: 25px;">An Investor</div>
-          <br />
-          <div style="line-height: 20px; width: 80%; margin-left: 10%;">Looking to invest in the Life Settlements Market in an efficient and transparent way</div>
-          <div class="open_raw" [ngClass]="{'close_raw': investorView}"></div>
+      <div style="text-align: right;"><img (click)="close()" style="width: 25px;" src="assets/images/close.svg" /></div>
+      <div>
+        <div style="width: 100%; text-align: center; font-size: 30px;">I AM</div>
+        <div *ngIf="! policyHolderView" (click)="investorView = ! investorView; policyHolderView = false" style="width: 208px; height: 180px; background-color: #E98126; border-color: #E17116; border-width: 2px; border-style: solid; margin: auto; color: white; text-align: center; position: relative; margin-top: 10px; box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5); background-size: contain; background-image: url('/assets/images/overlay.png')">
+          <div style="position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); width:  100%;">
+            <div style="font-size: 25px;">An Investor</div>
+            <br />
+            <div style="line-height: 20px; width: 80%; margin-left: 10%;">Looking to invest in the Life Settlements Market in an efficient and transparent way</div>
+            <div class="open_raw" [ngClass]="{'close_raw': investorView}"></div>
+          </div>
         </div>
+        <div class="inputForm1" *ngIf="investorView">
+          <div style="margin-left: 30px; margin-right: 30px; margin-top: 10px;">
+            <div (click)="allowEmail = ! allowEmail" style="display: flex;"><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail">
+              <div><span class="bold">Keep me posted </span>I would like to receive invesment offers</div>
+            </div>
+            <div style="margin-top: 17px; display: flex;"><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail">
+              <div (click)="allowEmail = ! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</div>
+            </div>
+          </div>
+
+          <div class="inputForm">
+
+            <div class="inputContainer" style="white-space: nowrap">
+              <input class="regInput" placeholder="Name:" [(ngModel)]="firstName" />
+            </div>
+
+            <div class="inputContainer">
+              <input class="mInput regInput" placeholder="Email:" [(ngModel)]="email" />
+            </div>
+            <div class="inputContainer" style="white-space: nowrap">
+              <input class="regInput" placeholder="Phone Number:" [(ngModel)]="phoneNumber" />
+            </div>
+            <div class="inputContainer">
+              <textarea required class="regInput input1" [(ngModel)]="userText"> </textarea>
+              <span class="placeholder">Have anything to add</span>
+            </div>
+
+            <div class="inputContainer" style="background-color: #2E7E98; color: white; text-align: center; margin-top: 10px; padding: 6px; width: 252px; height: 56px; font-size: 25px; line-height: 56px;"
+              (click)="register()">
+              Send
+            </div>
+            <div style="width: 100%; height: 30px;"></div>
+          </div>
+
+        </div>
+
+
+
+
+
+        <div *ngIf="! investorView" (click)="policyHolderView = ! policyHolderView; investorView = false" style="width: 208px; height: 180px; background-color: #34879F; background-image: url('/assets/images/overlay.png'); margin: auto; color: white; text-align: center; position: relative; margin-top: 25px; border-width: 2px; border-style: solid; box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5); border-color: #24678F; background-size: contain;">
+          <div style="position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); width:  100%;">
+            <div style="font-size: 25px;">A Policyholder</div>
+            <br />
+            <div style="line-height: 20px;">Looking to eliminate<br />monthly premiums and maximize asset value</div>
+            <div class="open_raw" [ngClass]="{'close_raw': policyHolderView}"></div>
+          </div>
+        </div>
+
+        <div *ngIf="policyHolderView" class="inputForm2">
+          <div style="margin-left: 30px; margin-right: 30px; margin-top: 10px;">
+            <div (click)="allowEmail = ! allowEmail" style="display: flex;"><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail">
+              <div><span class="bold">Intrested in lerninge more</span> I would like to recevie additionally informesion</div>
+            </div>
+            <div style="margin-top: 17px; display: flex;"><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail">
+              <div (click)="allowEmail = ! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</div>
+            </div>
+          </div>
+
+          <div class="inputForm">
+
+            <div class="inputContainer" style="white-space: nowrap">
+              <input class="regInput" placeholder="Name:" [(ngModel)]="firstName" />
+            </div>
+
+            <div class="inputContainer">
+              <input class="mInput regInput" placeholder="Email:" [(ngModel)]="email" />
+            </div>
+            <div class="inputContainer" style="white-space: nowrap">
+              <input class="regInput" placeholder="Phone Number:" [(ngModel)]="phoneNumber" />
+            </div>
+            <div class="inputContainer">
+              <textarea required class="regInput input1" [(ngModel)]="userText"> </textarea>
+              <span class="placeholder">Have anything to add</span>
+            </div>
+
+            <div class="inputContainer" style="background-color: #2E7E98; color: white; text-align: center; margin-top: 10px; padding: 6px; width: 252px; height: 56px; font-size: 25px; line-height: 56px;"
+              (click)="register()">
+              Send
+            </div>
+            <div style="width: 100%; height: 30px;"></div>
+          </div>
+
+        </div>
+
+
       </div>
-      <div class="inputForm1" *ngIf="investorView">
-        <div style="margin-left: 30px; margin-right: 30px; margin-top: 10px;">
-          <div (click)="allowEmail = ! allowEmail" style="display: flex;"><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><div><span class="bold">Keep me posted</span> I would like to receive relevant offers</div></div>
-          <div style="margin-top: 17px; display: flex;"><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail"><div (click)="allowEmail = ! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</div></div>
-        </div>
 
-        <div class="inputForm">
-
-          <div class="inputContainer" style="white-space: nowrap">
-            <input class="regInput" placeholder="Name:" [(ngModel)]="firstName" />
-          </div>
-
-          <div class="inputContainer">
-            <input class="mInput regInput" placeholder="Email:" [(ngModel)]="email" />
-          </div>
-          <div class="inputContainer" style="white-space: nowrap">
-            <input class="regInput" placeholder="Phone Number:" [(ngModel)]="phoneNumber" />
-          </div>
-          <div class="inputContainer">
-            <textarea required class="regInput input1" [(ngModel)]="userText"> </textarea>
-            <span class="placeholder">Have anything to add</span>
-          </div>
-
-          <div class="inputContainer" style="background-color: #2E7E98; color: white; text-align: center; margin-top: 10px; padding: 6px; width: 252px; height: 56px; font-size: 25px; line-height: 56px;"
-            (click)="register()">
-            Send
-          </div>
-          <div style="width: 100%; height: 30px;"></div>
-        </div>
-
-      </div>
-
-
-
-
-
-      <div *ngIf="! investorView" (click)="policyHolderView = ! policyHolderView; investorView = false" style="width: 208px; height: 180px; background-color: #34879F; background-image: url('/assets/images/overlay.png'); margin: auto; color: white; text-align: center; position: relative; margin-top: 25px; border-width: 2px; border-style: solid; box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5); border-color: #24678F; background-size: contain;">
-        <div style="position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); width:  100%;">
-          <div style="font-size: 25px;">A Policyholder</div>
-          <br />
-          <div style="line-height: 20px;">Looking to eliminate<br />monthly premiums and maximize asset value</div>
-          <div class="open_raw" [ngClass]="{'close_raw': policyHolderView}"></div>
-        </div>
-      </div>
-      
-      <div *ngIf="policyHolderView" class="inputForm2">
-        <div style="margin-left: 30px; margin-right: 30px; margin-top: 10px;">
-          <div (click)="allowEmail = ! allowEmail" style="display: flex;"><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><div><span class="bold">Keep me posted</span> I would like to receive relevant offers</div></div>
-          <div style="margin-top: 17px; display: flex;"><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail"><div (click)="allowEmail = ! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</div></div>
-        </div>
-
-        <div class="inputForm">
-
-          <div class="inputContainer" style="white-space: nowrap">
-            <input class="regInput" placeholder="Name:" [(ngModel)]="firstName" />
-          </div>
-
-          <div class="inputContainer">
-            <input class="mInput regInput" placeholder="Email:" [(ngModel)]="email" />
-          </div>
-          <div class="inputContainer" style="white-space: nowrap">
-            <input class="regInput" placeholder="Phone Number:" [(ngModel)]="phoneNumber" />
-          </div>
-          <div class="inputContainer">
-            <textarea required class="regInput input1" [(ngModel)]="userText"> </textarea>
-            <span class="placeholder">Have anything to add</span>
-          </div>
-
-          <div class="inputContainer" style="background-color: #2E7E98; color: white; text-align: center; margin-top: 10px; padding: 6px; width: 252px; height: 56px; font-size: 25px; line-height: 56px;"
-            (click)="register()">
-            Send
-          </div>
-          <div style="width: 100%; height: 30px;"></div>
-        </div>
-
-      </div>
 
 
 

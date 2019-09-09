@@ -165,8 +165,18 @@
 textarea {
     resize: none;
 }
+
+.resSmall {
+    display: none;
+}
 @media screen and (max-width: 1050px){
    
+   .resBig{
+       display: none;
+   }
+   .resSmall {
+       display: block;
+   }
     .rightContainer {
         display: none;
     }

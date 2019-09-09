@@ -11,11 +11,11 @@ import { Overlay } from '@angular/cdk/overlay';
 export class HomepageComponent implements OnInit, AfterViewInit {
 
   imageUrlArray = [
-    {url: '/assets/images/img1.jpg', text: 'Maximize the value <br />of your asset,<br />you <span class="bold">deserve it</span>',
+    {url: 'img1', text: 'Maximize the value <br />of your asset.<br />You <span class="bold">deserve it</span>',
      btnText: 'Learn More'},
-    {url: '/assets/images/img2.jpg', text: 'Life insurance is valuable,<br /> we want you to <span class="bold">keep it!</span>',
+    {url: 'img2', text: 'Life insurance is valuable.<br /> We want you to <span class="bold">keep it!</span>',
       btnText: 'Get Policy Forecast', goto: '/clients/report'},
-    {url: '/assets/images/img3.jpg', text: 'Investing In <span class="bold">' +
+    {url: 'img3', text: 'Investing In <span class="bold">' +
       'Life Settlements</span><br /><span class="bold">Made Simple</span>, <br />Secure & Liquid',
       btnText: 'Go To Market', goto: '/aws'}
     ];

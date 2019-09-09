@@ -19,7 +19,7 @@
     </div>
     <div class="carousel" id="carousel">
       <ul class="slides" id="slides">
-        <li *ngFor="let image of imageUrlArray" class="animate" [style.backgroundImage]="'url('+ image.url +')'" style="background-position-x: center">
+        <li *ngFor="let image of imageUrlArray" class="animate" [ngClass]="image.url" style="background-position-x: center">
           <div style="width: 100%; height: 100%; background-color: #3488a0; opacity: 0.48; position: absolute; ">
           </div>
           <div class="caruselText" >
