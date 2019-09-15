@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { RegistrationComponent } from '../registration/registration.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Overlay } from '@angular/cdk/overlay';
+import { CompleteDialogComponent } from '../registration/complete-dialog/complete-dialog.component';
 
 @Component({
   selector: 'app-homepage',
@@ -145,9 +146,17 @@ export class HomepageComponent implements OnInit, AfterViewInit {
         const v = document.getElementsByClassName('cdk-overlay-pane')[0];
         v['style'].maxWidth = '';
         // alert(document.getElementById('cdk-overlay-0'));
-        dialogRef.afterClosed().subscribe(responce => {
-          console.log(responce);
-          if (responce != null) {
+        dialogRef.afterClosed().subscribe(response => {
+          console.log(response);
+          if (response != null) {
+            if (response.complete) {
+              const dialogCompete = this.dialog.open(CompleteDialogComponent, {
+                  autoFocus: false,
+                  panelClass: 'panelClass'
+              });
+
+              setTimeout(() => {dialogCompete.close(); }, 3000);
+            }
             // this.ongoingFees = responce.arr;
             // this.getOngoingFees();
           }

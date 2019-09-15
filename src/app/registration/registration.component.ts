@@ -17,6 +17,7 @@ export class RegistrationComponent implements OnInit {
   email: String;
   userText: String;
   allowEmail: Boolean;
+  completeView = false;
   waitForCall: Boolean;
 
   constructor(private http: HttpClient, @Inject(MAT_DIALOG_DATA) public data: any,
@@ -39,7 +40,7 @@ export class RegistrationComponent implements OnInit {
         waitForCall: this.waitForCall
       }
     }).subscribe(data => {
-      this.dialogRef.close();
+      this.dialogRef.close({complete: true});
     }, error => {
       console.log(error);
     });

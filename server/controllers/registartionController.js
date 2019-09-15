@@ -37,7 +37,7 @@ var regController = function () {
                 emailUtils.sendEmail3(obj.email, obj.firstName);
             }
         }
-        sendRegistrationData(obj);
+        //sendRegistrationData(obj);
     }
 
     function sendRegistrationData(obj){

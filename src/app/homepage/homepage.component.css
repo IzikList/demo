@@ -217,26 +217,26 @@
     }
     .img1 {
     background-image: url('/assets/images/img1.jpg');
-}
+    }
 
-.img2 {
-    background-image: url('/assets/images/img2.jpg');
+    .img2 {
+        background-image: url('/assets/images/img2.jpg');
 
-}
+    }
 
-.img3 {
-    background-image: url('/assets/images/img3.jpg');
-}
+    .img3 {
+        background-image: url('/assets/images/img3.jpg');
+    }
 
-.img4{
-    background-image: url('/assets/images/img4.jpg');
-}
-.comming_soon {
-    display: none;
-}
-.comming_soon_mobile {
-    display: block;
-}
+    .img4{
+        background-image: url('/assets/images/img4.jpg');
+    }
+    .comming_soon {
+        display: none;
+    }
+    .comming_soon_mobile {
+        display: block;
+    }
 
 
 }

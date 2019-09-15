@@ -54,7 +54,7 @@
 
   </div>
   <div class="resSmall">
-    <div>
+    <div class="registration" *ngIf="! completeView">
       <div style="text-align: right;"><img (click)="close()" style="width: 25px;" src="assets/images/close.svg" /></div>
       <div>
         <div style="width: 100%; text-align: center; font-size: 30px;">I AM</div>
@@ -153,12 +153,6 @@
 
 
       </div>
-
-
-
-
-
-
     </div>
   </div>
 </div>

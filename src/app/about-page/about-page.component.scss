@@ -1,0 +1,54 @@
+.section1 {
+    height: 90%;
+}
+.textCenter {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #29A1BE;
+}
+
+.section2 {
+    background-color: #34879F;
+    color: white;
+    padding-top: 100px;
+    line-height: 44px;
+    
+    .center {
+        width: 1000px;
+        margin-left: 50%;
+        transform: translateX(-50%)
+    }
+    .seperator {
+        border: 2px;
+        border-color: #E98126;
+        border-style: solid;
+        width: 100%;
+    }
+
+    .content {
+        font-size: 30px;
+        display: flex;
+    }
+    .leftSide {
+        width: 480px;
+    }
+    .title {
+        font-size: 43px;
+        width: fit-content;
+        margin-bottom: 60px;
+    }
+    .rightSide {
+        width: 500px;
+        height: 450px;
+        .img {
+            width: 100%;
+            height: 100%;
+            background-image: url('/assets/images/about_big.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+}
+

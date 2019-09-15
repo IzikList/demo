@@ -68,6 +68,8 @@ import { MyPolicyComponent } from './my-policy/my-policy.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { PolicyForecastComponent } from './policy-forecast/policy-forecast.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { CompleteDialogComponent } from './registration/complete-dialog/complete-dialog.component';
 // import { NuminputComponent } from './numinput/numinput.component';
 
 @NgModule({
@@ -89,8 +91,11 @@ import { PolicyForecastComponent } from './policy-forecast/policy-forecast.compo
     LoginPageComponent,
     RegistrationComponent,
     PolicyForecastComponent,
+    AboutPageComponent,
+    CompleteDialogComponent,
   ],
   entryComponents: [
+    CompleteDialogComponent
     ],
   imports: [
     BrowserModule,
