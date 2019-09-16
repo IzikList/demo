@@ -42,15 +42,17 @@
 
 .regRight_investor {
     height: 521px;
-    background-image: url('../../assets/images/reg_clients.png');
+    background-image: url('../../assets/images/reg_clients.jpg');
     background-size: contain;
     pointer-events: none;
+    background-position: right;
+    background-repeat: no-repeat;
 }
 
 .regRight_client {
     height: 521px;
     background-size: cover;
-    background-image: url('../../assets/images/reg_investor.png');
+    background-image: url('../../assets/images/reg_investor.jpg');
     pointer-events: none;
 }
 

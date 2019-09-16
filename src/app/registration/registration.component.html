@@ -1,4 +1,7 @@
-<div class="dialogContainer">
+<div class="dialogContainer" style="cursor: default">
+  <div class="close_container" style="margin-top: -20px; width: 100%; text-align: right">
+    <img src="/assets/images/close.svg"  style="height: 35px;" (click)="close()"/>
+  </div>
   <div class="resBig">
     <div class="regLeft" style="background-color: white; width: 546px;">
       <div class="title">I AM</div>
@@ -14,8 +17,13 @@
         </div>
 
       </div>
-      <div style="margin-left: 37px; clear: both;     padding-top: 30px;">
-        <div><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><span class="bold">Keep me posted</span> I would like to receive relevant offers</label></div>
+      <div *ngIf="! investorView" style="margin-left: 37px; clear: both;     padding-top: 30px;">
+        <div><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><span class="bold">Intrested in lerninge more</span> I would like to recevie additionally informesion</label></div>
+        <div style="margin-top: 17px;"><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</label></div>
+
+      </div>
+      <div *ngIf="investorView" style="margin-left: 37px; clear: both;     padding-top: 30px;">
+        <div><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><span class="bold">Keep me posted</span> I would like to receive invesment offers</label></div>
         <div style="margin-top: 17px;"><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="! allowEmail"><span class="bold">Let's talk</span> I am interested in scheduling a phone call to learn more</label></div>
 
       </div>
@@ -40,9 +48,9 @@
     </div>
 
     <div class="rightContainer" style="margin-right: 50px;">
-      <div class="regRight_investor" *ngIf="investorView">
+      <div class="regRight_investor" *ngIf="! investorView">
       </div>
-      <div class="regRight_client" *ngIf="! investorView">
+      <div class="regRight_client" *ngIf="investorView">
         <div class="investorContainer">
           <div class="investorText">A PURE</div>
           <div class="alpha">α</div>
