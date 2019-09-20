@@ -26,7 +26,9 @@
               "src/styles.css",
               "src/hamburgers.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/particles.min.js"
+            ]
           },
           "configurations": {
             "production": {

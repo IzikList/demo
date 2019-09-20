@@ -139,6 +139,7 @@
     bottom: 121px; 
     left: 50%;transform: translate(-50%); 
     font-weight: 600;
+    overflow: hidden;
 }
 
 .img1 {
@@ -161,6 +162,71 @@
 .comming_soon_mobile {
     display: none;
 }
+.signBtn:after {
+  content: "";
+  position: absolute;
+  top: -130%;
+  left: -210%;
+  width: 200%;
+  height: 20px;
+  transform: rotate(30deg);
+  
+  background: rgba(255, 255, 255, 0.13);
+  background: linear-gradient(
+    to right, 
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.4) 77%,
+    rgba(255, 255, 255, 0.7) 92%,
+    rgba(255, 255, 255, 0.0) 100%
+  );
+    animation-duration: 1s;
+  animation-name: changewidth;
+  animation-iteration-count: infinite;
+
+}
+.shakeElement {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Hover state - trigger effect */
+
+
+@keyframes changewidth {
+  from {
+    left: -200%;
+  }
+
+  to {
+    left: 30%;
+  }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+
+/* Active state */
+
+
+
 @media screen and (max-width: 845px) {
     .contentFirstLine {
         font-size: 1.4rem;

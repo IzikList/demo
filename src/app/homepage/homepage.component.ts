@@ -31,6 +31,7 @@ export class HomepageComponent implements OnInit, AfterViewInit {
   bindAnimateFunction;
   animationState = false;
   timeOutObj;
+  shakeElement: HTMLElement;
   constructor(private dialog: MatDialog, private overlay: Overlay) { }
 
   ngOnInit() {
@@ -41,6 +42,7 @@ export class HomepageComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.amount = document.getElementById('slides').children.length;
     const array = document.getElementById('slides').children;
+    this.shakeElement = document.getElementById('signBtn');
     this.elements = array;
     this.bindFunction = this.transitionCompleted.bind(this);
     this.bindAnimateFunction = this.animateRight.bind(this);
@@ -134,6 +136,13 @@ export class HomepageComponent implements OnInit, AfterViewInit {
     if ( this.position < 0) {
       this.position = this.amount - 1;
     }
+  }
+
+  shake() {
+    this.shakeElement.classList.add('shakeElement');
+    setTimeout(() => {
+      this.shakeElement.classList.remove('shakeElement');
+    }, 1500);
   }
 
   test() {
