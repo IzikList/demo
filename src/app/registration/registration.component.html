@@ -7,16 +7,15 @@
     <div class="regLeft" style="background-color: white; width: 546px;">
       <div class="title">I AM</div>
       <div class="top">
-        <div [ngClass]="[! investorView ? 'selectedSection' : 'unselectedSection' ]" (click)="investorView = false">
-          <div class="topHeader">a Policyholder</div>
-          <div class="contentLeft">Looking to eliminate monthly premiums and maximize asset value</div>
-        </div>
-        <div id="seperator"></div>
         <div [ngClass]="[investorView ? 'selectedSection' : 'unselectedSection' ]" (click)="investorView = true">
           <div class="topHeader">an Investor</div>
           <div class="contentRight">Looking to invest in the Life Settlements Market in an efficient and transparent way</div>
         </div>
-
+        <div id="seperator"></div>
+        <div [ngClass]="[! investorView ? 'selectedSection' : 'unselectedSection' ]" (click)="investorView = false">
+          <div class="topHeader">a Policyholder</div>
+          <div class="contentLeft">Looking to eliminate monthly premiums and maximize asset value</div>
+        </div>
       </div>
       <div *ngIf="! investorView" style="margin-left: 37px; clear: both;     padding-top: 30px;">
         <div><label><input type="checkbox" class="regLine1" (change)="allowEmail = ! allowEmail" [checked]="allowEmail"><span class="bold">Intrested in lerninge more</span> I would like to recevie additionally informesion</label></div>

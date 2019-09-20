@@ -179,7 +179,7 @@
     rgba(255, 255, 255, 0.7) 92%,
     rgba(255, 255, 255, 0.0) 100%
   );
-    animation-duration: 1s;
+    animation-duration: 2s;
   animation-name: changewidth;
   animation-iteration-count: infinite;
 
