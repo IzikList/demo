@@ -17,12 +17,12 @@
         </div>
       </div>
     </div>
-    <div class="carousel" id="carousel" >
+    <div class="carousel" id="carousel">
       <ul class="slides" id="slides">
         <li *ngFor="let image of imageUrlArray" class="animate" [ngClass]="image.url" style="background-position-x: center">
           <div style="width: 100%; height: 100%; background-color: #3488a0; opacity: 0.48; position: absolute; ">
           </div>
-          <div class="caruselText" >
+          <div class="caruselText">
             <div style="z-index: 200; text-align: center">
               <div [innerHTML]="image.text"></div>
               <!--<div><button style="font-size: 20px; padding-left: 24px; padding-top: 8px; padding-right: 24px; padding-bottom: 8px;" [routerLink]="image.goto">{{image.btnText}}</button> </div>-->
@@ -30,7 +30,7 @@
           </div>
         </li>
       </ul>
-      <div class="signBtn"  (click)="test()" style="z-index: 2002;"><img id="signBtn" src="/assets/images/sign_in_button.png" style="width: 200px; " /></div>
+      <div class="signBtn" (click)="test()" style="z-index: 2002;"><img id="signBtn" src="/assets/images/sign_in_button.png" style="width: 200px; " /></div>
     </div>
     <div class="downSide" style="position: relative">
       <div class="middle">
@@ -65,10 +65,10 @@
   <!--<input type="button" (click)="animateRight()" value="right" style="position: fixed; top: 100px;" />
   <input type="button" (click)="animateLeft()" value="left" style="position: fixed" />-->
   <div class="comming_soon_mobile" (click)="shake()" style="position: fixed; top: 38px; width: 100%; text-align: center; z-index: 1001;">
-    <img src="/assets/images/coming_soon.png" style="width: 100%;"/>
+    <img src="/assets/images/coming_soon.png" style="width: 100%;" />
   </div>
   <div class="comming_soon" (click)="shake()" style="position: fixed; height: 100%; top: 0px; width: 100%; text-align: center; z-index: 1001;">
-    <img src="/assets/images/coming_soon_big.png" style="object-fit: cover; height: 40%;"/>
+    <img src="/assets/images/coming_soon_big.png" style="object-fit: cover; height: 40%;" />
   </div>
 
 

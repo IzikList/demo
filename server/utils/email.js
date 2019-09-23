@@ -57,29 +57,31 @@ function emailUtils() {
         }
     }
 
+    const sender = 'LiST <invoice@listsettlements.com>' // 'LiST <izik@listsettlements.com>'; // 'LiST <invoice@listsettlements.com>';
+
     function sendAlarmEmail(txt) {
-        let mail = makeEmail('LiST <invoice@listsettlements.com>', 'yaakovb@listsettlements.com', 'Someone registered', txt);
+        let mail = makeEmail(sender, 'yaakovb@listsettlements.com', 'Someone registered', txt);
         send(mail);
     }
 
     function sendEmail1(to, name) {
         let txt = emails.email1html.replace('Hi Yaakov,', 'Hi ' + name + ',');
-        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, name + ', Wolcome to LiST', '', txt);
+        let mail = makeEmail(sender, to, name + ', Wolcome to LiST', '', txt);
         send(mail);
     }
     function sendEmail2(to, name) {
         let txt = emails.email2html.replace('Hi Yaakov,', 'Hi ' + name + ',');
-        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, name + ', Wolcome to LiST', '', txt);
+        let mail = makeEmail(sender, to, name + ', Wolcome to LiST', '', txt);
         send(mail);
     }
     function sendEmail3(to, name) {
         let txt = emails.email3html.replace('Hi Yaakov,', 'Hi ' + name + ',');
-        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, name + ', Wolcome to LiST', '', txt);
+        let mail = makeEmail(sender, to, name + ', Wolcome to LiST', '', txt);
         send(mail);
     }
     function sendEmail4(to, name) {
         let txt = emails.email4html.replace('Hi Yaakov,', 'Hi ' + name + ',');
-        let mail = makeEmail('LiST <invoice@listsettlements.com>', to, name + ', Wolcome to LiST', '', txt);
+        let mail = makeEmail(sender, to, name + ', Wolcome to LiST', '', txt);
         send(mail);
     }
 
