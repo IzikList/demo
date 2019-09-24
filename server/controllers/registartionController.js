@@ -37,7 +37,7 @@ var regController = function () {
                 emailUtils.sendEmail3(obj.email, obj.firstName);
             }
         }
-        //sendRegistrationData(obj);
+        sendRegistrationData(obj);
     }
 
     function sendRegistrationData(obj){
@@ -45,7 +45,11 @@ var regController = function () {
                     "email: " + obj.email + "\n" +
                     "is Investor: " + obj.isInvestor + "\n" +  
                     "phone: " + obj.phoneNumber + "\n" + 
-                    "date: " + new Date().toISOString();
+                    "date: " + new Date().toISOString() + '\n' +
+                    "user text: " + obj.userText || '';
+        if(obj.meta){
+            txt +='\n' + 'meta: ' +  JSON.stringify(obj.meta);
+        }
         emailUtils.sendAlarmEmail(txt);
 
     }
