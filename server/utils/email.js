@@ -53,7 +53,7 @@ function emailUtils() {
         }
     }
 
-    const sender = 'LiST <invoice@listsettlements.com>' // 'LiST <izik@listsettlements.com>'; // 'LiST <invoice@listsettlements.com>';
+    const sender = 'LiST <izik@listsettlements.com>'; // 'LiST <invoice@listsettlements.com>';
 
     function sendAlarmEmail(txt) {
         let mail = makeEmail(sender, 'yaakovb@listsettlements.com', 'Someone registered', txt);
