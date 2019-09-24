@@ -165,10 +165,10 @@
 .signBtn:after {
     content: "";
     position: absolute;
-    top: 15%;
+    top: 30%;
     /* left: -210%; */
-    width: 70px;
-    height: 20px;
+    width: 90px;
+    height: 10px;
     -webkit-transform: rotate(30deg);
     transform: rotate(30deg);
     background: rgba(255, 255, 255, 0.13);
