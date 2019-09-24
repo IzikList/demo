@@ -216,3 +216,91 @@
     }
 }
 
+
+@media screen and (max-width: 845px) {
+    app-about {
+        position: relative;
+    }
+
+    .section2 {
+        .center {
+            position: static;
+            margin-left: 0px;
+            width: initial;
+            transform: none;
+        }
+        .title {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+
+        }
+
+        .content {
+            display: block;
+        }
+        .leftSide {
+            width: inherit;
+            text-align: center;
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+        .rightSide {
+            width: inherit;
+        }
+
+        .img {
+            width: 330px;
+            height: 310px;
+            margin: auto;
+        }
+
+    }
+    .section3{
+        position: static;
+}
+
+
+.forStyle {
+        .leftSide {
+            color: white;
+            font-size: 20px;
+            line-height: 30px;
+            padding-right: 0px;
+        }
+        .title {
+            font-size: 43px;
+            line-height: 66px;
+        }
+
+        .center {
+            top: 0%;
+            position: static;
+            display: block;
+            text-align: center;
+            padding-left: 0px;
+        }
+        .rightSide {
+            width: 435px;
+            padding-right: 0px;
+            .img {
+                width: 384px;
+                height: 342px;
+                background-image: url('/assets/images/for_policy_holder.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        }
+        .button {
+            width: 248px;
+            height: 60px;
+            background-color: white;
+            color: #E98126;
+            font-size: 26px;
+            line-height: 100%;
+            line-height: 60px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    }
+}
