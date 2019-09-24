@@ -228,3 +228,6 @@ textarea {
 
 
 
+input[type='checkbox']{
+    pointer-events: none;
+}
