@@ -163,26 +163,22 @@
     display: none;
 }
 .signBtn:after {
-  content: "";
-  position: absolute;
-  top: -130%;
-  left: -210%;
-  width: 200%;
-  height: 20px;
-  transform: rotate(30deg);
-  
-  background: rgba(255, 255, 255, 0.13);
-  background: linear-gradient(
-    to right, 
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.4) 77%,
-    rgba(255, 255, 255, 0.7) 92%,
-    rgba(255, 255, 255, 0.0) 100%
-  );
+    content: "";
+    position: absolute;
+    top: 15%;
+    /* left: -210%; */
+    width: 70px;
+    height: 20px;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+    background: rgba(255, 255, 255, 0.13);
+    background: linear-gradient( to right, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 77%, rgba(255, 255, 255, 0.7) 92%, rgba(255, 255, 255, 0.0) 100% );
+    -webkit-animation-duration: 3s;
     animation-duration: 3s;
-  animation-name: changewidth;
-  animation-iteration-count: infinite;
-
+    -webkit-animation-name: changewidth;
+    animation-name: changewidth;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
 }
 .shakeElement {
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
@@ -200,7 +196,7 @@
   }
 
   to {
-    left: 30%;
+    left: 120%;
   }
 }
 
