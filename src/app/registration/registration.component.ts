@@ -24,6 +24,10 @@ export class RegistrationComponent implements OnInit {
     private dialogRef: MatDialogRef<RegistrationComponent>) { }
 
   ngOnInit() {
+    if (window.innerWidth < 1050) {
+      this.investorView = false;
+      this.policyHolderView = false;
+    }
   }
 
   register() {
