@@ -636,11 +636,12 @@
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-style: normal; font-weight: normal;">
                         
                             <h1 style="text-align: center;">Congratulations On&nbsp;Finding&nbsp;Us!</h1>
-Hi Yaakov
-
+<br>
+Hi Yaakov,
 <p style="font-style: normal; font-weight: normal;">You've just taken the first step towards maximizing your asset.<br>
 <br>
-We are looking forward to meeting you and eager to learn more about you and your needs, in the next few days we will reach out to coordinate a phone call at your convenience.&nbsp;</p>
+Please give us some basic information so we can send you offers that suit your needs. It will only take a minute (Yep, it's that simple.)<br>
+&nbsp;</p>
 
 <p style="font-style: normal; font-weight: normal;">&nbsp;</p>
 
@@ -655,6 +656,22 @@ We are looking forward to meeting you and eager to learn more about you and your
 				</tr>
 				</table>
 				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock" style="min-width:100%;">
+    <tbody class="mcnButtonBlockOuter">
+        <tr>
+            <td style="padding-top:0; padding-right:18px; padding-bottom:18px; padding-left:18px;" valign="top" align="center" class="mcnButtonBlockInner">
+                <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer" style="border-collapse: separate !important;border-radius: 4px;background-color: #2BAADF;">
+                    <tbody>
+                        <tr>
+                            <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial; font-size: 16px; padding: 18px;">
+                                <a class="mcnButton " title="Update Basic Information" href="https://docs.google.com/forms/d/e/1FAIpQLSdOfybLhNmNxKlnvxyHt5jSJbI2TvnmTboR8e2aDl2xxk-tPQ/viewform?usp=sf_link" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Update Basic Information</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
     </tbody>
@@ -679,7 +696,7 @@ We are looking forward to meeting you and eager to learn more about you and your
 
 <h1 dir="ltr" style="text-align: center;"><span style="font-size:16px"><strong id="docs-internal-guid-6af838d2-7fff-0d78-3d2e-a5b42a08c29b">Learn more about us!</strong></span></h1>
 
-<h1 dir="ltr" style="text-align: center;"><span style="font-size:16px"><strong id="docs-internal-guid-6af838d2-7fff-0d78-3d2e-a5b42a08c29b">&nbsp;Yaacov Goldenhersh, CEO of LiST, presenting on stage at the Barclays&nbsp;event. Enjoy</strong></span></h1>
+<h1 dir="ltr" style="text-align: center;"><span style="font-size:16px"><strong id="docs-internal-guid-6af838d2-7fff-0d78-3d2e-a5b42a08c29b">&nbsp;Yaacov Goldenhersh, CEO of LiST, presenting on stage at the Barclays&nbsp;event. Enjoy!</strong></span></h1>
 
 <div dir="ltr">&nbsp;</div>
 
@@ -753,7 +770,7 @@ We are looking forward to meeting you and eager to learn more about you and your
 &nbsp;</p>
 
 <ul>
-	<li>LiST is not a broker or a investor. LiST is an open marketplce that allows policyholders easily monetize their policies and provides investors with easy access to the Life Settlements Market</li>
+	<li>LiST is not a broker or an investor. LiST is an open marketplace&nbsp;that allows policyholders to easily monetize their policies and provides investors with easy access to the Life Settlement&nbsp;Market.</li>
 	<li>Our goal is to enable you to receive TRUE VALUE for your asset.</li>
 	<li>We focus on enabling policyholders to keep their policy while, at the same time, free them from paying the premiums.</li>
 	<li>Enabling easy access for many investors will result in policyholders realizing the true value of their assets.</li>
