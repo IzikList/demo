@@ -16,7 +16,7 @@ export class AboutPageComponent implements OnInit {
     window['particlesJS']('particles-js', {
       particles: {
         number: {
-          value: 200,
+          value: 100,
           density: {
             enable: true,
             value_area: 800
@@ -29,7 +29,7 @@ export class AboutPageComponent implements OnInit {
           type: 'circle',
           stroke: {
             width: 0,
-            color: '#00ff00'
+            color: '#30CFD0'
           },
           polygon: {
             nb_sides: 5
@@ -55,7 +55,7 @@ export class AboutPageComponent implements OnInit {
           random: true,
           anim: {
             enable: false,
-            speed: 40,
+            speed: 5,
             size_min: 0.1,
             sync: false
           }
@@ -63,13 +63,13 @@ export class AboutPageComponent implements OnInit {
         line_linked: {
           enable: true,
           distance: 150,
-          color: '#00ff00',
+          color: '#30CFD0',
           opacity: 0.4,
           width: 1
         },
         move: {
           enable: true,
-          speed: 6,
+          speed: 3,
           direction: 'none',
           random: false,
           straight: false,
