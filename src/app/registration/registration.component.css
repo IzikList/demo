@@ -161,6 +161,7 @@
     height: 521px; 
     background-color: white; 
     width: 80vw; 
+    max-width: 1050px;
     font-family: 'Assistant';
 }
 
@@ -228,3 +229,6 @@ textarea {
 
 
 
+input[type='checkbox']{
+    pointer-events: none;
+}

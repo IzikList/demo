@@ -1,27 +1,24 @@
 var nodemailer = require("nodemailer");
 const fs = require('fs');
 const emails = {
-    email1html: '',
-    email2html: '',
-    email3html: 'trtrtr',
-    email4html: '',
+    emailInvestorNonCallhtml: '',
+    emailInvestorCallhtml: '',
+    emailPolicyNonCallhtml: 'trtrtr',
+    emailPolicyCallhtml: '',
 
 }
 
 
 function readFiles() {
-    readFile(__dirname + '/mail_investor_1.txt', 'email1html');
-    readFile(__dirname + '/mail_investor_2.txt', 'email2html');
-    readFile(__dirname + '/mail_policy_1.txt', 'email3html');
-    readFile(__dirname + '/mail_policy_2.txt', 'email4html');
+    readFile(__dirname + '/mail_investor_noncall.txt', 'emailInvestorNonCallhtml');
+    readFile(__dirname + '/mail_investor_call.txt', 'emailInvestorCallhtml');
+    readFile(__dirname + '/mail_policy_noncall.txt', 'emailPolicyNonCallhtml');
+    readFile(__dirname + '/mail_policy_call.txt', 'emailPolicyCallhtml');
 }
 
 function readFile(fileName, varName) {
-    console.log('email3html  = ' + emails['email3html']);
     fs.readFile(fileName, 'utf8', function (err, data) {
         if (err) throw err;
-        console.log('OK: ' + fileName);
-        console.log(data)
         emails[varName] = data;
     });
 
@@ -47,7 +44,6 @@ function emailUtils() {
 
 
     function makeEmail(from, to, subject, text, html) {
-        console.log(from, to, subject, text, html);
         return {
             from,
             to,
@@ -60,27 +56,27 @@ function emailUtils() {
     const sender = 'LiST <invoice@listsettlements.com>' // 'LiST <izik@listsettlements.com>'; // 'LiST <invoice@listsettlements.com>';
 
     function sendAlarmEmail(txt) {
-        let mail = makeEmail(sender, 'izik@listsettlements.com', 'Someone registered', txt);
+        let mail = makeEmail(sender, 'yaakovb@listsettlements.com', 'Someone registered', txt);
         send(mail);
     }
 
-    function sendEmail1(to, name) {
-        let txt = emails.email1html.replace('Hi Yaakov,', 'Hi ' + name + ',');
+    function sendEmailInvestorNonCall(to, name) {
+        let txt = emails.emailInvestorNonCallhtml.replace('Hi Yaakov,', 'Hi ' + name + ',');
         let mail = makeEmail(sender, to, name + ', Wolcome to LiST', '', txt);
         send(mail);
     }
-    function sendEmail2(to, name) {
-        let txt = emails.email2html.replace('Hi Yaakov,', 'Hi ' + name + ',');
+    function sendEmailInvestorCall(to, name) {
+        let txt = emails.emailInvestorCallhtml.replace('Hi Yaakov,', 'Hi ' + name + ',');
         let mail = makeEmail(sender, to, name + ', Wolcome to LiST', '', txt);
         send(mail);
     }
-    function sendEmail3(to, name) {
-        let txt = emails.email3html.replace('Hi Yaakov,', 'Hi ' + name + ',');
+    function sendEmailPolicyNonCall(to, name) {
+        let txt = emails.emailPolicyNonCallhtml.replace('Hi Yaakov,', 'Hi ' + name + ',');
         let mail = makeEmail(sender, to, name + ', Wolcome to LiST', '', txt);
         send(mail);
     }
-    function sendEmail4(to, name) {
-        let txt = emails.email4html.replace('Hi Yaakov,', 'Hi ' + name + ',');
+    function sendEmailPolicyCall(to, name) {
+        let txt = emails.emailPolicyCallhtml.replace('Hi Yaakov,', 'Hi ' + name + ',');
         let mail = makeEmail(sender, to, name + ', Wolcome to LiST', '', txt);
         send(mail);
     }
@@ -129,10 +125,10 @@ function emailUtils() {
     // });
 
     return {
-        sendEmail1,
-        sendEmail2,
-        sendEmail3,
-        sendEmail4,
+        sendEmailInvestorCall,
+        sendEmailInvestorNonCall,
+        sendEmailPolicyCall,
+        sendEmailPolicyNonCall,
         sendAlarmEmail
     }
 }

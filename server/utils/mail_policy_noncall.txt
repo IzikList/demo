@@ -577,7 +577,7 @@
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
                         
-                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; text-align: center;">
+                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-style: normal; font-weight: normal;">
                         
                             <a href="*|ARCHIVE|*" target="_blank">View this email in your browser</a>
                         </td>
@@ -633,20 +633,17 @@
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
                         
-                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-style: normal; font-weight: normal;">
                         
-                            <h1 style="text-align: center;">Welcome to LiST!</h1>
+                            <h1 style="text-align: center;">Congratulations On&nbsp;Finding&nbsp;Us!</h1>
 <br>
-Hi Yaakov,<br>
+Hi Yaakov,
+<p style="font-style: normal; font-weight: normal;">You've just taken the first step towards maximizing your asset.<br>
 <br>
-We'd like to welcome you to the LiST (<strong>Li</strong>fe <strong>S</strong>ettlements <strong>T</strong>rading) platform.
+Please give us some basic information so we can send you offers that suit your needs. It will only take a minute (Yep, it's that simple.)<br>
+&nbsp;</p>
 
-<p>LiST provides you with an easy-to-use one-button-purchase platform that enables you to invest directly and seamlessly in many policies at once. We use algorithms to calculate and ensure diversification, quality of policies and IRR forecasts. Through the platform, you become a true partial owner of pure alpha assets.</p>
-
-<div style="direction: ltr;">&nbsp;</div>
-
-<div style="direction: ltr;"><strong>We are looking forward to meeting you and learning more about you and your investment preferences. In the next few days, we will reach out to coordinate a phone call at your convenience.</strong><br>
-&nbsp;</div>
+<p style="font-style: normal; font-weight: normal;">&nbsp;</p>
 
                         </td>
                     </tr>
@@ -659,6 +656,22 @@ We'd like to welcome you to the LiST (<strong>Li</strong>fe <strong>S</strong>et
 				</tr>
 				</table>
 				<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock" style="min-width:100%;">
+    <tbody class="mcnButtonBlockOuter">
+        <tr>
+            <td style="padding-top:0; padding-right:18px; padding-bottom:18px; padding-left:18px;" valign="top" align="center" class="mcnButtonBlockInner">
+                <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer" style="border-collapse: separate !important;border-radius: 4px;background-color: #2BAADF;">
+                    <tbody>
+                        <tr>
+                            <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial; font-size: 16px; padding: 18px;">
+                                <a class="mcnButton " title="Update Basic Information" href="https://docs.google.com/forms/d/e/1FAIpQLSdOfybLhNmNxKlnvxyHt5jSJbI2TvnmTboR8e2aDl2xxk-tPQ/viewform?usp=sf_link" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Update Basic Information</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
         </tr>
     </tbody>
@@ -677,11 +690,15 @@ We'd like to welcome you to the LiST (<strong>Li</strong>fe <strong>S</strong>et
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
                         
-                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-style: normal; font-weight: normal;">
                         
-                            <h1 style="text-align: center;"><br>
-<strong><span style="font-size:18px">Learn more about us!<br>
-&nbsp;</span></strong><span style="font-size:18px">Yaacov Glodenhersh, LIST CEO, presenting on stage at the Barclays event. Enjoy!&nbsp;</span></h1>
+                            <h1 style="text-align: center;">&nbsp;</h1>
+
+<h1 dir="ltr" style="text-align: center;"><span style="font-size:16px"><strong id="docs-internal-guid-6af838d2-7fff-0d78-3d2e-a5b42a08c29b">Learn more about us!</strong></span></h1>
+
+<h1 dir="ltr" style="text-align: center;"><span style="font-size:16px"><strong id="docs-internal-guid-6af838d2-7fff-0d78-3d2e-a5b42a08c29b">&nbsp;Yaacov Goldenhersh, CEO of LiST, presenting on stage at the Barclays&nbsp;event. Enjoy!</strong></span></h1>
+
+<div dir="ltr">&nbsp;</div>
 
                         </td>
                     </tr>
@@ -743,33 +760,32 @@ We'd like to welcome you to the LiST (<strong>Li</strong>fe <strong>S</strong>et
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
                         
-                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-style: normal; font-weight: normal;">
                         
-                            <p style="text-align: left;"><br>
-<strong></strong><strong>Why&nbsp;invest in&nbsp;the Life Settlements market (in a nutshell)</strong></p>
+                            <p style="font-style: normal; font-weight: normal;"><br>
+<br>
+&nbsp;</p>
 
-<ul dir="ltr">
-	<li style="text-align: left;">With a historically low correlation to the stock market, life settlements are a great alternative investment for your portfolio</li>
-	<li style="text-align: left;">You are purchasing a portion of a real asset</li>
-	<li style="text-align: left;">Insurance carriers’ credit is a consistently highly-rated financial entity</li>
-	<li style="text-align: left;">Life settlement market provides potential high-yield for its investors&nbsp;</li>
+<p style="font-style: normal; font-weight: normal;"><strong id="docs-internal-guid-9a202c8f-7fff-e998-3b1f-6a1f10b03590">A few things you should know:</strong><br>
+&nbsp;</p>
+
+<ul>
+	<li>LiST is not a broker or an investor. LiST is an open marketplace&nbsp;that allows policyholders to easily monetize their policies and provides investors with easy access to the Life Settlement&nbsp;Market.</li>
+	<li>Our goal is to enable you to receive TRUE VALUE for your asset.</li>
+	<li>We focus on enabling policyholders to keep their policy while, at the same time, free them from paying the premiums.</li>
+	<li>Enabling easy access for many investors will result in policyholders realizing the true value of their assets.</li>
 </ul>
-
-<div style="text-align: left;">&nbsp;</div>
-
-<div style="direction: ltr; text-align: left;">If you have any questions, you can reply to this email or go to our website for more information.<br>
+<br>
+If you have any questions, you can reply to this email or go to our website for more information.<br>
 <br>
 Looking forward to working together!<br>
 <br>
-The LiST SETTLEMENTS TEAM<br>
-<br>
-<br>
+The LiST SETTLEMENTS TEAM&nbsp;<br>
 <br>
 <span style="font-size:12px">Disclaimer – LiST Settlements does not act as a Life Settlements Broker or Provider, nor do they advise on purchasing any sort of investment.<br>
 <br>
 Unsubscribe – You signed up for receiving these emails. If you did not sign up or if you wish to unsubscribe from LiST, please kindly reply to this email and note “unsubscribe”.</span><br>
-&nbsp;</div>
-
+&nbsp;
                         </td>
                     </tr>
                 </tbody></table>

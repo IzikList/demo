@@ -26,15 +26,15 @@ var regController = function () {
     function sendRegistrationEmail(obj) {
         if(obj.isInvestor) {
             if(obj.meta && obj.meta.waitForCall) {
-                emailUtils.sendEmail2(obj.email, obj.firstName);
+                emailUtils.sendEmailInvestorCall(obj.email, obj.firstName);
             }else {
-                emailUtils.sendEmail1(obj.email, obj.firstName);
+                emailUtils.sendEmailInvestorNonCall(obj.email, obj.firstName);
             }
         } else  {
             if(obj.meta && obj.meta.waitForCall) {
-                emailUtils.sendEmail4(obj.email, obj.firstName);
+                emailUtils.sendEmailPolicyCall(obj.email, obj.firstName);
             } else {
-                emailUtils.sendEmail3(obj.email, obj.firstName);
+                emailUtils.sendEmailPolicyNonCall(obj.email, obj.firstName);
             }
         }
         sendRegistrationData(obj);

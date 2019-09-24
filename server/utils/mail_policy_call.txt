@@ -636,11 +636,11 @@
                         <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; font-style: normal; font-weight: normal;">
                         
                             <h1 style="text-align: center;">Congratulations On&nbsp;Finding&nbsp;Us!</h1>
+<br>
 Hi Yaakov,
-
 <p style="font-style: normal; font-weight: normal;">You've just taken the first step towards maximizing your asset.<br>
 <br>
-We are looking forward to meeting you and eager to learn more about you and your needs, in the next few days we will reach out to coordinate a phone call at your convenience.&nbsp;</p>
+We are looking forward to meeting you and eager to learn more about you and your needs. In the next few days, we will reach out to coordinate a phone call at your convenience.</p>
 
 <p style="font-style: normal; font-weight: normal;">&nbsp;</p>
 
@@ -679,7 +679,7 @@ We are looking forward to meeting you and eager to learn more about you and your
 
 <h1 dir="ltr" style="text-align: center;"><span style="font-size:16px"><strong id="docs-internal-guid-6af838d2-7fff-0d78-3d2e-a5b42a08c29b">Learn more about us!</strong></span></h1>
 
-<h1 dir="ltr" style="text-align: center;"><span style="font-size:16px"><strong id="docs-internal-guid-6af838d2-7fff-0d78-3d2e-a5b42a08c29b">&nbsp;Yaacov Goldenhersh, CEO of LiST, presenting on stage at the Barclays&nbsp;event. Enjoy</strong></span></h1>
+<h1 dir="ltr" style="text-align: center;"><span style="font-size:16px"><strong id="docs-internal-guid-6af838d2-7fff-0d78-3d2e-a5b42a08c29b">&nbsp;Yaacov Goldenhersh, CEO of LiST, presenting on stage at the Barclays&nbsp;event. Enjoy!</strong></span></h1>
 
 <div dir="ltr">&nbsp;</div>
 
@@ -753,7 +753,7 @@ We are looking forward to meeting you and eager to learn more about you and your
 &nbsp;</p>
 
 <ul>
-	<li>LiST is not a broker or a investor. LiST is an open marketplce that allows policyholders easily monetize their policies and provides investors with easy access to the Life Settlements Market</li>
+	<li>LiST is not a broker or an investor. LiST is an open marketplace&nbsp;that allows policyholders to easily monetize their policies and provides investors with easy access to the Life Settlements Market.</li>
 	<li>Our goal is to enable you to receive TRUE VALUE for your asset.</li>
 	<li>We focus on enabling policyholders to keep their policy while, at the same time, free them from paying the premiums.</li>
 	<li>Enabling easy access for many investors will result in policyholders realizing the true value of their assets.</li>
