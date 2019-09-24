@@ -41,7 +41,7 @@ export class RegistrationComponent implements OnInit {
       userText: this.userText,
       meta: {
         allowEmail: this.allowEmail,
-        waitForCall: this.waitForCall
+        waitForCall: ! this.allowEmail
       }
     }).subscribe(data => {
       this.dialogRef.close({complete: true});
