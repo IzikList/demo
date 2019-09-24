@@ -70,6 +70,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { PolicyForecastComponent } from './policy-forecast/policy-forecast.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { CompleteDialogComponent } from './registration/complete-dialog/complete-dialog.component';
+import { AboutComponent } from './homepage/about/about.component';
+import { VideoDialogComponent } from './home/video-dialog/video-dialog.component';
 // import { NuminputComponent } from './numinput/numinput.component';
 
 @NgModule({
@@ -93,9 +95,12 @@ import { CompleteDialogComponent } from './registration/complete-dialog/complete
     PolicyForecastComponent,
     AboutPageComponent,
     CompleteDialogComponent,
+    AboutComponent,
+    VideoDialogComponent,
   ],
   entryComponents: [
-    CompleteDialogComponent
+    CompleteDialogComponent,
+    VideoDialogComponent
     ],
   imports: [
     BrowserModule,
