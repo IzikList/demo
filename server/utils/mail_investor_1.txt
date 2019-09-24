@@ -645,8 +645,7 @@ We'd like to welcome you to the LiST (<strong>Li</strong>fe <strong>S</strong>et
 
 <div style="direction: ltr;">&nbsp;</div>
 
-<div style="direction: ltr;"><strong>We are looking forward to meeting you and learning more about you and your investment preferences. In the next few days, we will reach out to coordinate a phone call at your convenience.</strong><br>
-&nbsp;</div>
+<div style="direction: ltr;"><strong>We have added you to our mailing list and we will be sending you relevant information from time to time.</strong></div>
 
                         </td>
                     </tr>
