@@ -13,6 +13,14 @@ import { TextareaExpandedComponent } from './numinput/test';
 import { NgModelBaseComponent } from './numinput/NgModelBase';
 import { SlideshowModule } from 'ng-simple-slideshow';
 
+import { HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
+
+export class MyHammerConfig extends HammerGestureConfig {
+    overrides = <any> {
+        'pinch': { enable: false },
+        'rotate': { enable: false }
+    };
+}
 
 import {
   MatAutocompleteModule,
@@ -150,7 +158,12 @@ import { VideoDialogComponent } from './home/video-dialog/video-dialog.component
     AppRoutingModule,
     SlideshowModule
   ],
-  providers: [],
+  providers: [
+    {
+        provide: HAMMER_GESTURE_CONFIG,
+        useClass: MyHammerConfig
+    }
+  ],
   bootstrap: [AppComponent],
   exports: [
     CdkTableModule,
