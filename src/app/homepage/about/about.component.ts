@@ -167,13 +167,10 @@ export class AboutComponent implements OnInit, AfterViewInit {
 
 
   showVideo() {
-        const dialogRef = this.dialog.open(VideoDialogComponent, {
-            height: '80%',
-            width: '80%',
-         });
-        // const v = document.getElementsByClassName('cdk-overlay-pane')[0];
-        // v['style'].maxWidth = '';
-        // alert(document.getElementById('cdk-overlay-0'));
+        const obj = window.innerWidth > 845 ? { height: '80%', width: '80%' } : {};
+        const dialogRef = this.dialog.open(VideoDialogComponent, obj);
+        const v = document.getElementsByClassName('cdk-overlay-pane')[0];
+        v['style'].maxWidth = '';
         dialogRef.afterClosed().subscribe(response => {
         });
 

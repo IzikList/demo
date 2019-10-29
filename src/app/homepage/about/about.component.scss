@@ -189,6 +189,9 @@
         margin-top: 25px;
     }
 }
+.section6Mobile {
+    display: none;
+}
 
 .section7 {
     text-align: center;
@@ -329,6 +332,12 @@
         .cards {
             width: 200px;
         }
+    }
+    .section6Desktop {
+        display: none;
+    }
+    .section6Mobile {
+        display: block;
     }
     .section7 {
         padding-top: 20px;
