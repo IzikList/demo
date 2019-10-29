@@ -1,19 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { VideoDialogComponent } from '../../home/video-dialog/video-dialog.component';
+declare var $: any;
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent implements OnInit, AfterViewInit {
 
   constructor(private dialog: MatDialog) { }
 
+  @ViewChild('mycards') cardsContainer;
+
+  cards: Array<HTMLElement>;
+  center: HTMLElement;
+  right: HTMLElement;
+  left: HTMLElement;
+  i = 1;
   ngOnInit() {
     this.runAnimation();
   }
+
+  ngAfterViewInit() {
+    this.cards = this.cardsContainer.nativeElement.children;
+    this.cards[0].style.transform = 'translateX(165px) scaleX(0.75) scaleY(0.75)';
+    this.cards[0].style.opacity =  '0.5';
+
+    this.cards[2].style.transform = 'translateX(-165px) scaleX(0.75) scaleY(0.75)';
+    this.cards[2].style.opacity =  '0.5';
+
+
+    this.cards[0].style.zIndex = '2';
+    this.cards[1].style.zIndex = '3';
+    this.cards[2].style.zIndex = '2';
+
+    this.right = this.cards[2];
+    this.left = this.cards[0];
+    this.center = this.cards[1];
+
+  }
+
+//   $(k).children().eq(1).animate({  fake: 0, fake2: 100 }, {
+//     step: function(now,fx) {
+//       t1 = now * 1.7;
+// 		t2 = now * 2.5;
+//       $(this).css('-webkit-transform','translate('+t1+'px,'+0+'px ) scale(' + (1 - (0.001 * t2)) + ')');
+//     },
+//     duration:'slow'
+// },'linear');
+
   runAnimation() {
     window['particlesJS']('particles-js', {
       particles: {
@@ -131,14 +168,123 @@ export class AboutComponent implements OnInit {
 
   showVideo() {
         const dialogRef = this.dialog.open(VideoDialogComponent, {
-            autoFocus: false,
-            panelClass: 'panelClass'
+            height: '80%',
+            width: '80%',
          });
-        const v = document.getElementsByClassName('cdk-overlay-pane')[0];
-        v['style'].maxWidth = '';
+        // const v = document.getElementsByClassName('cdk-overlay-pane')[0];
+        // v['style'].maxWidth = '';
         // alert(document.getElementById('cdk-overlay-0'));
         dialogRef.afterClosed().subscribe(response => {
         });
+
+  }
+  goLink(link) {
+    window.open(link, '_blank');
+  }
+  onSwipeLeft(e) {
+    this.animateLeft();
+  }
+  onSwipeRight(e) {
+    this.animateRight();
+  }
+
+  animateRight() {
+      const v = this;
+      const v1 = this.cards;
+      const right = this.right;
+      const left = this.left;
+      const center = this.center;
+      right.style.zIndex = '1';
+        $(center).animate({  fake: 100}, {
+            step: function(now, fx) {
+              if (now >= 50) {
+                 center.style.zIndex = '2';
+                 left.style.zIndex = '3';
+              }
+            const t1 = now * 1.65;
+            const t2 = now * 2.5;
+              $(this).css('-webkit-transform', 'translate(' + t1 + 'px,' + 0 + 'px ) scale(' + (1 - (0.001 * t2)) + ')');
+              center.style.opacity = '' + ((100 - (now / 2)) * 0.01);
+            },
+            complete : function() { console.log($(this)[0].fake); $(this)[0].fake = 0; right.style.zIndex = '2'; },
+            duration: 'slow'
+        }, 'linear');
+        $(left).animate({  fake: 100}, {
+            step: function(now, fx) {
+            left.style.opacity = '' + ((now + 50) * 0.01);
+             // console.log(now);
+             now = 100 - now;
+            const t1 = now * -1.65;
+            const t2 = now * 2.5;
+              $(this).css('-webkit-transform', 'translate(' + t1 + 'px,' + 0 + 'px ) scale(' + (1 - (0.001 * t2)) + ')');
+            },
+            complete : function() { console.log($(this)[0].fake); $(this)[0].fake = 0; },
+            duration: 'slow'
+        }, 'linear');
+
+          $(right).animate({  fake: 100}, {
+            step: function(now, fx) {
+            now =  now < 50 ? 100 - now :  -now;
+            const t1 = now * 1.65;
+            const t2 = now * 2.5;
+              $(this).css('-webkit-transform', 'translate(' + t1 + 'px,' + 0 + 'px ) scale(0.75)');
+            },
+            complete : function() { console.log($(this)[0].fake); $(this)[0].fake = 0; },
+            duration: 'slow'
+        }, 'linear');
+      this.center = left;
+      this.right = center;
+      this.left = right;
+
+  }
+
+  animateLeft () {
+      const v = this;
+      const v1 = this.cards;
+      const right = this.right;
+      const left = this.left;
+      const center = this.center;
+      left.style.zIndex = '1';
+        $(center).animate({  fake: 100}, {
+            step: function(now, fx) {
+              if (now >= 50) {
+                 center.style.zIndex = '2';
+                 right.style.zIndex = '3';
+              }
+            const t1 = now * -1.65;
+            const t2 = now * 2.5;
+              $(this).css('-webkit-transform', 'translate(' + t1 + 'px,' + 0 + 'px ) scale(' + (1 - (0.001 * t2)) + ')');
+              center.style.opacity = '' + ((100 - (now / 2)) * 0.01);
+            },
+            complete : function() { console.log($(this)[0].fake); $(this)[0].fake = 0; left.style.zIndex = '2'; },
+            duration: 'slow'
+        }, 'linear');
+        $(right).animate({  fake: 100}, {
+            step: function(now, fx) {
+            right.style.opacity = '' + ((now + 50) * 0.01);
+             // console.log(now);
+             now = 100 - now;
+            const t1 = now * 1.65;
+            const t2 = now * 2.5;
+              $(this).css('-webkit-transform', 'translate(' + t1 + 'px,' + 0 + 'px ) scale(' + (1 - (0.001 * t2)) + ')');
+            },
+            complete : function() { console.log($(this)[0].fake); $(this)[0].fake = 0; },
+            duration: 'slow'
+        }, 'linear');
+
+          $(left).animate({  fake: 100}, {
+            step: function(now, fx) {
+            now =  now < 50 ? 100 - now :  -now;
+            const t1 = now * -1.65;
+            const t2 = now * 2.5;
+              $(this).css('-webkit-transform', 'translate(' + t1 + 'px,' + 0 + 'px ) scale(0.75)');
+            },
+            complete : function() { console.log($(this)[0].fake); $(this)[0].fake = 0; },
+            duration: 'slow'
+        }, 'linear');
+      this.center = right;
+      this.right = left;
+      this.left = center;
 
   }
 }
