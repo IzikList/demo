@@ -117,7 +117,8 @@ export class CalculationService {
       const pmaps = this.getPremiumsMap(tempPrems, tempLes, sumOfPeople, irr, amount);
       summary.premiumsMap[k] = pmaps[0];
       summary.issueObj[k] = this.getIssueMap(tempPrems, tempLes, sumOfPeople, irr, amount, pmaps,
-       summary.issueObj[k - 1].totalShares, amount)[0];
+      summary.issueObj[k - 1].totalShares, amount)[0];
+      summary.issueObj[k].premiums = tempPrems;
     }
     summary.allInvestorsMoney = allInvestorsMoney;
     summary.allInvestorsPc = allInvestorsPc;
@@ -273,6 +274,8 @@ export class IssueMapObj {
   totalSharesAtTheEnd: number; // total shares at the and regrade to this calculation
   premiumsMap: PremiumsMap[];
   calculationStringForDebug: String;
+
+  premiums: number;
 }
 
 

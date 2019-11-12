@@ -8,7 +8,7 @@ import { SingleUnit2Component } from './single-unit2/single-unit2.component';
 import { SingleUnitExistingComponent } from './single-unit-existing/single-unit-existing.component';
 import { SimulatorScenariosComponent } from './simulator-scenarios/simulator-scenarios.component';
 import { SimulatorIvolvingLeComponent } from './simulator-ivolving-le/simulator-ivolving-le.component';
-import { ReportComponent } from './clients/report/report.component';
+import { ReportNewComponent } from './clients/report-new/report-new.component';
 import { MobileComponent } from './clients/mobile/mobile.component';
 import { SplashComponent } from './splash/splash.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'single_unit_existing2', component: SingleUnit2Component },
   { path: 'simulator2', component: SimulatorScenariosComponent },
   { path: 'simulator3', component: SimulatorIvolvingLeComponent },
-  { path: 'clients/report', component: ReportComponent },
+  { path: 'clients/report', component: ReportNewComponent },
   { path: 'clients/mobile', component: MobileComponent },
   { path: 'splash', component: SplashComponent },
   { path: 'home', component: HomepageComponent },
