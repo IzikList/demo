@@ -7,6 +7,23 @@ table, th, td {
     border: none;
 }
 
+.boldRight {
+    border-right: solid;
+}
+.boldLeft {
+    border-left: solid;
+}
+.boldTop {
+    border-top: solid;
+}
+.boldBottom {
+    border-bottom: solid;
+}
+.outlined {
+    border: solid;
+}
+
+
 .cell {
     width: 18%;
     text-align: center
@@ -26,7 +43,7 @@ table, th, td {
     font-family: 'Open Sans';
 }
 
-@media print {
+/*@media print {
   body * {
     visibility: hidden;
   }
@@ -45,12 +62,11 @@ table, th, td {
   height:400%;
   page-break-after:always;
      overflow: scroll;
-    /*transform: scale(0.9);*/
   }
   .container{
       padding: 0px;
   }
-}
+}*/
 .line1 {
 }
 

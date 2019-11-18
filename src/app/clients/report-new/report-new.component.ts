@@ -5,6 +5,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ChartCanvasComponent } from '../report/chart-canvas/chart-canvas.component';
 import * as Chart from '../../../../node_modules/chart.js';
 import { HttpClient } from '@angular/common/http';
+import * as jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 
 @Component({
@@ -15,6 +17,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ReportNewComponent implements OnInit, AfterViewInit {
 
+  @ViewChild('page') myDiv: ElementRef;
+  @ViewChild('mImg') myImg: ElementRef;
+  imgPath = '';
+  imgPath2 = '';
+  param1: number;
+  param2: number;
+  param3: number;
+  param4: number;
+  param5: number;
+  param6: number;
+  param7: number;
+  param8: number;
+  pdf = true;
 
   onBoardingFees =  {
     legal:        {val:  2000, name: 'Legal'},
@@ -285,7 +300,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
     this.highData = this.getTableData(summaryHigh);
     this.lowData = this.getTableData(summaryLow);
 
-    this.setIlustration(this.highData, this.datin, this.lowData);
+    // this.setIlustration(this.highData, this.datin, this.lowData);
     return true;
   }
 
@@ -306,11 +321,13 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
       const element = summary.issueObj[index];
       const pcListManagment = element.pcForAllInvestors;
       const pcPolicyHolder = 1 - pcListManagment;
-      premiumsSum += this.premiumsArray[index];
+      premiumsSum += this.premiumsArray[index] + this.ongoingFeesSum;
       const v = {
         title: 'Year ' + (index + 1),
         enforcedCash: this.premiumsArray[index], // Math.floor(element.cashForSeller),
         enforcedPercetage: premiumsSum, // Math.floor((1 - element.pcForAllInvestors) * 100),
+        pcForSeller:  Math.floor((pcPolicyHolder) * 100),
+        pcForInvesrors: Math.floor((pcListManagment) * 100),
         PolicyholderInterest: Math.floor(summary.amount * pcPolicyHolder), // Math.floor(element.cashForInvestors),
         listInterest: Math.floor(summary.amount * pcListManagment),
         current: 0
@@ -322,7 +339,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   }
 
   setIlustration(array, array2, array3) {
-    this.createCanvasAndData();
+    // this.createCanvasAndData();
     let year = (new Date()).getFullYear();
     const barChartData = this.barChartData;
     const yearsArray = [];
@@ -478,6 +495,63 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
       // alert('close');
     });
   }
+
+    download() {
+      html2canvas(this.myDiv.nativeElement).then(canvas => {
+        // Few necessary setting options
+
+        // this.imgPath = canvas.toDataURL();
+        const imgWidth = 208;
+        const pageHeight = 295;
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+        const heightLeft = imgHeight;
+
+        const contentDataURL = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
+        const position = 0;
+        pdf.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST');
+        // pdf.addPage('a4');
+        // pdf.setPage(2);
+
+        // grab the context from your destination canvas
+        const cvs = window.document.createElement('canvas');
+        const destCtx = cvs['getContext']('2d');
+        // ctx.drawImage(img,0,200,240,297,10,10,200,200);
+        // window.document.body.appendChild(cvs);
+        console.log(canvas.width, canvas.height, imgHeight, imgWidth, pageHeight);
+        cvs.width = canvas.width;
+        cvs.height = canvas.height;
+
+        destCtx.drawImage(cvs, 0, 9, canvas.width, canvas.height , 0, 0,
+         canvas.width, imgHeight);
+        // destCtx.drawImage(canvas, this.param1, this.param2,
+        //    this.param3, this.param4, this.param5, this.param6, this.param7, this.param8);
+          // canvas.width, 600 );
+
+
+
+        // this.imgPath = canvas.toDataURL();
+        // this.imgPath2 = cvs.toDataURL();
+
+        // pdf.addImage(cvs.toDataURL(), 'PNG', 0, 0, imgWidth, 80);
+
+        // pdf.addImage(contentDataURL. 'PNG', )
+        if (this.pdf) {
+          pdf.save('MYPdf.pdf'); // Generated PDF
+        }
+        this.pdf = false;
+      });
+
+        // const doc = new jsPDF();
+        // console.log(doc);
+        // // doc.fromHTML(this.myDiv.nativeElement);
+        // doc.html(this.myDiv.nativeElement, { callback: (dispose) => {
+        //     doc.save('test.pdf');
+        // }});
+
+        // Save the PDF
+        // doc.save('Test.pdf');
+    }
 
   openOngoingDialog() {
     const dialogRef = this.dialog.open(DialogOnboardingComponent, { data: {arr: this.ongoingFees, title: 'Annual Ongoing Fees' }});

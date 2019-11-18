@@ -54,9 +54,9 @@
       </div>
     </mat-card>
     <!--*ngIf="!isHidden"-->
-    <div class="page" style="width: 210mm; background-color: white; margin: auto; display: none" id="section-to-print">
+    <div class="page" #page style="width: 210mm; background-color: white; margin: auto; display: none" id="section-to-print">
       <div class="container" style="margin-left: 7mm; margin-right: 7mm; padding-top: 10mm;">
-        <img class="logo" src="assets/images/logo.svg" style="margin-bottom: 5mm; width: 30mm;" />
+        <img class="logo" (click)="download()" src="assets/images/logo.svg" style="margin-bottom: 5mm; width: 30mm;" />
         <div class="line1" style="font-size: 6.7mm; color: #3588A0; font-family: 'Open Sans'">
           LIFE SETTLEMENTS REPORT
         </div>
@@ -90,36 +90,40 @@
 
 
         <table id="table2">
-          <!--<colgroup span="2"></colgroup>
-    <colgroup span="2"></colgroup>-->
+  <colgroup>
+    <col>
+    <col span="3" class="outlined">
+  </colgroup>
           <tr>
             <td class="header1">Timeline</td>
-            <td class="header1 tHeaderColor1" colspan="2" scope="colgroup">LiST management invesment</td>
+            <td class="header1 tHeaderColor1" colspan="3" scope="colgroup">LiST management invesment</td>
             <td class="header1 tHeaderColor2" >Policyholder interest</td>
             <td class="header1 tHeaderColor2" >LiST management interest</td>
-            <td class="header1 tHeaderColor3">Current/Immediate Liquidation Price</td>
           </tr>
           <tr>
             <td></td>
-            <th scope="col">Cash</th>
-            <th scope="col">Percentage</th>
+            <th scope="col">Annual Premiums</th>
+            <th scope="col">Expenses</th>
+            <th scope="col">Total investment</th>
             <th scope="col"></th>
             <th scope="col"></th>
-            <th></th>
           </tr>
           <tr *ngFor="let item of highData">
             <th scope="row" class="timeLine">{{item.title}}</th>
-            <td class="cell">{{item.enforcedCash | number}}$</td>
-            <td class="cell">{{item.enforcedPercetage | number}}</td>
-            <td class="cell">{{item.PolicyholderInterest | number}}$</td>
-            <td class="cell">{{item.listInterest | number}}$</td>
-            <td class="cell">{{item.current | number}}$</td>
+            <td class="cell boldLeft">{{item.enforcedCash | number}}$</td>
+            <td class="cell">{{ongoingFeesSum | number}}$</td>
+            <td class="cell boldRight">{{item.enforcedPercetage | number}}$</td>
+            <td class="cell">{{item.PolicyholderInterest | number}}$ ({{item.pcForSeller}}%)</td>
+            <td class="cell">{{item.listInterest | number}}$ ({{item.pcForInvesrors}}%)</td>
           </tr>
         </table>
 
         <div id="tableDescription">
           <div id="tableDescription_line1" class="tableLines">
             <span class="tHeaderColor1">LiST management invesment</span> –  Represents LiST Management annual and accumulated investment in the policy
+            <div style="margin-left: 30px; display: table" ><span style="font-weight: 500; display: table-cell">Annual Premiums</span><span style="display: table-cell">&nbsp;-&nbsp;</span><div style="display: table-cell">Represents the annual premium LiST Management is Financing for the policy</div></div>
+            <div style="margin-left: 30px; display: table" ><span style="font-weight: 500; display: table-cell;">Expenses</span><span style="display: table-cell">&nbsp;-&nbsp;</span><div style="display: table-cell">Represents the onboarding and ongoing expense of maintaining and managing the asset, this includes provider fees, lawyer expenses, life expectancy reports, and ect</div></div>
+            <div style="margin-left: 30px; display: table" ><span style="font-weight: 500; display: table-cell">Total investment</span><span style="display: table-cell">&nbsp;-&nbsp;</span><div style="display: table-cell">Represents the total investment made in the asset</div></div>
           </div>
           <div id="tableDescription_line2" class="tableLines">
             <span class="tHeaderColor2">Policyholder interest</span> – Represents the life insurance coverage remaining by the seller at sudden deat
@@ -127,17 +131,7 @@
           <div id="tableDescription_line3" class="tableLines">
             <span class="tHeaderColor3">LiST management interest</span> - Represents the portion of the policy sold to LiST Management for covering premiums
           </div>
-
-        </div>
-        <div class="mHeader mHeader2">
-          Current/Immediate Liquidation Price
-        </div>
-        <div>
-          <canvas id="myChart"></canvas>
-        </div>
-
-        <div>
-          <canvas id="myChart3"></canvas>
+          <div style="margin-top: 30px">This offer, was issued at 08/01/2019 for thie policy in its current position, changes my occurred to the policy that can effect future valuation, and influence financing conditions </div>
         </div>
         <div style="width: 100%; height: 20mm"></div>
       </div>
@@ -147,4 +141,18 @@
     <img src="assets/images/process.gif" />
     <div id="loadingText"></div>
   </div>
+  <!--<div>
+    Param 1 : <input type="text" [(ngModel)]="param1" /> <br />
+    Param 2 : <input type="text" [(ngModel)]="param2" /> <br />
+    Param 3 : <input type="text" [(ngModel)]="param3" /> <br />
+    Param 4 : <input type="text" [(ngModel)]="param4" /> <br />
+    Param 5 : <input type="text" [(ngModel)]="param5" /> <br />
+    Param 6 : <input type="text" [(ngModel)]="param6" /> <br />
+    Param 7 : <input type="text" [(ngModel)]="param7" /> <br />
+    Param 8 : <input type="text" [(ngModel)]="param8" /> <br />
+
+  </div>
+  <img #mImg [src]="imgPath" />
+    <img [src]="imgPath2" />-->
+
 </div>
