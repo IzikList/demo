@@ -522,24 +522,20 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         cvs.width = canvas.width;
         cvs.height = canvas.height;
 
-        destCtx.drawImage(cvs, 0, 9, canvas.width, canvas.height , 0, 0,
-         canvas.width, imgHeight);
+        destCtx.drawImage(canvas, 0, (pageHeight) / (imgWidth / canvas.width), canvas.width, canvas.height , 0, 0,
+         canvas.width, canvas.height);
         // destCtx.drawImage(canvas, this.param1, this.param2,
         //    this.param3, this.param4, this.param5, this.param6, this.param7, this.param8);
           // canvas.width, 600 );
-
-
-
         // this.imgPath = canvas.toDataURL();
         // this.imgPath2 = cvs.toDataURL();
+        pdf.addPage('a4');
+        pdf.setPage(2);
 
-        // pdf.addImage(cvs.toDataURL(), 'PNG', 0, 0, imgWidth, 80);
+        pdf.addImage(cvs.toDataURL(), 'JPEG', 0, 0, imgWidth, imgHeight, '', 'FAST');
 
         // pdf.addImage(contentDataURL. 'PNG', )
-        if (this.pdf) {
           pdf.save('MYPdf.pdf'); // Generated PDF
-        }
-        this.pdf = false;
       });
 
         // const doc = new jsPDF();
