@@ -265,9 +265,26 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
       // alert('Set les please');
       return;
     }
+
     this.mDate = Date.now();
     // generate premiums if dosn't exists
     const premiumsArray =  JSON.parse(JSON.stringify(this.premiumsArray)); // this.generatePremiumsArray(this.premiums, this.les.length);
+    const month = premiumsArray.length * 12;
+
+    const premiumsMonth = [];
+    for (let i = 0; i < premiumsArray.length; i++) {
+      for (let j = 0; j < 12; j ++) {
+        premiumsMonth.push(premiumsArray[i] / 12);
+      }
+    }
+
+    const lesMonth = [];
+    for (let i = 0; i < premiumsArray.length; i++) {
+      for (let j = 0; j < 12; j ++) {
+        lesMonth.push(this.les[i] / 12);
+      }
+    }
+
     premiumsArray[0] += this.getOnBoardingFees();
     for (let i = 1; i < premiumsArray.length; i++) {
       premiumsArray[i] += this.getOngoingFees();
@@ -276,7 +293,10 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
     let summaryHigh;
     let summaryLow;
     try {
-      summary = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, this.irr / 100, this.amount);
+      // summary = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, this.irr / 100, this.amount);
+      const partIrr = Math.pow((1 + (this.irr / 100)), (1 / 12)) - 1;
+      alert(partIrr);
+      summary = this.calculationService.calculate(premiumsMonth, lesMonth, this.sumOfPeople, partIrr, this.amount);
       summaryLow = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, (this.irr / 100) + 0.03, this.amount);
       summaryHigh = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, (this.irr / 100) - 0.03, this.amount);
     } catch (err) {
