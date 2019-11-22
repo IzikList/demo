@@ -19,7 +19,7 @@ import { AttmarketDialogComponent } from './market/investing/investing.component
 import { PremiumsDialogComponent } from './single-unit-existing/single-unit-existing.component';
 import { DialogLeComponent } from './single-unit-existing/single-unit-existing.component';
 import { DialogCameraComponent } from './clients/report/report.component';
-import { DialogOnboardingComponent } from './clients/report/report.component';
+import { DialogOnboardingComponent } from './clients/report-new/report-new.component';
 import { TextareaExpandedComponent } from './numinput/test';
 import { NgModelBaseComponent } from './numinput/NgModelBase';
 import { SlideshowModule } from 'ng-simple-slideshow';

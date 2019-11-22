@@ -31,24 +31,32 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   param8: number;
   pdf = true;
 
-  onBoardingFees =  {
-    legal:        {val:  2000, name: 'Legal'},
-    provider:     {val:  3000, name: 'Provider'},
-    broker:       {val:  0,    name: 'Broker'},
-    pricing:      {val:  1000, name: 'Pricing'},
-    underwriting: {val: 1500,  name: 'Underwriting'},
-    other:        {val: 0,     name: 'Other'}
-  };
-  onBoardingFeesSum  = 0;
+  monthData = [];
+  ownerName;
+  policyNumber;
+  age;
 
-  ongoingFees =  {
-    legal:        {val:  250, name: 'Legal'},
-    provider:     {val:  0, name: 'Provider'},
-    broker:       {val:  0,    name: 'Broker'},
-    pricing:      {val:  250, name: 'Pricing'},
-    underwriting: {val: 250,  name: 'Underwriting'},
-    tracking:     {val: 250,  name: 'Tracking'},
-    other:        {val: 0,     name: 'Other'}
+  isPremiumsPerMonth = false;
+  isDeadPerMonth = false;
+
+  onBoardingFees = {
+    legal: { val: 2000, name: 'Legal' },
+    provider: { val: 3000, name: 'Provider' },
+    broker: { val: 0, name: 'Broker' },
+    pricing: { val: 1000, name: 'Pricing' },
+    underwriting: { val: 1500, name: 'Underwriting' },
+    other: { val: 0, name: 'Other' }
+  };
+  onBoardingFeesSum = 0;
+
+  ongoingFees = {
+    legal: { val: 250, name: 'Legal' },
+    provider: { val: 0, name: 'Provider' },
+    broker: { val: 0, name: 'Broker' },
+    pricing: { val: 250, name: 'Pricing' },
+    underwriting: { val: 250, name: 'Underwriting' },
+    tracking: { val: 250, name: 'Tracking' },
+    other: { val: 0, name: 'Other' }
   };
   ongoingFeesSum = 0;
 
@@ -105,7 +113,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   lowData;
   amount = 1000 * 1000;
   irr = 15;
-  le = 7;
+  le = 7.0;
   les = [53, 70, 83, 91, 93, 96, 94, 87, 80, 74, 62, 48, 33, 20, 10, 4, 2];
   premiums = 30 * 1000;
   premiumsArray = [];
@@ -162,9 +170,9 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   ctx3: any;
 
   constructor(public dialog: MatDialog, private http: HttpClient) {
-        for (let i = 0; i < this.les.length; i++ ) {
-          this.premiumsArray.push(this.premiums);
-        }
+    for (let i = 0; i < this.les.length; i++) {
+      this.premiumsArray.push(this.premiums);
+    }
   }
 
   ngAfterViewInit() {
@@ -175,6 +183,67 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
   }
+
+  fileUpload(event) {
+    const file: File = event.target.files[0];
+    const myReader: FileReader = new FileReader();
+
+    myReader.onloadend = ((e) => {
+      // you can perform an action with readed data here
+      // console.log(myReader.result);
+      this.csvJSON(myReader.result);
+    });
+
+    myReader.readAsText(file);
+  }
+
+  csvJSON(csv) {
+
+  const lines = csv.split('\n');
+
+  const result = [];
+
+  const headers = lines[0].split(',');
+
+  for (let i = 1; i < lines.length; i++) {
+
+      const obj = {};
+      const currentline = lines[i].split(',');
+
+      for (let j = 0; j < headers.length; j++) {
+          obj[headers[j]] = currentline[j];
+      }
+
+      result.push(obj);
+
+  }
+
+  const tempLes = [];
+  const tempPremiums = [];
+
+  this.amount = result[0].faceValue;
+  result.map((e) => {
+    if (e.lePerMonth) {
+      tempLes.push(parseFloat(e.lePerMonth));
+    }
+    if (e.premiumsPerMonth) {
+      tempPremiums.push(parseFloat(e.premiumsPerMonth));
+    }
+
+    this.les = tempLes;
+    this.premiumsArray = tempPremiums;
+
+    this.isDeadPerMonth = true;
+    this.isPremiumsPerMonth = true;
+    this.premiums = tempPremiums[0].toFixed(2);
+    this.le = parseFloat(new Calc().getLeAvg(this.les).toFixed(2));
+    return undefined;
+  });
+  // console.log(result);
+  // return result; //JavaScript object
+  return JSON.stringify(result); // JSON
+}
+
 
   getOnBoardingFees() {
     const a = this.onBoardingFees;
@@ -191,18 +260,20 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   openLeDialog() {
     const obj = {
       width: '650px',
+      height: '80vh',
       data: undefined
     };
     if (this.les) {
       obj.data = {
-        arr: this.les
+        arr: this.les,
+        isMonth: this.isDeadPerMonth
       };
     } else {
       delete obj.data;
     }
     const dialogRef = this.dialog.open(DialogLeComponent, obj);
     dialogRef.afterClosed().subscribe(responce => {
-      console.log(responce);
+      // console.log(responce);
       const arr = [];
       let sumOfPeople = 0;
       for (let index = 0; index < responce.arr.length; index++) {
@@ -219,7 +290,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   report() {
     // this.isHidden = false;
     // setTimeout(() => {this.reportAsync(); }, 3000);
-    if (! this.reportAsync()) {
+    if (!this.reportAsync()) {
       return;
     }
     document.getElementById('loadingContainer').style.display = 'block';
@@ -240,14 +311,16 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   changePremiumArray() {
     const obj = {
       width: '650px',
+      height: '80vh',
       data: {
-        arr: this.premiumsArray
+        arr: this.premiumsArray,
+        isMonth: this.isPremiumsPerMonth
       }
     };
 
     const dialogRef = this.dialog.open(PremiumsDialogComponent, obj);
     dialogRef.afterClosed().subscribe(responce => {
-      console.log(responce);
+      // console.log(responce);
       const arr = [];
       for (let index = 0; index < responce.arr.length; index++) {
         const element = responce.arr[index];
@@ -266,21 +339,93 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
       return;
     }
 
+    if (this.les) {
+      const data = [];
+
+      this.mDate = Date.now();
+      let leMonth;
+      let pm = [];
+      if (this.isDeadPerMonth) {
+        leMonth = this.les;
+        pm = this.premiumsArray;
+      } else {
+        leMonth = [];
+        pm = [];
+        for (let year = 0; year < this.les.length; year ++) {
+          for (let i = 0; i < 12; i++) {
+            leMonth.push(this.les[year] / 12);
+          }
+        }
+        for (let year = 0; year < this.premiumsArray.length; year ++) {
+          for (let i = 0; i < 12; i++) {
+            pm.push(this.premiumsArray[year] / 12);
+          }
+        }
+
+      }
+      const sumObj = new Calc().calculate(this.amount, leMonth, pm, this.irr);
+      for (let index = 0; index < sumObj.perYear.length; index++) {
+        const element = sumObj.perYear[index];
+        const pcListManagment = element.pcForInvestoers;
+        const pcPolicyHolder = 1 - pcListManagment;
+        const v = {
+          title: 'Year ' + (index + 1),
+          enforcedCash: element.premiums || 0, // Math.floor(element.cashForSeller),
+          enforcedPercetage: element.pcForInvestoers, // Math.floor((1 - element.pcForAllInvestors) * 100),
+          pcForSeller: parseInt('' + (pcPolicyHolder) * 100, 0),
+          pcForInvesrors: parseInt('' + (pcListManagment) * 100, 0),
+          PolicyholderInterest: Math.floor(sumObj.faceValue * pcPolicyHolder), // Math.floor(element.cashForInvestors),
+          listInterest: Math.floor(sumObj.faceValue * pcListManagment),
+          current: 0
+        };
+        // v.current = Math.floor(element.sharePrice * element.sellerShares);
+        data.push(v);
+      }
+      this.datin = data;
+
+      const data2 = [];
+      for (let i = 0; i < 4; i++) {
+        const element1 = sumObj.perYear[i];
+        const data3 = [];
+        for (let index = 0; index < element1.month.length; index++) {
+          const element = element1.month[index];
+          const pcListManagment = element.pcForInvestoers;
+          const pcPolicyHolder = 1 - pcListManagment;
+          const v = {
+            title: 'Month ' + (index + 1),
+            enforcedCash: element.premiums || 0, // Math.floor(element.cashForSeller),
+            enforcedPercetage: element.pcForInvestoers, // Math.floor((1 - element.pcForAllInvestors) * 100),
+            pcForSeller: parseInt('' + (pcPolicyHolder) * 100, 0),
+            pcForInvesrors: parseInt('' + (pcListManagment) * 100, 0),
+            PolicyholderInterest: Math.floor(sumObj.faceValue * pcPolicyHolder), // Math.floor(element.cashForInvestors),
+            listInterest: Math.floor(sumObj.faceValue * pcListManagment),
+            current: 0
+          };
+          data3.push(v);
+        }
+        // v.current = Math.floor(element.sharePrice * element.sellerShares);
+        data2.push(data3);
+
+      }
+      this.monthData = data2;
+      return true;
+    }
+
     this.mDate = Date.now();
     // generate premiums if dosn't exists
-    const premiumsArray =  JSON.parse(JSON.stringify(this.premiumsArray)); // this.generatePremiumsArray(this.premiums, this.les.length);
+    const premiumsArray = JSON.parse(JSON.stringify(this.premiumsArray)); // this.generatePremiumsArray(this.premiums, this.les.length);
     const month = premiumsArray.length * 12;
 
     const premiumsMonth = [];
     for (let i = 0; i < premiumsArray.length; i++) {
-      for (let j = 0; j < 12; j ++) {
+      for (let j = 0; j < 12; j++) {
         premiumsMonth.push(premiumsArray[i] / 12);
       }
     }
 
     const lesMonth = [];
     for (let i = 0; i < premiumsArray.length; i++) {
-      for (let j = 0; j < 12; j ++) {
+      for (let j = 0; j < 12; j++) {
         lesMonth.push(this.les[i] / 12);
       }
     }
@@ -295,7 +440,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
     try {
       // summary = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, this.irr / 100, this.amount);
       const partIrr = Math.pow((1 + (this.irr / 100)), (1 / 12)) - 1;
-      alert(partIrr);
+      // alert(partIrr);
       summary = this.calculationService.calculate(premiumsMonth, lesMonth, this.sumOfPeople, partIrr, this.amount);
       summaryLow = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, (this.irr / 100) + 0.03, this.amount);
       summaryHigh = this.calculationService.calculate(premiumsArray, this.les, this.sumOfPeople, (this.irr / 100) - 0.03, this.amount);
@@ -326,14 +471,14 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
 
   getTableData(summary: Summary) {
     const data = [
-    //   {
-    //   title: 'day 1',
-    //   enforcedCash: summary.amount,
-    //   enforcedPercetage: 100,
-    //   solidCash: 0,
-    //   solidPercetage: 0,
-    //   current: 0
-    // }
+      //   {
+      //   title: 'day 1',
+      //   enforcedCash: summary.amount,
+      //   enforcedPercetage: 100,
+      //   solidCash: 0,
+      //   solidPercetage: 0,
+      //   current: 0
+      // }
     ];
     // data[0].current = Math.floor(1 * (summary.issueObj[0].sharePrice * summary.amount));
     let premiumsSum = 0;
@@ -346,7 +491,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         title: 'Year ' + (index + 1),
         enforcedCash: this.premiumsArray[index], // Math.floor(element.cashForSeller),
         enforcedPercetage: premiumsSum, // Math.floor((1 - element.pcForAllInvestors) * 100),
-        pcForSeller:  Math.floor((pcPolicyHolder) * 100),
+        pcForSeller: Math.floor((pcPolicyHolder) * 100),
         pcForInvesrors: Math.floor((pcListManagment) * 100),
         PolicyholderInterest: Math.floor(summary.amount * pcPolicyHolder), // Math.floor(element.cashForInvestors),
         listInterest: Math.floor(summary.amount * pcListManagment),
@@ -441,12 +586,12 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
           scales: {
             yAxes: [{
               ticks: {
-               beginAtZero: true,
-               callback: function(value, index, values) {
-                 if (value) {
-                   return '$' + parseInt(value, 0).toLocaleString();
-                 }
-               }
+                beginAtZero: true,
+                callback: function (value, index, values) {
+                  if (value) {
+                    return '$' + parseInt(value, 0).toLocaleString();
+                  }
+                }
               }
             }]
           }
@@ -466,7 +611,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   }
 
   generatePremiumsArrayByLE() {
-    if (! this.premiumsArray || this.premiumsArray.length === 0) {
+    if (!this.premiumsArray || this.premiumsArray.length === 0) {
       this.premiumsArray = this.generatePremiumsArray(this.premiums, this.les.length);
     } else if (this.premiumsArray.length === this.les.length) {
       return;
@@ -516,24 +661,27 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
     });
   }
 
-    download() {
-      html2canvas(this.myDiv.nativeElement).then(canvas => {
-        // Few necessary setting options
+  download() {
+    html2canvas(this.myDiv.nativeElement).then(canvas => {
+      // Few necessary setting options
 
-        // this.imgPath = canvas.toDataURL();
-        const imgWidth = 208;
-        const pageHeight = 295;
-        const imgHeight = canvas.height * imgWidth / canvas.width;
-        const heightLeft = imgHeight;
+      // this.imgPath = canvas.toDataURL();
+      const imgWidth = 208;
+      const pageHeight = 295;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      const heightLeft = imgHeight;
 
-        const contentDataURL = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
-        const position = 0;
-        pdf.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST');
-        // pdf.addPage('a4');
-        // pdf.setPage(2);
+      const contentDataURL = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
+      const position = 0;
+      pdf.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST');
+      // pdf.addPage('a4');
+      // pdf.setPage(2);
 
-        // grab the context from your destination canvas
+      for (let i = 1; i < 10; i++) {
+        if (pageHeight * i >= imgHeight) {
+          break;
+        }
         const cvs = window.document.createElement('canvas');
         const destCtx = cvs['getContext']('2d');
         // ctx.drawImage(img,0,200,240,297,10,10,200,200);
@@ -542,35 +690,40 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         cvs.width = canvas.width;
         cvs.height = canvas.height;
 
-        destCtx.drawImage(canvas, 0, (pageHeight) / (imgWidth / canvas.width), canvas.width, canvas.height , 0, 0,
-         canvas.width, canvas.height);
+        destCtx.drawImage(canvas, 0, (pageHeight * i) / (imgWidth / canvas.width), canvas.width, canvas.height, 0, 0,
+          canvas.width, canvas.height);
         // destCtx.drawImage(canvas, this.param1, this.param2,
         //    this.param3, this.param4, this.param5, this.param6, this.param7, this.param8);
-          // canvas.width, 600 );
+        // canvas.width, 600 );
         // this.imgPath = canvas.toDataURL();
         // this.imgPath2 = cvs.toDataURL();
         pdf.addPage('a4');
-        pdf.setPage(2);
+        pdf.setPage(i + 1);
 
         pdf.addImage(cvs.toDataURL(), 'JPEG', 0, 0, imgWidth, imgHeight, '', 'FAST');
 
-        // pdf.addImage(contentDataURL. 'PNG', )
-          pdf.save('MYPdf.pdf'); // Generated PDF
-      });
+      }
+      // grab the context from your destination canvas
 
-        // const doc = new jsPDF();
-        // console.log(doc);
-        // // doc.fromHTML(this.myDiv.nativeElement);
-        // doc.html(this.myDiv.nativeElement, { callback: (dispose) => {
-        //     doc.save('test.pdf');
-        // }});
+      // pdf.addImage(contentDataURL. 'PNG', )
+      pdf.save('MYPdf.pdf'); // Generated PDF
+    });
 
-        // Save the PDF
-        // doc.save('Test.pdf');
-    }
+    // const doc = new jsPDF();
+    // console.log(doc);
+    // // doc.fromHTML(this.myDiv.nativeElement);
+    // doc.html(this.myDiv.nativeElement, { callback: (dispose) => {
+    //     doc.save('test.pdf');
+    // }});
+
+    // Save the PDF
+    // doc.save('Test.pdf');
+  }
 
   openOngoingDialog() {
-    const dialogRef = this.dialog.open(DialogOnboardingComponent, { data: {arr: this.ongoingFees, title: 'Annual Ongoing Fees' }});
+    const dialogRef = this.dialog.open(DialogOnboardingComponent, {
+       data: { arr: this.ongoingFees, title: 'Annual Ongoing Fees' }
+    });
     dialogRef.afterClosed().subscribe(responce => {
       console.log(responce);
       if (responce != null) {
@@ -582,7 +735,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   }
 
   openOnboardingDialog() {
-    const dialogRef = this.dialog.open(DialogOnboardingComponent, { data: {arr: this.onBoardingFees, title: 'Onboarding Fees'}});
+    const dialogRef = this.dialog.open(DialogOnboardingComponent, { data: { arr: this.onBoardingFees, title: 'Onboarding Fees' } });
     dialogRef.afterClosed().subscribe(responce => {
       console.log(responce);
       if (responce != null) {
@@ -662,7 +815,7 @@ export class DialogCameraComponent implements OnInit {
 })
 export class DialogOngoingComponent implements OnInit {
 
-  myObj = [{sumDies: ''}];
+  myObj = [{ sumDies: '' }];
   title = '';
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DialogLeComponent>) { }
 
@@ -673,7 +826,7 @@ export class DialogOngoingComponent implements OnInit {
     this.myObj[0].sumDies = '' + arr[0];
     for (let index = 1; index < arr.length; index++) {
       const element = arr[index];
-      this.myObj.push({sumDies: '' + element});
+      this.myObj.push({ sumDies: '' + element });
     }
   }
   onNoClick(): void {
@@ -684,10 +837,10 @@ export class DialogOngoingComponent implements OnInit {
     this.dialogRef.close();
   }
   addYear() {
-    this.myObj.push({sumDies: ''});
+    this.myObj.push({ sumDies: '' });
   }
   done() {
-    this.dialogRef.close({arr: this.myObj});
+    this.dialogRef.close({ arr: this.myObj });
   }
 }
 
@@ -712,12 +865,203 @@ export class DialogOnboardingComponent implements OnInit {
   }
 
   close() {
-    this.dialogRef.close({arr: this.myObj});
+    this.dialogRef.close({ arr: this.myObj });
   }
   addYear() {
     // this.myObj.push({sumDies: ''});
   }
   done() {
-    this.dialogRef.close({arr: this.myObj});
+    this.dialogRef.close({ arr: this.myObj });
   }
+
+}
+
+export class Calc {
+  leMonth; // =  [123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333];
+  premiums; // = [4705, 14792, 14792, 14792, 14792, 14792, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796];
+  // monthFirstYear = 6;
+  faceValue = 0;
+  premiumsDiscount;
+  premiumsMonth;
+  PVFaaceValue;
+  sumOfPeople;
+
+
+  getSumOfPeople(deathTable) {
+    let sum = 0;
+    let txt = '';
+    for (let i = 0; i < deathTable.length; i++) {
+      sum += deathTable[i];
+      txt += deathTable[i] + ',\n';
+    }
+    return sum;
+  }
+
+  init() {
+    this.sumOfPeople = this.getSumOfPeople(this.leMonth);
+    // this.calculate();
+  }
+
+  getFaceFaluePerMonthForOneTime(deathTable, faceValue, pc) {
+    const numOfLives = this.getSumOfPeople(deathTable);
+    const pcm = Math.pow((1 + (pc / 100)), (1 / 12)) - 1;
+    let sum = 0;
+    for (let i = 0; i < deathTable.length; i++) {
+      // console.log(faceValue, (deathTable[i] / numOfLives), (faceValue * (deathTable[i] / numOfLives)), Math.pow((faceValue * (deathTable[i] / numOfLives)) / 1 + pcm, i + 1), pcm);
+      sum += (faceValue * (deathTable[i] / numOfLives) / Math.pow(1 + pcm, i + 1));
+      // console.log(sum);
+    }
+    // console.log(sum);
+    return sum;
+  }
+
+  discountingFaceValue(leMonth, irr) {
+    const leMonthCopy = JSON.parse(JSON.stringify(leMonth));
+    const array = [];
+    for (const i = 0; i < leMonthCopy.length;) {
+      const b = this.getFaceFaluePerMonthForOneTime(leMonthCopy, this.faceValue, irr);
+      leMonthCopy.shift();
+      array.push(b);
+    }
+    return array;
+  }
+
+  getPremiumsDisountingForMonth(deathTable, premiumsPerMonth, pc) {
+    const numOfLives = this.getSumOfPeople(deathTable);
+    const pcm = Math.pow((1 + (pc / 100)), (1 / 12)) - 1;
+    let sum = 0;
+    for (let i = 0; i < premiumsPerMonth.length; i++) {
+      sum += premiumsPerMonth[i] / Math.pow(1 + pcm, i + 1);
+    }
+    return sum;
+  }
+
+  discountingPremiums(leMonth, pms) {
+    const leMonthCopy = JSON.parse(JSON.stringify(leMonth));
+    const pmsCopy = JSON.parse(JSON.stringify(pms));
+    const array = [];
+    for (const i = 0; i < pmsCopy.length;) {
+      const b = this.getPremiumsDisountingForMonth(leMonthCopy, pmsCopy, 7);
+      pmsCopy.shift();
+      array.push(b);
+    }
+    return array;
+  }
+
+  getLeAvg(leMonth) {
+      let sumOfYears = 0;
+      const sum = this.getSumOfPeople(leMonth);
+      for (let k = 0; k < leMonth.length; k++) {
+        sumOfYears += (k + 1) * leMonth[k];
+      }
+      return sumOfYears / sum / 12;
+  }
+
+  getLeYearTable(leMonth) {
+    const leMonthCopy = JSON.parse(JSON.stringify(leMonth));
+    const array = [];
+    for (const i = 0; i < leMonthCopy.length;) {
+      const sum = this.getSumOfPeople(leMonth);
+      let sumOfYears = 0;
+      for (let k = 0; k < leMonthCopy.length; k++) {
+        sumOfYears += (k + 1) * leMonthCopy[k];
+      }
+      leMonthCopy.shift();
+      array.push(sumOfYears / sum / 12);
+    }
+    return array;
+  }
+
+  calculate(faceValue, leMonth, premiums, irr): SumObject {
+    this.faceValue = faceValue;
+    this.leMonth = leMonth;
+    this.premiums = premiums;
+    this.sumOfPeople = this.getSumOfPeople(this.leMonth);
+    const faceValues = this.discountingFaceValue(this.leMonth, irr);
+    const pms = this.discountingPremiums(this.leMonth, this.premiums);
+    const leYearsTable = this.getLeYearTable(this.leMonth);
+    const pcm = Math.pow((1 + (irr / 100)), (1 / 12)) - 1;
+
+    let pcForInvestoers = 0;
+    const obj: OneMonth[] = [];
+    for (let i = 0; i < leYearsTable.length; i++) {
+      const inner: OneMonth = {
+        faceValue: faceValues[i],
+        premiumsToday: pms[i],
+        leYear: leYearsTable[i],
+        premiums: this.premiums[i],
+        netValue: faceValues[i] - pms[i],
+        pcForInvestor: 0,
+        pcForInvestoers: 0
+      };
+      if (inner.premiums) {
+        inner.pcForInvestor = (inner.premiums * Math.pow(1 + irr / 100, inner.leYear)) / (this.faceValue);
+        console.log(inner.premiums, (inner.premiumsToday * Math.pow(1 + irr / 100, inner.leYear)), this.faceValue);
+        pcForInvestoers += inner.pcForInvestor;
+      }
+      inner.pcForInvestoers = pcForInvestoers;
+      obj.push(inner);
+    }
+    console.log(obj);
+
+    const years = [];
+    const objCopy = JSON.parse(JSON.stringify(obj));
+    let oneYear: OneYear = {
+      faceValue: 0,
+      leYear: 0,
+      premiums: 0,
+      pcForInvestoers: 0,
+      month: []
+    };
+    let counter = 0;
+
+    for (; counter < obj.length;) {
+      oneYear = {
+        faceValue: 0,
+        leYear: 0,
+        premiums: 0,
+        pcForInvestoers: 0,
+        month: []
+      };
+      for (let i = 0; i < 12 && counter < obj.length; i++) {
+        oneYear.premiums += obj[counter].premiums || 0;
+        oneYear.pcForInvestoers = obj[counter].pcForInvestoers;
+        oneYear.month.push(obj[counter]);
+        counter++;
+      }
+      years.push(oneYear);
+    }
+
+    console.log(years);
+    const retObject: SumObject = {
+      perMonth: obj,
+      perYear: years,
+      faceValue: this.faceValue
+    };
+    return retObject;
+  }
+
+}
+export class OneYear {
+  faceValue = 0;
+  leYear = 0;
+  premiums = 0;
+  pcForInvestoers = 0;
+  month: OneMonth[] = [];
+}
+
+export class OneMonth {
+  faceValue = 0;
+  premiumsToday = 0;
+  leYear = 0;
+  premiums = 0;
+  netValue = 0;
+  pcForInvestoers = 0;
+  pcForInvestor = 0;
+}
+
+export class SumObject {
+  perMonth: OneMonth[];
+  perYear: OneYear[];
+  faceValue: number;
 }

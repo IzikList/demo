@@ -130,6 +130,8 @@ table, th, td {
     width: 18mm;
 }
 
+
+
 .hInput2 {
     margin-left: 10mm;
 }
@@ -170,6 +172,9 @@ table, th, td {
 }
 .tHeaderColor3{
     color: #F15A29
+}
+.tHeaderColor4 {
+    color: #1565c0;
 }
 
 .tableLines {

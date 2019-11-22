@@ -19,8 +19,10 @@
             <app-custom-input [(ngModel)]="premiums" keyPress="op" [textOnTop]="'$'" (ngModelChange)="onPremiumsChange()"></app-custom-input>
           </div>
           <img src="assets/images/document.svg" class="ic" (click)="changePremiumArray()" />
-          <img src="assets/images/takePhoto.svg" class="ic" />
-
+          <div>
+              <img src="assets/images/takePhoto.svg" class="ic" />
+              <input type="file" style="opacity: 0.0; position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height:100%;" />
+          </div>
           <div class="hInput3">
             <div class="header">Life Expectancy</div>
             <app-custom-input [(ngModel)]="le" keyPress="op" [textOnTop]="'Y'" (ngModelChange)="onLEChange()"></app-custom-input>

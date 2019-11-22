@@ -1,7 +1,7 @@
 <div>LE</div>
 <div *ngFor="let r of myObj; let i = index">
-    Year {{i + 1}}: <input type="text" [(ngModel)]="r.sumDies">
+    {{lineDescription}} {{i + 1}}: <input type="text" [(ngModel)]="r.sumDies">
 </div>
-<input type="button" value="Add year" (click)="addYear()"/>
+<input type="button" [ngModel]="txtButton" (click)="addYear()"/>
 <br />
 <input type="button" value="Done" (click)="done()"/>

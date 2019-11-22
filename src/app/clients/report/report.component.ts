@@ -161,6 +161,10 @@ export class ReportComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
 
+  readFile() {
+    
+  }
+
   getOnBoardingFees() {
     const a = this.onBoardingFees;
     this.onBoardingFeesSum = a.broker.val + a.legal.val + a.other.val + a.pricing.val + a.provider.val + a.underwriting.val;

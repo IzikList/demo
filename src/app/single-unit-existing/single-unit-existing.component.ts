@@ -35,7 +35,8 @@ export class SingleUnitExistingComponent implements OnInit {
   }
   op() {
     const dialogRef = this.dialog.open(DialogLeComponent, {
-        width: '650px'
+        width: '650px',
+        height: '80vh'
       });
       dialogRef.afterClosed().subscribe(responce => {
         console.log(responce);
@@ -111,6 +112,9 @@ export class PremiumsDialogComponent implements OnInit {
 
   myObj = [{sumDies: ''}];
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DialogLeComponent>) { }
+  isMonth = false;
+  lineDescription = 'Year';
+  txtButton = 'Add year';
 
   ngOnInit() {
     const arr = this.data ? this.data.arr : [53, 70, 83, 91, 93, 96, 94, 87, 80, 74, 62, 48, 33, 20, 10, 4, 2];
@@ -119,6 +123,12 @@ export class PremiumsDialogComponent implements OnInit {
       const element = arr[index];
       this.myObj.push({sumDies: '' + element});
     }
+    this.isMonth = this.data ? this.data.isMonth : false;
+    if (this.isMonth) {
+      this.lineDescription = 'Month';
+      this.txtButton = 'Add month';
+    }
+
   }
   onNoClick(): void {
     // this.dialogRef.close();
@@ -144,12 +154,20 @@ export class PremiumsDialogComponent implements OnInit {
 export class DialogLeComponent implements OnInit {
 
   myObj = [{sumDies: ''}];
+  isMonth = false;
+  lineDescription = 'Year';
+  txtButton = 'Add year';
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<DialogLeComponent>) { }
 
   ngOnInit() {
     console.log(this.data);
     const arr = this.data ? this.data.arr : [53, 70, 83, 91, 93, 96, 94, 87, 80, 74, 62, 48, 33, 20, 10, 4, 2];
     this.myObj[0].sumDies = '' + arr[0];
+    this.isMonth = this.data ? this.data.isMonth : false;
+    if (this.isMonth) {
+      this.lineDescription = 'Month';
+      this.txtButton = 'Add month';
+    }
     for (let index = 1; index < arr.length; index++) {
       const element = arr[index];
       this.myObj.push({sumDies: '' + element});
