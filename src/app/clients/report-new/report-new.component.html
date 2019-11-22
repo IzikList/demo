@@ -179,8 +179,8 @@
           <tr *ngFor="let item of datin">
             <th scope="row" class="timeLine">{{item.title}}</th>
             <td class="cell boldLeft">${{item.enforcedCash | number}}</td>
-            <td class="cell">${{ongoingFeesSum | number}}</td>
-            <td class="cell boldRight">${{item.enforcedPercetage | number}}</td>
+            <td class="cell">${{item.expenses | number}}</td>
+            <td class="cell boldRight">${{item.enforcedCash + item.expenses | number}}</td>
             <td class="cell">${{item.PolicyholderInterest | number}} ({{item.pcForSeller}}%)</td>
             <td class="cell">${{item.listInterest | number}} ({{item.pcForInvesrors}}%)</td>
           </tr>
@@ -246,8 +246,8 @@ and can impact these schedules.
             <tr *ngFor="let item of it">
               <th scope="row" class="timeLine">{{item.title}}</th>
               <td class="cell boldLeft">{{item.enforcedCash | number}}$</td>
-              <td class="cell">{{ongoingFeesSum | number}}$</td>
-              <td class="cell boldRight">{{item.enforcedPercetage | number}}$</td>
+            <td class="cell">${{item.expenses | number}}</td>
+            <td class="cell boldRight">${{item.enforcedCash + item.expenses | number}}</td>
               <td class="cell">{{item.PolicyholderInterest | number}}$ ({{item.pcForSeller}}%)</td>
               <td class="cell">{{item.listInterest | number}}$ ({{item.pcForInvesrors}}%)</td>
             </tr>
@@ -256,13 +256,12 @@ and can impact these schedules.
         </div>
 
                 
-        <table id="table2">
+        <!--<table id="table2">
           <colgroup>
             <col>
             <col span="3" class="outlined">
           </colgroup>
           <tr>
-            <td class="header1"></td>
             <td class="header1 tHeaderColor1" colspan="3" scope="colgroup">Expenses</td>
           </tr>
           <tr>
@@ -275,7 +274,7 @@ and can impact these schedules.
             <td class="cell boldLeft">${{item.enforcedCash | number}}</td>
             <td class="cell">${{ongoingFeesSum | number}}</td>
           </tr>
-        </table>
+        </table>-->
 
 
         <div style="width: 100%; height: 20mm"></div>

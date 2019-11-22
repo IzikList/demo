@@ -220,6 +220,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
 
   const tempLes = [];
   const tempPremiums = [];
+  const leTable = [];
 
   this.amount = result[0].faceValue;
   result.map((e) => {
@@ -236,7 +237,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
     this.isDeadPerMonth = true;
     this.isPremiumsPerMonth = true;
     this.premiums = tempPremiums[0].toFixed(2);
-    this.le = parseFloat(new Calc().getLeAvg(this.les).toFixed(2));
+    this.le = parseFloat(this.les[0].toFixed(2)); // parseFloat(new Calc().getLeAvg(this.les).toFixed(2));
     return undefined;
   });
   // console.log(result);
@@ -363,7 +364,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         }
 
       }
-      const sumObj = new Calc().calculate(this.amount, leMonth, pm, this.irr);
+      const sumObj = new Calc().calculate(this.amount, leMonth, pm, this.irr, this.onBoardingFeesSum, this.ongoingFeesSum);
       for (let index = 0; index < sumObj.perYear.length; index++) {
         const element = sumObj.perYear[index];
         const pcListManagment = element.pcForInvestoers;
@@ -371,6 +372,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         const v = {
           title: 'Year ' + (index + 1),
           enforcedCash: element.premiums || 0, // Math.floor(element.cashForSeller),
+          expenses: element.onboarding + element.ongoing,
           enforcedPercetage: element.pcForInvestoers, // Math.floor((1 - element.pcForAllInvestors) * 100),
           pcForSeller: parseInt('' + (pcPolicyHolder) * 100, 0),
           pcForInvesrors: parseInt('' + (pcListManagment) * 100, 0),
@@ -393,6 +395,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
           const pcPolicyHolder = 1 - pcListManagment;
           const v = {
             title: 'Month ' + (index + 1),
+            expenses: element.onboarding + element.ongoing,
             enforcedCash: element.premiums || 0, // Math.floor(element.cashForSeller),
             enforcedPercetage: element.pcForInvestoers, // Math.floor((1 - element.pcForAllInvestors) * 100),
             pcForSeller: parseInt('' + (pcPolicyHolder) * 100, 0),
@@ -877,7 +880,7 @@ export class DialogOnboardingComponent implements OnInit {
 }
 
 export class Calc {
-  leMonth; // =  [123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333];
+  // leMonth; // =  [123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 123.5833333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 95.83333333, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 72.66666667, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 53.83333333, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 38.75, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 27.25, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 18.41666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 12.16666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 7.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 4.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 2.666666667, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.75, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.416666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.166666667, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333, 0.083333333];
   premiums; // = [4705, 14792, 14792, 14792, 14792, 14792, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796, 17796];
   // monthFirstYear = 6;
   faceValue = 0;
@@ -898,7 +901,7 @@ export class Calc {
   }
 
   init() {
-    this.sumOfPeople = this.getSumOfPeople(this.leMonth);
+    // this.sumOfPeople = this.getSumOfPeople(this.leMonth);
     // this.calculate();
   }
 
@@ -972,14 +975,14 @@ export class Calc {
     return array;
   }
 
-  calculate(faceValue, leMonth, premiums, irr): SumObject {
+  calculate(faceValue, leTable, premiums, irr, onboarding, ongoing): SumObject {
     this.faceValue = faceValue;
-    this.leMonth = leMonth;
+    // this.leMonth = leMonth;
     this.premiums = premiums;
-    this.sumOfPeople = this.getSumOfPeople(this.leMonth);
-    const faceValues = this.discountingFaceValue(this.leMonth, irr);
-    const pms = this.discountingPremiums(this.leMonth, this.premiums);
-    const leYearsTable = this.getLeYearTable(this.leMonth);
+    this.sumOfPeople = 0; // this.getSumOfPeople(this.leMonth);
+    const faceValues = 0; // this.discountingFaceValue(this.leMonth, irr);
+    // const pms = this.discountingPremiums(this.leMonth, this.premiums);
+    const leYearsTable = leTable;
     const pcm = Math.pow((1 + (irr / 100)), (1 / 12)) - 1;
 
     let pcForInvestoers = 0;
@@ -987,15 +990,21 @@ export class Calc {
     for (let i = 0; i < leYearsTable.length; i++) {
       const inner: OneMonth = {
         faceValue: faceValues[i],
-        premiumsToday: pms[i],
+        premiumsToday: 0, // pms[i],
         leYear: leYearsTable[i],
         premiums: this.premiums[i],
-        netValue: faceValues[i] - pms[i],
+        netValue: 0, // faceValues[i] - pms[i],
         pcForInvestor: 0,
-        pcForInvestoers: 0
+        pcForInvestoers: 0,
+        onboarding: 0,
+        ongoing: ongoing / 12
       };
-      if (inner.premiums) {
-        inner.pcForInvestor = (inner.premiums * Math.pow(1 + irr / 100, inner.leYear)) / (this.faceValue);
+      if (i === 0) {
+        inner.onboarding = onboarding;
+      }
+      if (inner.premiums + inner.onboarding + inner.ongoing) {
+        inner.pcForInvestor = ((inner.premiums + inner.onboarding + inner.ongoing)
+           * Math.pow(1 + irr / 100, inner.leYear)) / (this.faceValue);
         console.log(inner.premiums, (inner.premiumsToday * Math.pow(1 + irr / 100, inner.leYear)), this.faceValue);
         pcForInvestoers += inner.pcForInvestor;
       }
@@ -1011,7 +1020,9 @@ export class Calc {
       leYear: 0,
       premiums: 0,
       pcForInvestoers: 0,
-      month: []
+      month: [],
+      ongoing: 0,
+      onboarding: 0
     };
     let counter = 0;
 
@@ -1021,12 +1032,16 @@ export class Calc {
         leYear: 0,
         premiums: 0,
         pcForInvestoers: 0,
-        month: []
+        month: [],
+        ongoing: 0,
+        onboarding: 0
       };
       for (let i = 0; i < 12 && counter < obj.length; i++) {
         oneYear.premiums += obj[counter].premiums || 0;
         oneYear.pcForInvestoers = obj[counter].pcForInvestoers;
         oneYear.month.push(obj[counter]);
+        oneYear.ongoing += obj[counter].ongoing;
+        oneYear.onboarding += obj[counter].onboarding;
         counter++;
       }
       years.push(oneYear);
@@ -1048,6 +1063,8 @@ export class OneYear {
   premiums = 0;
   pcForInvestoers = 0;
   month: OneMonth[] = [];
+  ongoing = 0;
+  onboarding = 0;
 }
 
 export class OneMonth {
@@ -1058,6 +1075,8 @@ export class OneMonth {
   netValue = 0;
   pcForInvestoers = 0;
   pcForInvestor = 0;
+  onboarding = 0;
+  ongoing = 0;
 }
 
 export class SumObject {
