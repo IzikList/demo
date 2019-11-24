@@ -368,10 +368,12 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
 
       }
       const sumObj = new Calc().calculate(this.amount, leMonth, pm, this.irr, this.onBoardingFeesSum, this.ongoingFeesSum);
+      let total = 0;
       for (let index = 0; index < sumObj.perYear.length; index++) {
         const element = sumObj.perYear[index];
         const pcListManagment = element.pcForInvestors;
         const pcPolicyHolder = 1 - pcListManagment;
+        total += element.onboarding + element.ongoing + element.premiums;
         const v = {
           title:  (index + 1),
           enforcedCash: element.premiums || 0, // Math.floor(element.cashForSeller),
@@ -381,6 +383,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
           pcForInvesrors: parseInt('' + (pcListManagment) * 100, 0),
           PolicyholderInterest: Math.floor(sumObj.faceValue * pcPolicyHolder), // Math.floor(element.cashForInvestors),
           listInterest: Math.floor(sumObj.faceValue * pcListManagment),
+          total: total,
           current: 0
         };
         // v.current = Math.floor(element.sharePrice * element.sellerShares);
@@ -389,6 +392,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
       this.datin = data;
 
       const data2 = [];
+      total = 0;
       for (let i = 0; i < 4; i++) {
         const element1 = sumObj.perYear[i];
         const data3 = [];
@@ -396,6 +400,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
           const element = element1.month[index];
           const pcListManagment = element.pcForInvestors;
           const pcPolicyHolder = 1 - pcListManagment;
+          total += element.onboarding + element.ongoing + element.premiums;
           const v = {
             title: (index + 1),
             expenses: element.onboarding + element.ongoing,
@@ -405,7 +410,8 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
             pcForInvesrors: parseInt('' + (pcListManagment) * 100, 0),
             PolicyholderInterest: Math.floor(sumObj.faceValue * pcPolicyHolder), // Math.floor(element.cashForInvestors),
             listInterest: Math.floor(sumObj.faceValue * pcListManagment),
-            current: 0
+            current: 0,
+            total: total
           };
           data3.push(v);
         }

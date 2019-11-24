@@ -180,7 +180,7 @@
             <th scope="row" class="timeLine">{{item.title}}</th>
             <td class="cell boldLeft">${{item.enforcedCash | number}}</td>
             <td class="cell">${{item.expenses | number}}</td>
-            <td class="cell boldRight">${{item.enforcedCash + item.expenses | number}}</td>
+            <td class="cell boldRight">${{item.total}}</td>
             <td class="cell">${{item.PolicyholderInterest | number}} ({{item.pcForSeller}}%)</td>
             <td class="cell">${{item.listInterest | number}} ({{item.pcForInvesrors}}%)</td>
           </tr>
@@ -246,7 +246,7 @@
               <th scope="row" class="timeLine">{{item.title}}</th>
               <td class="cell boldLeft">{{item.enforcedCash | number}}$</td>
               <td class="cell">${{item.expenses | number}}</td>
-              <td class="cell boldRight">${{item.enforcedCash + item.expenses | number}}</td>
+              <td class="cell boldRight">${{item.total | number}}</td>
               <td class="cell">${{item.PolicyholderInterest | number}} ({{item.pcForSeller}}%)</td>
               <td class="cell">${{item.listInterest | number}} ({{item.pcForInvesrors}}%)</td>
             </tr>
