@@ -31,13 +31,19 @@ table, th, td {
 
 .mHeader {
     text-decoration: underline;
-    font-size: 5mm;
+    font-size: 18px;
     font-family: 'Open Sans';
-    font-weight: 600; /*semibold*/
+    font-weight: 600;
     margin-top: 8.5mm;
     margin-bottom: 4mm;
 }
-
+.mHeader3 {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    font-weight: 600;
+    margin-top: 5.5mm;
+    margin-bottom: 4mm;
+}
 .secondary {
     font-size: 3.6mm;
     font-family: 'Open Sans';
@@ -181,7 +187,6 @@ table, th, td {
     font-family: 'Open sans';
     font-size: 3.2mm;
     font-weight: 300;
-    font-style: italic;
 }
 
 #table2 {

@@ -39,7 +39,7 @@
         <div style="display: inline-flex; margin-bottom: 8mm;">
           <div class="hInput1">
             <div class="header hInput1">Name</div>
-            <input [(ngModel)]="ownerName" keyPress="op"  style="border: none;
+            <input [(ngModel)]="ownerName" keyPress="op" style="border: none;
     border-bottom: solid 1px lightgray;
     padding: 5px;
     display: inline-block;
@@ -106,37 +106,37 @@
     <!--*ngIf="!isHidden"-->
     <div class="page" #page style="width: 210mm; background-color: white; margin: auto; display: none" id="section-to-print">
       <div class="container" style="margin-left: 7mm; margin-right: 7mm; padding-top: 10mm;">
-        <div class="headerLeft" style="display: flex">
-          <div style="width: 66%">
-            <img class="logo" (click)="download()" src="assets/images/logo.svg" style="margin-bottom: 5mm; width: 30mm;" />
-            <div class="line1" style="font-size: 6.7mm; color: #3588A0; font-family: 'Open Sans'">
-              LiST SETTLEMENTS OFFERING
+        <div #header1>
+          <div class="headerLeft" style="display: flex">
+            <div style="width: 66%">
+              <img class="logo" (click)="download()" src="/assets/images/logo_pdf.png" style="margin-bottom: 5mm; width: 30mm;" />
+              <div class="line1" style="font-size: 6.7mm; color: #3588A0; font-family: 'Open Sans'">
+                LiST SETTLEMENTS OFFERING
+              </div>
+              <div class="line2" style="font-size: 5.64mm; color: #3588A0; font-family: 'Open Sans'; font-weight: 300">
+                Schedule of Payments & Benefits
+              </div>
             </div>
-            <div class="line2" style="font-size: 5.64mm; color: #3588A0; font-family: 'Open Sans'; font-weight: 300">
-              Schedule of Payments & Benefits
-            </div>
-          </div>
 
-          <img src="/assets/images/not_final.png" style="    width: 90px;
+            <img src="/assets/images/not_final.png" style="    width: 90px;
     height: 90px;
     margin-left: 60px;
     margin-top: 40px;
     opacity: 0.7;" />
-        </div>
-        <div class="line3" style="font-size: 4mm; color: #3588A0; font-family: 'Open Sans'; font-weight: 600">
-              Offer Issue Date: {{mDate | date:'dd/MM/yy'}} <span style="padding-left:5em"></span> Policy Number - {{policyNumber}}
-              <span style="padding-left:5em"></span>  Insured Name - {{ownerName}}
-              <!--Policy Date Issue: 2\02\2012-->
-              <div style="text-align: center; margin-top: 10px;">
-                Age - {{age}}
-                <span style="padding-left:3em"></span>
-                Annual Discount Rate - {{irr}}
-                <span style="padding-left:3em"></span>
-                Face Value - $ {{amount | number}}
-              </div>
-        </div>
+          </div>
+          <div class="line3" style="font-size: 4mm; color: #3588A0; font-family: 'Open Sans'; font-weight: 600">
+            Offer Issue Date: {{mDate | date:'MM/dd/yy'}} <span style="padding-left:5em"></span> Policy Number - {{policyNumber}}
+            <span style="padding-left:5em"></span> Insured Name - {{ownerName}}
+            <!--Policy Date Issue: 2\02\2012-->
+            <div style="text-align: center; margin-top: 10px;">
+              Age - {{age}}
+              <span style="padding-left:3em"></span> Annual Discount Rate - {{irr}}
+              <span style="padding-left:3em"></span> Face Value - $ {{amount | number}}
+            </div>
+          </div>
 
-        <div class="seperator1"></div>
+          <div class="seperator1"></div>
+        </div>
         <div class="mHeader">
           Schedule Summary - Annualy
         </div>
@@ -169,7 +169,7 @@
             <td class="header1 tHeaderColor3">LiST Benefit</td>
           </tr>
           <tr>
-            <td>Year</td>
+            <th>Year</th>
             <th scope="col">Annual Premiums</th>
             <th scope="col">Expenses</th>
             <th scope="col">Total</th>
@@ -189,24 +189,24 @@
         <div id="tableDescription">
           <div id="tableDescription_line1" class="tableLines">
             <span class="tHeaderColor1">LiST Funding</span> – LiST’s funding in the policy.
-            <div style="margin-left: 30px; display: table"><span style="font-weight: 500; display: table-cell">Annual Premiums</span><span style="display: table-cell">&nbsp;-&nbsp;</span>
+            <div style="margin-left: 30px; display: list-item"><span style="font-weight: 500; display: table-cell">Annual Premiums</span><span style="display: table-cell">&nbsp;-&nbsp;</span>
               <div style="display: table-cell">The annual premium LiST is funding for the policy.</div>
             </div>
-            <div style="margin-left: 30px; display: table"><span style="font-weight: 500; display: table-cell;">Expenses</span><span style="display: table-cell">&nbsp;-&nbsp;</span>
-              <div style="display: table-cell">The onboarding and ongoing expense of maintaining and managing the 
-                asset; this includes provider fees, legal fees, life expectancy reports, and other services.</div>
+            <div style="margin-left: 30px; display: list-item"><span style="font-weight: 500; display: table-cell;">Expenses</span><span style="display: table-cell">&nbsp;-&nbsp;</span>
+              <div style="display: table-cell">The onboarding and ongoing expense of maintaining and managing the asset; this includes provider fees, legal
+                fees, life expectancy reports, and other services.</div>
             </div>
-            <div style="margin-left: 30px; display: table"><span style="font-weight: 500; display: table-cell">Total</span><span style="display: table-cell">&nbsp;-&nbsp;</span>
+            <div style="margin-left: 30px; display: list-item"><span style="font-weight: 500; display: table-cell">Total</span><span style="display: table-cell">&nbsp;-&nbsp;</span>
               <div style="display: table-cell">The total accumulated dollar amount funded by LiST.
               </div>
             </div>
           </div>
           <div id="tableDescription_line2" class="tableLines">
-            <span class="tHeaderColor2">Policyholder Benefit</span> – The portion of the policy&#39;s benefits retained by the policyholder.
+            <span class="tHeaderColor2">Policyholder Benefit</span> – The portion of the policy&#39;s benefits retained by
+            the policyholder.
           </div>
           <div id="tableDescription_line3" class="tableLines">
-            <span class="tHeaderColor3">LiST management interest</span> - The portion of the policy&#39;s benefits due to the investor.
-            Management for covering premiums
+            <span class="tHeaderColor3">LiST Benefit</span> - The portion of the policy&#39;s benefits due to the investor
           </div>
         </div>
 
@@ -214,16 +214,15 @@
           <div class="disclaimerTitle" style="width: 100%; text-align: center; font-size: 20px; margin-bottom: 10px;">
             Disclaimer
           </div>
-          This offer was issued on {{mDate | date:'dd/MM/yy'}} for the specific policy listed above and based on the
-current policy information and values. Adjustments may occur to the policy such as, but
-not only, change of the premiums or the policy expenses which can affect future value
-and can impact these schedules.
+          This offer was issued on {{mDate | date:'MM/dd/yy'}} for the specific policy listed above and based on the current policy
+          information and values. Adjustments may occur to the policy such as, but not only, change of the premiums or the
+          policy expenses which can affect future value and can impact these schedules.
         </div>
         <div class="mHeader">
           Detailed Schedule – Monthly
         </div>
         <div *ngFor="let it of monthData; let i = index" style="margin-top: 20px">
-          <div>Year {{i + 1}}</div>
+          <div class="mHeader3">Year {{i + 1}}</div>
           <table id="table2">
             <colgroup>
               <col>
@@ -236,8 +235,8 @@ and can impact these schedules.
               <td class="header1 tHeaderColor3">LiST Benefit</td>
             </tr>
             <tr>
-              <td>Month</td>
-              <th scope="col">Annual Premiums</th>
+              <th scope="col">Month</th>
+              <th scope="col">Monthly Premiums</th>
               <th scope="col">Expenses</th>
               <th scope="col">Total</th>
               <th scope="col"></th>
@@ -246,36 +245,42 @@ and can impact these schedules.
             <tr *ngFor="let item of it">
               <th scope="row" class="timeLine">{{item.title}}</th>
               <td class="cell boldLeft">{{item.enforcedCash | number}}$</td>
-            <td class="cell">${{item.expenses | number}}</td>
-            <td class="cell boldRight">${{item.enforcedCash + item.expenses | number}}</td>
-              <td class="cell">{{item.PolicyholderInterest | number}}$ ({{item.pcForSeller}}%)</td>
-              <td class="cell">{{item.listInterest | number}}$ ({{item.pcForInvesrors}}%)</td>
+              <td class="cell">${{item.expenses | number}}</td>
+              <td class="cell boldRight">${{item.enforcedCash + item.expenses | number}}</td>
+              <td class="cell">${{item.PolicyholderInterest | number}} ({{item.pcForSeller}}%)</td>
+              <td class="cell">${{item.listInterest | number}} ({{item.pcForInvesrors}}%)</td>
             </tr>
           </table>
 
         </div>
 
-                
-        <!--<table id="table2">
+
+        <table style="margin: auto; margin-top: 65px;" id="table2">
           <colgroup>
             <col>
-            <col span="3" class="outlined">
+            <col span="3" >
           </colgroup>
           <tr>
             <td class="header1 tHeaderColor1" colspan="3" scope="colgroup">Expenses</td>
           </tr>
           <tr>
-            <td></td>
-            <th scope="col">Onboarding</th>
-            <th scope="col">Annual Ongoing</th>
+            <th ></th>
+            <th >Onboarding</th>
+            <th >Annual Ongoing</th>
           </tr>
-          <tr *ngFor="let item of datin">
-            <th scope="row" class="timeLine">{{item.title}}</th>
-            <td class="cell boldLeft">${{item.enforcedCash | number}}</td>
-            <td class="cell">${{ongoingFeesSum | number}}</td>
+          <tr *ngFor="let item of expences">
+            <th class="cell">{{item.title}}</th>
+            <td class="cell">${{item.onboarding | number}}</td>
+            <td class="cell">${{item.ongoing | number}}</td>
           </tr>
-        </table>-->
+        </table>
 
+        <table style="margin: auto; margin-top: 65px; width: 630px" id="table2">
+          <tr>
+            <th class="cell">LiST Fee</th>
+            <td class="cell">1% of the face value paid at maturity</td>
+          </tr>
+        </table>
 
         <div style="width: 100%; height: 20mm"></div>
 

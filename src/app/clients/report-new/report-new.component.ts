@@ -17,7 +17,7 @@ import html2canvas from 'html2canvas';
 })
 export class ReportNewComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('page') myDiv: ElementRef;
+  @ViewChild('header1') myDiv: ElementRef;
   @ViewChild('mImg') myImg: ElementRef;
   imgPath = '';
   imgPath2 = '';
@@ -30,7 +30,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   param7: number;
   param8: number;
   pdf = true;
-
+  expences = [];
   monthData = [];
   ownerName;
   policyNumber;
@@ -45,6 +45,8 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
     broker: { val: 0, name: 'Broker' },
     pricing: { val: 1000, name: 'Pricing' },
     underwriting: { val: 1500, name: 'Underwriting' },
+    trustservice: { val: 250, name: 'Trust Service' },
+    tracking: { val: 250, name: 'Tracking' },
     other: { val: 0, name: 'Other' }
   };
   onBoardingFeesSum = 0;
@@ -55,6 +57,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
     broker: { val: 0, name: 'Broker' },
     pricing: { val: 250, name: 'Pricing' },
     underwriting: { val: 250, name: 'Underwriting' },
+    trustservice: { val: 250, name: 'Trust Service' },
     tracking: { val: 250, name: 'Tracking' },
     other: { val: 0, name: 'Other' }
   };
@@ -367,13 +370,13 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
       const sumObj = new Calc().calculate(this.amount, leMonth, pm, this.irr, this.onBoardingFeesSum, this.ongoingFeesSum);
       for (let index = 0; index < sumObj.perYear.length; index++) {
         const element = sumObj.perYear[index];
-        const pcListManagment = element.pcForInvestoers;
+        const pcListManagment = element.pcForInvestors;
         const pcPolicyHolder = 1 - pcListManagment;
         const v = {
-          title: 'Year ' + (index + 1),
+          title:  (index + 1),
           enforcedCash: element.premiums || 0, // Math.floor(element.cashForSeller),
           expenses: element.onboarding + element.ongoing,
-          enforcedPercetage: element.pcForInvestoers, // Math.floor((1 - element.pcForAllInvestors) * 100),
+          enforcedPercetage: element.pcForInvestors, // Math.floor((1 - element.pcForAllInvestors) * 100),
           pcForSeller: parseInt('' + (pcPolicyHolder) * 100, 0),
           pcForInvesrors: parseInt('' + (pcListManagment) * 100, 0),
           PolicyholderInterest: Math.floor(sumObj.faceValue * pcPolicyHolder), // Math.floor(element.cashForInvestors),
@@ -391,13 +394,13 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         const data3 = [];
         for (let index = 0; index < element1.month.length; index++) {
           const element = element1.month[index];
-          const pcListManagment = element.pcForInvestoers;
+          const pcListManagment = element.pcForInvestors;
           const pcPolicyHolder = 1 - pcListManagment;
           const v = {
-            title: 'Month ' + (index + 1),
+            title: (index + 1),
             expenses: element.onboarding + element.ongoing,
             enforcedCash: element.premiums || 0, // Math.floor(element.cashForSeller),
-            enforcedPercetage: element.pcForInvestoers, // Math.floor((1 - element.pcForAllInvestors) * 100),
+            enforcedPercetage: element.pcForInvestors, // Math.floor((1 - element.pcForAllInvestors) * 100),
             pcForSeller: parseInt('' + (pcPolicyHolder) * 100, 0),
             pcForInvesrors: parseInt('' + (pcListManagment) * 100, 0),
             PolicyholderInterest: Math.floor(sumObj.faceValue * pcPolicyHolder), // Math.floor(element.cashForInvestors),
@@ -411,6 +414,16 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
 
       }
       this.monthData = data2;
+      this.expences = [
+    {title: 'Broker'          , onboarding: this.onBoardingFees.broker       .val || 0, ongoing: this.ongoingFees.broker.val       || 0},
+    {title: 'Provider'        , onboarding: this.onBoardingFees.provider     .val || 0, ongoing: this.ongoingFees.provider.val     || 0},
+    {title: 'Legal'           , onboarding: this.onBoardingFees.legal        .val || 0, ongoing: this.ongoingFees.legal.val        || 0},
+    {title: 'Premium Pricing' , onboarding: this.onBoardingFees.pricing      .val || 0, ongoing: this.ongoingFees.pricing.val      || 0},
+    {title: 'LE Underwriting' , onboarding: this.onBoardingFees.underwriting .val || 0, ongoing: this.ongoingFees.underwriting.val || 0},
+    {title: 'Trust Service'   , onboarding: this.onBoardingFees.trustservice .val || 0, ongoing: this.ongoingFees.trustservice.val || 0},
+    {title: 'Servicing'       , onboarding: this.onBoardingFees.tracking     .val || 0, ongoing: this.ongoingFees.tracking.val     || 0},
+    {title: 'Other'           , onboarding: this.onBoardingFees.other        .val || 0, ongoing: this.ongoingFees.other.val        || 0}
+      ];
       return true;
     }
 
@@ -665,62 +678,102 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   }
 
   download() {
+    const elem = this.myDiv.nativeElement;
     html2canvas(this.myDiv.nativeElement).then(canvas => {
-      // Few necessary setting options
-
-      // this.imgPath = canvas.toDataURL();
+      const doc = new jsPDF('p', 'mm', 'a4');
       const imgWidth = 208;
       const pageHeight = 295;
       const imgHeight = canvas.height * imgWidth / canvas.width;
       const heightLeft = imgHeight;
 
       const contentDataURL = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
-      const position = 0;
-      pdf.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST');
-      // pdf.addPage('a4');
-      // pdf.setPage(2);
-
-      for (let i = 1; i < 10; i++) {
-        if (pageHeight * i >= imgHeight) {
-          break;
+      let position = 10;
+      doc.addImage(contentDataURL, 'JPEG', 10, position, imgWidth - 20, imgHeight - 10, '', 'FAST');
+      position += imgHeight;
+      doc.autoTable({ html: '#table2' , startY:  position + 10, useCss: true,
+        didDrawCell: function (cell, data) {
+          // row.height = 80;
+          console.log(cell, data);
+          cell.cell.styles.fontSize = 15;
         }
-        const cvs = window.document.createElement('canvas');
-        const destCtx = cvs['getContext']('2d');
-        // ctx.drawImage(img,0,200,240,297,10,10,200,200);
-        // window.document.body.appendChild(cvs);
-        console.log(canvas.width, canvas.height, imgHeight, imgWidth, pageHeight);
-        cvs.width = canvas.width;
-        cvs.height = canvas.height;
+        // cellPadding : 0
 
-        destCtx.drawImage(canvas, 0, (pageHeight * i) / (imgWidth / canvas.width), canvas.width, canvas.height, 0, 0,
-          canvas.width, canvas.height);
-        // destCtx.drawImage(canvas, this.param1, this.param2,
-        //    this.param3, this.param4, this.param5, this.param6, this.param7, this.param8);
-        // canvas.width, 600 );
-        // this.imgPath = canvas.toDataURL();
-        // this.imgPath2 = cvs.toDataURL();
-        pdf.addPage('a4');
-        pdf.setPage(i + 1);
+      });
 
-        pdf.addImage(cvs.toDataURL(), 'JPEG', 0, 0, imgWidth, imgHeight, '', 'FAST');
+      doc.save('sdad.pdf');
 
-      }
-      // grab the context from your destination canvas
+    // //   // Few necessary setting options
 
-      // pdf.addImage(contentDataURL. 'PNG', )
-      pdf.save('MYPdf.pdf'); // Generated PDF
+    // //   // this.imgPath = canvas.toDataURL();
+    //   const canvasDistance = elem.innerWdth / canvas.width;
+    //   console.log(elem, elem.innerWdth / canvas.width);
+    //   const imgWidth = 208;
+    //   const pageHeight = 295;
+    //   const imgHeight = canvas.height * imgWidth / canvas.width;
+    //   const heightLeft = imgHeight;
+
+    //   const contentDataURL = canvas.toDataURL('image/png');
+    //   const pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
+    //   const position = 0;
+    //   pdf.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST');
+    //   // pdf.addPage('a4');
+    //   // pdf.setPage(2);
+
+    //   for (let i = 1; i < 10; i++) {
+    //     if (pageHeight * i >= imgHeight) {
+    //       break;
+    //     }
+    //     const cvs = window.document.createElement('canvas');
+    //     const destCtx = cvs['getContext']('2d');
+    //     // ctx.drawImage(img,0,200,240,297,10,10,200,200);
+    //     // window.document.body.appendChild(cvs);
+    //     console.log(canvas.width, canvas.height, imgHeight, imgWidth, pageHeight);
+    //     cvs.width = canvas.width;
+    //     cvs.height = canvas.height;
+
+    //     destCtx.drawImage(canvas, 0, (pageHeight * i) / (imgWidth / canvas.width), canvas.width, canvas.height, 0, 0,
+    //       canvas.width, canvas.height);
+    //     // destCtx.drawImage(canvas, this.param1, this.param2,
+    //     //    this.param3, this.param4, this.param5, this.param6, this.param7, this.param8);
+    //     // canvas.width, 600 );
+    //     // this.imgPath = canvas.toDataURL();
+    //     // this.imgPath2 = cvs.toDataURL();
+    //     pdf.addPage('a4');
+    //     pdf.setPage(i + 1);
+
+    //     pdf.addImage(cvs.toDataURL(), 'JPEG', 0, 0, imgWidth, imgHeight, '', 'FAST');
+    //   }
+
+    // //   // grab the context from your destination canvas
+
+    // //   // pdf.addImage(contentDataURL. 'PNG', )
+    //   pdf.save('MYPdf.pdf'); // Generated PDF
     });
+  //   const margins = {
+  //       top: 80,
+  //       bottom: 60,
+  //       left: 40,
+  //       width: 522
+  //   };
 
-    // const doc = new jsPDF();
-    // console.log(doc);
-    // // doc.fromHTML(this.myDiv.nativeElement);
-    // doc.html(this.myDiv.nativeElement, { callback: (dispose) => {
-    //     doc.save('test.pdf');
-    // }});
+  //   const pdf = new jsPDF('p', 'pt', 'letter');
+  //   pdf.fromHTML(
+  //   elem, // HTML string or DOM elem ref.
+  //   margins.left, // x coord
+  //   margins.top, { // y coord
+  //       'width': margins.width // max width of content on PDF
+  //       // 'elementHandlers': specialElementHandlers
+  //   },
 
-    // Save the PDF
-    // doc.save('Test.pdf');
+  //   function (dispose) {
+  //       // dispose: object with X, Y of the last line add to the PDF
+  //       //          this allow the insertion of new lines after html
+  //       // pdf.save('Test.pdf');
+  //   }, margins);
+  //   setTimeout(function () {
+  //   pdf.save('est.pdf');
+  // }, 5000);    // Save the PDF
+  //   // doc.save('Test.pdf');
   }
 
   openOngoingDialog() {
@@ -985,7 +1038,7 @@ export class Calc {
     const leYearsTable = leTable;
     const pcm = Math.pow((1 + (irr / 100)), (1 / 12)) - 1;
 
-    let pcForInvestoers = 0;
+    let pcForInvestors = 0;
     const obj: OneMonth[] = [];
     for (let i = 0; i < leYearsTable.length; i++) {
       const inner: OneMonth = {
@@ -995,7 +1048,7 @@ export class Calc {
         premiums: this.premiums[i],
         netValue: 0, // faceValues[i] - pms[i],
         pcForInvestor: 0,
-        pcForInvestoers: 0,
+        pcForInvestors: 0,
         onboarding: 0,
         ongoing: ongoing / 12
       };
@@ -1006,24 +1059,16 @@ export class Calc {
         inner.pcForInvestor = ((inner.premiums + inner.onboarding + inner.ongoing)
            * Math.pow(1 + irr / 100, inner.leYear)) / (this.faceValue);
         console.log(inner.premiums, (inner.premiumsToday * Math.pow(1 + irr / 100, inner.leYear)), this.faceValue);
-        pcForInvestoers += inner.pcForInvestor;
+        pcForInvestors += inner.pcForInvestor;
       }
-      inner.pcForInvestoers = pcForInvestoers;
+      inner.pcForInvestors = pcForInvestors;
       obj.push(inner);
     }
     console.log(obj);
 
     const years = [];
     const objCopy = JSON.parse(JSON.stringify(obj));
-    let oneYear: OneYear = {
-      faceValue: 0,
-      leYear: 0,
-      premiums: 0,
-      pcForInvestoers: 0,
-      month: [],
-      ongoing: 0,
-      onboarding: 0
-    };
+    let oneYear: OneYear;
     let counter = 0;
 
     for (; counter < obj.length;) {
@@ -1031,14 +1076,16 @@ export class Calc {
         faceValue: 0,
         leYear: 0,
         premiums: 0,
-        pcForInvestoers: 0,
+        pcForInvestors: 0,
         month: [],
         ongoing: 0,
-        onboarding: 0
+        onboarding: 0,
+        pcForInvestor: 0
       };
       for (let i = 0; i < 12 && counter < obj.length; i++) {
         oneYear.premiums += obj[counter].premiums || 0;
-        oneYear.pcForInvestoers = obj[counter].pcForInvestoers;
+        oneYear.pcForInvestors = obj[counter].pcForInvestors;
+        oneYear.pcForInvestor = obj[counter].pcForInvestors;
         oneYear.month.push(obj[counter]);
         oneYear.ongoing += obj[counter].ongoing;
         oneYear.onboarding += obj[counter].onboarding;
@@ -1061,7 +1108,8 @@ export class OneYear {
   faceValue = 0;
   leYear = 0;
   premiums = 0;
-  pcForInvestoers = 0;
+  pcForInvestors = 0;
+  pcForInvestor = 0;
   month: OneMonth[] = [];
   ongoing = 0;
   onboarding = 0;
@@ -1073,7 +1121,7 @@ export class OneMonth {
   leYear = 0;
   premiums = 0;
   netValue = 0;
-  pcForInvestoers = 0;
+  pcForInvestors = 0;
   pcForInvestor = 0;
   onboarding = 0;
   ongoing = 0;
