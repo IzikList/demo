@@ -389,8 +389,8 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
       let counter2 = 0;
       for (let index = 0; index < sumObj.perYear.length; index++) {
         const element = sumObj.perYear[index];
-        const pcListManagment = element.pcForInvestors + (this.listFee / 100);
-        const pcPolicyHolder = (1 - pcListManagment) - this.listFee / 100;
+        const pcListManagment = element.pcForInvestors;
+        const pcPolicyHolder = (1 - pcListManagment);
         total += element.onboarding + element.ongoing + element.premiums;
         const v = {
           title: (index + 1),
@@ -426,8 +426,8 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         const data3 = [];
         for (let index = 0; index < element1.month.length && counter2 < 4; index++) {
           const element = element1.month[index];
-          const pcListManagment = element.pcForInvestors + (this.listFee / 100);
-          const pcPolicyHolder = 1 - pcListManagment + (this.listFee / 100);
+          const pcListManagment = element.pcForInvestors;
+          const pcPolicyHolder = 1 - pcListManagment;
           total += element.onboarding + element.ongoing + element.premiums;
           const v = {
             title: (index + 1),
