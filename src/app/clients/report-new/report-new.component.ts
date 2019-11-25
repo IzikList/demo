@@ -259,7 +259,8 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
 
   getOnBoardingFees() {
     const a = this.onBoardingFees;
-    this.onBoardingFeesSum = a.broker.val + a.legal.val + a.other.val + a.pricing.val + a.provider.val + a.underwriting.val;
+    this.onBoardingFeesSum = a.broker.val + a.legal.val + a.other.val + a.pricing.val +
+      a.provider.val + a.underwriting.val + a.trustservice.val ;
     return this.onBoardingFeesSum;
   }
   getOngoingFees() {
