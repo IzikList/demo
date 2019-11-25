@@ -747,13 +747,13 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
       doc.autoTable({
         html: '#table2', startY: position + 5, useCss: true,
         didDrawPage: function (data) {
-          if (data.pageNumber > 1) {
-            // Header
-            doc.setFontSize(10);
-            doc.setTextColor(40);
-            doc.setFontStyle('normal');
-            doc.text('Report', 15, 5);
-          }
+          // if (data.pageNumber > 1) {
+          //   // Header
+          //   doc.setFontSize(10);
+          //   doc.setTextColor(40);
+          //   doc.setFontStyle('normal');
+          //   doc.text('Report', 15, 5);
+          // }
         },
       });
 
