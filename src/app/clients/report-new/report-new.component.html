@@ -100,7 +100,7 @@
           <div class="hInput9">
             <div class="header">LiST Fee</div>
             <!--<app-custom-input [(ngModel)]="listFee" keyPress="op" [textOnTop]="'%'" (ngModelChange)="onListFeeChange()"  ></app-custom-input>-->
-            <input [(ngModel)]="listFee" style="border: none; border-bottom: solid 1px lightgray; padding: 5px; display: inline-block; padding-bottom: 0px; font-size: 3.5mm; width: 30mm; font-family: 'Open Sans'; outline: none;" />
+            <input [(ngModel)]="listFee" style="border: none; border-bottom: solid 1px lightgray; padding: 5px; display: inline-block; padding-bottom: 0px; font-size: 3.5mm; width: 30mm; font-family: 'Open Sans'; outline: none;" />%
           </div>
         </div>
 
@@ -137,7 +137,7 @@
               <span style="padding-left:3em"></span> Face Value - ${{amount | number}}
             </div>
           </div>
-          <div class="line3" style="font-size: 4mm; color: #3588A0; font-family: 'Open Sans'; font-weight: 600">
+          <div class="line3" style="text-align: center; font-size: 4mm; color: #3588A0; font-family: 'Open Sans'; font-weight: 600">
               LiST Fee - {{listFee}}% (${{listFeeCash | number}}) of the face value paid at maturity
           </div>
 

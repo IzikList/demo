@@ -738,7 +738,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
       position += imgHeight + 5;
       doc.setFontSize(14);
       doc.setFontType('bold');
-      doc.text(15, position, 'Schedule Summary - Annualy');
+      doc.text(15, position, 'Schedule Summary - Annually');
       doc.setDrawColor(0, 0, 0);
       position += 1;
       doc.line(14, position, 90, position);
