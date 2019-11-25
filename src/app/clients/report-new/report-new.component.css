@@ -248,6 +248,10 @@ td {
 .hInput5 { 
     display: inline-block;
 }
+.hInput9 input{ 
+    width: 17mm;
+}
+
 .anim {
     animation-name: angry-animation;
   animation-duration: 3s;

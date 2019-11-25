@@ -132,6 +132,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   chart: Chart;
   barChartData;
   listFee = 1;
+  listFeeCash = 0;
   // chart2: Chart;
   // barChartData2;
   // chart3: Chart;
@@ -186,6 +187,12 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+  }
+  onListFeeChange () {
+    // alert('cganged');
+    if (this.listFee > 0 && this.amount > 0 ) {
+      this.listFeeCash = Math.round(this.amount * (this.listFee / 100));
+    }
   }
 
   fileUpload(event) {
@@ -299,6 +306,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
     if (!this.reportAsync()) {
       return;
     }
+
     document.getElementById('loadingContainer').style.display = 'block';
     document.getElementById('section-to-print').style.display = 'none';
     document.getElementById('loadingText').innerHTML = 'Collecting Data';
@@ -342,6 +350,10 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   reportAsync() {
     // get sum of people
     // generate les if dos'nt exists
+        if (this.listFee > 0 && this.amount > 0 ) {
+      this.listFeeCash = Math.round(this.amount * (this.listFee / 100));
+    }
+
     if (this.les === undefined) {
       // alert('Set les please');
       return;
@@ -805,13 +817,13 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
             doc.autoTable({
               html: '#tId' + i, startY: position + 5, useCss: true,
               didDrawPage: function (data) {
-                if (data.pageNumber > 1) {
-                  // Header
-                  doc.setFontSize(10);
-                  doc.setTextColor(40);
-                  doc.setFontStyle('normal');
-                  doc.text('Report', 15, 5);
-                }
+                // if (data.pageNumber > 1) {
+                //   // Header
+                //   doc.setFontSize(10);
+                //   doc.setTextColor(40);
+                //   doc.setFontStyle('normal');
+                //   doc.text('Report', 15, 5);
+                // }
               },
             });
             position = doc.lastAutoTable.finalY + 15;
@@ -819,13 +831,13 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
           doc.autoTable({
             html: '#expencesTable', startY: position + 5, useCss: true,
             didDrawPage: function (data) {
-              if (data.pageNumber > 1) {
-                // Header
-                doc.setFontSize(10);
-                doc.setTextColor(40);
-                doc.setFontStyle('normal');
-                doc.text('Report', 15, 5);
-              }
+              // if (data.pageNumber > 1) {
+              //   // Header
+              //   doc.setFontSize(10);
+              //   doc.setTextColor(40);
+              //   doc.setFontStyle('normal');
+              //   doc.text('Report', 15, 5);
+              // }
             },
           });
           position = doc.lastAutoTable.finalY + 15;
@@ -833,13 +845,13 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
           doc.autoTable({
             html: '#feeTable', startY: position + 5, useCss: true,
             didDrawPage: function (data) {
-              if (data.pageNumber > 1) {
-                // Header
-                doc.setFontSize(10);
-                doc.setTextColor(40);
-                doc.setFontStyle('normal');
-                doc.text('Report', 15, 5);
-              }
+              // if (data.pageNumber > 1) {
+              //   // Header
+              //   doc.setFontSize(10);
+              //   doc.setTextColor(40);
+              //   doc.setFontStyle('normal');
+              //   doc.text('Report', 15, 5);
+              // }
             },
           });
           position = doc.lastAutoTable.finalY + 15;
