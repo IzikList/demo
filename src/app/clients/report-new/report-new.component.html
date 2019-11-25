@@ -99,7 +99,8 @@
 
           <div class="hInput9">
             <div class="header">LiST Fee</div>
-            <app-custom-input [(ngModel)]="listFee" keyPress="op" [textOnTop]="'%'" (ngModelChange)="onListFeeChange()"  ></app-custom-input>
+            <!--<app-custom-input [(ngModel)]="listFee" keyPress="op" [textOnTop]="'%'" (ngModelChange)="onListFeeChange()"  ></app-custom-input>-->
+            <input [(ngModel)]="listFee" style="border: none; border-bottom: solid 1px lightgray; padding: 5px; display: inline-block; padding-bottom: 0px; font-size: 3.5mm; width: 30mm; font-family: 'Open Sans'; outline: none;" />
           </div>
         </div>
 
