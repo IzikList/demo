@@ -309,8 +309,8 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
           document.getElementById('loadingContainer').style.display = 'none';
           document.getElementById('section-to-print').style.display = 'block';
-          document.getElementById('downloadImage').style.visibility = 'visible';
-
+          document.getElementById('downloadImage').style.display = 'block';
+          document.getElementById('downloadImage').style.opacity = '1';
         }, 800);
       }, 800);
     }, 1000 * 1);
@@ -711,6 +711,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   }
 
   download() {
+    // document.getElementById('downloadImage').classList.add('anim');
     const elem = this.myDiv.nativeElement;
     html2canvas(this.myDiv.nativeElement).then(canvas => {
       const doc = new jsPDF('p', 'mm', 'a4');

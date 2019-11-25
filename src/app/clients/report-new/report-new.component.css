@@ -248,3 +248,41 @@ td {
 .hInput5 { 
     display: inline-block;
 }
+.anim {
+    animation-name: angry-animation;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+
+}
+@keyframes angry-animation {
+  0%{
+    -webkit-transform: translateY(-30);
+    transform: translateY(-30);
+  }
+  20%{
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  40%{
+    -webkit-transform: translateY(-30);
+    transform: translateY(-30);
+  }
+  50%{
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60%{
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  80%{
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+  100%{
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
