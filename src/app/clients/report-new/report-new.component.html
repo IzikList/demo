@@ -3,6 +3,10 @@
     <div style="position: absolute; text-align: center; left: 50%; transform: translate(-50%, 0%); line-height: 15mm;     font-family: 'Open Sans'; font-weight: 600; font-size: 6mm;">Policy Info</div>
     <img src="assets/images/logo.svg" style="width: 30mm; height: 12mm; top: 50%; transform: translate(0%, -50%); position: relative; margin-left: 4mm;"
       routerLink="/home" />
+    <img src="/assets/images/download_button.png" style="height: 8mm;
+    position: absolute;
+    right: 20px;
+    top: 13px; visibility: hidden;" (click)="download()" id="downloadImage"/>
   </div>
   <div style="width: 210mm; margin: auto">
     <mat-card style="padding: 0px; margin-top: 13mm;">
@@ -109,7 +113,7 @@
         <div #header1>
           <div class="headerLeft" style="display: flex">
             <div style="width: 66%">
-              <img class="logo" (click)="download()" src="/assets/images/logo_pdf.png" style="margin-bottom: 5mm; width: 30mm;" />
+              <img class="logo"  src="/assets/images/logo_pdf.png" style="margin-bottom: 5mm; width: 30mm;" />
               <div class="line1" style="font-size: 6.7mm; color: #3588A0; font-family: 'Open Sans'">
                 LiST SETTLEMENTS OFFERING
               </div>
@@ -157,7 +161,7 @@
 
 
 
-        <table id="table2">
+        <table id="table2" class="table2">
           <colgroup>
             <col>
             <col span="3" class="outlined">
@@ -180,7 +184,7 @@
             <th scope="row" class="timeLine">{{item.title}}</th>
             <td class="cell boldLeft">${{item.enforcedCash | number}}</td>
             <td class="cell">${{item.expenses | number}}</td>
-            <td class="cell boldRight">${{item.total}}</td>
+            <td class="cell boldRight">${{item.total | number}}</td>
             <td class="cell">${{item.PolicyholderInterest | number}} ({{item.pcForSeller}}%)</td>
             <td class="cell">${{item.listInterest | number}} ({{item.pcForInvesrors}}%)</td>
           </tr>
@@ -210,20 +214,23 @@
           </div>
         </div>
 
-        <div class="disclaimer" style="margin-right: 50px; margin-left: 50px; text-align: center; border: solid 1px; padding: 10px;">
-          <div class="disclaimerTitle" style="width: 100%; text-align: center; font-size: 20px; margin-bottom: 10px;">
-            Disclaimer
+        <div id="disclaimer" style="padding-right: 50px; padding-left: 50px;">
+          <div class="disclaimer" id="disclaimer" style="text-align: center; border: solid 1px; padding: 10px;">
+            <div class="disclaimerTitle" style="width: 100%; text-align: center; font-size: 20px; margin-bottom: 10px;">
+              Disclaimer
+            </div>
+            This offer was issued on {{mDate | date:'MM/dd/yy'}} for the specific policy listed above and based on the current policy
+            information and values. Adjustments may occur to the policy such as, but not only, change of the premiums or the
+            policy expenses which can affect future value and can impact these schedules.
           </div>
-          This offer was issued on {{mDate | date:'MM/dd/yy'}} for the specific policy listed above and based on the current policy
-          information and values. Adjustments may occur to the policy such as, but not only, change of the premiums or the
-          policy expenses which can affect future value and can impact these schedules.
+
         </div>
         <div class="mHeader">
           Detailed Schedule – Monthly
         </div>
         <div *ngFor="let it of monthData; let i = index" style="margin-top: 20px">
           <div class="mHeader3">Year {{i + 1}}</div>
-          <table id="table2">
+          <table id="table2" class="tableMonth table2">
             <colgroup>
               <col>
               <col span="3" class="outlined">
@@ -244,7 +251,7 @@
             </tr>
             <tr *ngFor="let item of it">
               <th scope="row" class="timeLine">{{item.title}}</th>
-              <td class="cell boldLeft">{{item.enforcedCash | number}}$</td>
+              <td class="cell boldLeft">${{item.enforcedCash | number}}</td>
               <td class="cell">${{item.expenses | number}}</td>
               <td class="cell boldRight">${{item.total | number}}</td>
               <td class="cell">${{item.PolicyholderInterest | number}} ({{item.pcForSeller}}%)</td>
@@ -255,7 +262,7 @@
         </div>
 
 
-        <table style="margin: auto; margin-top: 65px;" id="table2">
+        <table style="margin: auto; margin-top: 65px;" id="expencesTable" class="table2">
           <colgroup>
             <col>
             <col span="3" >
@@ -275,7 +282,7 @@
           </tr>
         </table>
 
-        <table style="margin: auto; margin-top: 65px; width: 630px" id="table2">
+        <table style="margin: auto; margin-top: 65px; width: 630px" id="feeTable" class="table2">
           <tr>
             <th class="cell">LiST Fee</th>
             <td class="cell">1% of the face value paid at maturity</td>

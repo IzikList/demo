@@ -26,7 +26,9 @@ table, th, td {
 
 .cell {
     width: 18%;
-    text-align: center
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .mHeader {
@@ -148,9 +150,10 @@ table, th, td {
     margin-left: 12mm;
 }
 
-#table2 .header1{
+.table2 .header1{
     background-color: lightgray;
-    height: 14.25mm;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: center
 }
 
@@ -208,7 +211,7 @@ table, th, td {
 }
 
 td {
-    height: 8mm;
+    /*height: 8mm;*/
 }
 .mHeader2{
     margin-top: 15mm;

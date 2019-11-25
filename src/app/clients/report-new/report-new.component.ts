@@ -35,7 +35,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   ownerName;
   policyNumber;
   age;
-
+  lesAvg = [6.42, 6.36, 6.31, 6.25, 6.20, 6.14, 6.08, 6.03, 5.97, 5.92, 5.86, 5.80, 5.75, 5.70, 5.65, 5.60, 5.55, 5.50, 5.46, 5.41, 5.36, 5.31, 5.26, 5.21, 5.16, 5.12, 5.08, 5.03, 4.99, 4.95, 4.90, 4.86, 4.82, 4.77, 4.73, 4.69, 4.64, 4.61, 4.57, 4.53, 4.49, 4.45, 4.41, 4.37, 4.33, 4.29, 4.25, 4.21, 4.18, 4.14, 4.10, 4.06, 4.03, 3.99, 3.95, 3.91, 3.88, 3.84, 3.80, 3.77, 3.73, 3.70, 3.66, 3.63, 3.59, 3.56, 3.52, 3.49, 3.46, 3.42, 3.39, 3.36, 3.33, 3.29, 3.26, 3.23, 3.19, 3.16, 3.13, 3.10, 3.07, 3.04, 3.01, 2.98, 2.95, 2.92, 2.88, 2.85, 2.82, 2.79, 2.76, 2.72, 2.69, 2.66, 2.64, 2.61, 2.58, 2.55, 2.51, 2.48, 2.45, 2.42, 2.39, 2.36, 2.33, 2.30, 2.27, 2.25, 2.22, 2.19, 2.16, 2.13, 2.11, 2.08, 2.05, 2.03, 2.00, 1.98, 1.96, 1.94, 1.92, 1.89, 1.86, 1.83, 1.81, 1.78, 1.76, 1.73, 1.71, 1.69, 1.67, 1.66, 1.64, 1.62, 1.59, 1.56, 1.54, 1.52, 1.49, 1.47, 1.46, 1.44, 1.43, 1.42, 1.41, 1.38, 1.36, 1.33, 1.31, 1.28, 1.26, 1.24, 1.23, 1.22, 1.21, 1.21, 1.21, 1.18, 1.15, 1.13, 1.10, 1.08, 1.06, 1.04, 1.03, 1.02, 1.02, 1.03, 1.04, 1.01, 0.98, 0.95, 0.93, 0.90, 0.88, 0.86, 0.85, 0.84, 0.84, 0.85, 0.87, 0.84, 0.80, 0.77, 0.73, 0.70, 0.67, 0.64, 0.61, 0.58, 0.56, 0.55, 0.54, 0.50, 0.46, 0.42, 0.37, 0.33, 0.29, 0.25, 0.21, 0.17, 0.12, 0.08];
   isPremiumsPerMonth = false;
   isDeadPerMonth = false;
 
@@ -202,51 +202,51 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
 
   csvJSON(csv) {
 
-  const lines = csv.split('\n');
+    const lines = csv.split('\n');
 
-  const result = [];
+    const result = [];
 
-  const headers = lines[0].split(',');
+    const headers = lines[0].split(',');
 
-  for (let i = 1; i < lines.length; i++) {
+    for (let i = 1; i < lines.length; i++) {
 
       const obj = {};
       const currentline = lines[i].split(',');
 
       for (let j = 0; j < headers.length; j++) {
-          obj[headers[j]] = currentline[j];
+        obj[headers[j]] = currentline[j];
       }
 
       result.push(obj);
 
+    }
+
+    const tempLes = [];
+    const tempPremiums = [];
+    const leTable = [];
+
+    this.amount = result[0].faceValue;
+    result.map((e) => {
+      if (e.lePerMonth) {
+        tempLes.push(parseFloat(e.lePerMonth));
+      }
+      if (e.premiumsPerMonth) {
+        tempPremiums.push(parseFloat(e.premiumsPerMonth));
+      }
+
+      this.les = tempLes;
+      this.premiumsArray = tempPremiums;
+
+      this.isDeadPerMonth = true;
+      this.isPremiumsPerMonth = true;
+      this.premiums = tempPremiums[0].toFixed(2);
+      this.le = parseFloat(this.les[0].toFixed(2)); // parseFloat(new Calc().getLeAvg(this.les).toFixed(2));
+      return undefined;
+    });
+    // console.log(result);
+    // return result; //JavaScript object
+    return JSON.stringify(result); // JSON
   }
-
-  const tempLes = [];
-  const tempPremiums = [];
-  const leTable = [];
-
-  this.amount = result[0].faceValue;
-  result.map((e) => {
-    if (e.lePerMonth) {
-      tempLes.push(parseFloat(e.lePerMonth));
-    }
-    if (e.premiumsPerMonth) {
-      tempPremiums.push(parseFloat(e.premiumsPerMonth));
-    }
-
-    this.les = tempLes;
-    this.premiumsArray = tempPremiums;
-
-    this.isDeadPerMonth = true;
-    this.isPremiumsPerMonth = true;
-    this.premiums = tempPremiums[0].toFixed(2);
-    this.le = parseFloat(this.les[0].toFixed(2)); // parseFloat(new Calc().getLeAvg(this.les).toFixed(2));
-    return undefined;
-  });
-  // console.log(result);
-  // return result; //JavaScript object
-  return JSON.stringify(result); // JSON
-}
 
 
   getOnBoardingFees() {
@@ -307,6 +307,8 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
           document.getElementById('loadingContainer').style.display = 'none';
           document.getElementById('section-to-print').style.display = 'block';
+          document.getElementById('downloadImage').style.visibility = 'visible';
+
         }, 800);
       }, 800);
     }, 1000 * 1);
@@ -353,14 +355,14 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         leMonth = this.les;
         pm = this.premiumsArray;
       } else {
-        leMonth = [];
+        leMonth = this.lesAvg;
         pm = [];
-        for (let year = 0; year < this.les.length; year ++) {
+        for (let year = 0; year < this.les.length; year++) {
           for (let i = 0; i < 12; i++) {
             leMonth.push(this.les[year] / 12);
           }
         }
-        for (let year = 0; year < this.premiumsArray.length; year ++) {
+        for (let year = 0; year < this.premiumsArray.length; year++) {
           for (let i = 0; i < 12; i++) {
             pm.push(this.premiumsArray[year] / 12);
           }
@@ -375,14 +377,16 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         const pcPolicyHolder = 1 - pcListManagment;
         total += element.onboarding + element.ongoing + element.premiums;
         const v = {
-          title:  (index + 1),
+          title: (index + 1),
           enforcedCash: element.premiums || 0, // Math.floor(element.cashForSeller),
           expenses: element.onboarding + element.ongoing,
           enforcedPercetage: element.pcForInvestors, // Math.floor((1 - element.pcForAllInvestors) * 100),
-          pcForSeller: parseInt('' + (pcPolicyHolder) * 100, 0),
-          pcForInvesrors: parseInt('' + (pcListManagment) * 100, 0),
-          PolicyholderInterest: Math.floor(sumObj.faceValue * pcPolicyHolder), // Math.floor(element.cashForInvestors),
-          listInterest: Math.floor(sumObj.faceValue * pcListManagment),
+          pcForSeller: (Math.round(pcPolicyHolder * 1000) / 10).toFixed(1),
+          pcForInvesrors: (Math.round(pcListManagment * 1000) / 10).toFixed(1),
+          PolicyholderInterest:
+            (Math.round((sumObj.faceValue * pcPolicyHolder))), // Math.floor(element.cashForInvestors),
+          listInterest:
+            (Math.round(sumObj.faceValue * pcListManagment)),
           total: total,
           current: 0
         };
@@ -393,7 +397,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
 
       const data2 = [];
       total = 0;
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < sumObj.perYear.length; i++) {
         const element1 = sumObj.perYear[i];
         const data3 = [];
         for (let index = 0; index < element1.month.length; index++) {
@@ -406,10 +410,14 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
             expenses: element.onboarding + element.ongoing,
             enforcedCash: element.premiums || 0, // Math.floor(element.cashForSeller),
             enforcedPercetage: element.pcForInvestors, // Math.floor((1 - element.pcForAllInvestors) * 100),
-            pcForSeller: parseInt('' + (pcPolicyHolder) * 100, 0),
-            pcForInvesrors: parseInt('' + (pcListManagment) * 100, 0),
-            PolicyholderInterest: Math.floor(sumObj.faceValue * pcPolicyHolder), // Math.floor(element.cashForInvestors),
-            listInterest: Math.floor(sumObj.faceValue * pcListManagment),
+
+            pcForSeller: (Math.round(pcPolicyHolder * 1000) / 10).toFixed(1),
+            pcForInvesrors: (Math.round(pcListManagment * 1000) / 10).toFixed(1),
+            PolicyholderInterest:
+              (Math.round((sumObj.faceValue * pcPolicyHolder))), // Math.floor(element.cashForInvestors),
+            listInterest:
+              (Math.round(sumObj.faceValue * pcListManagment)),
+
             current: 0,
             total: total
           };
@@ -421,14 +429,14 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
       }
       this.monthData = data2;
       this.expences = [
-    {title: 'Broker'          , onboarding: this.onBoardingFees.broker       .val || 0, ongoing: this.ongoingFees.broker.val       || 0},
-    {title: 'Provider'        , onboarding: this.onBoardingFees.provider     .val || 0, ongoing: this.ongoingFees.provider.val     || 0},
-    {title: 'Legal'           , onboarding: this.onBoardingFees.legal        .val || 0, ongoing: this.ongoingFees.legal.val        || 0},
-    {title: 'Premium Pricing' , onboarding: this.onBoardingFees.pricing      .val || 0, ongoing: this.ongoingFees.pricing.val      || 0},
-    {title: 'LE Underwriting' , onboarding: this.onBoardingFees.underwriting .val || 0, ongoing: this.ongoingFees.underwriting.val || 0},
-    {title: 'Trust Service'   , onboarding: this.onBoardingFees.trustservice .val || 0, ongoing: this.ongoingFees.trustservice.val || 0},
-    {title: 'Servicing'       , onboarding: this.onBoardingFees.tracking     .val || 0, ongoing: this.ongoingFees.tracking.val     || 0},
-    {title: 'Other'           , onboarding: this.onBoardingFees.other        .val || 0, ongoing: this.ongoingFees.other.val        || 0}
+        { title: 'Broker', onboarding: this.onBoardingFees.broker.val || 0, ongoing: this.ongoingFees.broker.val || 0 },
+        { title: 'Provider', onboarding: this.onBoardingFees.provider.val || 0, ongoing: this.ongoingFees.provider.val || 0 },
+        { title: 'Legal', onboarding: this.onBoardingFees.legal.val || 0, ongoing: this.ongoingFees.legal.val || 0 },
+        { title: 'Premium Pricing', onboarding: this.onBoardingFees.pricing.val || 0, ongoing: this.ongoingFees.pricing.val || 0 },
+        { title: 'LE Underwriting', onboarding: this.onBoardingFees.underwriting.val || 0, ongoing: this.ongoingFees.underwriting.val || 0 },
+        { title: 'Trust Service', onboarding: this.onBoardingFees.trustservice.val || 0, ongoing: this.ongoingFees.trustservice.val || 0 },
+        { title: 'Servicing', onboarding: this.onBoardingFees.tracking.val || 0, ongoing: this.ongoingFees.tracking.val || 0 },
+        { title: 'Other', onboarding: this.onBoardingFees.other.val || 0, ongoing: this.ongoingFees.other.val || 0 }
       ];
       return true;
     }
@@ -689,102 +697,197 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
       const doc = new jsPDF('p', 'mm', 'a4');
       const imgWidth = 208;
       const pageHeight = 295;
-      const imgHeight = canvas.height * imgWidth / canvas.width;
+      let imgHeight = canvas.height * imgWidth / canvas.width;
       const heightLeft = imgHeight;
 
-      const contentDataURL = canvas.toDataURL('image/png');
+      let contentDataURL = canvas.toDataURL('image/png');
       let position = 10;
       doc.addImage(contentDataURL, 'JPEG', 10, position, imgWidth - 20, imgHeight - 10, '', 'FAST');
-      position += imgHeight;
-      doc.autoTable({ html: '#table2' , startY:  position + 10, useCss: true,
-        didDrawCell: function (cell, data) {
-          // row.height = 80;
-          console.log(cell, data);
-          cell.cell.styles.fontSize = 15;
+      position += imgHeight + 5;
+      doc.setFontSize(14);
+      doc.setFontType('bold');
+      doc.text(15, position , 'Schedule Summary - Annualy');
+      doc.setDrawColor(0, 0, 0);
+      position += 1;
+      doc.line(14, position, 90, position);
+      position += 5;
+
+      doc.autoTable({
+        html: '#table2', startY: position + 5, useCss: true,
+        didDrawPage: function (data) {
+          if (data.pageNumber > 1) {
+            // Header
+            doc.setFontSize(10);
+            doc.setTextColor(40);
+            doc.setFontStyle('normal');
+            doc.text('Report', 15, 5);
+          }
+        },
+      });
+
+      position = Math.abs(doc.lastAutoTable.finalY) + 20;
+
+      const descriptionHeight = 120 * (imgWidth / canvas.width);
+      const desc = window.document.getElementById('tableDescription');
+      html2canvas(desc).then(canvas2 => {
+        contentDataURL = canvas2.toDataURL('image/png');
+        imgHeight = canvas2.height * imgWidth / canvas.width;
+        if (position > pageHeight - (imgHeight + 20)) {
+          doc.addPage();
+          doc.setPage(2);
+          position = 20;
         }
-        // cellPadding : 0
+
+
+        doc.addImage(contentDataURL, 'JPEG', 10, position, imgWidth - 20, imgHeight - 5, '', 'FAST');
+        position += imgHeight + 10;
+
+        const element3 = window.document.getElementById('disclaimer');
+        html2canvas(element3).then(canvas3 => {
+          contentDataURL = canvas3.toDataURL('image/png');
+          imgHeight = canvas3.height * imgWidth / canvas.width;
+          doc.addImage(contentDataURL, 'JPEG', 10, position, imgWidth - 20, imgHeight - 5, '', 'FAST');
+          position += imgHeight + 10;
+          doc.setFontSize(14);
+          doc.setFontType('bold');
+          doc.text(15, position , 'Detailed Schedule – Monthly');
+          doc.setDrawColor(0, 0, 0);
+          position += 1;
+          doc.line(14, position, 85, position);
+          position += 5;
+
+          const tableArrays = window.document.getElementsByClassName('tableMonth');
+          for (let i = 0; i < tableArrays.length; i++) {
+            doc.setFontSize(12);
+            doc.setFontType('bold');
+            doc.text(15, position , 'Year ' + (i + 1));
+            doc.setDrawColor(0, 0, 0);
+            tableArrays[i].id = 'tId' + i;
+            doc.autoTable({
+              html: '#tId' + i, startY: position + 5, useCss: true,
+              didDrawPage: function (data) {
+                if (data.pageNumber > 1) {
+                  // Header
+                  doc.setFontSize(10);
+                  doc.setTextColor(40);
+                  doc.setFontStyle('normal');
+                  doc.text('Report', 15, 5);
+                }
+              },
+            });
+            position = doc.lastAutoTable.finalY + 15;
+          }
+            doc.autoTable({
+              html: '#expencesTable' , startY: position + 5, useCss: true,
+              didDrawPage: function (data) {
+                if (data.pageNumber > 1) {
+                  // Header
+                  doc.setFontSize(10);
+                  doc.setTextColor(40);
+                  doc.setFontStyle('normal');
+                  doc.text('Report', 15, 5);
+                }
+              },
+            });
+            position = doc.lastAutoTable.finalY + 15;
+
+            doc.autoTable({
+              html: '#feeTable' , startY: position + 5, useCss: true,
+              didDrawPage: function (data) {
+                if (data.pageNumber > 1) {
+                  // Header
+                  doc.setFontSize(10);
+                  doc.setTextColor(40);
+                  doc.setFontStyle('normal');
+                  doc.text('Report', 15, 5);
+                }
+              },
+            });
+            position = doc.lastAutoTable.finalY + 15;
+
+          // expencesTable
+          doc.save('sdad.pdf');
+        });
 
       });
 
-      doc.save('sdad.pdf');
+      // //   // Few necessary setting options
 
-    // //   // Few necessary setting options
+      // //   // this.imgPath = canvas.toDataURL();
+      //   const canvasDistance = elem.innerWdth / canvas.width;
+      //   console.log(elem, elem.innerWdth / canvas.width);
+      //   const imgWidth = 208;
+      //   const pageHeight = 295;
+      //   const imgHeight = canvas.height * imgWidth / canvas.width;
+      //   const heightLeft = imgHeight;
 
-    // //   // this.imgPath = canvas.toDataURL();
-    //   const canvasDistance = elem.innerWdth / canvas.width;
-    //   console.log(elem, elem.innerWdth / canvas.width);
-    //   const imgWidth = 208;
-    //   const pageHeight = 295;
-    //   const imgHeight = canvas.height * imgWidth / canvas.width;
-    //   const heightLeft = imgHeight;
+      //   const contentDataURL = canvas.toDataURL('image/png');
+      //   const pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
+      //   const position = 0;
+      //   pdf.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST');
+      //   // pdf.addPage('a4');
+      //   // pdf.setPage(2);
 
-    //   const contentDataURL = canvas.toDataURL('image/png');
-    //   const pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
-    //   const position = 0;
-    //   pdf.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight, '', 'FAST');
-    //   // pdf.addPage('a4');
-    //   // pdf.setPage(2);
+      //   for (let i = 1; i < 10; i++) {
+      //     if (pageHeight * i >= imgHeight) {
+      //       break;
+      //     }
+      //     const cvs = window.document.createElement('canvas');
+      //     const destCtx = cvs['getContext']('2d');
+      //     // ctx.drawImage(img,0,200,240,297,10,10,200,200);
+      //     // window.document.body.appendChild(cvs);
+      //     console.log(canvas.width, canvas.height, imgHeight, imgWidth, pageHeight);
+      //     cvs.width = canvas.width;
+      //     cvs.height = canvas.height;
 
-    //   for (let i = 1; i < 10; i++) {
-    //     if (pageHeight * i >= imgHeight) {
-    //       break;
-    //     }
-    //     const cvs = window.document.createElement('canvas');
-    //     const destCtx = cvs['getContext']('2d');
-    //     // ctx.drawImage(img,0,200,240,297,10,10,200,200);
-    //     // window.document.body.appendChild(cvs);
-    //     console.log(canvas.width, canvas.height, imgHeight, imgWidth, pageHeight);
-    //     cvs.width = canvas.width;
-    //     cvs.height = canvas.height;
+      //     destCtx.drawImage(canvas, 0, (pageHeight * i) / (imgWidth / canvas.width), canvas.width, canvas.height, 0, 0,
+      //       canvas.width, canvas.height);
+      //     // destCtx.drawImage(canvas, this.param1, this.param2,
+      //     //    this.param3, this.param4, this.param5, this.param6, this.param7, this.param8);
+      //     // canvas.width, 600 );
+      //     // this.imgPath = canvas.toDataURL();
+      //     // this.imgPath2 = cvs.toDataURL();
+      //     pdf.addPage('a4');
+      //     pdf.setPage(i + 1);
 
-    //     destCtx.drawImage(canvas, 0, (pageHeight * i) / (imgWidth / canvas.width), canvas.width, canvas.height, 0, 0,
-    //       canvas.width, canvas.height);
-    //     // destCtx.drawImage(canvas, this.param1, this.param2,
-    //     //    this.param3, this.param4, this.param5, this.param6, this.param7, this.param8);
-    //     // canvas.width, 600 );
-    //     // this.imgPath = canvas.toDataURL();
-    //     // this.imgPath2 = cvs.toDataURL();
-    //     pdf.addPage('a4');
-    //     pdf.setPage(i + 1);
+      //     pdf.addImage(cvs.toDataURL(), 'JPEG', 0, 0, imgWidth, imgHeight, '', 'FAST');
+      //   }
 
-    //     pdf.addImage(cvs.toDataURL(), 'JPEG', 0, 0, imgWidth, imgHeight, '', 'FAST');
-    //   }
+      // //   // grab the context from your destination canvas
 
-    // //   // grab the context from your destination canvas
-
-    // //   // pdf.addImage(contentDataURL. 'PNG', )
-    //   pdf.save('MYPdf.pdf'); // Generated PDF
+      // //   // pdf.addImage(contentDataURL. 'PNG', )
+      //   pdf.save('MYPdf.pdf'); // Generated PDF
     });
-  //   const margins = {
-  //       top: 80,
-  //       bottom: 60,
-  //       left: 40,
-  //       width: 522
-  //   };
+    //   const margins = {
+    //       top: 80,
+    //       bottom: 60,
+    //       left: 40,
+    //       width: 522
+    //   };
 
-  //   const pdf = new jsPDF('p', 'pt', 'letter');
-  //   pdf.fromHTML(
-  //   elem, // HTML string or DOM elem ref.
-  //   margins.left, // x coord
-  //   margins.top, { // y coord
-  //       'width': margins.width // max width of content on PDF
-  //       // 'elementHandlers': specialElementHandlers
-  //   },
+    //   const pdf = new jsPDF('p', 'pt', 'letter');
+    //   pdf.fromHTML(
+    //   elem, // HTML string or DOM elem ref.
+    //   margins.left, // x coord
+    //   margins.top, { // y coord
+    //       'width': margins.width // max width of content on PDF
+    //       // 'elementHandlers': specialElementHandlers
+    //   },
 
-  //   function (dispose) {
-  //       // dispose: object with X, Y of the last line add to the PDF
-  //       //          this allow the insertion of new lines after html
-  //       // pdf.save('Test.pdf');
-  //   }, margins);
-  //   setTimeout(function () {
-  //   pdf.save('est.pdf');
-  // }, 5000);    // Save the PDF
-  //   // doc.save('Test.pdf');
+    //   function (dispose) {
+    //       // dispose: object with X, Y of the last line add to the PDF
+    //       //          this allow the insertion of new lines after html
+    //       // pdf.save('Test.pdf');
+    //   }, margins);
+    //   setTimeout(function () {
+    //   pdf.save('est.pdf');
+    // }, 5000);    // Save the PDF
+    //   // doc.save('Test.pdf');
   }
 
   openOngoingDialog() {
     const dialogRef = this.dialog.open(DialogOnboardingComponent, {
-       data: { arr: this.ongoingFees, title: 'Annual Ongoing Fees' }
+      data: { arr: this.ongoingFees, title: 'Annual Ongoing Fees' }
     });
     dialogRef.afterClosed().subscribe(responce => {
       console.log(responce);
@@ -1011,12 +1114,12 @@ export class Calc {
   }
 
   getLeAvg(leMonth) {
-      let sumOfYears = 0;
-      const sum = this.getSumOfPeople(leMonth);
-      for (let k = 0; k < leMonth.length; k++) {
-        sumOfYears += (k + 1) * leMonth[k];
-      }
-      return sumOfYears / sum / 12;
+    let sumOfYears = 0;
+    const sum = this.getSumOfPeople(leMonth);
+    for (let k = 0; k < leMonth.length; k++) {
+      sumOfYears += (k + 1) * leMonth[k];
+    }
+    return sumOfYears / sum / 12;
   }
 
   getLeYearTable(leMonth) {
@@ -1046,12 +1149,13 @@ export class Calc {
 
     let pcForInvestors = 0;
     const obj: OneMonth[] = [];
+    let counter2 = 0;
     for (let i = 0; i < leYearsTable.length; i++) {
       const inner: OneMonth = {
         faceValue: faceValues[i],
         premiumsToday: 0, // pms[i],
         leYear: leYearsTable[i],
-        premiums: this.premiums[i],
+        premiums: this.premiums[i] || 0,
         netValue: 0, // faceValues[i] - pms[i],
         pcForInvestor: 0,
         pcForInvestors: 0,
@@ -1063,12 +1167,19 @@ export class Calc {
       }
       if (inner.premiums + inner.onboarding + inner.ongoing) {
         inner.pcForInvestor = ((inner.premiums + inner.onboarding + inner.ongoing)
-           * Math.pow(1 + irr / 100, inner.leYear)) / (this.faceValue);
+          * Math.pow(1 + irr / 100, inner.leYear)) / (this.faceValue);
         console.log(inner.premiums, (inner.premiumsToday * Math.pow(1 + irr / 100, inner.leYear)), this.faceValue);
         pcForInvestors += inner.pcForInvestor;
       }
       inner.pcForInvestors = pcForInvestors;
       obj.push(inner);
+      if (! inner.premiums) {
+        counter2++;
+        if (counter2 > 5) {
+          break;
+        }
+      }
+
     }
     console.log(obj);
 
