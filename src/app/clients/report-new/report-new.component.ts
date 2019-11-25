@@ -58,7 +58,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
     pricing: { val: 250, name: 'Pricing' },
     underwriting: { val: 250, name: 'Underwriting' },
     trustservice: { val: 250, name: 'Trust Service' },
-    tracking: { val: 250, name: 'Tracking' },
+    tracking: { val: 200, name: 'Tracking' },
     other: { val: 0, name: 'Other' }
   };
   ongoingFeesSum = 0;
@@ -131,6 +131,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   calculationService = new CalculationService();
   chart: Chart;
   barChartData;
+  listFee = 1;
   // chart2: Chart;
   // barChartData2;
   // chart3: Chart;
@@ -256,7 +257,8 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   }
   getOngoingFees() {
     const a = this.ongoingFees;
-    this.ongoingFeesSum = a.broker.val + a.legal.val + a.other.val + a.pricing.val + a.provider.val + a.underwriting.val + a.tracking.val;
+    this.ongoingFeesSum = a.broker.val + a.legal.val + a.other.val +
+      a.pricing.val + a.provider.val + a.underwriting.val + a.tracking.val + a.trustservice.val;
     return this.ongoingFeesSum;
   }
 
@@ -371,15 +373,16 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
       }
       const sumObj = new Calc().calculate(this.amount, leMonth, pm, this.irr, this.onBoardingFeesSum, this.ongoingFeesSum);
       let total = 0;
+      let counter2 = 0;
       for (let index = 0; index < sumObj.perYear.length; index++) {
         const element = sumObj.perYear[index];
-        const pcListManagment = element.pcForInvestors;
-        const pcPolicyHolder = 1 - pcListManagment;
+        const pcListManagment = element.pcForInvestors + (this.listFee / 100);
+        const pcPolicyHolder = (1 - pcListManagment) - this.listFee / 100;
         total += element.onboarding + element.ongoing + element.premiums;
         const v = {
           title: (index + 1),
           enforcedCash: element.premiums || 0, // Math.floor(element.cashForSeller),
-          expenses: element.onboarding + element.ongoing,
+          expenses: Math.round(element.onboarding + element.ongoing),
           enforcedPercetage: element.pcForInvestors, // Math.floor((1 - element.pcForAllInvestors) * 100),
           pcForSeller: (Math.round(pcPolicyHolder * 1000) / 10).toFixed(1),
           pcForInvesrors: (Math.round(pcListManagment * 1000) / 10).toFixed(1),
@@ -387,27 +390,35 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
             (Math.round((sumObj.faceValue * pcPolicyHolder))), // Math.floor(element.cashForInvestors),
           listInterest:
             (Math.round(sumObj.faceValue * pcListManagment)),
-          total: total,
+          total: Math.round(total),
           current: 0
         };
         // v.current = Math.floor(element.sharePrice * element.sellerShares);
         data.push(v);
+        if (!element.premiums) {
+          counter2++;
+          if (counter2 >= 2) {
+            break;
+          }
+        }
+
       }
       this.datin = data;
 
       const data2 = [];
       total = 0;
-      for (let i = 0; i < sumObj.perYear.length; i++) {
+      counter2 = 0;
+      for (let i = 0; i < sumObj.perYear.length && counter2 < 4; i++) {
         const element1 = sumObj.perYear[i];
         const data3 = [];
-        for (let index = 0; index < element1.month.length; index++) {
+        for (let index = 0; index < element1.month.length && counter2 < 4; index++) {
           const element = element1.month[index];
-          const pcListManagment = element.pcForInvestors;
-          const pcPolicyHolder = 1 - pcListManagment;
+          const pcListManagment = element.pcForInvestors + (this.listFee / 100);
+          const pcPolicyHolder = 1 - pcListManagment + (this.listFee / 100);
           total += element.onboarding + element.ongoing + element.premiums;
           const v = {
             title: (index + 1),
-            expenses: element.onboarding + element.ongoing,
+            expenses: Math.round(element.onboarding + element.ongoing),
             enforcedCash: element.premiums || 0, // Math.floor(element.cashForSeller),
             enforcedPercetage: element.pcForInvestors, // Math.floor((1 - element.pcForAllInvestors) * 100),
 
@@ -419,13 +430,19 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
               (Math.round(sumObj.faceValue * pcListManagment)),
 
             current: 0,
-            total: total
+            total: Math.round(total)
           };
+          if (!element.premiums) {
+            counter2++;
+            if (counter2 > 4) {
+              break;
+            }
+          }
+
           data3.push(v);
         }
         // v.current = Math.floor(element.sharePrice * element.sellerShares);
         data2.push(data3);
-
       }
       this.monthData = data2;
       this.expences = [
@@ -436,10 +453,12 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         { title: 'LE Underwriting', onboarding: this.onBoardingFees.underwriting.val || 0, ongoing: this.ongoingFees.underwriting.val || 0 },
         { title: 'Trust Service', onboarding: this.onBoardingFees.trustservice.val || 0, ongoing: this.ongoingFees.trustservice.val || 0 },
         { title: 'Servicing', onboarding: this.onBoardingFees.tracking.val || 0, ongoing: this.ongoingFees.tracking.val || 0 },
-        { title: 'Other', onboarding: this.onBoardingFees.other.val || 0, ongoing: this.ongoingFees.other.val || 0 }
+        { title: 'Other', onboarding: this.onBoardingFees.other.val || 0, ongoing: this.ongoingFees.other.val || 0 },
+        { title: 'Total', onboarding: this.onBoardingFeesSum, ongoing: this.ongoingFeesSum }
       ];
       return true;
     }
+
 
     this.mDate = Date.now();
     // generate premiums if dosn't exists
@@ -706,7 +725,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
       position += imgHeight + 5;
       doc.setFontSize(14);
       doc.setFontType('bold');
-      doc.text(15, position , 'Schedule Summary - Annualy');
+      doc.text(15, position, 'Schedule Summary - Annualy');
       doc.setDrawColor(0, 0, 0);
       position += 1;
       doc.line(14, position, 90, position);
@@ -734,7 +753,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         imgHeight = canvas2.height * imgWidth / canvas.width;
         if (position > pageHeight - (imgHeight + 20)) {
           doc.addPage();
-          doc.setPage(2);
+          doc.setPage(doc.getNumberOfPages());
           position = 20;
         }
 
@@ -746,21 +765,40 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
         html2canvas(element3).then(canvas3 => {
           contentDataURL = canvas3.toDataURL('image/png');
           imgHeight = canvas3.height * imgWidth / canvas.width;
+          if (position > pageHeight - (imgHeight + 20)) {
+            doc.addPage();
+            doc.setPage(doc.getNumberOfPages());
+            position = 20;
+          }
           doc.addImage(contentDataURL, 'JPEG', 10, position, imgWidth - 20, imgHeight - 5, '', 'FAST');
           position += imgHeight + 10;
+
+          if (position > pageHeight - 20) {
+            doc.addPage();
+            doc.setPage(doc.getNumberOfPages());
+            position = 20;
+          }
+
+
           doc.setFontSize(14);
           doc.setFontType('bold');
-          doc.text(15, position , 'Detailed Schedule – Monthly');
+          doc.text(15, position, 'Detailed Schedule – Monthly');
           doc.setDrawColor(0, 0, 0);
           position += 1;
           doc.line(14, position, 85, position);
-          position += 5;
+          position += 10;
 
           const tableArrays = window.document.getElementsByClassName('tableMonth');
           for (let i = 0; i < tableArrays.length; i++) {
+            if (position > pageHeight - 20) {
+              doc.addPage();
+              doc.setPage(doc.getNumberOfPages());
+              position = 20;
+            }
+
             doc.setFontSize(12);
             doc.setFontType('bold');
-            doc.text(15, position , 'Year ' + (i + 1));
+            doc.text(15, position, 'Year ' + (i + 1));
             doc.setDrawColor(0, 0, 0);
             tableArrays[i].id = 'tId' + i;
             doc.autoTable({
@@ -777,36 +815,36 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
             });
             position = doc.lastAutoTable.finalY + 15;
           }
-            doc.autoTable({
-              html: '#expencesTable' , startY: position + 5, useCss: true,
-              didDrawPage: function (data) {
-                if (data.pageNumber > 1) {
-                  // Header
-                  doc.setFontSize(10);
-                  doc.setTextColor(40);
-                  doc.setFontStyle('normal');
-                  doc.text('Report', 15, 5);
-                }
-              },
-            });
-            position = doc.lastAutoTable.finalY + 15;
+          doc.autoTable({
+            html: '#expencesTable', startY: position + 5, useCss: true,
+            didDrawPage: function (data) {
+              if (data.pageNumber > 1) {
+                // Header
+                doc.setFontSize(10);
+                doc.setTextColor(40);
+                doc.setFontStyle('normal');
+                doc.text('Report', 15, 5);
+              }
+            },
+          });
+          position = doc.lastAutoTable.finalY + 15;
 
-            doc.autoTable({
-              html: '#feeTable' , startY: position + 5, useCss: true,
-              didDrawPage: function (data) {
-                if (data.pageNumber > 1) {
-                  // Header
-                  doc.setFontSize(10);
-                  doc.setTextColor(40);
-                  doc.setFontStyle('normal');
-                  doc.text('Report', 15, 5);
-                }
-              },
-            });
-            position = doc.lastAutoTable.finalY + 15;
+          doc.autoTable({
+            html: '#feeTable', startY: position + 5, useCss: true,
+            didDrawPage: function (data) {
+              if (data.pageNumber > 1) {
+                // Header
+                doc.setFontSize(10);
+                doc.setTextColor(40);
+                doc.setFontStyle('normal');
+                doc.text('Report', 15, 5);
+              }
+            },
+          });
+          position = doc.lastAutoTable.finalY + 15;
 
           // expencesTable
-          doc.save('sdad.pdf');
+          doc.save('LiST_Report.pdf');
         });
 
       });
@@ -1149,7 +1187,6 @@ export class Calc {
 
     let pcForInvestors = 0;
     const obj: OneMonth[] = [];
-    let counter2 = 0;
     for (let i = 0; i < leYearsTable.length; i++) {
       const inner: OneMonth = {
         faceValue: faceValues[i],
@@ -1173,12 +1210,6 @@ export class Calc {
       }
       inner.pcForInvestors = pcForInvestors;
       obj.push(inner);
-      if (! inner.premiums) {
-        counter2++;
-        if (counter2 > 5) {
-          break;
-        }
-      }
 
     }
     console.log(obj);

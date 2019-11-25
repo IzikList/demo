@@ -152,9 +152,13 @@ table, th, td {
 
 .table2 .header1{
     background-color: lightgray;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center
+}
+th {
     padding-top: 10px;
     padding-bottom: 10px;
-    text-align: center
 }
 
 .cust-inp {
