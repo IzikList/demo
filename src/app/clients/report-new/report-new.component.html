@@ -14,13 +14,16 @@
             <app-custom-input [(ngModel)]="amount" keyPress="op" [textOnTop]="'$'" (ngModelChange)="onFaceChange()"></app-custom-input>
           </div>
           <img src="assets/images/document.svg" class="ic" />
-          <img src="assets/images/takePhoto.svg" class="ic" />
+          <div style="position: relative; height: 5mm; align-self: flex-end;"><img src="assets/images/takePhoto.svg" class="ic" /><input type="file" (change)="fileUploadData($event)" style="position: absolute;width: 20px;height: 15px;top: 0px;left: 0px;opacity: 0;"
+            /></div>
           <div class="hInput2">
             <div class="header hPremium">Annual Premiums</div>
             <app-custom-input [(ngModel)]="premiums" keyPress="op" [textOnTop]="'$'" (ngModelChange)="onPremiumsChange()"></app-custom-input>
           </div>
           <img src="assets/images/document.svg" class="ic" (click)="changePremiumArray()" />
-          <div style="position: relative; height: 5mm; align-self: flex-end;"><img src="assets/images/takePhoto.svg" class="ic" /><input type="file" (change)="fileUpload($event)" style="position: absolute;width: 20px;height: 15px;top: 0px;left: 0px;opacity: 0;"
+          <!--<div style="position: relative; height: 5mm; align-self: flex-end;"><img src="assets/images/takePhoto.svg" class="ic" /><input type="file" (change)="fileUpload($event)" style="position: absolute;width: 20px;height: 15px;top: 0px;left: 0px;opacity: 0;"
+            /></div>-->
+          <div style="position: relative; height: 5mm; align-self: flex-end;"><img src="assets/images/takePhoto.svg" class="ic" /><input type="file" (change)="fileUploadYear($event)" style="position: absolute;width: 20px;height: 15px;top: 0px;left: 0px;opacity: 0;"
             /></div>
 
           <div class="hInput3">
@@ -28,7 +31,10 @@
             <app-custom-input [(ngModel)]="le" keyPress="op" [textOnTop]="'Y'" (ngModelChange)="onLEChange()"></app-custom-input>
           </div>
           <img src="assets/images/document.svg" class="ic" (click)="openLeDialog()" />
-          <img src="assets/images/takePhoto.svg" class="ic" (click)="openCameraDialog()" />
+          <!--<img src="assets/images/takePhoto.svg" class="ic" (click)="openCameraDialog()" />-->
+            <div style="position: relative; height: 5mm; align-self: flex-end;"><img src="assets/images/takePhoto.svg" class="ic" /><input type="file" (change)="fileUploadMonth($event)" style="position: absolute;width: 20px;height: 15px;top: 0px;left: 0px;opacity: 0;"
+            /></div>
+
 
           <div class="hInput4">
             <div class="header">IRR</div>
@@ -173,9 +179,9 @@
           </colgroup>
           <tr>
             <td class="header1"></td>
-            <td class="header1 tHeaderColor1" colspan="3" scope="colgroup">LiST Funding</td>
-            <td class="header1 tHeaderColor2">Policyholder Benefit</td>
-            <td class="header1 tHeaderColor3">LiST Benefit</td>
+            <td class="header1 tHeaderColor1" colspan="3" scope="colgroup">Premiums</td>
+            <td class="header1 tHeaderColor2">Policyholder's Benefit</td>
+            <td class="header1 tHeaderColor3">Lender's Benefit</td>
           </tr>
           <tr>
             <th>Year</th>
@@ -186,40 +192,39 @@
             <th scope="col"></th>
           </tr>
           <tr *ngFor="let item of datin">
-            <th scope="row" class="timeLine">{{item.title}}</th>
-            <td class="cell boldLeft">${{item.enforcedCash | number}}</td>
-            <td class="cell">${{item.expenses | number}}</td>
-            <td class="cell boldRight">${{item.total | number}}</td>
-            <td class="cell">${{item.PolicyholderInterest | number}} ({{item.pcForSeller}}%)</td>
-            <td class="cell">${{item.listInterest | number}} ({{item.pcForInvesrors}}%)</td>
+            <th scope="row" class="timeLine">{{item.Year}}</th>
+            <td class="cell boldLeft">${{item.AnnualPremiums}}</td>
+            <td class="cell">${{item.Expenses}}</td>
+            <td class="cell boldRight">${{item.Total}}</td>
+            <td class="cell">${{item.phd}} ({{item.php}})</td>
+            <td class="cell">${{item.ld}} ({{item.lp}})</td>
           </tr>
         </table>
 
         <div id="tableDescription">
           <div id="tableDescription_line1" class="tableLines">
-            <span class="tHeaderColor1">LiST Funding</span> – LiST’s funding in the policy.
+            <span class="tHeaderColor1">Premiums</span>
             <div style="margin-left: 30px; display: list-item"><span style="font-weight: 500; display: table-cell">Annual Premiums</span><span style="display: table-cell">&nbsp;-&nbsp;</span>
-              <div style="display: table-cell">The annual premium LiST is funding for the policy.</div>
+              <div style="display: table-cell">The annual premiums the LiST platform lenders are funding for the policy.</div>
             </div>
             <div style="margin-left: 30px; display: list-item"><span style="font-weight: 500; display: table-cell;">Expenses</span><span style="display: table-cell">&nbsp;-&nbsp;</span>
-              <div style="display: table-cell">The onboarding and ongoing expense of maintaining and managing the asset; this includes provider fees, legal
-                fees, life expectancy reports, and other services.</div>
+              <div style="display: table-cell">The onboarding and ongoing expense of maintaining and managing the asset; this includes provider fees, legal fees, life expectancy reports, and other services.</div>
             </div>
             <div style="margin-left: 30px; display: list-item"><span style="font-weight: 500; display: table-cell">Total</span><span style="display: table-cell">&nbsp;-&nbsp;</span>
-              <div style="display: table-cell">The total accumulated dollar amount funded by LiST.
+              <div style="display: table-cell">The total accumulated dollar amount funded by the LiST platform lenders.
               </div>
             </div>
           </div>
           <div id="tableDescription_line2" class="tableLines">
-            <span class="tHeaderColor2">Policyholder Benefit</span> – The Portion of the policy's benefits retained by the policyholder. The "LiST Fee" will be deducted from this benefit.
+            <span class="tHeaderColor2">Policyholder's Benefit</span> – The Portion of the policy's benefits retained by the policyholder. The "LiST Fee" will be deducted from this benefit.
           </div>
           <div id="tableDescription_line3" class="tableLines">
-            <span class="tHeaderColor3">LiST Benefit</span> - The portion of the policy&#39;s benefits due to LiST.
+            <span class="tHeaderColor3">Lender's Benefit</span> - The portion of the policy's benefits due to the LiST platform lenders.
           </div>
         </div>
 
         <div id="disclaimer" style="padding-right: 50px; padding-left: 50px;">
-          <div class="disclaimer" id="disclaimer" style="text-align: center; border: solid 1px; padding: 10px;">
+          <div class="disclaimer" id="disclaimer" style="text-align: center; border: solid 1px; padding: 10px; padding-top: 15px; padding-bottom: 15px;">
             <div class="disclaimerTitle" style="width: 100%; text-align: center; font-size: 20px; margin-bottom: 10px;">
               Disclaimer
             </div>
@@ -241,9 +246,9 @@
             </colgroup>
             <tr>
               <td class="header1"></td>
-              <td class="header1 tHeaderColor1" colspan="3" scope="colgroup">LiST Funding</td>
-              <td class="header1 tHeaderColor2">Policyholder Benefit</td>
-              <td class="header1 tHeaderColor3">LiST Benefit</td>
+              <td class="header1 tHeaderColor1" colspan="3" scope="colgroup">Premiums</td>
+              <td class="header1 tHeaderColor2">Policyholder's Benefit</td>
+              <td class="header1 tHeaderColor3">Lender's Benefit</td>
             </tr>
             <tr>
               <th scope="col">Month</th>
@@ -254,12 +259,12 @@
               <th scope="col"></th>
             </tr>
             <tr *ngFor="let item of it">
-              <th scope="row" class="timeLine">{{item.title}}</th>
-              <td class="cell boldLeft">${{item.enforcedCash | number}}</td>
-              <td class="cell">${{item.expenses | number}}</td>
-              <td class="cell boldRight">${{item.total | number}}</td>
-              <td class="cell">${{item.PolicyholderInterest | number}} ({{item.pcForSeller}}%)</td>
-              <td class="cell">${{item.listInterest | number}} ({{item.pcForInvesrors}}%)</td>
+              <th scope="row" class="timeLine">{{item.Month}}</th>
+              <td class="cell boldLeft">${{item.MonthlyPremiums}}</td>
+              <td class="cell">${{item.OGExpenses | number}}</td>
+              <td class="cell boldRight">${{item.Total}}</td>
+              <td class="cell">${{item.phd}} ({{item.php}})</td>
+              <td class="cell">${{item.ld}} ({{item.lp}})</td>
             </tr>
           </table>
 

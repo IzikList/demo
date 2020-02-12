@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
-
 @Component({
   selector: 'app-report-new',
   templateUrl: './report-new.component.html',
@@ -17,10 +16,36 @@ import html2canvas from 'html2canvas';
 })
 export class ReportNewComponent implements OnInit, AfterViewInit {
 
+  davis =  {
+    number: 157209409,
+    name: 'J.D',
+    age: 96,
+    face: 1300 * 1000,
+    discount: 13,
+  };
+
+  example = {
+    number: '----------',
+    name: 'Example',
+    age: 85,
+    face: 1000 * 1000,
+    discount: 13,
+  };
+  ownerName = 'E.L.S';
+  policyNumber = 'G1627804'; // '7053265'; //
+  age = 98;
+  amount = 3500000;
+  irr = 13;
+  headerFields = this.davis;
+
+
   @ViewChild('header1') myDiv: ElementRef;
   @ViewChild('mImg') myImg: ElementRef;
   imgPath = '';
   imgPath2 = '';
+  csvData: Object;
+  csvYear;
+  csvMonth;
   param1: number;
   param2: number;
   param3: number;
@@ -32,33 +57,30 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   pdf = true;
   expences = [];
   monthData = [];
-  ownerName;
-  policyNumber;
-  age;
   lesAvg = [6.42, 6.36, 6.31, 6.25, 6.20, 6.14, 6.08, 6.03, 5.97, 5.92, 5.86, 5.80, 5.75, 5.70, 5.65, 5.60, 5.55, 5.50, 5.46, 5.41, 5.36, 5.31, 5.26, 5.21, 5.16, 5.12, 5.08, 5.03, 4.99, 4.95, 4.90, 4.86, 4.82, 4.77, 4.73, 4.69, 4.64, 4.61, 4.57, 4.53, 4.49, 4.45, 4.41, 4.37, 4.33, 4.29, 4.25, 4.21, 4.18, 4.14, 4.10, 4.06, 4.03, 3.99, 3.95, 3.91, 3.88, 3.84, 3.80, 3.77, 3.73, 3.70, 3.66, 3.63, 3.59, 3.56, 3.52, 3.49, 3.46, 3.42, 3.39, 3.36, 3.33, 3.29, 3.26, 3.23, 3.19, 3.16, 3.13, 3.10, 3.07, 3.04, 3.01, 2.98, 2.95, 2.92, 2.88, 2.85, 2.82, 2.79, 2.76, 2.72, 2.69, 2.66, 2.64, 2.61, 2.58, 2.55, 2.51, 2.48, 2.45, 2.42, 2.39, 2.36, 2.33, 2.30, 2.27, 2.25, 2.22, 2.19, 2.16, 2.13, 2.11, 2.08, 2.05, 2.03, 2.00, 1.98, 1.96, 1.94, 1.92, 1.89, 1.86, 1.83, 1.81, 1.78, 1.76, 1.73, 1.71, 1.69, 1.67, 1.66, 1.64, 1.62, 1.59, 1.56, 1.54, 1.52, 1.49, 1.47, 1.46, 1.44, 1.43, 1.42, 1.41, 1.38, 1.36, 1.33, 1.31, 1.28, 1.26, 1.24, 1.23, 1.22, 1.21, 1.21, 1.21, 1.18, 1.15, 1.13, 1.10, 1.08, 1.06, 1.04, 1.03, 1.02, 1.02, 1.03, 1.04, 1.01, 0.98, 0.95, 0.93, 0.90, 0.88, 0.86, 0.85, 0.84, 0.84, 0.85, 0.87, 0.84, 0.80, 0.77, 0.73, 0.70, 0.67, 0.64, 0.61, 0.58, 0.56, 0.55, 0.54, 0.50, 0.46, 0.42, 0.37, 0.33, 0.29, 0.25, 0.21, 0.17, 0.12, 0.08];
   isPremiumsPerMonth = false;
   isDeadPerMonth = false;
 
   onBoardingFees = {
-    legal: { val: 2000, name: 'Legal' },
-    provider: { val: 3000, name: 'Provider' },
+    legal: { val: 7500, name: 'Legal' },
+    provider: { val: 0, name: 'Provider' },
     broker: { val: 0, name: 'Broker' },
-    pricing: { val: 1000, name: 'Pricing' },
-    underwriting: { val: 1500, name: 'Underwriting' },
-    trustservice: { val: 250, name: 'Trust Service' },
-    tracking: { val: 250, name: 'Tracking' },
+    pricing: { val: 500, name: 'Pricing' },
+    underwriting: { val: 0, name: 'Underwriting' },
+    trustservice: { val: 2000, name: 'Trust Service' },
+    tracking: { val: 0, name: 'Tracking' },
     other: { val: 0, name: 'Other' }
   };
   onBoardingFeesSum = 0;
 
   ongoingFees = {
-    legal: { val: 250, name: 'Legal' },
+    legal: { val: 600, name: 'Legal' },
     provider: { val: 0, name: 'Provider' },
     broker: { val: 0, name: 'Broker' },
-    pricing: { val: 250, name: 'Pricing' },
-    underwriting: { val: 250, name: 'Underwriting' },
-    trustservice: { val: 250, name: 'Trust Service' },
-    tracking: { val: 200, name: 'Tracking' },
+    pricing: { val: 0, name: 'Pricing' },
+    underwriting: { val: 0, name: 'Underwriting' },
+    trustservice: { val: 600, name: 'Trust Service' },
+    tracking: { val: 1200, name: 'Tracking' },
     other: { val: 0, name: 'Other' }
   };
   ongoingFeesSum = 0;
@@ -114,8 +136,6 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
 
   highData;
   lowData;
-  amount = 1000 * 1000;
-  irr = 15;
   le = 7.0;
   les = [53, 70, 83, 91, 93, 96, 94, 87, 80, 74, 62, 48, 33, 20, 10, 4, 2];
   premiums = 30 * 1000;
@@ -131,7 +151,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
   calculationService = new CalculationService();
   chart: Chart;
   barChartData;
-  listFee = 1;
+  listFee = 5;
   listFeeCash = 0;
   // chart2: Chart;
   // barChartData2;
@@ -178,6 +198,14 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
     for (let i = 0; i < this.les.length; i++) {
       this.premiumsArray.push(this.premiums);
     }
+
+    if (this.headerFields) {
+      this.amount = this.headerFields.face;
+      this.age = this.headerFields.age;
+      this.ownerName = this.headerFields.name;
+      this.irr = this.headerFields.discount;
+      this.policyNumber = '' + this.headerFields.number;
+    }
   }
 
   ngAfterViewInit() {
@@ -206,6 +234,198 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
     });
 
     myReader.readAsText(file);
+  }
+  fileUploadData(event) {
+    const file: File = event.target.files[0];
+    const myReader: FileReader = new FileReader();
+
+    myReader.onloadend = ((e) => {
+      // you can perform an action with readed data here
+      // console.log(myReader.result);
+      this.csvData =  this.csvJSON(myReader.result);
+    });
+
+    myReader.readAsText(file);
+  }
+  fileUploadYear(event) {
+    const file: File = event.target.files[0];
+    const myReader: FileReader = new FileReader();
+
+    myReader.onloadend = ((e) => {
+      // you can perform an action with readed data here
+      // console.log(myReader.result);
+      this.csvYear =  this.csvJSON2(myReader.result);
+      console.log(this.csvYear);
+    });
+
+    myReader.readAsText(file);
+  }
+  fileUploadMonth(event) {
+    const file: File = event.target.files[0];
+    const myReader: FileReader = new FileReader();
+
+    myReader.onloadend = ((e) => {
+      // you can perform an action with readed data here
+      // console.log(myReader.result);
+      this.csvMonth =  this.csvJSON2(myReader.result);
+      for (let index = 0; index < this.csvMonth.length; index++) {
+        const element = this.csvMonth[index];
+        if ( element.OGExpenses) {
+          element.OGExpenses = parseInt(element.OGExpenses, 0);
+          if (element.OBExpenses) {
+            element.OGExpenses += parseInt(element.OBExpenses, 0);
+          }
+        }
+      }
+      console.log(this.csvMonth);
+    });
+
+    myReader.readAsText(file);
+  }
+
+
+  CSVToArray( strData, strDelimiter ) {
+        // Check to see if the delimiter is defined. If not,
+        // then default to comma.
+        strDelimiter = (strDelimiter || ',');
+
+        // Create a regular expression to parse the CSV values.
+        const objPattern = new RegExp(
+            (
+                // Delimiters.
+                '(\\' + strDelimiter + '|\\r?\\n|\\r|^)' +
+
+                // Quoted fields.
+                '(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|' +
+
+                // Standard fields.
+                '([^\"\\" + strDelimiter + "\\r\\n]*))'
+            ),
+            'gi'
+            );
+
+
+        // Create an array to hold our data. Give the array
+        // a default empty first row.
+        const arrData = [[]];
+
+        // Create an array to hold our individual pattern
+        // matching groups.
+        let arrMatches = null;
+
+
+        // Keep looping over the regular expression matches
+        // until we can no longer find a match.
+        while (arrMatches = objPattern.exec( strData )) {
+
+            // Get the delimiter that was found.
+            const strMatchedDelimiter = arrMatches[ 1 ];
+
+            // Check to see if the given delimiter has a length
+            // (is not the start of string) and if it matches
+            // field delimiter. If id does not, then we know
+            // that this delimiter is a row delimiter.
+            if (
+                strMatchedDelimiter.length &&
+                strMatchedDelimiter !== strDelimiter
+                ) {
+
+                // Since we have reached a new row of data,
+                // add an empty row to our data array.
+                arrData.push( [] );
+
+            }
+
+            let strMatchedValue;
+
+            // Now that we have our delimiter out of the way,
+            // let's check to see which kind of value we
+            // captured (quoted or unquoted).
+            if (arrMatches[ 2 ]) {
+
+                // We found a quoted value. When we capture
+                // this value, unescape any double quotes.
+                strMatchedValue = arrMatches[ 2 ].replace(
+                    new RegExp( '\"\"', 'g' ),
+                    '\"'
+                    );
+
+            } else {
+
+                // We found a non-quoted value.
+                strMatchedValue = arrMatches[ 3 ];
+
+            }
+
+
+            // Now that we have our value string, let's add
+            // it to the data array.
+            arrData[ arrData.length - 1 ].push( strMatchedValue );
+        }
+
+        // Return the parsed data.
+        return( arrData );
+    }
+    parseCSV(str) {
+    const arr = [];
+    let quote = false;  // true means we're inside a quoted field
+
+    // iterate over each character, keep track of current row and column (of the returned array)
+    for (let row = 0, col = 0, c = 0; c < str.length; c++) {
+        const cc = str[c], nc = str[c + 1];        // current character, next character
+        arr[row] = arr[row] || [];             // create a new row if necessary
+        arr[row][col] = arr[row][col] || '';   // create a new column (start with empty string) if necessary
+
+        // If the current character is a quotation mark, and we're inside a
+        // quoted field, and the next character is also a quotation mark,
+        // add a quotation mark to the current column and skip the next character
+        if (cc === '"' && quote && nc === '"') { arr[row][col] += cc; ++c; continue; }  
+
+        // If it's just one quotation mark, begin/end quoted field
+        if (cc === '"') { quote = !quote; continue; }
+
+        // If it's a comma and we're not in a quoted field, move on to the next column
+        if (cc === ',' && !quote) { ++col; continue; }
+
+        // If it's a newline (CRLF) and we're not in a quoted field, skip the next character
+        // and move on to the next row and move to column 0 of that new row
+        if (cc === '\r' && nc === '\n' && !quote) { ++row; col = 0; ++c; continue; }
+
+        // If it's a newline (LF or CR) and we're not in a quoted field,
+        // move on to the next row and move to column 0 of that new row
+        if (cc === '\n' && !quote) { ++row; col = 0; continue; }
+        if (cc === '\r' && !quote) { ++row; col = 0; continue; }
+
+        // Otherwise, append the current character to the current column
+        arr[row][col] += cc;
+    }
+    return arr;
+}
+
+
+  csvJSON2(csv) {
+    console.log(csv);
+    const lines = this.parseCSV(csv);
+    console.log(lines);
+
+    const result = [];
+
+    const headers = lines[0];
+
+    for (let i = 1; i < lines.length; i++) {
+
+      const obj = {};
+      const currentline = lines[i];
+      for (let j = 0; j < headers.length; j++) {
+        if (currentline[j]) {
+          obj[headers[j]] = currentline[j].trim();
+        }
+      }
+
+      result.push(obj);
+
+    }
+    return result;
   }
 
   csvJSON(csv) {
@@ -302,8 +522,63 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
 
   }
   report() {
+     setTimeout(() => {
+              this.datin = this.csvYear;
+              this.monthData = this.csvMonth;
+              const arr = [];
+              let counter = 0;
+              for (; counter < this.csvMonth.length;) {
+                const mArr = [];
+                for (let m = 1; m <= 12 && counter < this.csvMonth.length; m++) {
+                  mArr.push(this.csvMonth[counter++]);
+                }
+                arr.push(mArr);
+              }
+              this.monthData = arr;
+
+    }, 10 * 1000);
+
+
     // this.isHidden = false;
     // setTimeout(() => {this.reportAsync(); }, 3000);
+    // this.http.get('/assets/temp/davis/dilution_month.json', {responseType: 'text'})
+    // .subscribe(
+    //     data => {
+    //         console.log(data);
+    //         const a = this.monthData;
+    //         setTimeout(() => {
+    //           const arr = [];
+    //           const monthArray = JSON.parse(data);
+    //           let counter = 0;
+    //           for (; counter < monthArray.length;) {
+    //             const mArr = [];
+    //             for (let m = 1; m <= 12 && counter < monthArray.length; m++) {
+    //               mArr.push(monthArray[counter++]);
+    //             }
+    //             arr.push(mArr);
+    //           }
+    //           this.monthData = arr;
+    //         }, 10 * 1000);
+    //     },
+    //     error => {
+    //         console.log(error);
+    //     }
+    // );
+
+    //     this.http.get('/assets/temp/davis/dilution_year.json', {responseType: 'text'})
+    // .subscribe(
+    //     data => {
+    //         console.log(data);
+    //         setTimeout(() => {
+    //           this.datin = JSON.parse(data);
+    //         }, 10 * 1000);
+    //     },
+    //     error => {
+    //         console.log(error);
+    //     }
+    // );
+
+
     if (!this.reportAsync()) {
       return;
     }
@@ -804,7 +1079,7 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
 
           const tableArrays = window.document.getElementsByClassName('tableMonth');
           for (let i = 0; i < tableArrays.length; i++) {
-            if (position > pageHeight - 20) {
+            if (position > pageHeight - 50 || i === 1 || i === 4) {
               doc.addPage();
               doc.setPage(doc.getNumberOfPages());
               position = 20;
@@ -829,6 +1104,9 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
             });
             position = doc.lastAutoTable.finalY + 15;
           }
+          doc.addPage();
+          doc.setPage(doc.getNumberOfPages());
+          position = 20;
           doc.autoTable({
             html: '#expencesTable', startY: position + 5, useCss: true,
             didDrawPage: function (data) {
@@ -841,20 +1119,20 @@ export class ReportNewComponent implements OnInit, AfterViewInit {
               // }
             },
           });
-          position = doc.lastAutoTable.finalY + 15;
+          // position = doc.lastAutoTable.finalY + 15;
 
-          doc.autoTable({
-            html: '#feeTable', startY: position + 5, useCss: true,
-            didDrawPage: function (data) {
-              // if (data.pageNumber > 1) {
-              //   // Header
-              //   doc.setFontSize(10);
-              //   doc.setTextColor(40);
-              //   doc.setFontStyle('normal');
-              //   doc.text('Report', 15, 5);
-              // }
-            },
-          });
+          // doc.autoTable({
+          //   html: '#feeTable', startY: position + 5, useCss: true,
+          //   didDrawPage: function (data) {
+          //     // if (data.pageNumber > 1) {
+          //     //   // Header
+          //     //   doc.setFontSize(10);
+          //     //   doc.setTextColor(40);
+          //     //   doc.setFontStyle('normal');
+          //     //   doc.text('Report', 15, 5);
+          //     // }
+          //   },
+          // });
           position = doc.lastAutoTable.finalY + 15;
 
           // expencesTable
